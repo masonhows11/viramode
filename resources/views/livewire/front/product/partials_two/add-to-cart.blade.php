@@ -48,6 +48,10 @@
             </div>
 
             <div class="product-seller-row product-seller-row--add-to-cart">
+              {{--  <button type="button" wire:click="addToCart({{ $product->id }})"
+                        class="btn btn-danger add-cart-btn {{ $product->available_in_stock == 0 ? 'disabled' : '' }}">
+                    {{ __('messages.add_to_cart') }}
+                </button>--}}
                 <a href="#" class="btn-add-to-cart btn-add-to-cart--full-width">
                     <span class="btn-add-to-cart-txt">افزودن به سبد خرید</span>
                 </a>
