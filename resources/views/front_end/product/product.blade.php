@@ -48,7 +48,7 @@
                                         <!-- start product variants -->
                                         <livewire:front.product.partials_two.product-variant-select :product="$product"/>
                                         <!-- end product variants  -->
-                                    
+
                                         <!-- start product feature -->
                                         @include('front_end.product.partials.product_features',['product' => $product])
                                         <!-- end product feature -->

@@ -29,7 +29,11 @@ class ProductVariantSelect extends Component
 
     public function selectVariant()
     {
-        dd($this->variantId);
+       // dd($this->variantId);
+
+        $this->emitTo(AddToCart::class,'selectedVariant', $this->variantId);
+
+
     }
 
     public function render()
