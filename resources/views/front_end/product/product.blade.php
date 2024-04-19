@@ -18,6 +18,7 @@
                 <div class="row">
 
                     <div class="col-lg-4 col-md-6 ps-relative">
+
                         <ul class="gallery-options">
                             @include('front_end.product.partials.add_to_favorites',['product' => $product])
                         </ul>
@@ -37,21 +38,20 @@
                                 <h1>{{ $product->title_persian }}</h1>
                                 <h3>{{ $product->title_english }}</h3>
                             </div>
+                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
+                                <h2>کد محصول:225566</h2>
+                            </div>
                             <div class="row">
                                 <!-- first col -->
+
                                 <div class="col-lg-6">
-
-                                    <!-- start product variants -->
-                                    <livewire:front.product.partials_two.product-variant-select :product="$product"/>
-                                    <!-- end product variants  -->
-
-                                    <!-- start product feature -->
-                                      @include('front_end.product.partials.product_features',['product' => $product])
-                                    <!-- end product feature -->
-
-                                    <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
-                                        <h2>کد محصول:225566</h2>
-                                    </div>
+                                        <!-- start product variants -->
+                                        <livewire:front.product.partials_two.product-variant-select :product="$product"/>
+                                        <!-- end product variants  -->
+                                    
+                                        <!-- start product feature -->
+                                        @include('front_end.product.partials.product_features',['product' => $product])
+                                        <!-- end product feature -->
                                 </div>
                                 <!-- second col -->
                                 <div class="col-lg-6">
