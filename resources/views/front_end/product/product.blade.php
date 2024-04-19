@@ -55,7 +55,7 @@
                                 </div>
                                 <!-- second col -->
                                 <div class="col-lg-6">
-                                    <livewire:front.product.partials_two.add-to-cart/>
+                                    <livewire:front.product.partials_two.add-to-cart :productId="$product->id"/>
                                 </div>
 
                             </div>

@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <select class="form-control" wire:change="selectVariant" wire:model="variantId" id="variant_name">
                         @foreach( $product->values()->get() as $value )
-                            <option value="{{ $value->id }}">{{ $value->value }}</option>
+                            <option value="{{ $value->id }}">{{ $value->value }} {{ $value->attribute->unit }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -19,7 +19,7 @@
                         <input class="form-check-input" wire:click="selectVariant" wire:model="variantId" type="radio"
                                name="Radio" id="radio-{{ $value->id }}" value="{{ $value->id }}">
                         <label class="form-check-label" for="radio-{{ $value->id }}">
-                            {{ $value->value }}
+                            {{ $value->value }} {{ $value->attribute->unit }}
                         </label>
                     @endforeach
                 </div>

@@ -22,9 +22,6 @@ class AddToCart extends Component
     ];
     public function setPriceByVariant($name)
     {
-
-
-
     }
 
     public function addToCart($product)

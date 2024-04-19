@@ -31,7 +31,7 @@ class ProductVariantSelect extends Component
     {
        // dd($this->variantId);
 
-        $this->emitTo(AddToCart::class,'selectedVariant', $this->variantId);
+       // $this->emitTo(AddToCart::class,'selectedVariant', $this->variantId);
 
 
     }
