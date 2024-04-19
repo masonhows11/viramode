@@ -1,33 +1,29 @@
 <div>
     <div class="product-variant dt-sl">
-        <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
-            <h2>{{ $variant_name != null ? $variant_name : '' }}:</h2>
-        </div>
-        @if($product->values() != null)
-            <div class="form-group">
+        @if(count($product->values()->get()) != 0)
+            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
+                <h2>{{ $variant_name != null ? $variant_name : '' }}</h2>
+            </div>
 
-                @if($variant_type == 0)
+            @if($variant_type == 0)
+                <div class="form-group">
                     <select class="form-control" wire:change="selectVariant" wire:model="variantId" id="variant_name">
                         @foreach( $product->values()->get() as $value )
                             <option value="{{ $value->id }}">{{ $value->value }}</option>
                         @endforeach
                     </select>
-
-            </div>
-        @else
-
-            <div class="form-check">
-                @foreach( $product->values()->get() as $value )
-                    <input class="form-check-input" wire:click="selectVariant" wire:model="variantId" type="radio"
-                           name="Radio" id="radio-{{ $value->id }}" value="{{ $value->id }}">
-                    <label class="form-check-label" for="radio-{{ $value->id }}">
-                        {{ $value->value }}
-                    </label>
-                @endforeach
-            </div>
-
-        @endif
-
+                </div>
+            @else
+                <div class="form-check">
+                    @foreach( $product->values()->get() as $value )
+                        <input class="form-check-input" wire:click="selectVariant" wire:model="variantId" type="radio"
+                               name="Radio" id="radio-{{ $value->id }}" value="{{ $value->id }}">
+                        <label class="form-check-label" for="radio-{{ $value->id }}">
+                            {{ $value->value }}
+                        </label>
+                    @endforeach
+                </div>
+            @endif
         @endif
 
 
