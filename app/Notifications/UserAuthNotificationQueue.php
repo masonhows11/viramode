@@ -37,7 +37,7 @@ class UserAuthNotificationQueue extends Notification implements ShouldQueue
     public function toMail(object $notifiable)
     {
         return (new MailMessage)
-            ->subject('گرافیک شاپ')
+            ->subject(__('messages.site_name'))
             ->from(env('MAIL_FROM_ADDRESS'))
             ->greeting('کد فعال سازی')
             ->line('کاربر عزیز')
