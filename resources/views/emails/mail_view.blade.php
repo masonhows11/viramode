@@ -8,7 +8,7 @@
 
         <div class="row d-flex flex-column justify-content-center align-items-center my-2">
             <div class="col-10">
-                <h4 class="h4 text-center text-danger">فروشگاه اینترنتی خرید خوب</h4>
+                <h4 class="h4 text-center text-danger">{{ __('messages.site_name') }}</h4>
             </div>
             <div class="col-8 title-notice mt-4 mb-2">
                 <p class="text-center">{{ $details['title'] }}</p>
@@ -22,11 +22,11 @@
             <div class="col-12">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">websolo.ir</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">goodshop.ir</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{ __('messages.site_name_english') }}</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">پرسش و پاسخ</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">درباره ما</a></li>
                 </ul>
-                <p class="text-center"><strong>&copy; 2023 Websolo.ir goodshop.ir</strong></p>
+                <p class="text-center"><strong>&copy; 2023 Websolo.ir {{ __('messages.site_name_english') }}</strong></p>
             </div>
         </div>
         <div class="row d-flex justify-content-between">
