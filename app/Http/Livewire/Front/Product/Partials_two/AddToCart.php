@@ -3,15 +3,20 @@
 namespace App\Http\Livewire\Front\Product\Partials_two;
 
 use App\Http\Livewire\Front\Cart\CartHeader;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class AddToCart extends Component
 {
 
+    public $product;
+    public $productId;
+
     public function mount($productId)
     {
-
+        $this->productId = $productId;
+        $this->product = Product::findOrfail($productId);
 
     }
 
@@ -37,6 +42,7 @@ class AddToCart extends Component
 
     public function render()
     {
-        return view('livewire.front.product.partials_two.add-to-cart');
+        return view('livewire.front.product.partials_two.add-to-cart')
+        ->with(['product' => $this->product]);
     }
 }
