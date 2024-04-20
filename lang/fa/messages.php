@@ -3,6 +3,7 @@
 
 return [
     'site_name' => 'فروشگاه ویرا مد',
+    'login_admin_code_viramode' => 'ویرامد - تاییدیه ورود پنل مدیریت',
     'site_name_english' => 'viramode.ir',
     'home' => 'خانه',
     'home_page' => 'صفحه اصلی سایت',

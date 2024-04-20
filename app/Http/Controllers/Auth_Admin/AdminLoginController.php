@@ -57,11 +57,11 @@ class AdminLoginController extends Controller
     public function logOut(Request $request)
     {
         $admin = Auth::guard('admin')->user();
+        Auth::guard('admin')->logout();
         $admin->code = null;
         $admin->email_verified_at = null;
         $admin->remember_token = null;
         $admin->save();
-        Auth::guard('admin')->logout();
         $request->session()->invalidate();
         return redirect()->route('admin.login.form');
     }

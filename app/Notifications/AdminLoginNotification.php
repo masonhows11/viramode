@@ -13,8 +13,11 @@ class AdminLoginNotification extends Notification
 
     public $admin;
     public $token;
+
     /**
      * Create a new notification instance.
+     * @param $admin
+     * @param $token
      */
     public function __construct($admin,$token)
     {
@@ -38,9 +41,9 @@ class AdminLoginNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('گرافیک شاپ تاییدیه ورود پنل مدیریت')
+            ->subject(__('messages.login_admin_code_viramode'))
             ->from(env('MAIL_FROM_ADDRESS'))
-            ->greeting('graphicshop.ir')
+            ->greeting(__('messages.site_name'))
             ->line('Dear User')
             ->line('admin panel active token for admin user :')
             ->line("admin: $this->admin")
