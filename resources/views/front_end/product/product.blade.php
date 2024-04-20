@@ -46,7 +46,7 @@
 
                                 <div class="col-lg-6">
                                         <!-- start product variants -->
-                                        <livewire:front.product.partials_two.product-variant-select :product="$product"/>
+                                        {{--  <livewire:front.product.partials_two.product-variant-select :product="$product"/>  --}}
                                         <!-- end product variants  -->
 
                                         <!-- start product feature -->

@@ -128,6 +128,7 @@
                             <td>{{ $categoryAttribute->title }}</td>
                             <td>{{ $value->product->title_persian }}</td>
                             <td>{{ $value->value }}</td>
+                            <td>{{ $value->quantity}}</td>
                             <td class="model-field">{{ number_format(floatval($value->price_increase)) }}</td>
                             <td class="model-field">{{ $value->type == 0 ? __('messages.select') : __('messages.radio') }}</td>
                             <td>

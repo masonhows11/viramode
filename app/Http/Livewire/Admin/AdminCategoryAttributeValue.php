@@ -113,6 +113,7 @@ class AdminCategoryAttributeValue extends Component
             $this->price_increase = $value->price_increase;
             $this->product_id = $value->product_id;
             $this->type = $value->type;
+            $this->quantity = $value->quantity;
             $this->edit_mode = true;
 
         } catch (\Exception $ex) {
