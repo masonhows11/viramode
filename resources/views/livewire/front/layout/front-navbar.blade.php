@@ -26,13 +26,22 @@
 
             <!-- Start Cart -->
             <div class="nav mr-auto">
+
                 <div class="nav-item cart--wrapper">
-                    <a class="nav-link" href="#">
+
+                    @guest
+                    <a class="nav-link" href="{{  route('auth.login.form') }}">
                         <span class="label-dropdown">سبد خرید</span>
                         <i class="mdi mdi-cart-outline"></i>
                         <span class="count">2</span>
                     </a>
-                    <div class="header-cart-info">
+                    @endguest
+                    @auth
+                    <livewire:front.cart.cart-header />
+                    @endauth
+
+
+                    {{--  <div class="header-cart-info">
                         <div class="header-cart-info-header">
                             <div class="header-cart-info-count">
                                 3 کالا
@@ -142,7 +151,8 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
+
                 </div>
             </div>
             <!-- End Cart -->

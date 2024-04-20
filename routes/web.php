@@ -269,34 +269,34 @@ Route::controller(ProductController::class)->group(function () {
 
 /* ------------------- Basket Front Routes -----------------**/
 
-//Route::prefix('shopping')->middleware(['auth','web'])->group(function(){
-//
-//
-//    Route::get('/cart/check', [CartController::class, 'checkoutCart'])->name('cart.check');
-//
-//    Route::get('/check/address',[AddressController::class,'checkAddress'])->name('check.address');
-//
-//    Route::get('/get-city',[AddressController::class,'getCities'])->name('get.cities');
-//
-//    Route::post('/address/store',[AddressController::class,'store'])->name('address.store');
-//
-//    Route::post('/address/update',[AddressController::class,'update'])->name('address.update');
-//
-//    Route::get('/address/delete/{address}',[AddressController::class,'delete'])->name('address.delete');
-//
-//    Route::post('/choose-address-delivery',[AddressController::class,'chooseAddressDelivery'])->name('choose.address.delivery');
-//
-//    Route::post('/coupon-discount',[FrontPaymentController::class,'couponDiscount'])->name('coupon-discount');
-//
-//    Route::get('/payment',[FrontPaymentController::class,'payment'])->name('payment');
-//
-//    Route::post('/payment-submit',[FrontPaymentController::class,'paymentSubmit'])->name('payment.submit');
-//
-//    Route::get('/payment-callback/{order}/{onlinePayment}',[FrontPaymentController::class,'paymentCallback'])->name('payment.callback');
-//
-//    Route::get('/payment-result/{orderNumber}',[FrontPaymentController::class,'paymentResult'])->name('payment.result');
-//
-//});
+Route::prefix('shopping')->middleware(['auth','web'])->group(function(){
+
+
+   Route::get('/cart/check', [CartController::class, 'checkoutCart'])->name('cart.check');
+
+   Route::get('/check/address',[AddressController::class,'checkAddress'])->name('check.address');
+
+   Route::get('/get-city',[AddressController::class,'getCities'])->name('get.cities');
+
+   Route::post('/address/store',[AddressController::class,'store'])->name('address.store');
+
+   Route::post('/address/update',[AddressController::class,'update'])->name('address.update');
+
+   Route::get('/address/delete/{address}',[AddressController::class,'delete'])->name('address.delete');
+
+   Route::post('/choose-address-delivery',[AddressController::class,'chooseAddressDelivery'])->name('choose.address.delivery');
+
+   Route::post('/coupon-discount',[FrontPaymentController::class,'couponDiscount'])->name('coupon-discount');
+
+   Route::get('/payment',[FrontPaymentController::class,'payment'])->name('payment');
+
+   Route::post('/payment-submit',[FrontPaymentController::class,'paymentSubmit'])->name('payment.submit');
+
+   Route::get('/payment-callback/{order}/{onlinePayment}',[FrontPaymentController::class,'paymentCallback'])->name('payment.callback');
+
+   Route::get('/payment-result/{orderNumber}',[FrontPaymentController::class,'paymentResult'])->name('payment.result');
+
+});
 
 
 /* ------------------- admin Routes ------------------------**/

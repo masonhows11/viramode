@@ -21,17 +21,21 @@ class AddToCart extends Component
     }
 
     // event for  change price product by change color
-    protected $listeners = [
-        'selectedVariant' => 'setPriceByVariant',
+    // protected $listeners = [
+    //     'selectedVariant' => 'setPriceByVariant',
 
-    ];
-    public function setPriceByVariant($name)
-    {
-    }
+    // ];
+
+    // public function setPriceByVariant($name)
+    // {
+
+    // }
 
     public function addToCart($product)
     {
         if (Auth::check()) {
+
+            
 
             $this->emitTo(CartHeader::class, 'addToCart', $this->number);
         } else {
