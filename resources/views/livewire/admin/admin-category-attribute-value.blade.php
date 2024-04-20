@@ -51,6 +51,18 @@
 
                             <div class="col-sm-3">
                                 <div class="mt-3 mb-3">
+                                    <label for="quantity" class="form-label"> {{ __('messages.quantity') }} </label>
+                                    <input type="number" min="1" class="form-control" id="value" wire:model.defer="quantity">
+                                    @error('quantity')
+                                    <div class="alert alert-danger mt-3">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="mt-3 mb-3">
                                     <label for="price_increase" class="form-label">{{ __('messages.price_increase') }}</label>
                                     <input type="text" class="form-control" value="0" id="price_increase" wire:model.defer="price_increase">
                                     @error('price_increase')
@@ -99,9 +111,10 @@
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
                         <th class="model-field">{{ __('messages.id') }}</th>
-                        <th>نام ویژگی</th>
-                        <th>نام محصول</th>
-                        <th>مقدار</th>
+                        <th class="model-field">نام ویژگی</th>
+                        <th class="model-field">نام محصول</th>
+                        <th class="model-field">مقدار</th>
+                        <th class="model-field">تعداد</th>
                         <th class="model-field">افزایش قیمت</th>
                         <th class="model-field">نوع</th>
                         <th>{{ __('messages.operation') }}</th>

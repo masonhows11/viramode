@@ -14,6 +14,7 @@ class CategoryAttributeValue extends Model
         'product_id',
         'category_attribute_id',
         'value',
+        'quantity',
         'price_increase',
         'type',
     ];

@@ -135,6 +135,7 @@ return [
     'not_record_found' => 'رکوردی پیدا نشد.',
     'product_color' => 'رنگ کالا',
     'price_increase' => 'افزایش قیمت',
+    'quantity' => 'تعداد در انبار',
     'salable_quantity' => 'تعداد قابل فروش',
     'attribute' => 'ویژگی',
     'attribute_type' => 'نوع نمایش',
@@ -314,7 +315,7 @@ return [
 
     'percent_amazing_sale' => ' تخفیف فروش فوق العاده',
     'price_amazing_sale' => 'مبلغ فروش فوق العاده',
-    'quantity' => 'تعداد :',
+    
     'total_price_product' => 'جمع قیمت محصول',
     'total_price' => ' جمع کل : ',
     'color' => 'رنگ ',

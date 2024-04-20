@@ -16,6 +16,7 @@ class AdminCategoryAttributeValue extends Component
 
     // property for store
     public $value;
+    public $quantity;
     public $price_increase = 0;
     public $product_id;
     public $type;
@@ -31,6 +32,7 @@ class AdminCategoryAttributeValue extends Component
     protected $rules = [
         'value' => ['required', 'min:1', 'max:30', 'string'],
         'price_increase' => ['nullable', 'numeric'],
+        'quantity' => ['required','digits','gtr:0'],
         'product_id' => ['required', 'exists:products,id'],
         'type' => ['required']
     ];
@@ -38,6 +40,9 @@ class AdminCategoryAttributeValue extends Component
     protected $messages = [
         'product_id.required' => 'فیلد محصول الزامی است',
         'value.required' => 'فیلد مقدار الزامی است',
+        'quantity.required' => 'فیلد تعداد الزامی است',
+        'quantity.digits' => 'فیلد تعداد عدد الزامی است',
+        'quantity.gtr' => 'فیلد تعداد بزرگتر از صفر الزامی است'
     ];
 
 
@@ -53,6 +58,7 @@ class AdminCategoryAttributeValue extends Component
                     'product_id' => $this->product_id,
                     'category_attribute_id' => $this->cat_attr_id,
                     'value' => $this->value,
+                    'quantity' => $this->quantity,
                     'price_increase' => $this->price_increase,
                     'type' => $this->type,
                 ]);
@@ -62,6 +68,7 @@ class AdminCategoryAttributeValue extends Component
                   $this->value = '';
                   $this->price_increase = '';
                   $this->type = '';
+                  $this->quantity = '';
 
 
                 $this->dispatchBrowserEvent('show-result',
@@ -74,14 +81,16 @@ class AdminCategoryAttributeValue extends Component
                     ->update(['product_id' => $this->product_id,
                         'category_attribute_id' => $this->cat_attr_id,
                         'value' => $this->value,
+                        'quantity' => $this->quantity,
                         'price_increase' => $this->price_increase,
                         'type' => $this->type,]);
 
                      $this->product_id = '';
                      $this->value = '';
                      $this->price_increase = '';
-                    $this->type = '';
-                    $this->edit_mode = true;
+                     $this->quantity = '';
+                     $this->type = '';
+                     $this->edit_mode = true;
 
                 $this->dispatchBrowserEvent('show-result',
                     ['type' => 'success',

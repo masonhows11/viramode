@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('category_attribute_id')->references('id')->on('category_attributes')->onDelete('cascade');
 
             $table->string('value');
+            $table->unsignedBigInteger('quantity')->default(10);
             $table->decimal('price_increase',10,2)->default(0);
             $table->tinyInteger('type')->default('0')->comment('value type is 0 => select, 1 => radio');
             $table->softDeletes();
