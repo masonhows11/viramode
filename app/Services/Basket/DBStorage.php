@@ -7,7 +7,10 @@ class DBStorage implements StorageInterface , Countable
 {
 
 
-//// for get item
+    //// for test
+    //// use cartItems model as basket storage
+
+    //// for get item
     public function getItem($item){
 
     }
@@ -35,7 +38,7 @@ class DBStorage implements StorageInterface , Countable
 
     //// for delete all items
     public function deleteAllItems(){
-        
+
     }
 
 
