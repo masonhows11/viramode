@@ -35,9 +35,10 @@ class AddToCart extends Component
     {
         if (Auth::check()) {
 
-            
+
 
             $this->emitTo(CartHeader::class, 'addToCart', $this->number);
+            
         } else {
             return redirect()->route('auth.login.form');
         }

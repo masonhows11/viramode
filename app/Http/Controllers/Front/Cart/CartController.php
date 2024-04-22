@@ -17,7 +17,7 @@ class CartController extends Controller
     {
 
         if (Auth::check()) {
-            return view('front.cart.cart',['user' => Auth::id()]);
+            return view('front_end.cart.cart',['user' => Auth::id()]);
 
         } else {
             return redirect()->route('auth.login.form');
