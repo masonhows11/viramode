@@ -10,7 +10,7 @@ class OrderNumberServices
 {
     public static function  generateNumber()
     {
-        define("PREFIX" ,"GDSH");
+        define("PREFIX" ,"vrm");
         $number = PREFIX  . mt_rand(111111, 999999);
 
         if (self::existNumber($number)) {
