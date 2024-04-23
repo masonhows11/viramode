@@ -2,7 +2,7 @@
         <div class="container main-container">
 
 
-            @if( $cartItems->isEmpty()   )
+            @if( count($cartItems)   )
             <div class="row mx-0">
                 <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
 
@@ -259,7 +259,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
