@@ -8,17 +8,6 @@ use App\Services\Basket\Contracts\StorageInterface;
 class DBStorage implements StorageInterface
 {
 
-
-
-    // private $basket;
-
-    // public function __construct($basket = 'default')
-    // {
-
-    //     $this->basket = $basket;
-
-    // }
-
     //// for test
     //// use cartItems model as basket storage
 
