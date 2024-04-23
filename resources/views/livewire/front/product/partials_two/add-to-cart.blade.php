@@ -1,6 +1,6 @@
 <div>
 
-    <div class="product-summary">
+    <div class="product-summary" wire:ignore>
         <nav id="stack-menu">
 
             <ul>
@@ -13,6 +13,7 @@
             </ul>
 
             <div class="product-seller-row product-seller-row--price">
+
                 {{--  <div class="product-seller-price-info">
                     <div class="product-seller-price-prev">
                         4,900,000
@@ -26,10 +27,12 @@
                     <div class="product-seller-price-raw">{{  priceFormat($product->origin_price) }}</div>
                     تومان
                 </div>
+
                 {{--  <div
                     class="product-additional-item product-additional-item--no-icon">
                     <span>321,600</span>&nbsp; تومان تخفیف سازمانی کسر گردیده است.
                 </div>  --}}
+
             </div>
 
             <div class="product-seller-row product-seller-row--add-to-cart">
@@ -51,6 +54,7 @@
                         امتیاز دیجی‌کلاب با خرید این کالا
                     </div>
                 </div>  --}}
+
 
             </div>
 

@@ -42,18 +42,18 @@ class AddToCart extends Component
 
     // }
 
-    public function addToCart($product)
+    public function addToCart($product_id)
     {
         if (Auth::check()) {
 
-            // $this->basket->addItem([
-            //     'user_id' => $this->user_id,
-            //     'product_id' => $this->productId,
-            //     'number' => $this->number
-            // ]);
+                $this->basket->addItem([
+                    'user_id' => $this->user_id,
+                    'product_id' => $this->productId,
+                    'number' => $this->number
+                ]);
 
 
-            // $this->emitTo(CartHeader::class, 'addToCart', $this->number);
+                $this->emitTo(CartHeader::class, 'addToCart', $this->number);
 
         } else {
             return redirect()->route('auth.login.form');
