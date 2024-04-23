@@ -13,18 +13,19 @@ class AddToCart extends Component
 
     public $product;
     public $productId;
-
-
+    public $user_id;
+    public $number = 1;
+    public $basket;
 
     public function boot()
     {
-        $dbStorage = resolve(StorageInterface::class);
-        dd($dbStorage);
+        $this->basket = resolve(StorageInterface::class);
     }
 
 
     public function mount($productId)
     {
+        $this->user_id = Auth::id();
         $this->productId = $productId;
         $this->product = Product::findOrfail($productId);
 
@@ -45,6 +46,11 @@ class AddToCart extends Component
     {
         if (Auth::check()) {
 
+            $this->basket->addItem(
+                $this->user_id,
+                $this->productId,
+                $this->number
+            );
 
 
             $this->emitTo(CartHeader::class, 'addToCart', $this->number);
