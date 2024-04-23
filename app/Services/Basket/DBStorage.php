@@ -23,9 +23,9 @@ class DBStorage implements StorageInterface
     {
 
         CartItems::create([
-                'user_id' => '',
-                'product_id' => '',
-                'number' => '',
+                'user_id' => $items['user_id'],
+                'product_id' => $items['product_id'],
+                'number' => $items['number'],
         ]);
 
     }
