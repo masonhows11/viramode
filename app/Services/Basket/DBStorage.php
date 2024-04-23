@@ -32,13 +32,13 @@ class DBStorage implements BasketInterface
     }
 
     //// for add item
-    public function addItem($items = [])
+    public function addItem($items = [],int $quantity)
     {
 
         CartItems::create([
             'user_id' => $items['user_id'],
             'product_id' => $items['product_id'],
-            'number' => $items['number'],
+            'number' => $quantity,
         ]);
     }
 

@@ -10,7 +10,7 @@ interface BasketInterface{
     public function getItem($item);
 
     //// for add item
-    public function addItem($item = []);
+    public function addItem($item = [],int $quantity);
 
 
     //// for get all items
