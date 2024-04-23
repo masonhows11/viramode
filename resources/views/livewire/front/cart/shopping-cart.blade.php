@@ -1,6 +1,8 @@
 <div>
-    <main class="main-content dt-sl mb-3">
+
+
         <div class="container main-container">
+
             <div class="row mx-0">
                 <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
 
@@ -9,13 +11,11 @@
                             <a class="nav-item nav-link d-inline-flex w-auto active" id="nav-home-tab"
                                 data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
                                 aria-selected="true">سبد خرید<span class="count-cart">1</span></a>
-                            {{--  <a class="nav-item nav-link d-inline-flex w-auto" id="nav-profile-tab" data-toggle="tab"
-                                href="#nav-profile" role="tab" aria-controls="nav-profile"
-                                aria-selected="false">لیست خرید بعدی<span class="count-cart">1</span></a>  --}}
                         </div>
                     </nav>
 
                 </div>
+
                 <div class="col-12">
                     <div class="tab-content" id="nav-tabContent">
 
@@ -286,109 +286,13 @@
                             </div>
                         </div>
 
-
-                        {{--  <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                            aria-labelledby="nav-profile-tab">
-                            <div class="row">
-                                <div class="col-xl-9 col-lg-8 col-12 px-0">
-                                    <div class="table-responsive checkout-content dt-sl">
-                                        <div class="checkout-header checkout-header--express">
-                                            <span class="checkout-header-title">ارسال عادی</span>
-                                            <span class="checkout-header-extra-info">(2 کالا)</span>
-                                            <a class="checkout-add-all-to-cart">
-                                                افزودن همه به سبد خرید
-                                            </a>
-                                        </div>
-                                        <div class="checkout-section-content-dd-k">
-                                            <div class="cart-items-dd-k">
-                                                <div class="cart-item py-4 px-3">
-                                                    <div class="item-thumbnail">
-                                                        <a href="#">
-                                                            <img src="{{  asset('/front_assets/img/cart/cart01.jpg') }}" alt="item">
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-info flex-grow-1">
-                                                        <div class="item-title">
-                                                            <h2>
-                                                                <a href="#">
-                                                                    گوشی موبایل شیائومی مدل Mi 10 Lite 5G M2002J9G
-                                                                    دو
-                                                                    سیم‌ کارت
-                                                                    ظرفیت
-                                                                    128 گیگابایت</a>
-                                                            </h2>
-                                                        </div>
-                                                        <div class="item-detail">
-                                                            <ul>
-                                                                <li>
-                                                                    <span class="color"
-                                                                        style="background-color: #9E9E9E;"></span>
-                                                                    <span>خاکستری</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-shield-check text-muted"></i>
-                                                                    <span>گارانتی ۱۸ ماهه</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-store-alt text-muted"></i>
-                                                                    <span>نام فروشنده</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i
-                                                                        class="far fa-clipboard-check text-primary"></i>
-                                                                    <span>موجود در انبار</span>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="item-quantity--item-price">
-                                                                <div class="item-quantity">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-                                                                            <span class="plus"></span>
-                                                                            <input type="text" class="in-num"
-                                                                                value="1" readonly>
-                                                                            <span class="minus dis"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button class="item-remove-btn mr-3">
-                                                                        <i class="far fa-trash-alt"></i>
-                                                                        حذف
-                                                                    </button>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    ۱۰,۷۰۹,۰۰۰<span
-                                                                        class="text-sm mr-1">تومان</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
-                                    <div class="dt-sn dt-sn--box border">
-                                        <div
-                                            class="section-title text-sm-title title-wide mb-1 no-after-title-wide mb-2">
-                                            <h2 class="text-dark">لیست خرید بعدی چیست؟</h2>
-                                        </div>
-                                        <p class="text-secondary text-justify">
-                                            شما می‌توانید محصولاتی که به سبد خرید
-                                            خود افزوده اید و موقتا قصد خرید آن‌ها را ندارید، در لیست خرید بعدی خود
-                                            قرار داده و
-                                            هر زمان مایل بودید آن‌ها را مجدداً به سبد خرید اضافه کرده و خرید آن‌ها
-                                            را تکمیل کنید.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  --}}
-
                     </div>
                 </div>
+
+                
             </div>
         </div>
-    </main>
+
 
     {{--  <main>
         <div class="container">
