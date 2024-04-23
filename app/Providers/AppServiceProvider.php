@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Comment;
 use App\Models\Notification;
+use App\Services\Basket\Contracts\StorageInterface;
+use App\Services\Basket\DBStorage;
 use App\Services\ServiceTest\FuelConsumption;
 use App\Services\ServiceTest\FuelControl;
 use App\Services\ServiceTest\ServiceTest;
@@ -64,6 +66,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+
+        $this->app->bind(StorageInterface::class,function(){
+
+            return new DBStorage('cart');
+        });
+
         Paginator::useBootstrapFive();
         Paginator::defaultView('vendor.pagination.custom-paginate');
 

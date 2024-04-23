@@ -7,13 +7,14 @@ class DBStorage implements StorageInterface , Countable
 {
 
 
-    /**
-     * Class constructor.
-     */
-    public function __construct()
+
+    private $basket;
+
+    public function __construct($basket = 'default')
     {
 
-        
+        $this->basket = $basket;
+
     }
 
     //// for test
