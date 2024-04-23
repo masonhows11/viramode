@@ -1,8 +1,8 @@
 <div>
-
-
         <div class="container main-container">
 
+
+            @if( $cartItems->isEmpty()   )
             <div class="row mx-0">
                 <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
 
@@ -231,13 +231,6 @@
                                                         <span class="mdi mdi-information-outline"></span>
                                                     </span></span><span>وابسته به آدرس</span>
                                             </li>
-                                            <li class="checkout-club-container">
-                                                <span>دیدیکلاب<span class="help-sn" data-toggle="tooltip"
-                                                        data-html="true" data-placement="bottom"
-                                                        title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>با امتیازهای خود در باشگاه مشتریان دیجی کالا (دیجی کلاب) از بین جوایز متنوع انتخاب کنید.</p></div>">
-                                                        <span class="mdi mdi-information-outline"></span>
-                                                    </span></span><span><span>۱۵۰+</span><span> امتیاز</span></span>
-                                            </li>
                                         </ul>
                                         <div class="checkout-summary-devider">
                                             <div></div>
@@ -266,22 +259,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dt-sn dt-sn--box checkout-feature-aside pt-4">
-                                        <ul>
-                                            <li class="checkout-feature-aside-item">
-                                                <img src="./assets/img/svg/return-policy.svg" alt="">
-                                                هفت روز ضمانت تعویض
-                                            </li>
-                                            <li class="checkout-feature-aside-item">
-                                                <img src="./assets/img/svg/payment-terms.svg" alt="">
-                                                پرداخت در محل با کارت بانکی
-                                            </li>
-                                            <li class="checkout-feature-aside-item">
-                                                <img src="./assets/img/svg/delivery.svg" alt="">
-                                                تحویل اکسپرس
-                                            </li>
-                                        </ul>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
@@ -289,8 +267,30 @@
                     </div>
                 </div>
 
-                
             </div>
+
+            @else
+            <div class="row">
+                <div class="col-12">
+                    <div class="dt sl dt-sn dt-sn--box border pt-3 pb-5">
+                        <div class="cart-page cart-empty">
+                            <div class="circle-box-icon">
+                                <i class="mdi mdi-cart-remove"></i>
+                            </div>
+                            <p class="cart-empty-title">سبد خرید شما خالیست!</p>
+                            <p>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید:</p>
+                            <div class="cart-empty-links mb-5">
+                                <a href="#" class="border-bottom-dt">لیست مورد علاقه من</a>
+                                <a href="#" class="border-bottom-dt">محصولات شگفت‌انگیز</a>
+                                <a href="#" class="border-bottom-dt">محصولات پرفروش روز</a>
+                            </div>
+                            <a href="#" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
         </div>
 
 
