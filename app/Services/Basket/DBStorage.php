@@ -3,10 +3,10 @@
 namespace App\Services\Basket;
 
 use App\Models\CartItems;
-use Countable;
-use App\Services\Basket\Contracts\StorageInterface;
 
-class DBStorage implements StorageInterface
+use App\Services\Basket\Contracts\BasketInterface;
+
+class DBStorage implements BasketInterface
 {
 
     //// for test

@@ -4,7 +4,7 @@ namespace App\Services\Basket\Contracts;
 
 
 
-interface StorageInterface{
+interface BasketInterface{
 
 
 
@@ -13,7 +13,7 @@ interface StorageInterface{
     public function getItem($item);
 
     //// for add item
-    public function addItem($item = null, $value);
+    public function addItem($item = []);
 
 
     //// for get all items
