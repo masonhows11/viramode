@@ -68,4 +68,9 @@ class DBStorage implements BasketInterface
         CartItems::where('user_id',$this->user_id)->delete();
 
     }
+
+    public function count()
+    {
+       return  $this->getAllItems()->count();
+    }
 }

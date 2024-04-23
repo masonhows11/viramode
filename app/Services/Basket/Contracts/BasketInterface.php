@@ -25,4 +25,6 @@ interface BasketInterface{
     //// for delete all items
     public function deleteAllItems();
 
+    public function count();
+
 }
