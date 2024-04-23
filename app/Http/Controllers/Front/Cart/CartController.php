@@ -16,7 +16,8 @@ class CartController extends Controller
     public function checkoutCart()
     {
 
-        if (Auth::check()) {
+        if (Auth::check())
+        {
             return view('front_end.cart.cart',['user' => Auth::id()]);
 
         } else {
