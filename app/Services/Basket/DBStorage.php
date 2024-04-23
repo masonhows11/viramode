@@ -7,6 +7,15 @@ class DBStorage implements StorageInterface , Countable
 {
 
 
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
+
+        
+    }
+
     //// for test
     //// use cartItems model as basket storage
 
