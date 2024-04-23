@@ -315,7 +315,7 @@ return [
 
     'percent_amazing_sale' => ' تخفیف فروش فوق العاده',
     'price_amazing_sale' => 'مبلغ فروش فوق العاده',
-    
+
     'total_price_product' => 'جمع قیمت محصول',
     'total_price' => ' جمع کل : ',
     'color' => 'رنگ ',
@@ -416,6 +416,7 @@ return [
     'please_choose_color' => 'کاربر گرامی یک رنگ را انتخاب کنید.',
     'basket' => 'سبد خرید',
     'your_shopping_cart_is_empty' => 'سبد خرید شما خالی است',
+    'add_to_basket_successfully' => 'محصول به سبد خرید اضافه شد',
     'seller' => 'فروشنده :',
     'cart_discount' => 'تخفیف',
     'no_color_has_been_selected_for_this_product' => 'برای این محصول رنگ انتخاب نشده',

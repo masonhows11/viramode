@@ -26,51 +26,50 @@ class DBStorage implements BasketInterface
     public function getItem($item)
     {
 
-        $item = CartItems::where([ ['product_id' ,'=', $item], ['user_id', '=', $this->user_id]])->first();
+        $item = CartItems::where([['product_id', '=', $item->id], ['user_id', '=', $this->user_id]])->first();
 
         return $item;
     }
 
     //// for add item
-    public function addItem($items = [],int $quantity)
+    public function addItem($items = [], int $quantity)
     {
 
-        CartItems::create([
-            'user_id' => $items['user_id'],
-            'product_id' => $items['product_id'],
-            'number' => $quantity,
-        ]);
+        // u can use this part for instagram post
+        CartItems::updateOrCreate(
+            ['user_id' => $this->user_id, 'product_id' => $items['id']],
+            ['user_id' => $this->user_id, 'product_id' => $items['id'], 'number' => $quantity]
+        );
     }
 
 
     //// for get all items
     public function getAllItems()
     {
-       return $items = CartItems::where('user_id', $this->user_id)->get();
+        return $items = CartItems::where('user_id', $this->user_id)->get();
     }
 
     //// for check  item is exists or not
     public function existsItem($item = null)
     {
-        return CartItems::where([['user_id', $this->user_id],['product_id' ,'=', $item]])->first();
+        return CartItems::where([['user_id', $this->user_id], ['product_id', '=', $item]])->first();
     }
 
     //// for delete item from
     public function deleteItem($item = null)
     {
-      return  CartItems::where([['user_id', $this->user_id],['product_id' ,'=', $item]])->delete();
+        return  CartItems::where([['user_id', $this->user_id], ['product_id', '=', $item]])->delete();
     }
 
     //// for delete all items
     public function deleteAllItems()
     {
 
-        CartItems::where('user_id',$this->user_id)->delete();
-
+        CartItems::where('user_id', $this->user_id)->delete();
     }
 
     public function count()
     {
-       return  $this->getAllItems()->count();
+        return  $this->getAllItems()->count();
     }
 }

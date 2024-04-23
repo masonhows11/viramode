@@ -25,7 +25,9 @@ class Basket
 
         if ($this->exists($product))
         {
-            $quantity = $this->get($product->id)['number']  + $quantity;
+            // dd($this->get($product)['number']);
+
+            $quantity = $this->get($product)['number'] + $quantity;
         }
 
         $this->storage->addItem($product, $quantity);
@@ -34,7 +36,7 @@ class Basket
 
     public function get(Product $product)
     {
-        return $this->getItem($product->id);
+        return $this->storage->getItem($product);
     }
 
 
@@ -44,10 +46,12 @@ class Basket
     public function exists(Product $product)
     {
 
-        return $this->existsItem($product->id);
+        return $this->storage->existsItem($product->id);
     }
 
 
     public function delete(Product $product)
-    { }
+    {
+
+    }
 }

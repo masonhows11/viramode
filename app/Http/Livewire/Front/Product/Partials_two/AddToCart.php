@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Front\Product\Partials_two;
 
 use App\Http\Livewire\Front\Cart\CartHeader;
 use App\Models\Product;
-use App\Services\Basket\Contracts\BasketInterface;
+use App\Services\Basket\Basket;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -19,7 +19,7 @@ class AddToCart extends Component
 
     public function boot()
     {
-        $this->basket = resolve(BasketInterface::class);
+        $this->basket = resolve(Basket::class);
     }
 
 
@@ -46,14 +46,13 @@ class AddToCart extends Component
     {
         if (Auth::check()) {
 
-                $this->basket->addItem([
-                    'user_id' => $this->user_id,
-                    'product_id' => $this->productId,
-                    'number' => $this->number
-                ]);
-
-
+                $this->basket->add($this->product,$this->number);
                 $this->emitTo(CartHeader::class, 'addToCart', $this->number);
+
+                $this->dispatchBrowserEvent('show-result',
+                ['type' => 'success',
+                    'message' => __('messages.add_to_basket_successfully')]);
+
 
         } else {
             return redirect()->route('auth.login.form');
