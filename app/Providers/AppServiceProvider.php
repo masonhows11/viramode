@@ -4,13 +4,9 @@ namespace App\Providers;
 
 use App\Models\Comment;
 use App\Models\Notification;
-use App\Services\Basket\Contracts\StorageInterface;
+use App\Services\Basket\Contracts\BasketInterface;
 use App\Services\Basket\DBStorage;
-use App\Services\ServiceTest\FuelConsumption;
-use App\Services\ServiceTest\FuelControl;
-use App\Services\ServiceTest\ServiceTest;
 use Illuminate\Pagination\Paginator;
-
 // use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -67,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        $this->app->bind(StorageInterface::class,function($app){
+        $this->app->bind(BasketInterface::class,function($app){
 
             return new DBStorage();
         });
