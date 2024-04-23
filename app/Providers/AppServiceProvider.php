@@ -20,40 +20,6 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
 
-        //// for display app service container
-        //// details
-
-        //// use instance global app variable
-        // dd($this->app);
-
-        //// use app() helper method
-        // dd(app());
-
-        //// any time call the  ServiceTest::class
-        //// do any thing like below
-        //        $this->app->bind(ServiceTest::class,function (){
-        //            return new ServiceTest('multiple');
-        //        });
-
-        //// any time call the  FuelConsumption::class
-        //// do any thing like below
-        //        $this->app->bind(FuelConsumption::class, function () {
-        //            return new FuelConsumption('BMW');
-        //        });
-
-        //// any time call the  FuelConsumption::class
-        //// do any thing like below
-        //// use singleton for make an instance once
-        //    $this->app->singleton(FuelConsumption::class, function () {
-        //          return new FuelConsumption('BMW');
-        //    });
-
-        //// use interface
-        //// when FuelControl::class call , make an instance FuelConsumption::class
-        //        $this->app->singleton(FuelControl::class, function () {
-        //            return new FuelConsumption('BMW');
-        //        });
-
     }
 
     /**
