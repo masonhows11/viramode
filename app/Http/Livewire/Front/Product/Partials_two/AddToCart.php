@@ -15,7 +15,7 @@ class AddToCart extends Component
     public $productId;
     public $user_id;
     public $number = 1;
-    public $basket;
+    private $basket;
 
     public function boot()
     {
@@ -46,10 +46,12 @@ class AddToCart extends Component
     {
         if (Auth::check()) {
 
-            $this->basket->addItem(
-                $this->user_id,
-                $this->productId,
-                $this->number
+            $this->basket->addItem([
+                'user_id' => $this->user_id,
+                'product_id' => $this->productId,
+                'number' => $this->number
+            ]
+
             );
 
 
