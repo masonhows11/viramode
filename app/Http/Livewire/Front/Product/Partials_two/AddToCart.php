@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Front\Product\Partials_two;
 
 use App\Http\Livewire\Front\Cart\CartHeader;
 use App\Models\Product;
+use App\Services\Basket\Contracts\StorageInterface;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -12,6 +13,15 @@ class AddToCart extends Component
 
     public $product;
     public $productId;
+
+
+
+    public function boot()
+    {
+        $dbStorage = resolve(StorageInterface::class);
+        dd($dbStorage);
+    }
+
 
     public function mount($productId)
     {
@@ -38,7 +48,7 @@ class AddToCart extends Component
 
 
             $this->emitTo(CartHeader::class, 'addToCart', $this->number);
-            
+
         } else {
             return redirect()->route('auth.login.form');
         }

@@ -67,9 +67,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        $this->app->bind(StorageInterface::class,function(){
+        $this->app->bind(StorageInterface::class,function($app){
 
-            return new DBStorage('cart');
+            return new DBStorage();
         });
 
         Paginator::useBootstrapFive();

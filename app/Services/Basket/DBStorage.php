@@ -1,56 +1,49 @@
 <?php
+
 namespace App\Services\Basket;
 
+use Countable;
 use App\Services\Basket\Contracts\StorageInterface;
 
-class DBStorage implements StorageInterface , Countable
+class DBStorage implements StorageInterface
 {
 
 
 
-    private $basket;
+    // private $basket;
 
-    public function __construct($basket = 'default')
-    {
+    // public function __construct($basket = 'default')
+    // {
 
-        $this->basket = $basket;
+    //     $this->basket = $basket;
 
-    }
+    // }
 
     //// for test
     //// use cartItems model as basket storage
 
     //// for get item
-    public function getItem($item){
-
-    }
+    public function getItem($item)
+    { }
 
     //// for add item
-    public function addItem($item = null, $value){
-
-    }
+    public function addItem($item = null, $value)
+    { }
 
 
     //// for get all items
-    public function getAllItems(){
-
-    }
+    public function getAllItems()
+    { }
 
     //// for check  item is exists or not
-    public function existsItem($item = null){
-
-    }
+    public function existsItem($item = null)
+    { }
 
     //// for delete item from
-    public function deleteItem($item = null){
-
-    }
+    public function deleteItem($item = null)
+    { }
 
     //// for delete all items
-    public function deleteAllItems(){
-
-    }
-
-
-
+    public function deleteAllItems()
+    { }
 }
