@@ -1,6 +1,7 @@
-<div>
+<div class="product-summary" wire:ignore>
 
-    <div class="product-summary" wire:ignore>
+
+
         <nav id="stack-menu">
 
             <ul>
@@ -60,7 +61,7 @@
 
 
         </nav>
-    </div>
+
 
 
 </div>
