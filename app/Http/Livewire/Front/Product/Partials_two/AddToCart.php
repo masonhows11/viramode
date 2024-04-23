@@ -27,7 +27,7 @@ class AddToCart extends Component
     {
         $this->user_id = Auth::id();
         $this->productId = $productId;
-        $this->product = Product::findOrfail($productId);
+        $this->product = Product::findOrFail($productId);
 
     }
 

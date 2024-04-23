@@ -6,9 +6,6 @@ namespace App\Services\Basket\Contracts;
 
 interface BasketInterface{
 
-
-
-
     //// for get item
     public function getItem($item);
 
