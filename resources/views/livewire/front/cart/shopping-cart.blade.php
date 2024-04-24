@@ -2,7 +2,7 @@
         <div class="container main-container">
 
 
-            @if( count($cartItems)   )
+            @if( count($cartItems) )
             <div class="row mx-0">
                 <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
 
@@ -10,7 +10,7 @@
                         <div class="nav nav-tabs border-bottom" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link d-inline-flex w-auto active" id="nav-home-tab"
                                 data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                                aria-selected="true">سبد خرید<span class="count-cart">1</span></a>
+                                aria-selected="true">سبد خرید</a>
                         </div>
                     </nav>
 
@@ -30,26 +30,37 @@
                                         </div>
 
                                         <div class="checkout-section-content-dd-k">
+
                                             <div class="cart-items-dd-k">
+
+                                                @foreach ($cartItems as $product)
+
                                                 <div class="cart-item py-4 px-3">
                                                     <div class="item-thumbnail">
-                                                        <a href="#">
-                                                            <img src="{{  asset('/front_assets/img/cart/cart01.jpg') }}" alt="item">
+
+                                                        <a  href="{{ route('product',$product->product->slug) }}">
+                                                            @if( $product->product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image ) )
+                                                                <img src="{{ asset('storage/'.$product->product->thumbnail_image) }}"
+                                                                     alt="Product Thumbnail">
+                                                            @else
+                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                                                     alt="Product Thumbnail">
+                                                            @endif
                                                         </a>
+
                                                     </div>
                                                     <div class="item-info flex-grow-1">
                                                         <div class="item-title">
                                                             <h2>
-                                                                <a href="#">
-                                                                    گوشی موبایل شیائومی مدل Mi 10 Lite 5G M2002J9G
-                                                                    دو
-                                                                    سیم‌ کارت
-                                                                    ظرفیت
-                                                                    128 گیگابایت</a>
+                                                                <a href="{{ route('product',$product->product->slug) }}">
+                                                                {{ $product->product->title_persian}}
+                                                                </a>
                                                             </h2>
                                                         </div>
+
                                                         <div class="item-detail">
-                                                            <ul>
+
+                                                            {{-- <ul>
                                                                 <li>
                                                                     <span class="color"
                                                                         style="background-color: #9E9E9E;"></span>
@@ -68,7 +79,8 @@
                                                                         class="far fa-clipboard-check text-primary"></i>
                                                                     <span>موجود در انبار</span>
                                                                 </li>
-                                                            </ul>
+                                                            </ul> --}}
+
                                                             <div class="item-quantity--item-price">
                                                                 <div class="item-quantity">
                                                                     <div class="num-block">
@@ -92,124 +104,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="cart-item py-4 px-3">
-                                                    <div class="item-thumbnail">
-                                                        <a href="#">
-                                                            <img src="{{  asset('/front_assets/img/cart/cart02.jpg') }}" alt="item">
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-info flex-grow-1">
-                                                        <div class="item-title">
-                                                            <h2>
-                                                                <a href="#">
-                                                                    گوشی موبایل سامسونگ مدل Galaxy A11 SM-A115F/DS
-                                                                    دو
-                                                                    سیم کارت ظرفیت
-                                                                    32
-                                                                    گیگابایت با 2 گیگابایت رم</a>
-                                                            </h2>
-                                                        </div>
-                                                        <div class="item-detail">
-                                                            <ul>
-                                                                <li>
-                                                                    <span class="color"
-                                                                        style="background-color: #000;"></span>
-                                                                    <span>مشکی</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-shield-check text-muted"></i>
-                                                                    <span>گارانتی ۱۸ ماهه</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-store-alt text-muted"></i>
-                                                                    <span>نام فروشنده</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i
-                                                                        class="far fa-clipboard-check text-primary"></i>
-                                                                    <span>موجود در انبار</span>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="item-quantity--item-price">
-                                                                <div class="item-quantity">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-                                                                            <span class="plus"></span>
-                                                                            <input type="text" class="in-num"
-                                                                                value="1" readonly>
-                                                                            <span class="minus dis"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button class="item-remove-btn mr-3">
-                                                                        <i class="far fa-trash-alt"></i>
-                                                                        حذف
-                                                                    </button>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    ۴,۱۶۹,۰۰۰<span class="text-sm mr-1">تومان</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cart-item py-4 px-3">
-                                                    <div class="item-thumbnail">
-                                                        <a href="#">
-                                                            <img src="{{  asset('/front_assets/img/cart/cart03.jpg') }}" alt="item">
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-info flex-grow-1">
-                                                        <div class="item-title">
-                                                            <h2>
-                                                                <a href="#">
-                                                                    لپ تاپ 15 اینچی ایسوس مدل VivoBook K543UB -
-                                                                    MR</a>
-                                                            </h2>
-                                                        </div>
-                                                        <div class="item-detail">
-                                                            <ul>
-                                                                <li>
-                                                                    <span class="color"
-                                                                        style="background-color: #002171;"></span>
-                                                                    <span>سرمه ای</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-shield-check text-muted"></i>
-                                                                    <span>گارانتی ۱۸ ماهه</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-store-alt text-muted"></i>
-                                                                    <span>نام فروشنده</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i
-                                                                        class="far fa-clipboard-check text-primary"></i>
-                                                                    <span>موجود در انبار</span>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="item-quantity--item-price">
-                                                                <div class="item-quantity">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-                                                                            <span class="plus"></span>
-                                                                            <input type="text" class="in-num"
-                                                                                value="1" readonly>
-                                                                            <span class="minus dis"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button class="item-remove-btn mr-3">
-                                                                        <i class="far fa-trash-alt"></i>
-                                                                        حذف
-                                                                    </button>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    ۱۵,۹۹۰,۰۰۰<span
-                                                                        class="text-sm mr-1">تومان</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+
+
+
                                             </div>
                                         </div>
                                     </div>

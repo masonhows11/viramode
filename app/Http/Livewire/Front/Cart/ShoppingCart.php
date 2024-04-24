@@ -25,23 +25,23 @@ class ShoppingCart extends Component
     public function increaseItem($itemId)
     {
 
-        CartItems::where('id', $itemId)->increment('number', 1);
-        $this->emitTo(CartHeader::class, 'addToCart', $this->cartNumber);
+        // CartItems::where('id', $itemId)->increment('number', 1);
+        // $this->emitTo(CartHeader::class, 'addToCart', $this->cartNumber);
     }
 
     public function decreaseItem($itemId)
     {
 
-        
-        $count = CartItems::where('id', $itemId)->where('number', '=', 1)->first();
-        if ($count) {
-            $this->disabled = true;
-            die();
-        } else {
-            CartItems::where('id', $itemId)->decrement('number', 1);
-            $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);
 
-        }
+        // $count = CartItems::where('id', $itemId)->where('number', '=', 1)->first();
+        // if ($count) {
+        //     $this->disabled = true;
+        //     die();
+        // } else {
+        //     CartItems::where('id', $itemId)->decrement('number', 1);
+        //     $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);
+
+        // }
 
 
     }
