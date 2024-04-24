@@ -33,7 +33,7 @@
                     <a class="nav-link" href="{{  route('auth.login.form') }}">
                         <span class="label-dropdown">سبد خرید</span>
                         <i class="mdi mdi-cart-outline"></i>
-                        <span class="count">2</span>
+                        <span class="count">0</span>
                     </a>
                     @endguest
                     @auth

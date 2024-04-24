@@ -1,5 +1,5 @@
 <div class="container main-container">
-        
+
 
             @if( count($cartItems) )
             <div class="row mx-0">
@@ -186,7 +186,7 @@
                                 <a href="#" class="border-bottom-dt">محصولات شگفت‌انگیز</a>
                                 <a href="#" class="border-bottom-dt">محصولات پرفروش روز</a>
                             </div>
-                            <a href="#" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
+                            <a href="{{  route('home') }}" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
                         </div>
                     </div>
                 </div>
