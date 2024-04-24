@@ -38,9 +38,9 @@
                                 <h1>{{ $product->title_persian }}</h1>
                                 <h3>{{ $product->title_english }}</h3>
                             </div>
-                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
+                            {{-- <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
                                 <h2>کد محصول:225566</h2>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <!-- first col -->
 
