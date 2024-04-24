@@ -3061,7 +3061,7 @@ ul.gallery-options li:hover .tooltip-option {
     margin-bottom: 10px;
 }
 
-.product-summary .stack-menu .btn-add-to-cart {
+/* .product-summary .stack-menu .btn-add-to-cart {
     font-size: 18px;
     line-height: 1.222;
     border-radius: 8px;
@@ -3073,13 +3073,19 @@ ul.gallery-options li:hover .tooltip-option {
     border: none;
     padding: 16px 18px;
     border: 0;
-}
+} */
 
-.product-summary .stack-menu .btn-add-to-cart:hover {
+
+.product-summary .stack-menu .custom-btn-add-to:hover {
+    background-color: #007bff;
+    color: #e92e2e;
+    border: 0;
+}
+/* .product-summary .stack-menu .btn-add-to-cart:hover {
     background-color: #ef394e;
     color: #fff;
     border: 0;
-}
+} */
 
 .product-summary .stack-menu .btn-add-to-cart--full-width {
     width: 100%;
