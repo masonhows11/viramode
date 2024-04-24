@@ -70,6 +70,19 @@
                                                         <div class="item-detail">
 
                                                             <div class="item-quantity--item-price">
+
+                                                                {{-- <div class="col-lg-3 col-md-3 ">
+                                                                    <div class="button-container d-flex justify-content-start align-items-start mb-3">
+                                                                        <button class="cart-qty-plus" wire:click="increaseItem({{ $cartItem->id  }})" type="button" value="+">+</button>
+                                                                        <input type="text" name="qty" min="1" class="qty form-control text-center" value="{{ $cartItem->number }}">
+                                                                        <button class="cart-qty-minus" @if( $cartItem->number  == 1 ) disabled @endif @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $cartItem->id }})" type="button" value="-">-</button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-1 col-md-12 d-flex justify-content-center align-items-center cart-items-op">
+                                                                    <a href="javascript:void(0)"  wire:click.prevent="deleteConfirmation({{ $cartItem->id }})"><i class="fa  fa-trash"></i></a>
+                                                                </div> --}}
+
                                                                 <div class="item-quantity">
                                                                     <div class="num-block">
                                                                         <div class="num-in">
@@ -84,6 +97,7 @@
                                                                         حذف
                                                                     </button>
                                                                 </div>
+
                                                                 <div class="item-price">
                                                                     {{ $product->number }}
                                                                     <span class="text-sm mr-1">{{ __('messages.number')}}</span>
