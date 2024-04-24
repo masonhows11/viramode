@@ -23,7 +23,7 @@ class ShoppingCart extends Component
 
     public function increaseItem($itemId)
     {
-
+       // dd('hello');
         CartItems::where('id', $itemId)->increment('number', 1);
         $this->emitTo(CartHeader::class, 'addToCart', $this->cartNumber);
     }

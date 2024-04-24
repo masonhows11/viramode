@@ -1,6 +1,5 @@
-<div>
-        <div class="container main-container">
-
+<div class="container main-container">
+        
 
             @if( count($cartItems) )
             <div class="row mx-0">
@@ -71,24 +70,14 @@
 
                                                             <div class="item-quantity--item-price">
 
-                                                                {{-- <div class="col-lg-3 col-md-3 ">
-                                                                    <div class="button-container d-flex justify-content-start align-items-start mb-3">
-                                                                        <button class="cart-qty-plus" wire:click="increaseItem({{ $cartItem->id  }})" type="button" value="+">+</button>
-                                                                        <input type="text" name="qty" min="1" class="qty form-control text-center" value="{{ $cartItem->number }}">
-                                                                        <button class="cart-qty-minus" @if( $cartItem->number  == 1 ) disabled @endif @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $cartItem->id }})" type="button" value="-">-</button>
-                                                                    </div>
-                                                                </div>
 
-                                                                <div class="col-lg-1 col-md-12 d-flex justify-content-center align-items-center cart-items-op">
-                                                                    <a href="javascript:void(0)"  wire:click.prevent="deleteConfirmation({{ $cartItem->id }})"><i class="fa  fa-trash"></i></a>
-                                                                </div> --}}
 
                                                                 <div class="item-quantity">
                                                                     <div class="num-block">
                                                                         <div class="num-in">
-                                                                            <span wire:click="increaseItem({{ $product->id  }})" class="plus"></span>
+                                                                            <button  class="plus border-0 bg-transparent" wire:click="increaseItem({{ $product->id  }})"></button>
                                                                             <input type="text" min="1" class="in-num" value="{{ $product->number }}" readonly>
-                                                                            <span  @if( $product->number  == 1 ) disabled @endif @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $product->id }})" class="minus dis"></span>
+                                                                            <button  class="minus border-0 bg-transparent @if( $product->number  == 1 ) dis @endif"   @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $product->id }})"></button>
                                                                         </div>
                                                                     </div>
                                                                     <button  wire:click.prevent="deleteConfirmation({{ $product->id }})" class="item-remove-btn mr-3">
@@ -203,9 +192,6 @@
                 </div>
             </div>
             @endif
-
-        </div>
-
 
     {{--  <main>
         <div class="container">
