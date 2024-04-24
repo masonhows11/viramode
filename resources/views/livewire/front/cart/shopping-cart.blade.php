@@ -33,7 +33,16 @@
 
                                             <div class="cart-items-dd-k">
 
+                                                @php
+                                                $totalProductPrice = 0;
+                                                $totalDiscount = 0;
+                                                @endphp
                                                 @foreach ($cartItems as $product)
+
+                                                        @php
+                                                        $totalProductPrice += $product->cartItemProductPrice();
+                                                        $totalDiscount += $product->cartItemProductDiscount();
+                                                        @endphp
 
                                                 <div class="cart-item py-4 px-3">
                                                     <div class="item-thumbnail">
@@ -89,23 +98,35 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
-
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
                                 <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+
+
+                                    @if( count($cartItems) > 0)
                                     <div class="dt-sn dt-sn--box border mb-2">
                                         <ul class="checkout-summary-summary">
+
+                                            @php
+                                                $cartItemsCount = null;
+                                                foreach( $cartItems as $item )
+                                                 {
+                                                    $cartItemsCount += $item->number;
+                                                 }
+                                            @endphp
                                             <li>
-                                                <span>مبلغ کل (۲ کالا)</span><span>۱۶,۸۹۷,۰۰۰ تومان</span>
+                                                <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
                                             </li>
-                                            <li class="checkout-summary-discount">
-                                                <span>سود شما از خرید</span><span><span>(۱٪)</span>۲۰۰,۰۰۰
-                                                    تومان</span>
-                                            </li>
+
+                                            {{-- <li class="checkout-summary-discount">
+                                                <span>سود شما از خرید</span><span><span>(۱٪)</span>۲۰۰,۰۰۰  تومان</span>
+                                            </li> --}}
+
                                             <li>
                                                 <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip"
                                                         data-html="true" data-placement="bottom"
@@ -141,6 +162,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
 
                                 </div>
                             </div>
@@ -180,6 +202,7 @@
         <div class="container">
 
             <div class="row d-flex justify-content-center">
+
                 @if( count($cartItems) < 1  )
                     <div class="col-lg-9 mb-5" style="height: 280px">
                         <div class="cart-content my-4 d-flex justify-content-center align-items-center h-425px" style="height: 280px">
