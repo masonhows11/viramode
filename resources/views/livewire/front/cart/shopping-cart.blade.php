@@ -106,7 +106,7 @@
 
 
                                 @if( count($cartItems) > 0)
-                                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+                                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar">
 
                                     <div class="dt-sn dt-sn--box border mb-2">
                                         <ul class="checkout-summary-summary">
