@@ -174,6 +174,7 @@ return [
     'name_of_the_recipient' => 'نام تحویل گیرنده',
     'name_of_deliver' => 'نام تحویل دهنده',
     'numbers' => 'تعداد',
+    'number' => 'عدد',
     'description' => 'توضیحات',
     'all_payments' => 'تمام پرداخت ها',
     'online_payments' => 'پرداخت های آنلاین',

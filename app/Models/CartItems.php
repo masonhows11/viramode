@@ -42,15 +42,25 @@ class CartItems extends Model
     }
 
 
-    // price : product price + color price + warranty price * number of each item
+    
     // price of each product multiplied by the number of that product
     public function cartItemProductPrice()
     {
 
-        $warrantyPrice = empty($this->guarantee_id) ? 0 : $this->warranty->price_increase;
-        $colorPrice = empty($this->product_color_id) ? 0 : $this->color->price_increase;
-        return ($this->product->origin_price + $warrantyPrice + $colorPrice ) * $this->number;
+        return $this->product->origin_price  * $this->number;
     }
+
+
+    // price - product price + color price + warranty price * number of each item
+    // price of each product multiplied by the number of that product
+    // public function cartItemProductPrice()
+
+    // {
+
+    //     $warrantyPrice = empty($this->guarantee_id) ? 0 : $this->warranty->price_increase;
+    //     $colorPrice = empty($this->product_color_id) ? 0 : $this->color->price_increase;
+    //     return ($this->product->origin_price + $warrantyPrice + $colorPrice ) * $this->number;
+    // }
 
     // price of item in cart = product price + color price + warranty price
     // without number of each item

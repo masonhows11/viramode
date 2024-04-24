@@ -60,27 +60,6 @@
 
                                                         <div class="item-detail">
 
-                                                            {{-- <ul>
-                                                                <li>
-                                                                    <span class="color"
-                                                                        style="background-color: #9E9E9E;"></span>
-                                                                    <span>خاکستری</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-shield-check text-muted"></i>
-                                                                    <span>گارانتی ۱۸ ماهه</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="far fa-store-alt text-muted"></i>
-                                                                    <span>نام فروشنده</span>
-                                                                </li>
-                                                                <li>
-                                                                    <i
-                                                                        class="far fa-clipboard-check text-primary"></i>
-                                                                    <span>موجود در انبار</span>
-                                                                </li>
-                                                            </ul> --}}
-
                                                             <div class="item-quantity--item-price">
                                                                 <div class="item-quantity">
                                                                     <div class="num-block">
@@ -97,9 +76,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="item-price">
-                                                                    ۱۰,۷۰۹,۰۰۰<span
-                                                                        class="text-sm mr-1">تومان</span>
+                                                                    {{ $product->number }}
+                                                                    <span class="text-sm mr-1">{{ __('messages.number')}}</span>
                                                                 </div>
+                                                                <div class="item-price">
+                                                                    {{ priceFormat( $product->cartItemProductPrice() ) }}
+                                                                    <span class="text-sm mr-1">{{ __('messages.toman')}}</span>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
