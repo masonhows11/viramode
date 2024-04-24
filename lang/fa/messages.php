@@ -347,8 +347,11 @@ return [
     'validate_code_form' => 'تایید کد فعال سازی',
     'validate_code' => 'کد تایید',
     'continue' => 'ادامه',
+    'continue_and_pay' => 'ادامه ثبت سفارش',
     'mobile' => 'شماره موبایل',
     'enter_active_code' => 'کد تایید را وارد کنید',
+    'shopping_cart_message' => ' کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش
+    مراحل بعدی را تکمیل کنید.',
 
     'auth_input_message' => 'شماره موبایل یا ایمیل خود را وارد کنید',
     'no_name' => 'بدون نام',

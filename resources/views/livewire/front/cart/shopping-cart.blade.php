@@ -123,9 +123,6 @@
                                                 <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
                                             </li>
 
-                                            {{-- <li class="checkout-summary-discount">
-                                                <span>سود شما از خرید</span><span><span>(۱٪)</span>۲۰۰,۰۰۰  تومان</span>
-                                            </li> --}}
 
                                             <li>
                                                 <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip"
@@ -139,21 +136,20 @@
                                             <div></div>
                                         </div>
                                         <div class="checkout-summary-content">
-                                            <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+                                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
                                             <div class="checkout-summary-price-value">
-                                                <span class="checkout-summary-price-value-amount">۱۶,۶۹۷,۰۰۰</span>
-                                                تومان
+                                                <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
+                                                {{ __('messages.toman') }}
                                             </div>
-                                            <a href="#" class="mb-2 d-block">
+                                            <a href={{ route('check.address') }}" class="mb-2 d-block">
                                                 <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
                                                     <i class="mdi mdi-arrow-left"></i>
-                                                    ادامه ثبت سفارش
+                                                     {{  __('messages.continue_and_pay') }}
                                                 </button>
                                             </a>
                                             <div>
                                                 <span>
-                                                    کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش
-                                                    مراحل بعدی را تکمیل کنید.
+                                                   {{ __('messages.shopping_cart_message') }}
                                                 </span><span class="help-sn" data-toggle="tooltip" data-html="true"
                                                     data-placement="bottom"
                                                     title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، دیجی‌کالا هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
