@@ -32,6 +32,7 @@ class CartHeader extends Component
 
     public function decrementCartCount($count)
     {
+    
         $this->cartItemsCount -= $count;
     }
 

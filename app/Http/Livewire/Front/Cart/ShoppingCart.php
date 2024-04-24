@@ -58,10 +58,12 @@ class ShoppingCart extends Component
     {
 
         try {
-            
+
             $model = CartItems::findOrFail($this->item_id);
 
-            if ($model->user_id === Auth::id()) {
+            if ($model->user_id === Auth::id())
+            {
+                $this->cartNumber = $model->number;
                 $model->delete();
 
                 $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);

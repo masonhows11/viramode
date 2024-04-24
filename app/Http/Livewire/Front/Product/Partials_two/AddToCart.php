@@ -42,7 +42,7 @@ class AddToCart extends Component
 
     // }
 
-    public function addToCart($product_id)
+    public function addToCart()
     {
         if (Auth::check()) {
 
