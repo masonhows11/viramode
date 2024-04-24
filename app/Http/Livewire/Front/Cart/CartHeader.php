@@ -12,14 +12,12 @@ class CartHeader extends Component
     public $cartCount = null;
     public $cartItemsCount = null;
 
-    public function mount(){
-
+    public function mount()
+    {
         $this->cartCount = CartItems::where('user_id',Auth::id())->get();
-
         foreach ($this->cartCount as $item){
             $this->cartItemsCount += $item->number;
         }
-
     }
 
     protected $listeners = [
