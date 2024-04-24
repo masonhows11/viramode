@@ -86,15 +86,14 @@
                                                                 <div class="item-quantity">
                                                                     <div class="num-block">
                                                                         <div class="num-in">
-                                                                            <span class="plus"></span>
-                                                                            <input type="text" class="in-num"
-                                                                                value="1" readonly>
-                                                                            <span class="minus dis"></span>
+                                                                            <span wire:click="increaseItem({{ $product->id  }})" class="plus"></span>
+                                                                            <input type="text" min="1" class="in-num" value="{{ $product->number }}" readonly>
+                                                                            <span  @if( $product->number  == 1 ) disabled @endif @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $product->id }})" class="minus dis"></span>
                                                                         </div>
                                                                     </div>
-                                                                    <button class="item-remove-btn mr-3">
+                                                                    <button  wire:click.prevent="deleteConfirmation({{ $product->id }})" class="item-remove-btn mr-3">
                                                                         <i class="far fa-trash-alt"></i>
-                                                                        حذف
+                                                                        {{ __('messages.delete_model')}}
                                                                     </button>
                                                                 </div>
 

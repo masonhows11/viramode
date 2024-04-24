@@ -19,31 +19,28 @@ class ShoppingCart extends Component
     public function mount()
     {
         $this->user_id = Auth::id();
-
     }
 
     public function increaseItem($itemId)
     {
 
-        // CartItems::where('id', $itemId)->increment('number', 1);
-        // $this->emitTo(CartHeader::class, 'addToCart', $this->cartNumber);
+        CartItems::where('id', $itemId)->increment('number', 1);
+        $this->emitTo(CartHeader::class, 'addToCart', $this->cartNumber);
     }
 
     public function decreaseItem($itemId)
     {
 
 
-        // $count = CartItems::where('id', $itemId)->where('number', '=', 1)->first();
-        // if ($count) {
-        //     $this->disabled = true;
-        //     die();
-        // } else {
-        //     CartItems::where('id', $itemId)->decrement('number', 1);
-        //     $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);
+        $count = CartItems::where('id', $itemId)->where('number', '=', 1)->first();
 
-        // }
-
-
+        if ($count) {
+            $this->disabled = true;
+            return null;
+        } else {
+            CartItems::where('id', $itemId)->decrement('number', 1);
+            $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);
+        }
     }
 
     public function deleteConfirmation($id)
@@ -68,17 +65,23 @@ class ShoppingCart extends Component
 
                 $this->emitTo(CartHeader::class, 'removeFromCart', $this->cartNumber);
 
-                $this->dispatchBrowserEvent('show-result',
-                    ['type' => 'success',
-                        'message' => __('messages.The_deletion_was_successful')]);
+                $this->dispatchBrowserEvent(
+                    'show-result',
+                    [
+                        'type' => 'success',
+                        'message' => __('messages.The_deletion_was_successful')
+                    ]
+                );
             }
         } catch (\Exception $ex) {
-            $this->dispatchBrowserEvent('show-result',
-                ['type' => 'error',
-                    'message' => __('messages.An_error_occurred')]);
+            $this->dispatchBrowserEvent(
+                'show-result',
+                [
+                    'type' => 'error',
+                    'message' => __('messages.An_error_occurred')
+                ]
+            );
         }
-
-
     }
 
     public function render()
