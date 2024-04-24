@@ -51,7 +51,7 @@
                 @auth
                     <ul class="nav float-left">
                         <li class="nav-item account dropdown">
-                            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="nav-link" href="{{ route('user.profile',$user->email) }}" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span class="label-dropdown">حساب کاربری</span>
                                 <i class="mdi mdi-account-circle-outline"></i>
