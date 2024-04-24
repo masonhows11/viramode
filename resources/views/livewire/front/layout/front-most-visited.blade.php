@@ -40,9 +40,9 @@
 
 
                                 <div class="product-card-body">
-                                    <h5 class="product-title">
-                                        <a href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
-                                    </h5>
+                                    <h6 class="product-title">
+                                        <a href="{{ route('product',$product->slug) }}">{{ Str::Words($product->title_persian,4) }}</a>
+                                    </h6>
                                     <a class="product-meta" href="#">لباس زنانه</a>
                                     <span class="product-price">{{ number_format($product->origin_price) }} {{ __('messages.toman') }}</span>
                                 </div>
