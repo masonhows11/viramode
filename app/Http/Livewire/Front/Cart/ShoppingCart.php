@@ -58,6 +58,7 @@ class ShoppingCart extends Component
     {
 
         try {
+            
             $model = CartItems::findOrFail($this->item_id);
 
             if ($model->user_id === Auth::id()) {
@@ -73,6 +74,7 @@ class ShoppingCart extends Component
                     ]
                 );
             }
+
         } catch (\Exception $ex) {
             $this->dispatchBrowserEvent(
                 'show-result',
