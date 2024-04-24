@@ -3,6 +3,7 @@
 
             @if( count($cartItems) )
             <div class="row mx-0">
+
                 <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
 
                     <nav class="tab-cart-page">
@@ -23,11 +24,8 @@
                                 <div class="col-xl-9 col-lg-8 col-12 px-0">
 
                                     <div class="table-responsive checkout-content dt-sl">
-                                        <div class="checkout-header checkout-header--express">
-                                            <span class="checkout-header-title">ارسال عادی</span>
-                                            <span class="checkout-header-extra-info">(2 کالا)</span>
-                                        </div>
 
+                                        <div class="checkout-header checkout-header--express"></div>
                                         <div class="checkout-section-content-dd-k">
 
                                             <div class="cart-items-dd-k">
@@ -107,10 +105,9 @@
 
 
 
+                                @if( count($cartItems) > 0)
                                 <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
 
-
-                                    @if( count($cartItems) > 0)
                                     <div class="dt-sn dt-sn--box border mb-2">
                                         <ul class="checkout-summary-summary">
 
@@ -160,9 +157,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-
                                 </div>
+                                @endif
+
                             </div>
                         </div>
 
@@ -172,7 +169,7 @@
             </div>
 
             @else
-            <div class="row">
+            <div class="row mx-0">
                 <div class="col-12">
                     <div class="dt sl dt-sn dt-sn--box border pt-3 pb-5">
                         <div class="cart-page cart-empty">
