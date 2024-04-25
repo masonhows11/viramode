@@ -34,6 +34,7 @@
                 </div>
                 <section class="page-content dt-sl">
                     <div class="address-section">
+                        
                         <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
                             <div class="checkout-contact-content">
                                 <ul class="checkout-contact-items">
@@ -67,6 +68,7 @@
                                     <i class="mdi mdi-check-bold"></i>
                                 </div>
                             </div>
+
                             <div class="checkout-address dt-sn px-0 pt-0 pb-0" id="user-address-list-container">
                                 <div class="checkout-address-content">
                                     <div class="checkout-address-headline">آدرس مورد نظر خود را جهت تحویل
@@ -486,6 +488,7 @@
                             <!-- End Modal remove-location -->
                         </div>
                     </div>
+
                     <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
                             <h2>انتخاب نحوه ارسال</h2>
@@ -625,6 +628,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </form>
 
                     <div class="mt-5">
@@ -636,6 +640,7 @@
                                 </i>
                             </a>
                     </div>
+
                 </section>
             </div>
 
@@ -648,18 +653,14 @@
                         </li>
 
                         <li>
-                            <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip" data-html="true"
-                                    data-placement="bottom"
-                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
-                                    <span class="mdi mdi-information-outline"></span>
-                                </span></span><span>وابسته به آدرس</span>
+                            <span>هزینه ارسال</span><span>وابسته به آدرس</span>
                         </li>
                     </ul>
 
                     <div class="checkout-summary-devider">
                         <div></div>
                     </div>
-                    
+
                     <div class="checkout-summary-content">
                         <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
                         <div class="checkout-summary-price-value">
