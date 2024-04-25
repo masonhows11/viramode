@@ -29,7 +29,7 @@
                                             value="{{ $user->mobile }}">
                                     </div>
 
-                                    @error('email')
+                                    @error('mobile')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
                                         </div>
