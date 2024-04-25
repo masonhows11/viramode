@@ -17,6 +17,7 @@
                 <div class="form-ui additional-info dt-sl dt-sn pt-4">
                     <form action="{{ route('user.update.account.information') }}" method="post">
                            @csrf
+
                         <input type="hidden" name="user" value="{{ $user->id }}">
 
                         <div class="row">
@@ -26,7 +27,7 @@
                                     <h3> نام کاربری</h3>
                                 </div>
                                 <div class="form-row">
-                                    <input type="text" name="user_name" class="input-ui pr-2" value="{{ $user->name }}">
+                                    <input type="text" name="name" class="input-ui pr-2" value="{{ $user->name }}">
                                 </div>
                                 @error('user_name')
                                 <div class="alert alert-danger mt-2">

@@ -40,16 +40,21 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
 
+        $user = auth()->user();
         $request->validate([
-            'user_name' => [Rule::requiredIf(filled($request->user_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
-            'first_name' => [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
-            'last_name' => [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
-            'national_code' => ['required', 'min:1', 'max:10', Rule::unique('users')->ignore($request->user), new NationalCode()],
+            'name' =>
+             [Rule::requiredIf(filled($request->name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+            'first_name' =>
+             [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+            'last_name' =>
+             [Rule::requiredIf(filled($request->last_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+            'national_code' =>
+             ['required', 'min:1', 'max:10', Rule::unique('users')->ignore($request->user), new NationalCode()],
         ]);
 
         try {
             User::where('id', $request->user)->update([
-                'name' => $request->user_name,
+                'name' => $request->name,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'national_code' => $request->national_code
