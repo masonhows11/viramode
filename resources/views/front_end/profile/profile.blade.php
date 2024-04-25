@@ -23,6 +23,7 @@
                                     <span>{{ $user->first_name .' '.$user->last_name }}</span>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
                                     <span>پست الکترونیک:</span>
@@ -39,11 +40,9 @@
                                         {{ $user->email  }}
                                     </span>
                                     @endif
-
-
-
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
                                     <span>شماره موبایل:</span>
@@ -60,9 +59,9 @@
                                         {{ $user->mobile  }}
                                     </span>
                                     @endif
-
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
                                     <span>کد ملی:</span>
@@ -79,9 +78,9 @@
                                         {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
                                     </span>
                                     @endif
-
                                 </div>
                             </div>
+                            
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
                                     <span>دریافت خبرنامه:</span>
