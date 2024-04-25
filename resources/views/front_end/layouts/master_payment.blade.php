@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('front/image/icon.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title')</title>
-    @include('front.layouts.header_styles')
+    @include('front_end.layouts.header_styles')
 
 </head>
 <body>
@@ -32,9 +32,7 @@
 
 
 <!-- start main -->
-<main>
     @yield('main_content')
-</main>
 <!-- end main -->
 
 <!-- start footer -->
@@ -42,10 +40,10 @@
 <!-- end footer -->
 
 
-@include('front.layouts.footer_scripts')
-@include('front.layouts.alert.alert')
-@include('front.layouts.alert.toast_alert')
-@include('front.layouts.alert.delete_confirm',['className'=> 'delete-item'])
+@include('front_end.layouts.footer_scripts')
+@include('front_end.layouts.alert.alert')
+@include('front_end.layouts.alert.toast_alert')
+@include('front_end.layouts.alert.delete_confirm',['className'=> 'delete-item'])
 @stack('payment_custom_scripts')
 </body>
 
