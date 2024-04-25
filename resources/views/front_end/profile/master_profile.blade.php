@@ -102,7 +102,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="{{ route('page.not.found') }}">
                                                         <i class="mdi mdi-eye-outline"></i>
                                                         بازدیدهای اخیر
                                                     </a>

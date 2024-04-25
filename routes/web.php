@@ -142,6 +142,8 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/', 'home')->name('home');
 
+    Route::get('/page/notFound','notFound')->name('page.not.found');
+
     Route::get('/search/products', 'products')->name('search.products');
 
     Route::get('/category/{slug?}', 'searchCategory')->name('category');

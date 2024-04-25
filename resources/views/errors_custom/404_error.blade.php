@@ -1,18 +1,22 @@
-@extends('front.layouts.master_front')
+@extends('front_end.layouts.master_front')
 @section('main_content')
-    <div class="container">
+
+<main class="main-content dt-sl mb-3">
+    <div class="container main-container">
         <div class="row">
-            <div class="error-box"><!-- start 404 error box -->
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p>صفحه ای که به دنبال آن بودید پیدا نشد !</p>
-                        <a href="{{ route('home') }}" class="btn btn-info font-14 py-2 px-3">برو به صفحه اصلی</a>
-                        <img src="{{ asset('front/images/404.png') }}" class="img-fluid d-block mx-auto">
+            <div class="col-12">
+                <div class="dt-sl pt-3 pb-5">
+                    <div class="error-page text-center">
+                        <h1>صفحه‌ای که دنبال آن بودید پیدا نشد!</h1>
+                        <a href="{{ route('home') }}" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
+                        <img src="{{ asset('default_image/404.png') }}" class="img-fluid" width="60%" alt="">
                     </div>
                 </div>
-            </div><!-- end 404 error box -->
+            </div>
         </div>
     </div>
+</main>
+
 @endsection
 
 

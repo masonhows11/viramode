@@ -273,4 +273,10 @@ class HomeController extends Controller
                 'categories' => $categories,
                 'colors' => $colors]);
     }
+
+
+    public function notFound()
+    {
+        return view('errors_custom.404_error');
+    }
 }
