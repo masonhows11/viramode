@@ -40,14 +40,15 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
 
-        $user = auth()->user();
+       // $user = auth()->user();
+
         $request->validate([
             'name' =>
-             [Rule::requiredIf(filled($request->name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+             [Rule::requiredIf(filled($request->name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user)],
             'first_name' =>
-             [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+             [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user)],
             'last_name' =>
-             [Rule::requiredIf(filled($request->last_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($user->id)],
+             [Rule::requiredIf(filled($request->last_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user)],
             'national_code' =>
              ['required', 'min:1', 'max:10', Rule::unique('users')->ignore($request->user), new NationalCode()],
         ]);
