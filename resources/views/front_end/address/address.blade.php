@@ -23,6 +23,7 @@
     </div
 @endsection
 @section('main_content')
+
     <div class="container">
 
 
@@ -378,7 +379,7 @@
 
     </div>
 @endsection
-@push('front_custom_scripts')
+@push('payment_custom_scripts')
     <script>
 
         $(document).ready(function () {

@@ -32,6 +32,7 @@ class AddressController extends Controller
             empty($user->last_name) || empty($user->email) ||
             empty($user->national_code)) {
             session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
+           // return redirect()->back();
             return redirect()->route('user.profile');
         }
 

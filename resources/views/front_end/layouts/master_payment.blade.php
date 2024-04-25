@@ -46,7 +46,7 @@
 @include('front.layouts.alert.alert')
 @include('front.layouts.alert.toast_alert')
 @include('front.layouts.alert.delete_confirm',['className'=> 'delete-item'])
-@stack('custom_scripts')
+@stack('payment_custom_scripts')
 </body>
 
 </html>

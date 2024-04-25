@@ -186,7 +186,7 @@ Route::get('/log-out', [LoginUserController::class, 'logOut'])->middleware('auth
 Route::controller(ProfileController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
 
 
-    Route::get('/{user:email}', 'Profile')->name('user.profile');
+    Route::get('/index', 'Profile')->name('user.profile');
 
     Route::get('/account-information',  'accountInformation')->name('user.account.information');
     Route::post('/account-information',  'updateProfile')->name('user.update.account.information');
