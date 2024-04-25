@@ -1,4 +1,4 @@
-@extends('front.profile.master_profile')
+@extends('front_end.profile.master_profile')
 @section('page_title')
     {{ __('messages.account_information') }}
 @endsection

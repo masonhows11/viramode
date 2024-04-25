@@ -2,7 +2,7 @@
 @section('page_title')
    پیغام ها
 @endsection
-@section('info_dash_left_side')
+@section('left_profile_content')
 
 @endsection
 
