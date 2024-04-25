@@ -22,7 +22,7 @@
             </li>
         </ul>
     </div --}}
-    
+
     <header class="header-shopping  dt-sl">
         <div class="container">
             <div class="row">
@@ -71,6 +71,7 @@
                     <div class="address-section">
 
                         <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
+
                             <div class="checkout-contact-content">
                                 <ul class="checkout-contact-items">
                                     <li class="checkout-contact-item">
@@ -347,7 +348,7 @@
                             <!-- End Modal location new -->
 
                             <!-- Start Modal location edit -->
-                            <div class="modal fade" id="modal-location-edit" role="dialog"
+                            {{-- <div class="modal fade" id="modal-location-edit" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-lg send-info modal-dialog-centered"
                                     role="document">
@@ -498,11 +499,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- End Modal location edit -->
 
                             <!-- Start Modal remove-location -->
-                            <div class="modal fade" id="remove-location" tabindex="-1" role="dialog"
+                            {{-- <div class="modal fade" id="remove-location" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -519,7 +520,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- End Modal remove-location -->
                         </div>
                     </div>
@@ -545,8 +546,9 @@
                             </div>
                         </div>
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                            <h2>مرسوله ۱ از ۱</h2>
+                            <h2>مرسوله</h2>
                         </div>
+
                         <div class="checkout-pack">
                             <section class="products-compact">
                                 <!-- Start Product-Slider -->
@@ -667,10 +669,10 @@
                     </form>
 
                     <div class="mt-5">
-                        <a href="#" class="float-right border-bottom-dt">
+                        <a href="{{ route('cart.check') }}" class="float-right border-bottom-dt">
                             <i class="mdi mdi-chevron-double-right">
                          </i>بازگشت به سبد خرید</a>
-                        <a href="#" class="float-left border-bottom-dt">
+                        <a href="" class="float-left border-bottom-dt">
                             تایید و ادامه ثبت سفارش<i class="mdi mdi-chevron-double-left">
                                 </i>
                             </a>
