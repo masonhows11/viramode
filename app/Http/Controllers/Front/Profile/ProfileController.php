@@ -41,7 +41,7 @@ class ProfileController extends Controller
     {
 
         $request->validate([
-            'name' => [Rule::requiredIf(filled($request->name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
+            'user_name' => [Rule::requiredIf(filled($request->user_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
             'first_name' => [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
             'last_name' => [Rule::requiredIf(filled($request->first_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user),],
             'national_code' => ['required', 'min:1', 'max:10', Rule::unique('users')->ignore($request->user), new NationalCode()],

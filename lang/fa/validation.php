@@ -151,7 +151,7 @@ return [
     */
     'attributes' => [
         "name" => "نام",
-        "username" => "نام کاربری",
+        "user_name" => "نام کاربری",
         "email" => "پست الکترونیکی",
         "first_name" => "نام",
         "last_name" => "نام خانوادگی",

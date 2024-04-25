@@ -26,8 +26,13 @@
                                     <h3> نام کاربری</h3>
                                 </div>
                                 <div class="form-row">
-                                    <input type="text" name="name" class="input-ui pr-2" value="{{ $user->name }}">
+                                    <input type="text" name="user_name" class="input-ui pr-2" value="{{ $user->name }}">
                                 </div>
+                                @error('user_name')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -37,6 +42,11 @@
                                 <div class="form-row">
                                     <input type="text" name="first_name" class="input-ui pr-2" value="{{ $user->first_name }}">
                                 </div>
+                                @error('first_name')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -46,7 +56,14 @@
                                 <div class="form-row">
                                     <input type="text" name="last_name" class="input-ui pr-2" value="{{  $user->last_name  }}">
                                 </div>
+                                @error('last_name')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
+
+
                             <div class="col-md-6 mb-3">
                                 <div class="form-row-title">
                                     <h3>کد ملی</h3>
@@ -54,6 +71,11 @@
                                 <div class="form-row">
                                     <input type="text" name="national_code" class="input-ui pl-2 text-left dir-ltr" value="{{ $user->national_code }}">
                                 </div>
+                                @error('national_code')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             {{-- <div class="col-md-6 mb-3">
                                 <div class="form-row-title">
