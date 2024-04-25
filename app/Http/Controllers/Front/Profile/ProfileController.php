@@ -49,7 +49,7 @@ class ProfileController extends Controller
 
         try {
             User::where('id', $request->user)->update([
-                'name' => $request->name,
+                'name' => $request->user_name,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'national_code' => $request->national_code
