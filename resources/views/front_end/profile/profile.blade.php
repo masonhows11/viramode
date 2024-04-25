@@ -29,14 +29,18 @@
                                 </div>
                                 <div class="value-info">
                                     @if($user->email == null)
-                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >
-                                        {{ $user->email ? $user->email : __('messages.email_address_not_registered') }}
+                                    <span>
+                                       <a href="{{  route('email.update.form') }}" class="text-danger">
+                                        {{ __('messages.email_address_not_registered') }}
+                                        </a>
                                     </span>
                                     @else
-                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >
-                                        {{ $user->email ? $user->email : __('messages.email_address_not_registered') }}
+                                    <span>
+                                        {{ $user->email  }}
                                     </span>
                                     @endif
+
+
 
                                 </div>
                             </div>
@@ -45,17 +49,15 @@
                                     <span>شماره موبایل:</span>
                                 </div>
                                 <div class="value-info">
-
                                     @if ( $user->mobile == null )
-                                    <span class=" text-danger ">
-                                        <a href="">
+                                    <span >
+                                        <a href="{{  route('mobile.update.form') }}" class="text-danger">
                                             {{  __('messages.mobile_number_not_registered')  }}
                                         </a>
-
                                     </span>
                                     @else
-                                    <span class="{{ $user->mobile == null ? 'text-danger' : '' }}">
-                                        {{ $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered')  }}
+                                    <span>
+                                        {{ $user->mobile  }}
                                     </span>
                                     @endif
 
@@ -67,11 +69,13 @@
                                 </div>
                                 <div class="value-info">
                                     @if($user->national_code == null)
-                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >
-                                        {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
+                                    <span>
+                                         <a href="{{  route('user.account.information') }}" class="text-danger">
+                                            {{  __('messages.national_code_not_registered') }}
+                                         </a>
                                     </span>
                                     @else
-                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >
+                                    <span>
                                         {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
                                     </span>
                                     @endif
