@@ -46,11 +46,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="dt-sl dt-sn mb-3 text-center">
+                                {{-- <div class="dt-sl dt-sn mb-3 text-center">
                                     <a href="#">
-                                        <img src="./assets/img/banner/sidebar-banner-3.jpg" class="img-fluid" alt="">
+                                        <img src="{{ asset('/front_assets/img/banner/sidebar-banner-3.jpg') }}" class="img-fluid" alt="">
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 <div class="dt-sl dt-sn border mb-3">
                                     <div class="profile-menu-section dt-sl">
@@ -156,7 +156,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/07.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/07.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -179,7 +179,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/017.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/017.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -202,7 +202,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/013.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/013.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -225,7 +225,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/09.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/09.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -248,7 +248,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/010.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/010.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -274,7 +274,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/011.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/011.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
@@ -297,7 +297,7 @@
                                                 </div>
                                             </div>
                                             <a class="product-thumb" href="shop-single.html">
-                                                <img src="./assets/img/products/019.jpg" alt="Product Thumbnail">
+                                                <img src="{{  asset('/front_assets/img/products/019.jpg') }}" alt="Product Thumbnail">
                                             </a>
                                             <div class="product-card-body">
                                                 <h5 class="product-title">
