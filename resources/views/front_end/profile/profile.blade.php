@@ -12,6 +12,7 @@
                     <div class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2">
                         <h2>اطلاعات شخصی</h2>
                     </div>
+
                     <div class="profile-section dt-sl">
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
@@ -19,7 +20,7 @@
                                     <span>نام و نام خانوادگی:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span>جلال بهرامی راد</span>
+                                    <span>{{ $user->first_name .' '.$user->last_name }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -27,7 +28,7 @@
                                     <span>پست الکترونیک:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span>info@gmail.com</span>
+                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >{{ $user->email ? $user->email : __('messages.email_address_not_registered') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -35,7 +36,7 @@
                                     <span>شماره تلفن همراه:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span>09xxxxxxxxx</span>
+                                    <span class="{{ $user->mobile == null ? 'text-danger' : '' }}">{{ $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered')  }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -43,7 +44,7 @@
                                     <span>کد ملی:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span>-</span>
+                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >{{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -64,7 +65,7 @@
                             </div>
                         </div>
                         <div class="profile-section-link">
-                            <a href="#" class="border-bottom-dt">
+                            <a href="{{ route('user.account.information') }}" class="border-bottom-dt">
                                 <i class="mdi mdi-account-edit-outline"></i>
                                 ویرایش اطلاعات شخصی
                             </a>
@@ -72,6 +73,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-xl-6 col-lg-12">
                 <div class="px-3">
                     <div class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2">
@@ -79,28 +82,11 @@
                     </div>
                     <div class="profile-section dt-sl">
                         <ul class="list-favorites">
+
                             <li>
                                 <a href="#">
-                                    <img src="./assets/img/products/016.jpg" alt="">
+                                    <img src="{{ asset('front_assets/img/products/016.jpg') }}" alt="">
                                     <span>کت مردانه مجلسی مدل k-m-5500</span>
-                                </a>
-                                <button>
-                                    <i class="mdi mdi-trash-can-outline"></i>
-                                </button>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="./assets/img/products/020.jpg" alt="">
-                                    <span>کت مردانه مجلسی مدل k-m-5640</span>
-                                </a>
-                                <button>
-                                    <i class="mdi mdi-trash-can-outline"></i>
-                                </button>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="./assets/img/products/017.jpg" alt="">
-                                    <span>کت مردانه مجلسی مدل k-m-5110</span>
                                 </a>
                                 <button>
                                     <i class="mdi mdi-trash-can-outline"></i>
@@ -116,7 +102,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
         <div class="row mt-5">
             <div class="col-12">
                 <div class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
@@ -143,32 +131,6 @@
                                     <td>۳۱ مرداد ۱۳۹۸</td>
                                     <td>۰</td>
                                     <td>۹,۹۸۹,۰۰۰ تومان</td>
-                                    <td>لغو شده</td>
-                                    <td class="details-link">
-                                        <a href="#">
-                                            <i class="mdi mdi-chevron-left"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>DKC-45173498</td>
-                                    <td>۱۰ خرداد ۱۳۹۸</td>
-                                    <td>۰</td>
-                                    <td>۱۸,۰۴۹,۰۰۰ تومان</td>
-                                    <td>لغو شده</td>
-                                    <td class="details-link">
-                                        <a href="#">
-                                            <i class="mdi mdi-chevron-left"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>DDC-58976951</td>
-                                    <td>۲۱ مرداد ۱۳۹۸</td>
-                                    <td>۰</td>
-                                    <td>۹,۱۸۹,۰۰۰ تومان</td>
                                     <td>لغو شده</td>
                                     <td class="details-link">
                                         <a href="#">
@@ -240,36 +202,4 @@
 
         </div>
     </div> --}}
-
-    <!-- start recent order list -->
-
-    {{-- <div class="profile-card">
-        <p class="font-13">آخرین سفارش‌ها </p>
-        <div class="table-responsive">
-            <table class="text-center table table-custom table-bordered font-13">
-                <thead class="thead-custom">
-                <tr>
-                    <td>#</td>
-                    <td>شماره سفارش</td>
-                    <td>تاریخ ثبت سفارش</td>
-                    <td>مبلغ قابل پرداخت</td>
-                    <td>مبلغ کل</td>
-                    <td>عملیات پرداخت</td>
-                    <td>جزییات</td>
-                </tr>
-                </thead>
-                <tr>
-                    <td>1</td>
-                    <td>DKC-57262900</td>
-                    <td>1 فروردین 1402</td>
-                    <td>0</td>
-                    <td>4,300,000 تومان</td>
-                    <td class="text-success">پرداخت موفق</td>
-                    <td><i class="fa fa-chevron-left align-middle"></i></td>
-                </tr>
-            </table>
-        </div>
-    </div> --}}
-
-    <!-- end recent order list -->
 @endsection

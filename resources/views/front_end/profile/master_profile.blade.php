@@ -21,7 +21,7 @@
                                             </div>
                                             <div class="profile-header-content mr-3 mt-2">
                                                 <span class="d-block profile-username">جلال بهرامی راد</span>
-                                                <span class="d-block profile-phone">09xxxxxxxxx</span>
+                                                <span class="d-block profile-phone">{{  $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered') }}</span>
                                             </div>
                                         </div>
                                         <div class="profile-point mt-3 mb-2 dt-sl">
@@ -31,13 +31,13 @@
                                         <div class="profile-link mt-2 dt-sl">
                                             <div class="row">
                                                 <div class="col-6 text-center">
-                                                    <a href="#">
+                                                    <a href="javascript:void(0)">
                                                         <i class="mdi mdi-lock-reset"></i>
                                                         <span class="d-block">تغییر رمز</span>
                                                     </a>
                                                 </div>
                                                 <div class="col-6 text-center">
-                                                    <a href="#">
+                                                    <a href="{{  route('auth.log.out') }}">
                                                         <i class="mdi mdi-logout-variant"></i>
                                                         <span class="d-block">خروج از حساب</span>
                                                     </a>
