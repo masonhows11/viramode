@@ -17,7 +17,10 @@
                                     <div class="profile-sidebar-header dt-sl">
                                         <div class="d-flex align-items-center">
                                             <div class="profile-avatar">
-                                                <img src="{{ asset('default_image/avatar.jpg') }}" alt="">
+                                                <a href="{{ route('user.profile') }}">
+                                                    <img src="{{ asset('default_image/avatar.jpg') }}" alt="user-avatar">
+                                                </a>
+
                                             </div>
                                             <div class="profile-header-content mr-3 mt-2">
                                                 <span class="d-block profile-username">جلال بهرامی راد</span>

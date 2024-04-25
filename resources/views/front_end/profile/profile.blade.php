@@ -28,15 +28,37 @@
                                     <span>پست الکترونیک:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >{{ $user->email ? $user->email : __('messages.email_address_not_registered') }}</span>
+                                    @if($user->email == null)
+                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >
+                                        {{ $user->email ? $user->email : __('messages.email_address_not_registered') }}
+                                    </span>
+                                    @else
+                                    <span class="{{ $user->email == null ? 'text-danger' : '' }}" >
+                                        {{ $user->email ? $user->email : __('messages.email_address_not_registered') }}
+                                    </span>
+                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
-                                    <span>شماره تلفن همراه:</span>
+                                    <span>شماره موبایل:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span class="{{ $user->mobile == null ? 'text-danger' : '' }}">{{ $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered')  }}</span>
+
+                                    @if ( $user->mobile == null )
+                                    <span class=" text-danger ">
+                                        <a href="">
+                                            {{  __('messages.mobile_number_not_registered')  }}
+                                        </a>
+
+                                    </span>
+                                    @else
+                                    <span class="{{ $user->mobile == null ? 'text-danger' : '' }}">
+                                        {{ $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered')  }}
+                                    </span>
+                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -44,7 +66,16 @@
                                     <span>کد ملی:</span>
                                 </div>
                                 <div class="value-info">
-                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >{{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}</span>
+                                    @if($user->national_code == null)
+                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >
+                                        {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
+                                    </span>
+                                    @else
+                                    <span class="{{ $user->national_code == null ? 'text-danger' : '' }}" >
+                                        {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
+                                    </span>
+                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
