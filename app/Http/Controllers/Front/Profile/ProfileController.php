@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -40,9 +41,9 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
 
-       // $user = auth()->user();
 
-        $request->validate([
+        Validator::make($request->all(),[
+
             'name' =>
              [Rule::requiredIf(filled($request->name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user)],
             'first_name' =>
@@ -51,7 +52,9 @@ class ProfileController extends Controller
              [Rule::requiredIf(filled($request->last_name)), 'min:1', 'max:64', 'string', Rule::unique('users')->ignore($request->user)],
             'national_code' =>
              ['required', 'min:1', 'max:10', Rule::unique('users')->ignore($request->user), new NationalCode()],
-        ]);
+
+
+            ]);
 
         try {
             User::where('id', $request->user)->update([

@@ -29,7 +29,7 @@
                                 <div class="form-row">
                                     <input type="text" name="name" class="input-ui pr-2" value="{{ $user->name }}">
                                 </div>
-                                @error('user_name')
+                                @error('name')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
