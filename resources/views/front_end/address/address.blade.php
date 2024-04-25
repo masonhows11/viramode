@@ -24,17 +24,18 @@
 @endsection
 @section('main_content')
 
-<main class="main-content dt-sl mt-4 mb-3">
+<main class="main-content dt-sl mt-4 mb-3 shopping-page">
 
     <div class="container main-container">
         <div class="row">
+
             <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
                 <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
                     <h2>انتخاب آدرس تحویل سفارش</h2>
                 </div>
                 <section class="page-content dt-sl">
                     <div class="address-section">
-                        
+
                         <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
                             <div class="checkout-contact-content">
                                 <ul class="checkout-contact-items">
@@ -689,6 +690,7 @@
             </div>
         </div>
     </div>
+
 </main>
 
     {{-- <div class="container">
