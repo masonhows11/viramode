@@ -140,7 +140,7 @@
                                                 <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
                                                 {{ __('messages.toman') }}
                                             </div>
-                                            <a href={{ route('check.address') }}" class="mb-2 d-block">
+                                            <a href="{{ route('check.address') }}" class="mb-2 d-block">
                                                 <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
                                                     <i class="mdi mdi-arrow-left"></i>
                                                      {{  __('messages.continue_and_pay') }}

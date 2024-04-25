@@ -36,7 +36,7 @@ class AddressController extends Controller
         }
 
 
-        return view('front.address.address')
+        return view('front_end.address.address')
             ->with(['cartItems' => $cartItems, 'addresses' => $addresses,
                 'provinces' => $provinces, 'deliveries' => $deliveries]);
     }

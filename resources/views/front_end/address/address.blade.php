@@ -1,4 +1,4 @@
-@extends('front.layouts.master_payment')
+@extends('front_end.layouts.master_payment')
 @section('page_title')
     {{ __('messages.shipping_info') }}
 @endsection
@@ -378,7 +378,7 @@
 
     </div>
 @endsection
-@push('custom_scripts')
+@push('front_custom_scripts')
     <script>
 
         $(document).ready(function () {
