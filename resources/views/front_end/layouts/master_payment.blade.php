@@ -13,12 +13,12 @@
 <body>
 
 <!-- start header -->
-<header class="w-100 bg-white"><!-- start header -->
+<header class="w-100 bg-white shopping-page"><!-- start header -->
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-2 header-logo">
-                <a href="http://goodshop.test">
-                    <h3 class="h3 text-center my-2  text-danger">خرید خوب</h3>
+            <div class="col-lg-4 header-logo">
+                <a href="http://viramode.test">
+                    <h5 class="h5 text-center my-2  text-danger">{{ __('messages.site_name')}}</h5>
                 </a>
             </div>
         </div>

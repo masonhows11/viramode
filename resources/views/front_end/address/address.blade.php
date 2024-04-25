@@ -3,7 +3,8 @@
     {{ __('messages.shipping_info') }}
 @endsection
 @section('checkout-step')
-    <div class="col-12">
+
+    {{-- <div class="col-12">
         <ul class="checkout-steps">
             <li class="is-completed">
                 @php
@@ -20,7 +21,40 @@
                 <a href="#" class="checkout-steps-item  active-link">اتمام خرید و ارسال</a>
             </li>
         </ul>
-    </div
+    </div --}}
+    
+    <header class="header-shopping  dt-sl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center pt-2">
+                    <div class="header-shopping-logo dt-sl">
+                        <a href="#">
+                            {{-- <img src="{{ asset('/front_assets/img/logo.png') }}" alt=""> --}}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <ul class="checkout-steps">
+                        <li>
+                            <a href="#" class="active">
+                                <span>اطلاعات ارسال</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>پرداخت</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>اتمام خرید و ارسال</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 @endsection
 @section('main_content')
 
