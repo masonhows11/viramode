@@ -235,8 +235,10 @@ Route::controller(FrontAddressController::class)->prefix('profile')->middleware(
 
 
     Route::get('/addresses', 'addresses')->name('addresses');
-    Route::post('/address/store', 'store')->name('profile.address.store');
 
+    Route::get('/address/create','create')->name('profile.address.create');
+    Route::post('/address/store', 'store')->name('profile.address.store');
+    
     Route::post('/address/update', 'update')->name('profile.address.update');
     Route::get('/address/delete/{address}', 'delete')->name('profile.address.delete');
 

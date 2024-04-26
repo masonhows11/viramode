@@ -20,6 +20,11 @@ class FrontAddressController extends Controller
         return view('front_end.profile.address',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
+    public function create()
+    {
+        
+    }
+
     public function store(AddressRequest $request)
     {
         try {
