@@ -551,98 +551,32 @@
                                 <!-- Start Product-Slider -->
                                 <div class="col-12">
                                     <div class="products-compact-slider carousel-md owl-carousel owl-theme">
+
+                                        @foreach ($cartItems as $product)
                                         <div class="item">
                                             <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/07.jpg') }}"
-                                                        alt="Product Thumbnail">
+                                                <a class="product-thumb" href="{{ route('product',$product->product->slug) }}">
+
+                                                    @if( $product->product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image ) )
+                                                    <img src="{{ asset('storage/'.$product->product->thumbnail_image) }}"
+                                                         alt="Product Thumbnail">
+                                                    @else
+                                                        <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                                            alt="Product Thumbnail">
+                                                    @endif
+
                                                 </a>
                                                 <div class="product-card-body">
                                                     <h5 class="product-title">
-                                                        <a href="shop-single.html">مانتو زنانه</a>
+                                                        <a href="{{ route('product',$product->product->slug) }}">
+                                                            {{ $product->product->title_persian}}
+                                                         </a>
                                                     </h5>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/017.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">کت مردانه</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{ asset('/front_assets/img/products/013.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">مانتو زنانه مدل هودی تیک
-                                                            تین</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/09.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">مانتو زنانه</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/010.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">مانتو زنانه</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/011.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">مانتو زنانه</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="shop-single.html">
-                                                    <img src="{{  asset('/front_assets/img/products/019.jpg') }}"
-                                                        alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">تیشرت مردانه</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                                 <!-- End Product-Slider -->
@@ -657,7 +591,7 @@
                         <div class="checkout-invoice">
                             <div class="checkout-invoice-headline">
                                 <div class="custom-control custom-checkbox pl-0 pr-3">
-                                    <input type="checkbox" class="custom-control-input" checked>
+                                    <input type="checkbox" name="invoice" class="custom-control-input" checked>
                                     <label class="custom-control-label">درخواست ارسال فاکتور خرید</label>
                                 </div>
                             </div>
