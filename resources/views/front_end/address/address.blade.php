@@ -534,8 +534,8 @@
                             @foreach ( $deliveries as $delivery)
                             <div class="custom-control custom-radio pl-0 pr-3">
                                 <input type="radio" class="custom-control-input" name="delivery" id="radio-{{ $delivery->id }}"
-                                    value="option-{{ $delivery->id }}">
-                                <label for="radio1" class="custom-control-label">
+                                    value="{{ $delivery->id }}">
+                                <label for="radio-{{ $delivery->id }}" class="custom-control-label">
                                     {{ $delivery->title }}
                                 </label>
                             </div>
