@@ -1,4 +1,4 @@
-<div>
+<div class="row overflow-auto">
     @forelse ( $addresses as $address)
                         <div class="col-lg-6 col-md-12">
                             <div class="card-horizontal-address">

@@ -567,6 +567,8 @@ return [
     'your_login_information_is_not_valid' => 'اطلاعات ورود شما معتبر نمی باشند',
     'your_registration_was_successful' => 'ثبت نام شما با موفقیت انجام شد',
     'your_login_was_successful' => 'ورود شما با موفقیت انجام شد',
+    'save_address_and_delivert_to' => 'ثبت وارسال به این آدرس',
+    'cancel_return' => 'انصراف و بازگشت',
 
 
 ];
