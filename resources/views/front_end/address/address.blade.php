@@ -530,20 +530,17 @@
                             <h2>انتخاب نحوه ارسال</h2>
                         </div>
                         <div class="checkout-shipment border-bottom pb-3 mb-4">
+
+                            @foreach ( $deliveries as $delivery)
                             <div class="custom-control custom-radio pl-0 pr-3">
-                                <input type="radio" class="custom-control-input" name="radio1" id="radio1"
-                                    value="option1" checked>
+                                <input type="radio" class="custom-control-input" name="delivery" id="radio-{{ $delivery->id }}"
+                                    value="option-{{ $delivery->id }}">
                                 <label for="radio1" class="custom-control-label">
-                                    عادی
+                                    {{ $delivery->title }}
                                 </label>
                             </div>
-                            <div class="custom-control custom-radio  pl-0 pr-3">
-                                <input type="radio" class="custom-control-input" name="radio1" id="radio2"
-                                    value="option2">
-                                <label for="radio2" class="custom-control-label">
-                                    سریع‌ (مرسوله‌ها در سریع‌ترین زمان ممکن ارسال می‌شوند)
-                                </label>
-                            </div>
+                            @endforeach
+
                         </div>
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
                             <h2>مرسوله</h2>
