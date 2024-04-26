@@ -17,7 +17,7 @@ class FrontAddressController extends Controller
         $provinces = Province::all();
         $user = Auth::id();
         $addresses = Address::where('user_id',$user)->get();
-        return view('front.profile.address',['addresses' => $addresses , 'provinces' => $provinces]);
+        return view('front_end.profile.address',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
     public function store(AddressRequest $request)
