@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class IndexAddress extends Component
 {
-    public $provinces;
+
     public $user;
     public $addresses;
 
     public function mount(){
 
-        $this->provinces = Province::all();
-        $this->user = Auth::id();
+
         $this->addresses = Address::where('user_id',$this->user)->get();
     }
 
@@ -24,6 +23,6 @@ class IndexAddress extends Component
     public function render()
     {
         return view('livewire.front.profile.address.index-address')
-        ->with(['provinces' => $this->provinces  , 'addresses' => $this->addresses , 'user' => $this->user]);
+        ->with(['addresses' => $this->addresses , 'user' => $this->user]);
     }
 }
