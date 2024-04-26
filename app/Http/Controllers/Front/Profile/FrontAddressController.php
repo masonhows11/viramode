@@ -17,12 +17,15 @@ class FrontAddressController extends Controller
         $provinces = Province::all();
         $user = Auth::id();
         $addresses = Address::where('user_id',$user)->get();
-        return view('front_end.profile.address',['addresses' => $addresses , 'provinces' => $provinces]);
+        return view('front_end.profile.address.address',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
     public function create()
     {
-        
+        $provinces = Province::all();
+        $user = Auth::id();
+        $addresses = Address::where('user_id',$user)->get();
+        return view('front_end.profile.address.create',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
     public function store(AddressRequest $request)
@@ -51,6 +54,14 @@ class FrontAddressController extends Controller
             return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
         }
 
+    }
+
+    public function edit(Address $address)
+    {
+        $provinces = Province::all();
+        $user = Auth::id();
+        $addresses = Address::where('user_id',$user)->get();
+        return view('front_end.profile.address.edit',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
     public function update(AddressRequest $request)

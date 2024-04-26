@@ -429,6 +429,8 @@ return [
     'no_warranty_has_been_selected_for_this_product' => 'برای این محصول گارانتی انتخاب نشده',
     'register_the_goods_in_your_basket_are_not_reserved_complete_the_next_steps_to_place_an_order' => '  کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید',
     'addresses' => 'آدرس ها',
+    'create_address' => 'ایجاد آدرس',
+    'edit_address' => 'ویرایش آدرس',
     'list_address' => 'مشاهده آدرس ها',
     'province_management' => 'مدیریت استان ها',
     'city_management' => 'مدیریت شهر ها',
