@@ -58,10 +58,8 @@ class FrontAddressController extends Controller
 
     public function edit(Address $address)
     {
-        $provinces = Province::all();
-        $user = Auth::id();
-        $addresses = Address::where('user_id',$user)->get();
-        return view('front_end.profile.address.edit',['addresses' => $addresses , 'provinces' => $provinces]);
+
+        return view('front_end.profile.address.edit',['address' => $address ]);
     }
 
     public function update(AddressRequest $request)
