@@ -3,14 +3,13 @@
     {{ __('messages.shipping_info') }}
 @endsection
 @section('checkout-step')
-
     {{-- <div class="col-12">
         <ul class="checkout-steps">
             <li class="is-completed">
                 @php
                     $currentRoute = 'check.address';
                 @endphp
-                @if( $currentRoute == request()->route()->getName() )
+                @if ($currentRoute == request()->route()->getName())
                     <a href="#" class="checkout-steps-active  active-link-shopping">اطلاعات ارسال</a>
                 @endif
             </li>
@@ -57,298 +56,292 @@
     </header>
 @endsection
 @section('main_content')
+    <main class="main-content dt-sl mt-4 mb-3 shopping-page">
 
-<main class="main-content dt-sl mt-4 mb-3 shopping-page">
+        <div class="container main-container">
+            <div class="row">
 
-    <div class="container main-container">
-        <div class="row">
+                <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
+                    <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                        <h2>انتخاب آدرس تحویل سفارش</h2>
+                    </div>
+                    <section class="page-content dt-sl">
+                        <div class="address-section">
 
-            <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
-                <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                    <h2>انتخاب آدرس تحویل سفارش</h2>
-                </div>
-                <section class="page-content dt-sl">
-                    <div class="address-section">
+                            <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
 
-                        <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
-
-                            <div class="checkout-contact-content">
-                                <ul class="checkout-contact-items">
-                                    <li class="checkout-contact-item">
-                                        گیرنده:
-                                        <span class="full-name">جلال بهرامی راد</span>
-                                        <a class="checkout-contact-btn-edit">اصلاح این آدرس</a>
-                                    </li>
-                                    <li class="checkout-contact-item">
-                                        <div class="checkout-contact-item checkout-contact-item-mobile">
-                                            شماره تماس:
-                                            <span class="mobile-phone">09xxxxxxxxx</span>
-                                        </div>
-                                        <div class="checkout-contact-item-message">
-                                            کد پستی:
-                                            <span class="post-code">۹۹۹۹۹۹۹۹۹۹</span>
-                                        </div>
-                                        <br>
-                                        استان
-                                        <span class="state">خراسان شمالی</span>
-                                        ، ‌شهر
-                                        <span class="city">بجنورد</span>
-                                        ،
-                                        <span class="address-part">خراسان شمالی-بجنورد</span>
-                                    </li>
-                                </ul>
-                                <a class="checkout-contact-location" id="btn-checkout-contact-location">تغییر
-                                    آدرس
-                                    ارسال</a>
-                                <div class="checkout-contact-badge">
-                                    <i class="mdi mdi-check-bold"></i>
-                                </div>
-                            </div>
-
-                            <div class="checkout-address dt-sn px-0 pt-0 pb-0" id="user-address-list-container">
-                                <div class="checkout-address-content">
-                                    <div class="checkout-address-headline">آدرس مورد نظر خود را جهت تحویل
-                                        انتخاب فرمایید:</div>
-                                    <div class="checkout-address-row">
-                                        <div class="checkout-address-col">
-                                            <button class="checkout-address-location" data-toggle="modal"
-                                                data-target="#modal-location">
-                                                <strong>ایجاد آدرس جدید</strong>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="checkout-address-row">
-                                        <div class="checkout-address-col">
-                                            <div class="checkout-address-box is-selected">
-                                                <h5 class="checkout-address-title">جلال بهرامی راد</h5>
-                                                <p class="checkout-address-text">
-                                                    <span>خراسان شمالی، بجنورد،خراسان شمالی-بجنورد-طالقانی
-                                                        غربی</span>
-                                                </p>
-                                                <ul class="checkout-address-list">
-                                                    <li>
-                                                        <ul class="checkout-address-contact-info">
-                                                            <li class="">کدپستی: <span>۹۹۹۹۹۹۹۹۹۹</span></li>
-                                                            <li>شماره همراه: <span>09xxxxxxxxx</span>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li>
-                                                                <button class="checkout-address-btn-edit"
-                                                                    data-toggle="modal"
-                                                                    data-target="#modal-location-edit">ویرایش</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="checkout-address-btn-remove"
-                                                                    data-toggle="modal"
-                                                                    data-target="#remove-location">حذف</button>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <button class="checkout-address-btn-submit">سفارش به این آدرس
-                                                    ارسال می‌شود.</button>
+                                <div class="checkout-contact-content">
+                                    <ul class="checkout-contact-items">
+                                        <li class="checkout-contact-item">
+                                            گیرنده:
+                                            <span class="full-name">جلال بهرامی راد</span>
+                                            <a class="checkout-contact-btn-edit">اصلاح این آدرس</a>
+                                        </li>
+                                        <li class="checkout-contact-item">
+                                            <div class="checkout-contact-item checkout-contact-item-mobile">
+                                                شماره تماس:
+                                                <span class="mobile-phone">09xxxxxxxxx</span>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="checkout-address-row">
-                                        <div class="checkout-address-col">
-                                            <div class="checkout-address-box">
-                                                <h5 class="checkout-address-title">جلال بهرامی راد</h5>
-                                                <p class="checkout-address-text">
-                                                    <span>خراسان شمالی، بجنورد،خراسان شمالی-بجنورد</span>
-                                                </p>
-                                                <ul class="checkout-address-list">
-                                                    <li>
-                                                        <ul class="checkout-address-contact-info">
-                                                            <li>کدپستی: <span>۹۹۹۹۹۹۹۹۹۹</span>
-                                                            </li>
-                                                            <li>شماره همراه: <span>09xxxxxxxxx</span>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li>
-                                                                <button class="checkout-address-btn-edit"
-                                                                    data-toggle="modal"
-                                                                    data-target="#modal-location-edit">ویرایش</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="checkout-address-btn-remove"
-                                                                    data-toggle="modal"
-                                                                    data-target="#remove-location">حذف</button>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <button class="checkout-address-btn-submit">ارسال سفارش به این
-                                                    آدرس</button>
+                                            <div class="checkout-contact-item-message">
+                                                کد پستی:
+                                                <span class="post-code">۹۹۹۹۹۹۹۹۹۹</span>
                                             </div>
-                                        </div>
+                                            <br>
+                                            استان
+                                            <span class="state">خراسان شمالی</span>
+                                            ، ‌شهر
+                                            <span class="city">بجنورد</span>
+                                            ،
+                                            <span class="address-part">خراسان شمالی-بجنورد</span>
+                                        </li>
+                                    </ul>
+                                    <a class="checkout-contact-location" id="btn-checkout-contact-location">تغییر
+                                        آدرس
+                                        ارسال</a>
+                                    <div class="checkout-contact-badge">
+                                        <i class="mdi mdi-check-bold"></i>
                                     </div>
                                 </div>
-                                <button class="checkout-address-cancel" id="cancel-change-address-btn"></button>
-                            </div>
-                            <!-- Start Modal location new -->
-                            <div class="modal fade" id="modal-location" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-lg send-info modal-dialog-centered"
-                                    role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">
-                                                <i class="now-ui-icons location_pin"></i>
-                                                افزودن آدرس جدید
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+
+                                <div class="checkout-address dt-sn px-0 pt-0 pb-0" id="user-address-list-container">
+                                    <div class="checkout-address-content">
+                                        <div class="checkout-address-headline">آدرس مورد نظر خود را جهت تحویل
+                                            انتخاب فرمایید:</div>
+                                        <div class="checkout-address-row">
+                                            <div class="checkout-address-col">
+                                                <button class="checkout-address-location" data-toggle="modal"
+                                                    data-target="#modal-location">
+                                                    <strong>ایجاد آدرس جدید</strong>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="form-ui dt-sl">
-                                                        <form class="form-account" action="">
-                                                            <div class="row">
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            نام و نام خانوادگی
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <input class="input-ui pr-2 text-right"
-                                                                            type="text"
-                                                                            placeholder="نام خود را وارد نمایید">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            شماره موبایل
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <input
-                                                                            class="input-ui pl-2 dir-ltr text-left"
-                                                                            type="text"
-                                                                            placeholder="09xxxxxxxxx">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            استان
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <div class="custom-select-ui">
-                                                                            <select class="right">
-                                                                                <option value="khrasan-north">
-                                                                                    خراسان شمالی
-                                                                                </option>
-                                                                                <option value="tehran">
-                                                                                    تهران
-                                                                                </option>
-                                                                                <option value="esfahan">
-                                                                                    اصفهان
-                                                                                </option>
-                                                                                <option value="shiraz">
-                                                                                    شیراز
-                                                                                </option>
-                                                                                <option value="tabriz">
-                                                                                    تبریز
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-sm-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            شهر
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <div class="custom-select-ui">
-                                                                            <select class="right">
-                                                                                <option value="bojnourd">
-                                                                                    بجنورد
-                                                                                </option>
-                                                                                <option value="garme">
-                                                                                    گرمه
-                                                                                </option>
-                                                                                <option value="shirvan">
-                                                                                    شیروان
-                                                                                </option>
-                                                                                <option value="mane">
-                                                                                    مانه و سملقان
-                                                                                </option>
-                                                                                <option value="esfarayen">
-                                                                                    اسفراین
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            آدرس پستی
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <textarea
-                                                                            class="input-ui pr-2 text-right"
-                                                                            placeholder=" آدرس تحویل گیرنده را وارد نمایید"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 mb-2">
-                                                                    <div class="form-row-title">
-                                                                        <h4>
-                                                                            کد پستی
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <input
-                                                                            class="input-ui pl-2 dir-ltr text-left placeholder-right"
-                                                                            type="text"
-                                                                            placeholder=" کد پستی را بدون خط تیره بنویسید">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 pr-4 pl-4">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary btn-submit-form">ثبت
-                                                                        و
-                                                                        ارسال به این آدرس</button>
-                                                                    <button type="button"
-                                                                        class="btn-link-border float-left mt-2">انصراف
-                                                                        و بازگشت</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                        <div class="checkout-address-row">
+                                            <div class="checkout-address-col">
+                                                <div class="checkout-address-box is-selected">
+                                                    <h5 class="checkout-address-title">جلال بهرامی راد</h5>
+                                                    <p class="checkout-address-text">
+                                                        <span>خراسان شمالی، بجنورد،خراسان شمالی-بجنورد-طالقانی
+                                                            غربی</span>
+                                                    </p>
+                                                    <ul class="checkout-address-list">
+                                                        <li>
+                                                            <ul class="checkout-address-contact-info">
+                                                                <li class="">کدپستی: <span>۹۹۹۹۹۹۹۹۹۹</span></li>
+                                                                <li>شماره همراه: <span>09xxxxxxxxx</span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li>
+                                                                    <button class="checkout-address-btn-edit"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal-location-edit">ویرایش</button>
+                                                                </li>
+                                                                <li>
+                                                                    <button class="checkout-address-btn-remove"
+                                                                        data-toggle="modal"
+                                                                        data-target="#remove-location">حذف</button>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                    <button class="checkout-address-btn-submit">سفارش به این آدرس
+                                                        ارسال می‌شود.</button>
                                                 </div>
-                                                <div class="col-lg-6 col-md-12">
-                                                    <!-- Google Map Start -->
-                                                    <div class="goole-map">
-                                                        <div id="map" style="height:440px"></div>
-                                                    </div>
-                                                    <!-- Google Map End -->
+                                            </div>
+                                        </div>
+                                        <div class="checkout-address-row">
+                                            <div class="checkout-address-col">
+                                                <div class="checkout-address-box">
+                                                    <h5 class="checkout-address-title">جلال بهرامی راد</h5>
+                                                    <p class="checkout-address-text">
+                                                        <span>خراسان شمالی، بجنورد،خراسان شمالی-بجنورد</span>
+                                                    </p>
+                                                    <ul class="checkout-address-list">
+                                                        <li>
+                                                            <ul class="checkout-address-contact-info">
+                                                                <li>کدپستی: <span>۹۹۹۹۹۹۹۹۹۹</span>
+                                                                </li>
+                                                                <li>شماره همراه: <span>09xxxxxxxxx</span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li>
+                                                                    <button class="checkout-address-btn-edit"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal-location-edit">ویرایش</button>
+                                                                </li>
+                                                                <li>
+                                                                    <button class="checkout-address-btn-remove"
+                                                                        data-toggle="modal"
+                                                                        data-target="#remove-location">حذف</button>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                    <button class="checkout-address-btn-submit">ارسال سفارش به این
+                                                        آدرس</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <button class="checkout-address-cancel" id="cancel-change-address-btn"></button>
                                 </div>
-                            </div>
-                            <!-- End Modal location new -->
+                                <!-- Start Modal location new -->
+                                <div class="modal fade" id="modal-location" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg send-info modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                    <i class="now-ui-icons location_pin"></i>
+                                                    افزودن آدرس جدید
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="form-ui dt-sl">
+                                                            <form class="form-account" action="">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                نام و نام خانوادگی
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <input class="input-ui pr-2 text-right"
+                                                                                type="text"
+                                                                                placeholder="نام خود را وارد نمایید">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                شماره موبایل
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <input class="input-ui pl-2 dir-ltr text-left"
+                                                                                type="text" placeholder="09xxxxxxxxx">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                استان
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="custom-select-ui">
+                                                                                <select class="right">
+                                                                                    <option value="khrasan-north">
+                                                                                        خراسان شمالی
+                                                                                    </option>
+                                                                                    <option value="tehran">
+                                                                                        تهران
+                                                                                    </option>
+                                                                                    <option value="esfahan">
+                                                                                        اصفهان
+                                                                                    </option>
+                                                                                    <option value="shiraz">
+                                                                                        شیراز
+                                                                                    </option>
+                                                                                    <option value="tabriz">
+                                                                                        تبریز
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                شهر
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="custom-select-ui">
+                                                                                <select class="right">
+                                                                                    <option value="bojnourd">
+                                                                                        بجنورد
+                                                                                    </option>
+                                                                                    <option value="garme">
+                                                                                        گرمه
+                                                                                    </option>
+                                                                                    <option value="shirvan">
+                                                                                        شیروان
+                                                                                    </option>
+                                                                                    <option value="mane">
+                                                                                        مانه و سملقان
+                                                                                    </option>
+                                                                                    <option value="esfarayen">
+                                                                                        اسفراین
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                آدرس پستی
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <textarea class="input-ui pr-2 text-right" placeholder=" آدرس تحویل گیرنده را وارد نمایید"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 mb-2">
+                                                                        <div class="form-row-title">
+                                                                            <h4>
+                                                                                کد پستی
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <input
+                                                                                class="input-ui pl-2 dir-ltr text-left placeholder-right"
+                                                                                type="text"
+                                                                                placeholder=" کد پستی را بدون خط تیره بنویسید">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 pr-4 pl-4">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-primary btn-submit-form">ثبت
+                                                                            و
+                                                                            ارسال به این آدرس</button>
+                                                                        <button type="button"
+                                                                            class="btn-link-border float-left mt-2">انصراف
+                                                                            و بازگشت</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <!-- Google Map Start -->
+                                                        <div class="goole-map">
+                                                            <div id="map" style="height:440px"></div>
+                                                        </div>
+                                                        <!-- Google Map End -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal location new -->
 
-                            <!-- Start Modal location edit -->
-                            {{-- <div class="modal fade" id="modal-location-edit" role="dialog"
+                                <!-- Start Modal location edit -->
+                                {{-- <div class="modal fade" id="modal-location-edit" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-lg send-info modal-dialog-centered"
                                     role="document">
@@ -500,10 +493,10 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <!-- End Modal location edit -->
+                                <!-- End Modal location edit -->
 
-                            <!-- Start Modal remove-location -->
-                            {{-- <div class="modal fade" id="remove-location" tabindex="-1" role="dialog"
+                                <!-- Start Modal remove-location -->
+                                {{-- <div class="modal fade" id="remove-location" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -521,144 +514,154 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <!-- End Modal remove-location -->
-                        </div>
-                    </div>
-
-                    <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">
-                        <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                            <h2>انتخاب نحوه ارسال</h2>
-                        </div>
-                        <div class="checkout-shipment border-bottom pb-3 mb-4">
-
-                            @foreach ( $deliveries as $delivery)
-                            <div class="custom-control custom-radio pl-0 pr-3">
-                                <input type="radio" class="custom-control-input" name="delivery" id="radio-{{ $delivery->id }}"
-                                    value="{{ $delivery->id }}">
-                                <label for="radio-{{ $delivery->id }}" class="custom-control-label">
-                                    {{ $delivery->title }}
-                                </label>
+                                <!-- End Modal remove-location -->
                             </div>
-                            @endforeach
-
-                        </div>
-                        <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                            <h2>مرسوله</h2>
                         </div>
 
-                        <div class="checkout-pack">
-                            <section class="products-compact">
-                                <!-- Start Product-Slider -->
-                                <div class="col-12">
-                                    <div class="products-compact-slider carousel-md owl-carousel owl-theme">
+                        <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">
+                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                                <h2>انتخاب نحوه ارسال</h2>
+                            </div>
+                            <div class="checkout-shipment border-bottom pb-3 mb-4">
 
-                                        @foreach ($cartItems as $product)
-                                        <div class="item">
-                                            <div class="product-card mb-3">
-                                                <a class="product-thumb" href="{{ route('product',$product->product->slug) }}">
+                                @foreach ($deliveries as $delivery)
+                                    <div class="custom-control custom-radio pl-0 pr-3">
+                                        <input type="radio" class="custom-control-input" name="delivery"
+                                            id="radio-{{ $delivery->id }}" value="{{ $delivery->id }}">
+                                        <label for="radio-{{ $delivery->id }}" class="custom-control-label">
+                                            {{ $delivery->title }}
+                                        </label>
+                                    </div>
+                                @endforeach
 
-                                                    @if( $product->product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image ) )
-                                                    <img src="{{ asset('storage/'.$product->product->thumbnail_image) }}"
-                                                         alt="Product Thumbnail">
-                                                    @else
-                                                        <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                                            alt="Product Thumbnail">
-                                                    @endif
+                            </div>
+                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                                <h2>مرسوله</h2>
+                            </div>
 
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="{{ route('product',$product->product->slug) }}">
-                                                            {{ $product->product->title_persian}}
-                                                         </a>
-                                                    </h5>
+                            <div class="checkout-pack">
+                                <section class="products-compact">
+                                    <!-- Start Product-Slider -->
+                                    <div class="col-12">
+                                        <div class="products-compact-slider carousel-md owl-carousel owl-theme">
+
+                                            @foreach ($cartItems as $product)
+                                                <div class="item">
+                                                    <div class="product-card mb-3">
+                                                        <a class="product-thumb"
+                                                            href="{{ route('product', $product->product->slug) }}">
+
+                                                            @if (
+                                                                $product->product->thumbnail_image &&
+                                                                    \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
+                                                                <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"
+                                                                    alt="Product Thumbnail">
+                                                            @else
+                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                                                    alt="Product Thumbnail">
+                                                            @endif
+
+                                                        </a>
+                                                        <div class="product-card-body">
+                                                            <h5 class="product-title">
+                                                                <a href="{{ route('product', $product->product->slug) }}">
+                                                                    {{ $product->product->title_persian }}
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
 
+                                        </div>
+                                    </div>
+                                    <!-- End Product-Slider -->
+                                </section>
+                                <hr>
+                            </div>
+
+                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                                <h2>صدور فاکتور</h2>
+                            </div>
+
+                            <div class="checkout-invoice">
+                                <div class="checkout-invoice-headline">
+                                    <div class="custom-control custom-checkbox pl-0 pr-3">
+                                        <input type="checkbox" name="invoice" class="custom-control-input" checked>
+                                        <label class="custom-control-label">درخواست ارسال فاکتور خرید</label>
                                     </div>
                                 </div>
-                                <!-- End Product-Slider -->
-                            </section>
-                            <hr>
+                            </div>
+
+                        </form>
+
+                        <div class="mt-5">
+                            <a href="{{ route('cart.check') }}" class="float-right border-bottom-dt">
+                                <i class="mdi mdi-chevron-double-right">
+                                </i>بازگشت به سبد خرید</a>
+                            <a href="" class="float-left border-bottom-dt">
+                                تایید و ادامه ثبت سفارش<i class="mdi mdi-chevron-double-left">
+                                </i>
+                            </a>
                         </div>
 
-                        <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                            <h2>صدور فاکتور</h2>
-                        </div>
+                    </section>
+                </div>
 
-                        <div class="checkout-invoice">
-                            <div class="checkout-invoice-headline">
-                                <div class="custom-control custom-checkbox pl-0 pr-3">
-                                    <input type="checkbox" name="invoice" class="custom-control-input" checked>
-                                    <label class="custom-control-label">درخواست ارسال فاکتور خرید</label>
+
+                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+
+                   
+
+
+
+                        <div class="dt-sn dt-sn--box border mb-2">
+
+                            <ul class="checkout-summary-summary">
+                                <li>
+                                    <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span>{{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
+                                </li>
+
+                                <li>
+                                    <span>هزینه ارسال</span><span>وابسته به آدرس</span>
+                                </li>
+                            </ul>
+
+                            <div class="checkout-summary-devider">
+                                <div></div>
+                            </div>
+
+                            <div class="checkout-summary-content">
+                                <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
+                                <div class="checkout-summary-price-value">
+                                    <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
+                                    {{ __('messages.toman') }}
+                                </div>
+                                <a href="#" class="mb-2 d-block">
+                                    <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
+                                        <i class="mdi mdi-arrow-left"></i>
+                                        {{ __('messages.confirm_continue_order')}}
+                                     </button>
+                                </a>
+                                <div>
+                                    <span>
+                                        {{ __('messages.shopping_cart_message') }}
+                                    </span><span class="help-sn" data-toggle="tooltip" data-html="true"
+                                        data-placement="bottom"
+                                        title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرا مد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
+                                        <span class="mdi mdi-information-outline"></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
 
-                    </form>
 
-                    <div class="mt-5">
-                        <a href="{{ route('cart.check') }}" class="float-right border-bottom-dt">
-                            <i class="mdi mdi-chevron-double-right">
-                         </i>بازگشت به سبد خرید</a>
-                        <a href="" class="float-left border-bottom-dt">
-                            تایید و ادامه ثبت سفارش<i class="mdi mdi-chevron-double-left">
-                                </i>
-                            </a>
-                    </div>
-
-                </section>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
-                <div class="dt-sn dt-sn--box border mb-2">
-                    <ul class="checkout-summary-summary">
-                        <li>
-                            <span>مبلغ کل (۲ کالا)</span><span>۱۶,۸۹۷,۰۰۰ تومان</span>
-                        </li>
-
-                        <li>
-                            <span>هزینه ارسال</span><span>وابسته به آدرس</span>
-                        </li>
-                    </ul>
-
-                    <div class="checkout-summary-devider">
-                        <div></div>
-                    </div>
-
-                    <div class="checkout-summary-content">
-                        <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
-                        <div class="checkout-summary-price-value">
-                            <span class="checkout-summary-price-value-amount">۱۶,۶۹۷,۰۰۰</span>
-                            تومان
-                        </div>
-                        <a href="#" class="mb-2 d-block">
-                            <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
-                                <i class="mdi mdi-arrow-left"></i>
-                                تایید و ادامه ثبت سفارش
-                            </button>
-                        </a>
-                        <div>
-                            <span>
-                                کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش
-                                مراحل بعدی را تکمیل کنید.
-                            </span><span class="help-sn" data-toggle="tooltip" data-html="true"
-                                data-placement="bottom"
-                                title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، دیجی‌کالا هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
-                                <span class="mdi mdi-information-outline"></span>
-                            </span>
-                        </div>
-                    </div>
                 </div>
 
             </div>
         </div>
-    </div>
 
-</main>
+    </main>
 
     {{-- <div class="container">
 
@@ -666,11 +669,11 @@
 
             <div class="col-lg-9 customer-info">
                 <div class="row">
-                    @if( $errors->any())
+                    @if ($errors->any())
                         <div class="cart-content d-flex justify-content-start">
                             <div class="my-3 py-2">
                                 <ul>
-                                    @foreach($errors->all() as $error)
+                                    @foreach ($errors->all() as $error)
                                         <li class="text-danger">{{ $error }}</li>
                                     @endforeach
                                 </ul>
@@ -683,8 +686,8 @@
                 <div class="row">
                     <div class="cart-content checkout-contact" id="address-radio-select">
                         <p class="font-14"> انتخاب آدرس تحویل سفارش</p>
-                        @if ( count($addresses) > 0)
-                            @foreach( $addresses as $address)
+                        @if (count($addresses) > 0)
+                            @foreach ($addresses as $address)
                                 <div class="row  py-2 my-2 border border-2  rounded-2  address-select">
                                     <div class="col-10  address-item">
                                         <input type="radio" form="my-form" name="address_id" value="{{ $address->id }}" class="d-none" id="a-{{ $address->id }}">
@@ -740,7 +743,7 @@
                                                             <select class="form-select form-select-lg font-13"
                                                                     name="province_id"
                                                                     id="province-edit-address-{{ $address->id }}">
-                                                                @foreach( $provinces as $province)
+                                                                @foreach ($provinces as $province)
                                                                     <option class="font-13" {{ $address->province_id == $province->id ? 'selected' : '' }} value="{{ $province->id }}">{{ $province->name }}</option>
                                                                 @endforeach
                                                             </select>
@@ -834,7 +837,7 @@
                                                 <select class="form-select form-select-lg font-13" name="province_id"
                                                         id="province-select">
                                                     <option selected>{{ __('messages.choose') }}</option>
-                                                    @foreach($provinces as $province)
+                                                    @foreach ($provinces as $province)
                                                         <option value="{{ $province->id }}"
                                                                 class="font-13">{{ $province->name }}</option>
                                                     @endforeach
@@ -896,8 +899,8 @@
                 </div>
 
                 <div class="row cart-content">
-                    @if( count($cartItems) > 0)
-                        @foreach($cartItems as $item)
+                    @if (count($cartItems) > 0)
+                        @foreach ($cartItems as $item)
                             <div class="col-lg-4 col-sm-6 mb-3">
                                 <a href="{{ route('product',$item->product->slug) }}">
                                     <div class="card custom-card">
@@ -916,10 +919,10 @@
 
                 <!-- delivery select section -->
                 <div class="container cart-content">
-                    @if( $deliveries != null)
+                    @if ($deliveries != null)
                         <form action="#">
                             <div class="row" id="delivery-radio-select">
-                                @foreach( $deliveries as $delivery)
+                                @foreach ($deliveries as $delivery)
                                     <input type="radio" form="my-form" name="delivery_id" value="{{ $delivery->id }}" class="d-none delivery-select" id="d-{{ $delivery->id }}">
                                     <label for="d-{{ $delivery->id }}" class="col border border-2 rounded-2 mx-2 d-flex justify-content-around py-4 delivery-item   address-box">
                                         <div><img src="{{ asset('front/images/post.svg') }}" class="d-block mx-auto p-2"></div><div>
@@ -958,9 +961,9 @@
                 $totalDiscount = 0;
             @endphp
 
-            @if( count($cartItems) > 0)
+            @if (count($cartItems) > 0)
 
-                @foreach( $cartItems as $cartItem )
+                @foreach ($cartItems as $cartItem)
                     @php
                         $totalProductPrice += $cartItem->cartItemProductPrice();
                         $totalDiscount += $cartItem->cartItemProductDiscount();
@@ -1021,11 +1024,10 @@
 @endsection
 @push('payment_custom_scripts')
     <script>
-
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             // for create address get cities from province
-            $('#province-select').change(function () {
+            $('#province-select').change(function() {
                 let id = $('#province-select option:selected').val();
                 $.ajaxSetup({
                     headers: {
@@ -1035,31 +1037,34 @@
                 $.ajax({
                     url: '{{ route('get.cities') }}',
                     method: 'GET',
-                    data: {id: id}
-                }).done(function (data) {
+                    data: {
+                        id: id
+                    }
+                }).done(function(data) {
 
                     if (data.status === 200) {
                         let cities = data.data;
                         $('#city-new-address').empty();
                         cities.map((city) => {
-                            $('#city-new-address').append($('<option/>').val(city.id).text(city.name))
+                            $('#city-new-address').append($('<option/>').val(city.id).text(
+                                city.name))
                         })
                     } else if (data.status === 404) {
                         $('#city-new-address').empty();
                         console.log(data['data']);
                     }
-                }).fail(function (data) {
+                }).fail(function(data) {
                     console.log(data['data']);
                 });
             });
 
             // for edit address get cities from province
             var addresses = {!! auth()->user()->addresses !!}
-            addresses.map(function (address) {
+            addresses.map(function(address) {
                 let id = address.id;
                 var target = `#province-edit-address-${id}`;
                 var selected = `${target} option:selected`;
-                $(target).change(function () {
+                $(target).change(function() {
                     let id = $(selected).val();
                     $.ajaxSetup({
                         headers: {
@@ -1069,26 +1074,30 @@
                     $.ajax({
                         url: '{{ route('get.cities') }}',
                         method: 'GET',
-                        data: {id: id}
-                    }).done(function (data) {
+                        data: {
+                            id: id
+                        }
+                    }).done(function(data) {
                         if (data.status === 200) {
                             let cities = data.data;
                             $(`#city-edit-address-${address.id}`).empty();
                             cities.map((city) => {
-                                $(`#city-edit-address-${address.id}`).append($('<option/>').val(city.id).text(city.name))
+                                $(`#city-edit-address-${address.id}`).append($(
+                                    '<option/>').val(city.id).text(city
+                                    .name))
                             })
                         } else if (data.status === 404) {
                             $(`#city-edit-address-${address.id}`).empty();
                             console.log(data['data']);
                         }
-                    }).fail(function (data) {
+                    }).fail(function(data) {
                         console.log(data['data']);
                     });
                 });
             });
 
             // for change background color div " delivery type " selected
-           $('#address-radio-select input:radio').change(function() {
+            $('#address-radio-select input:radio').change(function() {
                 $('.row.address-selected').removeClass('address-selected');
                 $(this).closest('.address-select').addClass('address-selected');
             });
@@ -1099,6 +1108,5 @@
             });
 
         })
-
     </script>
 @endpush

@@ -12,7 +12,7 @@ use App\Models\CommonDiscount;
 use App\Models\Delivery;
 use App\Models\Order;
 use App\Models\Province;
-use App\Models\User;
+// use App\Models\User;
 use App\Services\OrderNumber\OrderNumberServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +28,19 @@ class AddressController extends Controller
         $cartItems = CartItems::where('user_id', $user->id)->get();
         $provinces = Province::all();
 
+        $cartItemsCount = null;
+        $totalProductPrice = null;
+        $totalDiscount = null;
+
+        foreach ($cartItems as $item)
+        {
+            $totalProductPrice += $item->cartItemProductPrice();
+            $totalDiscount += $item->cartItemProductDiscount();
+            $cartItemsCount += $item->number;
+        }
+
+
+
         if (empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
             empty($user->national_code)) {
@@ -38,9 +51,11 @@ class AddressController extends Controller
 
 
         return view('front_end.address.address')
-            ->with(['cartItems' => $cartItems, 'addresses' => $addresses,
-                'provinces' => $provinces, 'deliveries' => $deliveries]);
-    }
+            ->with(['totalProductPrice' => $totalProductPrice,'totalDiscount' => $totalDiscount,
+                    'cartItemsCount' => $cartItemsCount,
+                    'cartItems' => $cartItems, 'addresses' => $addresses,
+                    'provinces' => $provinces, 'deliveries' => $deliveries]);
+        }
 
     public function store(AddressRequest $request)
     {

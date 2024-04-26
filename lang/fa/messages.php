@@ -347,7 +347,8 @@ return [
     'validate_code_form' => 'تایید کد فعال سازی',
     'validate_code' => 'کد تایید',
     'continue' => 'ادامه',
-    'continue_and_pay' => 'ادامه ثبت سفارش',
+    'continue_register_order' => 'ادامه ثبت سفارش',
+    'confirm_continue_order' => 'تایید و ادامه ثبت سفارش',
     'mobile' => 'شماره موبایل',
     'enter_active_code' => 'کد تایید را وارد کنید',
     'shopping_cart_message' => ' کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش
