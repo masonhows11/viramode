@@ -151,7 +151,10 @@
                                                    {{ __('messages.shopping_cart_message') }}
                                                 </span><span class="help-sn" data-toggle="tooltip" data-html="true"
                                                     data-placement="bottom"
-                                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرامد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
+                                                    title="<div class='help-container is-right'>
+                                                        <div class='help-arrow'>
+                                                        </div>
+                                                        <p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرامد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
                                                     <span class="mdi mdi-information-outline"></span>
                                                 </span>
                                             </div>
