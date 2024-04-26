@@ -75,12 +75,32 @@
                                     </span>
                                     @else
                                     <span>
-                                        {{ $user->national_code ? $user->national_code : __('messages.national_code_not_registered') }}
+                                        {{ $user->national_code  }}
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            
+                            <div class="col-md-6 col-sm-12">
+                                <div class="label-info">
+                                    <span>آدرس ها:</span>
+                                </div>
+                                <div class="value-info">
+                                    @if( $user->addresses->isEmpty())
+                                    <span>
+                                         <a href="{{  route('addresses') }}" class="text-danger">
+                                            {{  __('messages.addresses_not_found') }}
+                                         </a>
+                                    </span>
+                                    @else
+                                    <span>
+                                        <a href="{{  route('addresses') }}" class="text-dark">
+                                            {{  __('messages.list_address') }}
+                                         </a>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="col-md-6 col-sm-12">
                                 <div class="label-info">
                                     <span>دریافت خبرنامه:</span>

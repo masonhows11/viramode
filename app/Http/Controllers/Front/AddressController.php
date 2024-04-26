@@ -43,7 +43,8 @@ class AddressController extends Controller
 
         if (empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
-            empty($user->national_code)) {
+            empty($user->national_code) || $user->addresses->isEmpty())
+         {
             session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
            // return redirect()->back();
             return redirect()->route('user.profile');
