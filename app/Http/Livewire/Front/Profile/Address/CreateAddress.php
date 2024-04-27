@@ -62,6 +62,14 @@ class CreateAddress extends Component
 
         try {
 
+             $userAddress = auth()->user()->addresses()->count();
+
+             if($userAddress > 0)
+             {
+                session()->flash('success', 'کاربر عزیز فقط تعداد 4 آدرس می توانید داشته باشید.');
+                return redirect()->route('profile.address.index');;
+             }
+
             $postal_code = convertPerToEnglish($this->postal_code);
 
             Address::create([
@@ -76,7 +84,7 @@ class CreateAddress extends Component
                 'address_description' => $this->address_description,
             ]);
 
-            session()->flash('success', __('messages.New_record_saved_successfully'));
+            session()->flash('warning', __('messages.New_record_saved_successfully'));
             return redirect()->route('profile.address.index');
         } catch (\Exception $ex) {
             return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);

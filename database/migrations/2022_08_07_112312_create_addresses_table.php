@@ -20,7 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('plate_number');
             $table->string('postal_code');
             $table->string('mobile');
-            $table->tinyInteger('is_active')->default(1);
+            $table->tinyInteger('is_active')->default(0);
             $table->text('address_description');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
