@@ -11,6 +11,7 @@ class IndexAddress extends Component
 
     public $user;
     public $address_id;
+    public $current_id;
 
     public function mount()
     {
@@ -50,23 +51,13 @@ class IndexAddress extends Component
     public function status($id)
     {
 
-        $activeAddress = Address::where('user_id', $this->user)->where('is_active', 1)->count();
+        $this->current_id = $id;
 
-       // dd($activeAddress);
-        if ($activeAddress == 1)
-         {
-            
-            $this->dispatchBrowserEvent(
-                'show-result',
-                [
-                    'type' => 'success',
-                    'message' => '.کاربر عزیز فقط یک آدرس فعال می توانید داشته باشید'
-                ]
-            );
-            return null;
-        }
+        $currentAddress = Address::where('user_id', $this->user)->where('is_active', 1)->first();
+        $currentAddress->is_active = 0;
+        $currentAddress->save();
 
-        $address = Address::findOrFail($id);
+        $address = Address::findOrFail($this->current_id);
         if ($address->is_active == 0) {
             $address->is_active = 1;
         } else {
