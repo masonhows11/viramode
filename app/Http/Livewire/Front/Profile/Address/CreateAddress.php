@@ -36,7 +36,7 @@ class CreateAddress extends Component
                 'province_id' => ['required','exists:provinces,id'],
                 'city_id' => ['required','exists:cities,id'],
                 'mobile' => ['required','min:1','max:11'],
-                'plate_number' => ['required','min:1','max:20'],
+                'plate_number' => ['nullable','min:1','max:20'],
                 'postal_code' => ['required','min:1','max:20',new PostalCodeRule()],
                 'address_description' => ['required','min:10','max:1000'],
                 'recipient_first_name' => ['required','min:2','max:64'],
@@ -52,18 +52,18 @@ class CreateAddress extends Component
 
         try {
 
-            $postal_code = convertPerToEnglish($request->postal_code);
+            $postal_code = convertPerToEnglish($this->postal_code);
 
             Address::create([
                 'user_id' => Auth::id(),
-                'province_id' => $request->province_id,
-                'city_id' => $request->city_id,
-                'mobile' => $request->mobile,
-                'plate_number' => $request->plate_number,
+                'province_id' => $this->province_id,
+                'city_id' => $this->city_id,
+                'mobile' => $this->mobile,
+                'plate_number' => $this->plate_number,
                 'postal_code' => $postal_code,
-                'recipient_first_name' => $request->recipient_first_name,
-                'recipient_last_name' => $request->recipient_last_name,
-                'address_description' => $request->address_description,
+                'recipient_first_name' => $this->recipient_first_name,
+                'recipient_last_name' => $this->recipient_last_name,
+                'address_description' => $this->address_description,
                 'is_active' => 1,
             ]);
 
