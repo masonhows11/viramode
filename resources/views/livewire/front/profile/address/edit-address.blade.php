@@ -1,5 +1,4 @@
 <div>
-
     <form class="form-account" wire:submit.prevent="save">
 
         <div class="row form-ui px-3">
@@ -87,17 +86,21 @@
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
+
                 <div class="form-row-title">
                     <h4>
                         شهر
                     </h4>
                 </div>
+                
                 <div class="form-row">
 
                     <select class="right form-control" wire:model.defer="city_id">
-                        <option value="bojnourd">
-                            بجنورد
-                        </option>
+                        @foreach ($cities as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->name }}
+                            </option>
+                        @endforeach
                     </select>
 
                 </div>
@@ -137,7 +140,6 @@
             </div>
 
 
-
             <div class="col-12 pr-4 pl-4">
                 <button type="submit" class="btn btn-sm btn-primary btn-submit-form">
                     {{ __('messages.save_address_and_delivert_to') }}
@@ -148,6 +150,7 @@
             </div>
 
         </div>
+
     </form>
 
 </div>

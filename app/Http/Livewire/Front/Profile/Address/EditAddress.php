@@ -42,7 +42,7 @@ class EditAddress extends Component
 
 
         $this->provinces = Province::query()->select('id', 'name')->get();
-        $this->cities = collect();
+        $this->cities = City::where('province_id', $this->province_id)->select('id', 'name')->get();
         $this->user = Auth::id();
     }
 

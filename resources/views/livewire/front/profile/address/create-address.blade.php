@@ -90,7 +90,6 @@
                     </h4>
                 </div>
                 <div class="form-row">
-
                         <select class="right form-control" wire:model.defer="city_id">
                             @foreach ( $cities as $item )
                             <option value="{{ $item->id}}">
@@ -98,7 +97,6 @@
                             </option>
                             @endforeach
                         </select>
-
                 </div>
                 @error('city_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
@@ -129,7 +127,6 @@
             </div>
 
 
-
             <div class="col-12 pr-4 pl-4">
                 <button type="submit" class="btn btn-sm btn-primary btn-submit-form">
                 {{  __('messages.save_address_and_delivert_to') }}
@@ -140,6 +137,7 @@
             </div>
 
         </div>
+        
     </form>
 
 </div>
