@@ -48,6 +48,32 @@ class CreateAddress extends Component
     public function save()
     {
 
+        $this->validate();
+
+        try {
+
+            $postal_code = convertPerToEnglish($request->postal_code);
+
+            Address::create([
+                'user_id' => Auth::id(),
+                'province_id' => $request->province_id,
+                'city_id' => $request->city_id,
+                'mobile' => $request->mobile,
+                'plate_number' => $request->plate_number,
+                'postal_code' => $postal_code,
+                'recipient_first_name' => $request->recipient_first_name,
+                'recipient_last_name' => $request->recipient_last_name,
+                'address_description' => $request->address_description,
+                'is_active' => 1,
+            ]);
+
+            session()->flash('success', __('messages.New_record_saved_successfully'));
+            return redirect()->back();
+
+        } catch (\Exception $ex) {
+            return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
+        }
+
     }
 
     public function render()
