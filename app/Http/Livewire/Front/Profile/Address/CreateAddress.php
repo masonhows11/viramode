@@ -67,7 +67,8 @@ class CreateAddress extends Component
              if($userAddress > 0)
              {
                 session()->flash('success', 'کاربر عزیز فقط تعداد 4 آدرس می توانید داشته باشید.');
-                return redirect()->route('profile.address.index');;
+                
+                return redirect()->route('profile.address.index');
              }
 
             $postal_code = convertPerToEnglish($this->postal_code);

@@ -15,7 +15,6 @@ class IndexAddress extends Component
     public function mount()
     {
         $this->user = Auth::id();
-
     }
 
     public function deleteConfirmation($id)
@@ -35,9 +34,13 @@ class IndexAddress extends Component
 
             $model = Address::findOrFail($this->address_id);
             $model->delete();
-            $this->dispatchBrowserEvent('show-result',
-                ['type' => 'success',
-                    'message' => __('messages.The_deletion_was_successful')]);
+            $this->dispatchBrowserEvent(
+                'show-result',
+                [
+                    'type' => 'success',
+                    'message' => __('messages.The_deletion_was_successful')
+                ]
+            );
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }
@@ -47,25 +50,44 @@ class IndexAddress extends Component
     public function status($id)
     {
 
+        $activeAddress = Address::where('user_id', $this->user)->where('is_active', 1)->count();
+
+       // dd($activeAddress);
+        if ($activeAddress == 1)
+         {
+            
+            $this->dispatchBrowserEvent(
+                'show-result',
+                [
+                    'type' => 'success',
+                    'message' => '.کاربر عزیز فقط یک آدرس فعال می توانید داشته باشید'
+                ]
+            );
+            return null;
+        }
+
         $address = Address::findOrFail($id);
         if ($address->is_active == 0) {
             $address->is_active = 1;
         } else {
             $address->is_active = 0;
-
         }
         $address->save();
 
 
-        $this->dispatchBrowserEvent('show-result',
-            ['type' => 'success',
-                'message' => __('messages.The_changes_were_made_successfully')]);
+        $this->dispatchBrowserEvent(
+            'show-result',
+            [
+                'type' => 'success',
+                'message' => __('messages.The_changes_were_made_successfully')
+            ]
+        );
     }
 
 
     public function render()
     {
         return view('livewire.front.profile.address.index-address')
-        ->with(['addresses' => Address::where('user_id',$this->user)->get() , 'user' => $this->user]);
+            ->with(['addresses' => Address::where('user_id', $this->user)->get(), 'user' => $this->user]);
     }
 }
