@@ -71,18 +71,13 @@
                     </h4>
                 </div>
                 <div class="form-row">
-
-                        <select class="right form-control" wire:model.defer="province_id">
+                        <select class="right form-control" wire:model="province_id">
                             @foreach ( $provinces as $item )
                             <option value="{{ $item->id}}">
                                {{ $item->name}}
                             </option>
                             @endforeach
-
-
-
                         </select>
-
                 </div>
                 @error('province_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
@@ -96,9 +91,11 @@
                 <div class="form-row">
 
                         <select class="right form-control" wire:model.defer="city_id">
-                            <option value="bojnourd">
-                                بجنورد
+                            @foreach ( $cities as $item )
+                            <option value="{{ $item->id}}">
+                                {{ $item->name}}
                             </option>
+                            @endforeach
                         </select>
 
                 </div>
