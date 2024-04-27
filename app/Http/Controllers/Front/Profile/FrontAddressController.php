@@ -22,9 +22,7 @@ class FrontAddressController extends Controller
 
     public function create()
     {
-        $provinces = Province::all();
-        $user = Auth::id();
-        $addresses = Address::where('user_id',$user)->get();
+        
         return view('front_end.profile.address.create',['addresses' => $addresses , 'provinces' => $provinces]);
     }
 
