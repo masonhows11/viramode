@@ -25,7 +25,7 @@ class AddressController extends Controller
         $deliveries = Delivery::where('status', 1)->get();
         $user = Auth::user();
         $address = Address::where('user_id', $user->id)->where('is_active', 1)->first();
-       
+
         $cartItems = CartItems::where('user_id', $user->id)->get();
         $provinces = Province::all();
 
@@ -59,84 +59,84 @@ class AddressController extends Controller
                     'provinces' => $provinces, 'deliveries' => $deliveries]);
         }
 
-    public function store(AddressRequest $request)
-    {
-        try {
+    // public function store(AddressRequest $request)
+    // {
+    //     try {
 
-            $postal_code = convertPerToEnglish($request->postal_code);
+    //         $postal_code = convertPerToEnglish($request->postal_code);
 
-            Address::create([
-                'user_id' => Auth::id(),
-                'province_id' => $request->province_id,
-                'city_id' => $request->city_id,
-                'mobile' => $request->mobile,
-                'plate_number' => $request->plate_number,
-                'postal_code' => $postal_code,
-                'recipient_first_name' => $request->recipient_first_name,
-                'recipient_last_name' => $request->recipient_last_name,
-                'address_description' => $request->address_description,
-                'is_active' => 1,
-            ]);
+    //         Address::create([
+    //             'user_id' => Auth::id(),
+    //             'province_id' => $request->province_id,
+    //             'city_id' => $request->city_id,
+    //             'mobile' => $request->mobile,
+    //             'plate_number' => $request->plate_number,
+    //             'postal_code' => $postal_code,
+    //             'recipient_first_name' => $request->recipient_first_name,
+    //             'recipient_last_name' => $request->recipient_last_name,
+    //             'address_description' => $request->address_description,
+    //             'is_active' => 1,
+    //         ]);
 
-            session()->flash('success', __('messages.New_record_saved_successfully'));
-            return redirect()->route('check.address');
+    //         session()->flash('success', __('messages.New_record_saved_successfully'));
+    //         return redirect()->route('check.address');
 
-        } catch (\Exception $ex) {
-            return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
-        }
+    //     } catch (\Exception $ex) {
+    //         return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
+    //     }
 
-    }
-
-
-    public function getCities(Request $request)
-    {
-        try {
-            $cities = City::where('province_id', $request->id)->get();
-            if ($cities->isNotEmpty()) {
-                return response()->json(['data' => $cities, 'status' => 200], 200);
-            } else {
-                return response()->json(['data' => 'not found any record', 'status' => 404], 200);
-            }
-        } catch (\Exception $ex) {
-            return response()->json(['data' => __('messages.An_error_occurred'), 'status' => 500], 200);
-        }
-    }
+    // }
 
 
-    public function update(AddressRequest $request)
-    {
-        try {
+    // public function getCities(Request $request)
+    // {
+    //     try {
+    //         $cities = City::where('province_id', $request->id)->get();
+    //         if ($cities->isNotEmpty()) {
+    //             return response()->json(['data' => $cities, 'status' => 200], 200);
+    //         } else {
+    //             return response()->json(['data' => 'not found any record', 'status' => 404], 200);
+    //         }
+    //     } catch (\Exception $ex) {
+    //         return response()->json(['data' => __('messages.An_error_occurred'), 'status' => 500], 200);
+    //     }
+    // }
 
-            $postal_code = convertPerToEnglish($request->postal_code);
 
-            Address::where('id', $request->address)->update([
-                'user_id' => Auth::id(),
-                'province_id' => $request->province_id,
-                'city_id' => $request->city_id,
-                'mobile' => $request->mobile,
-                'plate_number' => $request->plate_number,
-                'postal_code' => $postal_code,
-                'recipient_first_name' => $request->recipient_first_name,
-                'recipient_last_name' => $request->recipient_last_name,
-                'address_description' => $request->address_description,
-                'is_active' => 1,
-            ]);
+    // public function update(AddressRequest $request)
+    // {
+    //     try {
 
-            session()->flash('success', __('messages.The_update_was_completed_successfully'));
-            return redirect()->route('check.address');
+    //         $postal_code = convertPerToEnglish($request->postal_code);
 
-        } catch (\Exception $ex) {
-            return view('errors_custom.model_store_error')
-                ->with(['error' => $ex->getMessage()]);
-        }
+    //         Address::where('id', $request->address)->update([
+    //             'user_id' => Auth::id(),
+    //             'province_id' => $request->province_id,
+    //             'city_id' => $request->city_id,
+    //             'mobile' => $request->mobile,
+    //             'plate_number' => $request->plate_number,
+    //             'postal_code' => $postal_code,
+    //             'recipient_first_name' => $request->recipient_first_name,
+    //             'recipient_last_name' => $request->recipient_last_name,
+    //             'address_description' => $request->address_description,
+    //             'is_active' => 1,
+    //         ]);
 
-    }
+    //         session()->flash('success', __('messages.The_update_was_completed_successfully'));
+    //         return redirect()->route('check.address');
+
+    //     } catch (\Exception $ex) {
+    //         return view('errors_custom.model_store_error')
+    //             ->with(['error' => $ex->getMessage()]);
+    //     }
+
+    // }
 
 
     // this controller add common discount to carts of current user
     public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
     {
-        // dd('here');
+    
         $user = auth()->user();
 
         // calculate final price

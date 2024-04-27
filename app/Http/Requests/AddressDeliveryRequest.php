@@ -22,7 +22,7 @@ class AddressDeliveryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'address_id' => ['required','exists:addresses,id'],
+           // 'address_id' => ['required','exists:addresses,id'],
             'delivery_id'=> ['required','exists:delivery,id']
         ];
     }
@@ -30,7 +30,7 @@ class AddressDeliveryRequest extends FormRequest
     public function messages()
     {
         return [
-            'address_id.required' => 'آدرس گیرنده را انتخاب کنید',
+           // 'address_id.required' => 'آدرس گیرنده را انتخاب کنید',
             'delivery_id.required' => 'نوع ارسال را انتخاب کنید',
         ];
     }

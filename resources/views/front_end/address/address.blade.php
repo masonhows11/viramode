@@ -70,16 +70,13 @@
 
                             <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
 
-                                <input type="input" form="my-form" name="address_id" value="{{ $address->id }}"
-                                    class="d-none">
+                                <input type="input" form="my-form" name="address_id" value="{{ $address->id }}" class="d-none">
                                 <div class="checkout-contact-content">
                                     <ul class="checkout-contact-items">
                                         <li class="checkout-contact-item">
                                             {{ __('messages.receiver') }}:
-                                            <span
-                                                class="full-name">{{ $address->recipient_first_name . ' ' . $address->recipient_last_name }}</span>
-                                            <a href="{{ route('profile.address.edit', $address->id) }}"
-                                                class="checkout-contact-btn-edit">اصلاح این آدرس</a>
+                                            <span class="full-name">{{ $address->recipient_first_name . ' ' . $address->recipient_last_name  }}</span>
+                                            <a href="{{ route('profile.address.edit',$address->id) }}" class="checkout-contact-btn-edit">اصلاح این آدرس</a>
                                         </li>
                                         <li class="checkout-contact-item">
                                             <div class="checkout-contact-item checkout-contact-item-mobile">
@@ -92,7 +89,7 @@
                                             </div>
                                             <br>
                                             استان
-                                            <span class="state">{{ $address->province->name }}</span>
+                                            <span class="state">{{  $address->province->name }}</span>
                                             ، ‌شهر
                                             <span class="city">{{ $address->city->name }}</span>
                                             ،
@@ -115,17 +112,24 @@
 
                                 @foreach ($deliveries as $delivery)
                                     <div class="custom-control custom-radio pl-0 pr-3">
-                                        <input type="radio" form="my-form" name="delivery_id" class="custom-control-input"
-                                            name="delivery" id="radio-{{ $delivery->id }}" value="{{ $delivery->id }}">
+                                        <input type="radio"
+                                                 form="my-form"
+                                                 name="delivery_id"
+                                                 class="custom-control-input"
+                                                 name="delivery"
+                                                 id="radio-{{ $delivery->id }}" value="{{ $delivery->id }}">
                                         <label for="radio-{{ $delivery->id }}" class="custom-control-label">
                                             {{ $delivery->title }}
                                         </label>
                                     </div>
                                 @endforeach
 
-                                @error('delivery_id')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <div class="custom-control custom-radio pl-0 pr-3">
+                                    @error('delivery_id')
+                                     <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                             
 
                             </div>
                             <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
@@ -208,55 +212,52 @@
 
 
 
-                    <div class="dt-sn dt-sn--box border mb-2">
+                        <div class="dt-sn dt-sn--box border mb-2">
 
-                        <ul class="checkout-summary-summary">
-                            <li>
-                                <span>مبلغ کل ({{ $cartItemsCount }}
-                                    کالا)</span><span>{{ priceFormat($totalProductPrice) }}
-                                    {{ __('messages.toman') }}</span>
-                            </li>
+                            <ul class="checkout-summary-summary">
+                                <li>
+                                    <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span>{{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
+                                </li>
 
-                            <li>
-                                <span>هزینه ارسال</span><span>وابسته به آدرس</span>
-                            </li>
-                        </ul>
+                                <li>
+                                    <span>هزینه ارسال</span><span>وابسته به آدرس</span>
+                                </li>
+                            </ul>
 
-                        <div class="checkout-summary-devider">
-                            <div></div>
-                        </div>
-
-                        <form action="{{ route('choose.address.delivery') }}" method="post" id="my-form">
-                            @csrf
-                        </form>
-
-                        <div class="checkout-summary-content">
-                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
-                            <div class="checkout-summary-price-value">
-                                <span
-                                    class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
-                                {{ __('messages.toman') }}
+                            <div class="checkout-summary-devider">
+                                <div></div>
                             </div>
-                            <a href="#" class="mb-2 d-block">
-                                <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
-                                    <i class="mdi mdi-arrow-left"></i>
-                                    {{ __('messages.confirm_continue_order') }}
-                                </button>
-                            </a>
-                            <div>
-                                <span>
-                                    {{ __('messages.shopping_cart_message') }}
-                                </span><span class="help-sn" data-toggle="tooltip" data-html="true"
-                                    data-placement="bottom"
-                                    title="<div class='help-container is-right'>
+
+                            <form action="{{ route('choose.address.delivery') }}" method="post" id="my-form">
+                                @csrf
+                            </form>
+
+                            <div class="checkout-summary-content">
+                                <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
+                                <div class="checkout-summary-price-value">
+                                    <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
+                                    {{ __('messages.toman') }}
+                                </div>
+                              
+                                    <button type="submit" onclick="document.getElementById('my-form').submit();" class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
+                                        <i class="mdi mdi-arrow-left"></i>
+                                        {{ __('messages.confirm_continue_order')}}
+                                     </button>
+                                
+                                <div>
+                                    <span>
+                                        {{ __('messages.shopping_cart_message') }}
+                                    </span><span class="help-sn" data-toggle="tooltip" data-html="true"
+                                        data-placement="bottom"
+                                        title="<div class='help-container is-right'>
                                             <div class='help-arrow'>
                                             </div>
                                             <p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرا مد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
-                                    <span class="mdi mdi-information-outline"></span>
-                                </span>
+                                        <span class="mdi mdi-information-outline"></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
                 </div>
@@ -265,7 +266,10 @@
         </div>
 
     </main>
+
+
 @endsection
 @push('payment_custom_scripts')
-    <script></script>
+    <script>
+    </script>
 @endpush

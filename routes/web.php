@@ -1,11 +1,14 @@
 <?php
 
 // normal route controllers
-use App\Http\Livewire\Admin\AdminTag;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Admin\AdminPerms;
+
 
 // dash routes
+
+// admin livewire routes
+use App\Http\Livewire\Admin\AdminPerms;
 use App\Http\Livewire\Admin\AdminRoles;
 use App\Http\Livewire\Admin\AdminUsers;
 use App\Http\Controllers\HomeController;
@@ -13,108 +16,123 @@ use App\Http\Livewire\Admin\AdminAdmins;
 use App\Http\Livewire\Admin\AdminColors;
 use App\Http\Livewire\Admin\ListUsersForPerm;
 use App\Http\Livewire\Admin\ListUsersForRole;
-use App\Http\Controllers\Dash\AdminController;
+use App\Http\Livewire\Admin\AdminTag;
 use App\Http\Livewire\Admin\Stock\StockProduct;
-use App\Http\Controllers\Front\AddressController;
+use App\Http\Livewire\Admin\Attribute\AdminAttributeCreate;
+//
 use App\Http\Livewire\Admin\Brand\AdminBrandList;
 use App\Http\Livewire\Admin\Brand\AdminEditBrand;
 use App\Http\Livewire\Admin\Setting\AdminSetting;
 use App\Http\Livewire\Admin\Orders\AdminAllOrders;
-use App\Http\Controllers\Front\Cart\CartController;
 use App\Http\Livewire\Admin\AdminCategoryAttribute;
 use App\Http\Livewire\Admin\Brand\AdminCreateBrand;
 use App\Http\Livewire\Admin\Delivery\AdminDelivery;
-use App\Http\Controllers\Dash\NotificationController;
-use App\Http\Livewire\Admin\Attribute\AdminAttribute;
-use App\Http\Livewire\Admin\Banner2\AdminNewestBanner;
+//
 use App\Http\Livewire\Admin\IndexProduct\IndexProduct;
-use App\Http\Controllers\Auth_User\LoginUserController;
+use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryEdit;
 use App\Http\Livewire\Admin\Category\AdminCategoryList;
 use App\Http\Livewire\Admin\Comment\AdminSingleComment;
+use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
+//
+use App\Http\Livewire\Admin\Attribute\AdminAttribute;
+use App\Http\Livewire\Admin\Attribute\AdminAttributeValueCreate;
+use App\Http\Livewire\Admin\Attribute\AdminAttributeValue;
+//
+use App\Http\Livewire\Admin\Banner2\AdminBestSellerSlider;
+use App\Http\Livewire\Admin\Banner2\AdminSuggestionBanner;
+use App\Http\Livewire\Admin\Banner2\AdminNewestBanner;
+use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
+//
+use App\Http\Controllers\Dash\NotificationController;
+use App\Http\Controllers\Dash\AdminController;
 use App\Http\Controllers\Dash\AdminPermAssignController;
 use App\Http\Controllers\Dash\AdminRoleAssignController;
 use App\Http\Controllers\Dash\Payment\PaymentController;
 use App\Http\Controllers\Dash\Setting\SettingController;
-use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
-
-// use App\Http\Controllers\Dash\Banner\TopBannerController;
-
-use App\Http\Controllers\Auth_Admin\AdminLoginController;
 use App\Http\Controllers\Dash\Order\AdminOrderController;
-use App\Http\Controllers\Front\Product\ProductController;
-use App\Http\Controllers\Front\Profile\CompareController;
-use App\Http\Controllers\Front\Profile\ProfileController;
-use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
-use App\Http\Controllers\Auth_User\RegisterUserController;
-use App\Http\Controllers\Auth_User\ValidateUserController;
-
-// use App\Http\Controllers\Dash\Banner\MainSliderController;
-
-use App\Http\Controllers\Dash\Address\AdminCityController;
-use App\Http\Livewire\Admin\Attribute\AdminAttributeValue;
-use App\Http\Livewire\Admin\Banner2\AdminBestSellerSlider;
-use App\Http\Livewire\Admin\Banner2\AdminSuggestionBanner;
+// admin auth routes
+use App\Http\Controllers\Auth_Admin\AdminLoginController;
 use App\Http\Controllers\Auth_Admin\AdminProfileController;
+use App\Http\Controllers\Auth_Admin\AdminValidateController;
+//
 use App\Http\Controllers\Dash\StockProduct\StockController;
 use App\Http\Controllers\Dash\Ticket\AdminTicketController;
-
-// auth front routes
-use App\Http\Controllers\Front\Profile\FavoritesController;
-use App\Http\Livewire\Admin\Attribute\AdminAttributeCreate;
-use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
-
-// admin livewire routes
-// use App\Http\Controllers\SiteMapController;
-use App\Http\Controllers\Auth_Admin\AdminValidateController;
-
-// use App\Http\Controllers\Dash\Banner\BottomBannerController;
-use App\Http\Controllers\Dash\Banner2\AdminNewestController;
-use App\Http\Controllers\Dash\Product\ProductEditController;
-
-use App\Http\Controllers\Dash\Product\ProductMetaController;
-use App\Http\Controllers\Front\Profile\FrontTicketController;
+//
+use App\Http\Controllers\Dash\Address\AdminCityController;
 use App\Http\Controllers\Dash\Address\AdminProvinceController;
-use App\Http\Controllers\Dash\Comments\AdminCommentController;
-
-use App\Http\Controllers\Dash\Discount\AmazingSalesController;
+//
+use App\Http\Controllers\Dash\Product\ProductEditController;
+use App\Http\Controllers\Dash\Product\ProductMetaController;
 use App\Http\Controllers\Dash\Product\ProductCreateController;
-
-use App\Http\Controllers\Front\Profile\FrontAddressController;
-use App\Http\Controllers\Auth_User\VerifyEmailPromptController;
-
+//
+use App\Http\Controllers\Dash\Comments\AdminCommentController;
+//
+use App\Http\Controllers\Dash\Discount\AmazingSalesController;
+//
 use App\Http\Controllers\Dash\Delivery\AdminDeliveryController;
+//
+use App\Http\Controllers\Dash\Banner2\AdminNewestController;
 use App\Http\Controllers\Dash\Banner2\AdminBestSellerController;
 use App\Http\Controllers\Dash\Banner2\AdminSuggestionController;
-
+use App\Http\Controllers\Dash\Banner2\AdminMostVisitedController;
 //  brands
 use App\Http\Controllers\Dash\Discount\CommonDiscountController;
 use App\Http\Controllers\Dash\Discount\CouponDiscountController;
 use App\Http\Controllers\Dash\Product\ProductWarrantyController;
-
 // others
 use App\Http\Controllers\Dash\Ticket\AdminAdminTicketController;
-use App\Http\Livewire\Admin\Attribute\AdminAttributeValueCreate;
-use App\Http\Controllers\Dash\Banner2\AdminMostVisitedController;
-// use App\Http\Controllers\Dash\Banner\AmazingOfferBannerController;
-
+//
+use App\Http\Controllers\Dash\Product\ProductCreateSpecificationsController;
 use App\Http\Controllers\Dash\Product\ProductCreateTagController;
 use App\Http\Controllers\Dash\Product\ProductCreateColorController;
 use App\Http\Controllers\Dash\Product\ProductCreateImageController;
 use App\Http\Controllers\Dash\Ticket\AdminCategoryTicketController;
 use App\Http\Controllers\Dash\Ticket\AdminPriorityTicketController;
-// use App\Http\Controllers\Dash\Banner\ProductByCategorySliderController;
+//
 use App\Http\Controllers\Dash\Notifications\AdminSMSNoticeController;
 use App\Http\Controllers\Dash\Notifications\AdminEmailNoticesController;
-
-//use App\Http\Livewire\Admin\Banner\AdminAmazingOfferBanner;
-//use App\Http\Livewire\Admin\Banner\AdminBottomTwoBanner;
-//use App\Http\Livewire\Admin\Banner\AdminMainSlider;
-//use App\Http\Livewire\Admin\Banner\AdminTopBanner;
-
+//
 use App\Http\Controllers\Dash\Product\ProductEditSpecificationsController;
 use App\Http\Controllers\Dash\Notifications\AdminEmailNoticeFileController;
-use App\Http\Controllers\Dash\Product\ProductCreateSpecificationsController;
+
+// use App\Http\Controllers\Dash\Banner\BottomBannerController;
+// use App\Http\Controllers\Dash\Banner\TopBannerController;
+// use App\Http\Controllers\Dash\Banner\MainSliderController;
+// use App\Http\Livewire\Admin\Banner\AdminAmazingOfferBanner;
+// use App\Http\Livewire\Admin\Banner\AdminBottomTwoBanner;
+// use App\Http\Livewire\Admin\Banner\AdminMainSlider;
+// use App\Http\Livewire\Admin\Banner\AdminTopBanner;
+// use App\Http\Controllers\Dash\Banner\AmazingOfferBannerController;
+// use App\Http\Controllers\Dash\Banner\ProductByCategorySliderController;
+
+
+//// sitemap routes
+
+// use App\Http\Controllers\SiteMapController;
+
+//// front routes
+
+
+// auth routes 
+use App\Http\Controllers\Auth_User\VerifyEmailPromptController;
+use App\Http\Controllers\Auth_User\RegisterUserController;
+use App\Http\Controllers\Auth_User\ValidateUserController;
+use App\Http\Controllers\Auth_User\LoginUserController;
+//
+use App\Http\Controllers\Front\Profile\FavoritesController;
+// front routes
+use App\Http\Controllers\Front\AddressController;
+use App\Http\Controllers\Front\Profile\FrontTicketController;
+use App\Http\Controllers\Front\Profile\FrontAddressController;
+//
+use App\Http\Controllers\Front\Cart\CartController;
+//
+use App\Http\Controllers\Front\Product\ProductController;
+use App\Http\Controllers\Front\Profile\CompareController;
+use App\Http\Controllers\Front\Profile\ProfileController;
+//
+use App\Http\Controllers\Front\Payment\PaymentController as FrontPaymentController;
 
 /*
 |--------------------------------------------------------------------------
