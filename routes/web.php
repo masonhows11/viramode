@@ -234,7 +234,7 @@ Route::get('/compare-products', [CompareController::class, 'index'])->name('comp
 Route::controller(FrontAddressController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
 
 
-    Route::get('/addresses', 'addresses')->name('addresses');
+    Route::get('/address/index', 'addresses')->name('profile.address.index');
 
     Route::get('/address/create','create')->name('profile.address.create');
     Route::post('/address/store', 'store')->name('profile.address.store');

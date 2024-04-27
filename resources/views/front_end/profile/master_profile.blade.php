@@ -98,8 +98,8 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('addresses') }}"
-                                                    class="{{ $route === 'addresses' ? 'active' : '' }}">
+                                                    <a href="{{ route('profile.address.index') }}"
+                                                    class="{{ $route === 'profile.address.index' ? 'active' : '' }}">
                                                         <i class="mdi mdi-sign-direction"></i>
                                                         آدرس ها
                                                     </a>

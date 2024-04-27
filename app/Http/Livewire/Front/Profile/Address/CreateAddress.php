@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front\Profile\Address;
 use Livewire\Component;
 use App\Models\Province;
 use App\Models\City;
+use App\Models\Address;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\PostalCodeRule;
 
@@ -73,11 +74,10 @@ class CreateAddress extends Component
                 'recipient_first_name' => $this->recipient_first_name,
                 'recipient_last_name' => $this->recipient_last_name,
                 'address_description' => $this->address_description,
-                'is_active' => 1,
             ]);
 
             session()->flash('success', __('messages.New_record_saved_successfully'));
-            return redirect()->back();
+            return redirect()->route('profile.address.index');
         } catch (\Exception $ex) {
             return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
         }

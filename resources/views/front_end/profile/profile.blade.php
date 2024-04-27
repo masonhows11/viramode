@@ -87,13 +87,13 @@
                                 <div class="value-info">
                                     @if( $user->addresses->isEmpty())
                                     <span>
-                                         <a href="{{  route('addresses') }}" class="text-danger">
+                                         <a href="{{  route('profile.address.index') }}" class="text-danger">
                                             {{  __('messages.addresses_not_found') }}
                                          </a>
                                     </span>
                                     @else
                                     <span>
-                                        <a href="{{  route('addresses') }}" class="text-dark">
+                                        <a href="{{  route('profile.address.index') }}" class="text-dark">
                                             {{  __('messages.list_address') }}
                                          </a>
                                     </span>

@@ -7082,7 +7082,7 @@ input[type=number]::-webkit-outer-spin-button {
 .card-horizontal-product,
 .card-horizontal-address {
     width: 100%;
-    min-height: 180px;
+    min-height: 300px;
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
@@ -7092,7 +7092,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card-horizontal-address {
-    height: 257px;
+    height: 300px;
     border-bottom: 1px solid #eee;
     border-radius: 0;
 }
