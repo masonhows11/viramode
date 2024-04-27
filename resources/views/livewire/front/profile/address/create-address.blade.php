@@ -72,6 +72,7 @@
                 </div>
                 <div class="form-row">
                         <select class="right form-control" wire:model="province_id">
+                            <option value="0">{{ __('messages.choose') }}</option>
                             @foreach ( $provinces as $item )
                             <option value="{{ $item->id}}">
                                {{ $item->name}}
