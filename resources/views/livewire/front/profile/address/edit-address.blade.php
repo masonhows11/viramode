@@ -154,7 +154,7 @@
                 <button type="submit" class="btn btn-sm btn-primary btn-submit-form">
                 {{  __('messages.save_address_and_delivert_to') }}
                 </button>
-                <a href="{{ route('addresses')}}" class="btn-link-border float-left mt-2">
+                <a href="{{ route('profile.address.index')}}" class="btn-link-border float-left mt-2">
                     {{ __('messages.cancel_return')}}
                 </button>
             </div>

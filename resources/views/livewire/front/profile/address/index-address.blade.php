@@ -21,15 +21,10 @@
                             <i class="mdi mdi-email-outline"></i>
                             شهر : <span>{{ $address->city->name ? $address->city->name : ' - ' }}</span>
                         </li>
-                        {{-- <li class="card-horizontal-address-method">
-                            <i class="mdi mdi-email-outline"></i>
-                            کدپستی : <span>{{ $address->postal_code }}</span>
-                        </li>
                         <li class="card-horizontal-address-method">
-                            <i class="mdi mdi-cellphone-iphone"></i>
-                            تلفن همراه :
-                            <span>{{ $address->mobile != null ? $address->mobile : $address->user->mobile }}</span>
-                        </li> --}}
+                            <i class="mdi mdi-email-outline"></i>
+                            پلاک : <span>{{ $address->plate_number }}</span>
+                        </li>
 
                     </ul>
                     <ul class="card-horizontal-address-methods d-flex float-right">

@@ -7,7 +7,7 @@
     <div class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
         <h2>{{ __('messages.edit_address') }}</h2>
     </div>
-    <livewire:front.profile.address.edit-address>
+    <livewire:front.profile.address.edit-address :address="$address">
 
 </div>
 @endsection

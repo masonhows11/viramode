@@ -5,12 +5,15 @@ namespace App\Http\Livewire\Front\Profile\Address;
 use Livewire\Component;
 use App\Models\Province;
 use App\Models\City;
+use App\Models\Address;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\PostalCodeRule;
+
 class EditAddress extends Component
 {
 
     public $provinces;
+    public $address;
     public $cities;
     public $user;
 
@@ -23,9 +26,10 @@ class EditAddress extends Component
     public $recipient_first_name;
     public $recipient_last_name;
 
-    public function mount()
+    public function mount(Address $address )
     {
 
+        dd($address);
         $this->provinces = Province::query()->select('id', 'name')->get();
         $this->cities = collect();
         $this->user = Auth::id();
