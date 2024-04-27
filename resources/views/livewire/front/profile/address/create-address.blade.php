@@ -61,7 +61,7 @@
                     wire:model.defer="plate_number"
                      type="text">
                 </div>
-                @error('plate_numbe') <span class="error text-danger">{{ $message }}</span> @enderror
+                @error('plate_number') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
@@ -133,11 +133,11 @@
                 </button>
                 <a href="{{ route('profile.address.index')}}" class="btn-link-border float-left mt-2">
                     {{ __('messages.cancel_return')}}
-                </button>
+                </a>
             </div>
 
         </div>
-        
+
     </form>
 
 </div>

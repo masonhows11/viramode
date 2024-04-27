@@ -58,7 +58,7 @@
                     <input class="input-ui pl-2 dir-ltr text-right" wire:model.defer="plate_number"
                         placeholder="شماره پلاک نشانی گیرنده را وارد کنید" type="text">
                 </div>
-                @error('plate_numbe')
+                @error('plate_number')
                     <span class="error text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -92,7 +92,7 @@
                         شهر
                     </h4>
                 </div>
-                
+
                 <div class="form-row">
 
                     <select class="right form-control" wire:model.defer="city_id">
@@ -140,13 +140,15 @@
             </div>
 
 
+
             <div class="col-12 pr-4 pl-4">
+
                 <button type="submit" class="btn btn-sm btn-primary btn-submit-form">
                     {{ __('messages.save_address_and_delivert_to') }}
                 </button>
                 <a href="{{ route('profile.address.index') }}" class="btn-link-border float-left mt-2">
                     {{ __('messages.cancel_return') }}
-                    </button>
+                </a>
             </div>
 
         </div>

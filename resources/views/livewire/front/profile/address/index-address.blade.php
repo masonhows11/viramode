@@ -1,4 +1,6 @@
 <div class="row overflow-auto  h-75">
+
+
     @foreach ($addresses as $address)
         <div class="col-lg-6 col-md-12">
 
@@ -55,7 +57,11 @@
             </div>
         </div>
     @endforeach
+
+
 </div>
+
+
 @push('front_custom_scripts')
     <script type="text/javascript">
         window.addEventListener('show-delete-confirmation', event => {
