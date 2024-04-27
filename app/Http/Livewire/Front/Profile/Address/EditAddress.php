@@ -26,10 +26,11 @@ class EditAddress extends Component
     public $recipient_first_name;
     public $recipient_last_name;
 
-    public function mount(Address $address )
+    public function mount(Address $address)
     {
 
-        dd($address);
+        $this->address = $address;
+
         $this->provinces = Province::query()->select('id', 'name')->get();
         $this->cities = collect();
         $this->user = Auth::id();
@@ -66,7 +67,7 @@ class EditAddress extends Component
 
             $postal_code = convertPerToEnglish($this->postal_code);
 
-            Address::create([
+            Address::where('id', $this->address->id)->update([
                 'user_id' => Auth::id(),
                 'province_id' => $this->province_id,
                 'city_id' => $this->city_id,
