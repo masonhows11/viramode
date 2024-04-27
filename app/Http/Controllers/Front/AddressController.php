@@ -24,7 +24,8 @@ class AddressController extends Controller
     {
         $deliveries = Delivery::where('status', 1)->get();
         $user = Auth::user();
-        $addresses = Address::where('user_id', $user->id)->where('is_active', 1)->get();
+        $address = Address::where('user_id', $user->id)->where('is_active', 1)->first();
+       
         $cartItems = CartItems::where('user_id', $user->id)->get();
         $provinces = Province::all();
 
@@ -54,7 +55,7 @@ class AddressController extends Controller
         return view('front_end.address.address')
             ->with(['totalProductPrice' => $totalProductPrice,'totalDiscount' => $totalDiscount,
                     'cartItemsCount' => $cartItemsCount,
-                    'cartItems' => $cartItems, 'addresses' => $addresses,
+                    'cartItems' => $cartItems, 'address' => $address,
                     'provinces' => $provinces, 'deliveries' => $deliveries]);
         }
 
