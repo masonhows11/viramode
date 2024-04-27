@@ -7,15 +7,17 @@
             <div class="col-md-6 col-sm  mb-2">
                 <div class="form-row-title">
                     <h4>
-                        نام 
+                        نام
                     </h4>
                 </div>
                 <div class="form-row">
                     <input class="input-ui pr-2 text-right"
                      wire:model.defer="recipient_first_name"
-                      type="text" 
+                      type="text"
                       placeholder="نام خود را وارد نمایید">
                 </div>
+
+                @error('recipient_first_name') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
@@ -25,10 +27,11 @@
                     </h4>
                 </div>
                 <div class="form-row">
-                    <input class="input-ui pr-2 text-right" 
+                    <input class="input-ui pr-2 text-right"
                      wire:model.defer="recipient_last_name"
                       type="text" placeholder="نام خانوادگی خود را وارد نمایید">
                 </div>
+                @error('recipient_last_name') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
@@ -38,23 +41,27 @@
                     </h4>
                 </div>
                 <div class="form-row">
-                    <input class="input-ui pl-2 dir-ltr text-left"
+                    <input class="input-ui pl-2 dir-ltr text-right"
+                    placeholder="شماره موبایل خود را وارد کنید"
                      wire:model.defer="mobile"
                       type="text">
                 </div>
+                @error('mobile') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
                 <div class="form-row-title">
                     <h4>
-                        شماره پلاک 
+                        شماره پلاک
                     </h4>
                 </div>
                 <div class="form-row">
-                    <input class="input-ui pl-2 dir-ltr text-left" 
+                    <input class="input-ui pl-2 dir-ltr text-right"
+                    placeholder="شماره پلاک نشانی گیرنده را وارد کنید"
                     wire:model.defer="plate_number"
                      type="text">
                 </div>
+                @error('plate_numbe') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
@@ -64,8 +71,8 @@
                     </h4>
                 </div>
                 <div class="form-row">
-                    <div class="custom-select-ui">
-                        <select class="right" wire:model.defer="province_id">
+
+                        <select class="right form-control" wire:model.defer="province_id">
                             <option value="khrasan-north">
                                 خراسان شمالی
                             </option>
@@ -82,8 +89,9 @@
                                 تبریز
                             </option>
                         </select>
-                    </div>
+
                 </div>
+                @error('province_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-md-6 col-sm  mb-2">
@@ -93,8 +101,8 @@
                     </h4>
                 </div>
                 <div class="form-row">
-                    <div class="custom-select-ui">
-                        <select class="right" wire:model.defer="city_id">
+
+                        <select class="right form-control" wire:model.defer="city_id">
                             <option value="bojnourd">
                                 بجنورد
                             </option>
@@ -111,8 +119,9 @@
                                 اسفراین
                             </option>
                         </select>
-                    </div>
+
                 </div>
+                @error('city_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-12 mb-2">
@@ -125,6 +134,7 @@
                     <input class="input-ui pl-2 dir-ltr text-left placeholder-right" wire:model.defer="postal_code" type="text"
                         placeholder=" کد پستی را بدون خط تیره بنویسید">
                 </div>
+                @error('postal_code') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="col-12 mb-2">
@@ -136,12 +146,13 @@
                 <div class="form-row">
                     <textarea class="input-ui pr-2 text-right" wire:model.defer="address_description" placeholder=" آدرس تحویل گیرنده را وارد نمایید"></textarea>
                 </div>
+                @error('address_description') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
-           
+
 
             <div class="col-12 pr-4 pl-4">
-                <button type="button" class="btn btn-sm btn-primary btn-submit-form">ثبت
+                <button type="submit" class="btn btn-sm btn-primary btn-submit-form">ثبت
                     و
                     ارسال به این آدرس</button>
                 <button type="button" class="btn-link-border float-left mt-2">انصراف

@@ -14,6 +14,7 @@ class CreateAddress extends Component
 
     public $province_id;
     public $city_id;
+    public $mobile;
     public $plate_number;
     public $postal_code;
     public $address_description;
@@ -27,8 +28,8 @@ class CreateAddress extends Component
         $this->user = Auth::id();
     }
 
-   
- 
+
+
     protected function rules ()
     {
         return [
@@ -41,9 +42,8 @@ class CreateAddress extends Component
                 'address_description' => ['required','min:10','max:1000'],
                 'recipient_first_name' => ['required','min:2','max:64'],
                 'recipient_last_name' => ['required','min:2','max:64'],
-           
         ];
-    } 
+    }
 
     public function save()
     {
