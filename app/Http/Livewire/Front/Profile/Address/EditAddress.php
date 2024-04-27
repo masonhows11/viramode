@@ -31,6 +31,16 @@ class EditAddress extends Component
 
         $this->address = $address;
 
+        $this->province_id = $address->province_id;
+        $this->city_id = $address->city_id;
+        $this->mobile = $address->mobile;
+        $this->plate_number = $address->plate_number;
+        $this->postal_code = $address->postal_code;
+        $this->recipient_first_name = $address->recipient_first_name;
+        $this->recipient_last_name = $address->recipient_last_name;
+        $this->address_description = $address->address_description;
+
+
         $this->provinces = Province::query()->select('id', 'name')->get();
         $this->cities = collect();
         $this->user = Auth::id();
