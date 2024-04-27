@@ -1,5 +1,5 @@
 <div>
-    <form class="form-account" wire:submit.prevent="save">
+    <form class="form-account" wire:submit.prevent="update">
 
         <div class="row form-ui px-3">
 
@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-row">
 
-                    <select class="right form-control" wire:model.defer="province_id">
+                    <select class="right form-control" wire:change="loadCities" wire:model.defer="province_id">
                         @foreach ($provinces as $item)
                             <option value="{{ $item->id }}">
                                 {{ $item->name }}

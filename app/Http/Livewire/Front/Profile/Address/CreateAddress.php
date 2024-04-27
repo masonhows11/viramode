@@ -40,6 +40,8 @@ class CreateAddress extends Component
         $this->cities = City::where('province_id', $this->province_id)->select('id', 'name')->get();
     }
 
+  
+
     protected function rules()
     {
         return [
@@ -67,7 +69,7 @@ class CreateAddress extends Component
              if($userAddress > 0)
              {
                 session()->flash('success', 'کاربر عزیز فقط تعداد 4 آدرس می توانید داشته باشید.');
-                
+
                 return redirect()->route('profile.address.index');
              }
 

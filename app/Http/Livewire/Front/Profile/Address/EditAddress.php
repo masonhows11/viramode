@@ -14,6 +14,7 @@ class EditAddress extends Component
 
     public $provinces;
     public $address;
+    public $address_id;
     public $cities;
     public $user;
 
@@ -30,6 +31,7 @@ class EditAddress extends Component
     {
 
         $this->address = $address;
+        $this->address_id = $address->id;
 
         $this->province_id = $address->province_id;
         $this->city_id = $address->city_id;
@@ -53,6 +55,11 @@ class EditAddress extends Component
         $this->cities = City::where('province_id', $this->province_id)->select('id', 'name')->get();
     }
 
+    // public function loadCities()
+    // {
+    //     $this->cities = City::where('province_id', $this->province_id)->select('id', 'name')->get();
+    // }
+
     protected function rules()
     {
         return [
@@ -68,7 +75,7 @@ class EditAddress extends Component
         ];
     }
 
-    public function save()
+    public function update()
     {
 
         $this->validate();
@@ -77,7 +84,7 @@ class EditAddress extends Component
 
             $postal_code = convertPerToEnglish($this->postal_code);
 
-            Address::where('id', $this->address->id)->update([
+            Address::where('id', $this->address_id)->update([
                 'user_id' => Auth::id(),
                 'province_id' => $this->province_id,
                 'city_id' => $this->city_id,
@@ -87,11 +94,11 @@ class EditAddress extends Component
                 'recipient_first_name' => $this->recipient_first_name,
                 'recipient_last_name' => $this->recipient_last_name,
                 'address_description' => $this->address_description,
-                'is_active' => 1,
             ]);
 
-            session()->flash('success', __('messages.New_record_saved_successfully'));
-            return redirect()->back();
+            session()->flash('success', __('messages.The_update_was_completed_successfully'));
+            return redirect()->route('profile.address.index');
+
         } catch (\Exception $ex) {
             return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
         }
