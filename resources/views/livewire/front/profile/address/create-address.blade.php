@@ -1,11 +1,10 @@
-<div class="row">
+<div>
 
-        <div class="col-lg-6 col-md-12">
-
-            <div class="form-ui dt-sl">
                 <form class="form-account" action="">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12 mb-2">
+
+                    <div class="row form-ui px-3">
+
+                        <div class="col-md-6 col-sm  mb-2">
                             <div class="form-row-title">
                                 <h4>
                                     نام و نام خانوادگی
@@ -16,7 +15,8 @@
                                     placeholder="نام خود را وارد نمایید">
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 mb-2">
+
+                        <div class="col-md-6 col-sm  mb-2">
                             <div class="form-row-title">
                                 <h4>
                                     شماره موبایل
@@ -26,7 +26,8 @@
                                 <input class="input-ui pl-2 dir-ltr text-left" type="text"  placeholder="09xxxxxxxxx">
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 mb-2">
+
+                        <div class="col-md-6 col-sm  mb-2">
                             <div class="form-row-title">
                                 <h4>
                                     استان
@@ -54,7 +55,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 mb-2">
+
+                        <div class="col-md-6 col-sm  mb-2">
                             <div class="form-row-title">
                                 <h4>
                                     شهر
@@ -82,6 +84,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-12 mb-2">
                             <div class="form-row-title">
                                 <h4>
@@ -92,6 +96,7 @@
                                 <textarea class="input-ui pr-2 text-right" placeholder=" آدرس تحویل گیرنده را وارد نمایید"></textarea>
                             </div>
                         </div>
+
                         <div class="col-12 mb-2">
                             <div class="form-row-title">
                                 <h4>
@@ -103,6 +108,7 @@
                                     type="text" placeholder=" کد پستی را بدون خط تیره بنویسید">
                             </div>
                         </div>
+
                         <div class="col-12 pr-4 pl-4">
                             <button type="button" class="btn btn-sm btn-primary btn-submit-form">ثبت
                                 و
@@ -110,10 +116,8 @@
                             <button type="button" class="btn-link-border float-left mt-2">انصراف
                                 و بازگشت</button>
                         </div>
+
                     </div>
                 </form>
-            </div>
-        </div>
-
 
 </div>

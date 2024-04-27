@@ -22,8 +22,8 @@ class FrontAddressController extends Controller
 
     public function create()
     {
-        
-        return view('front_end.profile.address.create',['addresses' => $addresses , 'provinces' => $provinces]);
+
+        return view('front_end.profile.address.create');
     }
 
     public function store(AddressRequest $request)
