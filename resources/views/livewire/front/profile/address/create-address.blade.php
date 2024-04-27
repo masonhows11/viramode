@@ -73,21 +73,14 @@
                 <div class="form-row">
 
                         <select class="right form-control" wire:model.defer="province_id">
-                            <option value="khrasan-north">
-                                خراسان شمالی
+                            @foreach ( $provinces as $item )
+                            <option value="{{ $item->id}}">
+                               {{ $item->name}}
                             </option>
-                            <option value="tehran">
-                                تهران
-                            </option>
-                            <option value="esfahan">
-                                اصفهان
-                            </option>
-                            <option value="shiraz">
-                                شیراز
-                            </option>
-                            <option value="tabriz">
-                                تبریز
-                            </option>
+                            @endforeach
+
+
+
                         </select>
 
                 </div>
@@ -105,18 +98,6 @@
                         <select class="right form-control" wire:model.defer="city_id">
                             <option value="bojnourd">
                                 بجنورد
-                            </option>
-                            <option value="garme">
-                                گرمه
-                            </option>
-                            <option value="shirvan">
-                                شیروان
-                            </option>
-                            <option value="mane">
-                                مانه و سملقان
-                            </option>
-                            <option value="esfarayen">
-                                اسفراین
                             </option>
                         </select>
 

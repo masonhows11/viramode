@@ -9,7 +9,7 @@ use App\Rules\PostalCodeRule;
 class CreateAddress extends Component
 {
 
-    public $provinces;
+    //public $provinces;
     public $user;
 
     public $province_id;
@@ -24,7 +24,7 @@ class CreateAddress extends Component
     public function mount()
     {
 
-        $this->provinces = Province::all();
+
         $this->user = Auth::id();
     }
 
@@ -78,6 +78,7 @@ class CreateAddress extends Component
 
     public function render()
     {
-        return view('livewire.front.profile.address.create-address');
+        return view('livewire.front.profile.address.create-address')
+        ->with([ 'provinces' => Province::all()]);
     }
 }
