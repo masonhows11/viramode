@@ -69,69 +69,15 @@
                         <div class="address-section">
 
                             <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
-
-                                <input type="input" form="my-form" name="address_id" value="{{ $address->id }}" class="d-none">
-                                <div class="checkout-contact-content">
-                                    <ul class="checkout-contact-items">
-                                        <li class="checkout-contact-item">
-                                            {{ __('messages.receiver') }}:
-                                            <span class="full-name">{{ $address->recipient_first_name . ' ' . $address->recipient_last_name  }}</span>
-                                            <a href="{{ route('profile.address.edit',$address->id) }}" class="checkout-contact-btn-edit">اصلاح این آدرس</a>
-                                        </li>
-                                        <li class="checkout-contact-item">
-                                            <div class="checkout-contact-item checkout-contact-item-mobile">
-                                                {{ __('messages.phone_number') }}:
-                                                <span class="mobile-phone">{{ $address->mobile }}</span>
-                                            </div>
-                                            <div class="checkout-contact-item-message">
-                                                {{ __('messages.post_code') }}:
-                                                <span class="post-code">{{ $address->postal_code }}</span>
-                                            </div>
-                                            <br>
-                                            استان
-                                            <span class="state">{{  $address->province->name }}</span>
-                                            ، ‌شهر
-                                            <span class="city">{{ $address->city->name }}</span>
-                                            ،
-                                            <span class="address-part">{{ $address->address_description }}</span>
-                                        </li>
-                                    </ul>
-                                    <div class="checkout-contact-badge">
-                                        <i class="mdi mdi-check-bold"></i>
-                                    </div>
-                                </div>
-
+                                @include('front_end.address.partials.address_info',['address' => $address])
                             </div>
+                            
                         </div>
 
                         <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">
-                            <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                                <h2>انتخاب نحوه ارسال</h2>
-                            </div>
-                            <div class="checkout-shipment border-bottom pb-3 mb-4">
 
-                                @foreach ($deliveries as $delivery)
-                                    <div class="custom-control custom-radio pl-0 pr-3">
-                                        <input type="radio"
-                                                 form="my-form"
-                                                 name="delivery_id"
-                                                 class="custom-control-input"
-                                                 name="delivery"
-                                                 id="radio-{{ $delivery->id }}" value="{{ $delivery->id }}">
-                                        <label for="radio-{{ $delivery->id }}" class="custom-control-label">
-                                            {{ $delivery->title }}
-                                        </label>
-                                    </div>
-                                @endforeach
+                            @include('front_end.address.partials.delivery_type',['deliveries' => $deliveries])
 
-                                <div class="custom-control custom-radio pl-0 pr-3">
-                                    @error('delivery_id')
-                                     <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-
-                            </div>
                             <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
                                 <h2>مرسوله</h2>
                             </div>
@@ -139,39 +85,7 @@
                             <div class="checkout-pack">
                                 <section class="products-compact">
                                     <!-- Start Product-Slider -->
-                                    <div class="col-12">
-                                        <div class="products-compact-slider carousel-md owl-carousel owl-theme">
-
-                                            @foreach ($cartItems as $product)
-                                                <div class="item">
-                                                    <div class="product-card mb-3">
-                                                        <a class="product-thumb"
-                                                            href="{{ route('product', $product->product->slug) }}">
-
-                                                            @if (
-                                                                $product->product->thumbnail_image &&
-                                                                    \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
-                                                                <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"
-                                                                    alt="Product Thumbnail">
-                                                            @else
-                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                                                    alt="Product Thumbnail">
-                                                            @endif
-
-                                                        </a>
-                                                        <div class="product-card-body">
-                                                            <h5 class="product-title">
-                                                                <a href="{{ route('product', $product->product->slug) }}">
-                                                                    {{ $product->product->title_persian }}
-                                                                </a>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
+                                    @include('front_end.address.partials.cart_items',['cartItems' => $cartItems])
                                     <!-- End Product-Slider -->
                                 </section>
                                 <hr>
@@ -184,7 +98,7 @@
                             <div class="checkout-invoice">
                                 <div class="checkout-invoice-headline">
                                     <div class="custom-control custom-checkbox pl-0 pr-3">
-                                        <input type="checkbox" name="invoice" class="custom-control-input" checked>
+                                        <input type="checkbox" name="invoice" class="custom-control-input">
                                         <label class="custom-control-label">درخواست ارسال فاکتور خرید</label>
                                     </div>
                                 </div>
@@ -193,13 +107,7 @@
                         </form>
 
                         <div class="mt-5">
-                            <a href="{{ route('cart.check') }}" class="float-right border-bottom-dt">
-                                <i class="mdi mdi-chevron-double-right">
-                                </i>بازگشت به سبد خرید</a>
-                            <a href="javascript:void(0)" onclick="document.getElementById('my-form').submit();" class="float-left border-bottom-dt">
-                                تایید و ادامه ثبت سفارش<i class="mdi mdi-chevron-double-left">
-                                </i>
-                            </a>
+                             @include('front_end.address.partials.navigate_link')
                         </div>
 
                     </section>
@@ -207,10 +115,6 @@
 
 
                 <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
-
-
-
-
 
                         <div class="dt-sn dt-sn--box border mb-2">
 
