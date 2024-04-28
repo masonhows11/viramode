@@ -43,6 +43,11 @@ class Product extends Model
         'seo_desc',
     ];
 
+    public function  isInStock(int $quantity)
+    {
+        return $this->available_in_stock >= $quantity;
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';
