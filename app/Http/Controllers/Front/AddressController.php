@@ -4,19 +4,16 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddressDeliveryRequest;
-use App\Http\Requests\AddressRequest;
 use App\Models\Address;
 use App\Models\CartItems;
-use App\Models\City;
 use App\Models\CommonDiscount;
 use App\Models\Delivery;
 use App\Models\Order;
 use App\Models\Province;
-// use App\Models\User;
 use App\Services\OrderNumber\OrderNumberServices;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// use Illuminate\Http\Request;
 class AddressController extends Controller
 {
     //
