@@ -3,25 +3,6 @@
     {{ __('messages.shipping_info') }}
 @endsection
 @section('checkout-step')
-    {{-- <div class="col-12">
-        <ul class="checkout-steps">
-            <li class="is-completed">
-                @php
-                    $currentRoute = 'check.address';
-                @endphp
-                @if ($currentRoute == request()->route()->getName())
-                    <a href="#" class="checkout-steps-active  active-link-shopping">اطلاعات ارسال</a>
-                @endif
-            </li>
-            <li class="is-completed">
-                <a href="#" class="checkout-steps-item  active-link">پرداخت</a>
-            </li>
-            <li class="is-active">
-                <a href="#" class="checkout-steps-item  active-link">اتمام خرید و ارسال</a>
-            </li>
-        </ul>
-    </div --}}
-
     <header class="header-shopping  dt-sl">
         <div class="container">
             <div class="row">
@@ -32,12 +13,19 @@
                         </a>
                     </div>
                 </div>
+
+                @php
+                $currentRoute = 'check.address';
+                @endphp
+
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
                         <li>
+                            @if ($currentRoute == request()->route()->getName())
                             <a href="#" class="active">
                                 <span>اطلاعات ارسال</span>
                             </a>
+                            @endif
                         </li>
                         <li>
                             <a href="#">
@@ -71,7 +59,7 @@
                             <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
                                 @include('front_end.address.partials.address_info',['address' => $address])
                             </div>
-                            
+
                         </div>
 
                         <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">

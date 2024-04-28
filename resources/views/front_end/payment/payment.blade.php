@@ -33,6 +33,10 @@
                         </a>
                     </div>
                 </div>
+
+                @php
+                $currentRoute = 'payment';
+                @endphp
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
                         <li>
@@ -40,10 +44,12 @@
                                 <span>اطلاعات ارسال</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li class="active">
+                            @if( $currentRoute == request()->route()->getName() )
+                            <a href="#" class="active">
                                 <span>پرداخت</span>
                             </a>
+                            @endif
                         </li>
                         <li>
                             <a href="#">
