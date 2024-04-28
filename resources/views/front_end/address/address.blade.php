@@ -129,7 +129,7 @@
                                      <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                             
+
 
                             </div>
                             <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
@@ -196,7 +196,7 @@
                             <a href="{{ route('cart.check') }}" class="float-right border-bottom-dt">
                                 <i class="mdi mdi-chevron-double-right">
                                 </i>بازگشت به سبد خرید</a>
-                            <a href="" class="float-left border-bottom-dt">
+                            <a href="javascript:void(0)" onclick="document.getElementById('my-form').submit();" class="float-left border-bottom-dt">
                                 تایید و ادامه ثبت سفارش<i class="mdi mdi-chevron-double-left">
                                 </i>
                             </a>
@@ -233,17 +233,18 @@
                             </form>
 
                             <div class="checkout-summary-content">
+
                                 <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
                                 <div class="checkout-summary-price-value">
                                     <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
                                     {{ __('messages.toman') }}
                                 </div>
-                              
+
                                     <button type="submit" onclick="document.getElementById('my-form').submit();" class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
                                         <i class="mdi mdi-arrow-left"></i>
                                         {{ __('messages.confirm_continue_order')}}
                                      </button>
-                                
+
                                 <div>
                                     <span>
                                         {{ __('messages.shopping_cart_message') }}

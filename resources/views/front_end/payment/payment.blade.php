@@ -128,44 +128,10 @@
                         <div class="checkout-order-summary">
                             <div class="accordion checkout-order-summary-item" id="accordionExample">
                                 <div class="card border-bottom pt-sl-res">
-
                                     {{-- delivery information--}}
-                                    <div class="card-header checkout-order-summary-header" id="headingOne">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <span class="text-muted">
-                                                    مرسوله ۱ از ۱ <span class="fs-sm">(۲ کالا)</span>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <span class="text-muted">
-                                                    <span class="dl-none-sm">نحوه ارسال:</span>
-                                                    <span class="dl-none-sm">
-                                                        {{ $order->delivery->title}}
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <span class="text-muted">
-                                                    <span>ارسال </span>
-                                                    <span class="fs-sm">
-                                                        {{ $order->delivery->delivery_time . ' ' . $order->delivery->delivery_time_unit  }}                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <span class="text-muted">
-                                                    <span>هزینه ارسال</span>
-                                                    <span class="fs-sm">
-                                                        {{  priceFormat($order->delivery->amount) }} {{ __('messages.toman') }}
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @include('front_end.payment.partials.delivery_info',['order' => $order])
                                     {{-- cart items --}}
                                     @include('front_end.payment.partials.cart_items',['cartItems'=> $cartItems ])
-
                                 </div>
                             </div>
                         </div>
@@ -183,8 +149,9 @@
                     <div class="mt-5">
                         <a href="{{ route('check.address') }}" class="float-right border-bottom-dt">
                             <i class="mdi mdi-chevron-double-right"></i>بازگشت به شیوه ارسال</a>
-                        <a href="#" class="float-left border-bottom-dt">ثبت نهایی سفارش<i class="mdi mdi-chevron-double-left"></i>
-                        </a>
+                        <a href="javascript:void(0)"
+                         onclick="document.getElementById('payment_submit').submit();"
+                         class="float-left border-bottom-dt">ثبت نهایی سفارش<i class="mdi mdi-chevron-double-left"></i></a>
                     </div>
 
                 </section>
