@@ -64,7 +64,7 @@ class AddressController extends Controller
      // this controller add common discount to carts of current user
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
-
+       
          $user = auth()->user();
 
          // calculate final price

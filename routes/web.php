@@ -114,7 +114,7 @@ use App\Http\Controllers\Dash\Notifications\AdminEmailNoticeFileController;
 //// front routes
 
 
-// auth routes 
+// auth routes
 use App\Http\Controllers\Auth_User\VerifyEmailPromptController;
 use App\Http\Controllers\Auth_User\RegisterUserController;
 use App\Http\Controllers\Auth_User\ValidateUserController;
@@ -309,15 +309,15 @@ Route::controller(AddressController::class)->middleware(['auth','web'])->group(f
 
     Route::get('/check/address','checkAddress')->name('check.address');
 
-    Route::get('/get-city','getCities')->name('get.cities');
-
-    Route::post('/address/store','store')->name('address.store');
-
-    Route::post('/address/update','update')->name('address.update');
-
-    Route::get('/address/delete/{address}','delete')->name('address.delete');
-
     Route::post('/choose-address-delivery','chooseAddressDelivery')->name('choose.address.delivery');
+
+    // Route::get('/get-city','getCities')->name('get.cities');
+
+    // Route::post('/address/store','store')->name('address.store');
+
+    // Route::post('/address/update','update')->name('address.update');
+
+    // Route::get('/address/delete/{address}','delete')->name('address.delete');
 
  });
 
