@@ -26,8 +26,30 @@ class PaymentController extends Controller
     {
         $user = auth()->user()->id;
         $cartItems = CartItems::where('user_id', $user)->get();
-        $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
-        return view('front_end.payment.payment', ['cartItems' => $cartItems, 'order' => $order]);
+        // $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
+
+        $order = $order = Order::with('delivery','address')
+        ->where('user_id', '=', $user)
+        ->where('order_status', '=', 0)->first();
+        // dd($order);
+
+        $cartItemsCount = null;
+        $totalProductPrice = null;
+        $totalDiscount = null;
+
+        foreach ($cartItems as $item) {
+            $totalProductPrice += $item->cartItemProductPrice();
+            $totalDiscount += $item->cartItemProductDiscount();
+            $cartItemsCount += $item->number;
+        }
+
+        return view('front_end.payment.payment',
+        ['cartItems' => $cartItems,
+         'order' => $order ,
+         'totalProductPrice' => $totalProductPrice,
+         'totalDiscount' => $totalDiscount,
+         'cartItemsCount' => $cartItemsCount,
+         'cartItems' => $cartItems,]);
     }
 
     public function couponDiscount(Request $request)

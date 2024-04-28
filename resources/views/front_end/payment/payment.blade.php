@@ -127,23 +127,22 @@
                                                 <span class="text-muted">
                                                     <span class="dl-none-sm">نحوه ارسال:</span>
                                                     <span class="dl-none-sm">
-                                                        پست پیشتاز با ظرفیت اختصاصی برای دیجی کالا
+                                                        {{ $order->delivery->title}}
                                                     </span>
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="text-muted">
-                                                    <span>ارسال از</span>
+                                                    <span>ارسال </span>
                                                     <span class="fs-sm">
-                                                        2 روز کاری
-                                                    </span>
+                                                        {{ $order->delivery->delivery_time . ' ' . $order->delivery->delivery_time_unit  }}                                                    </span>
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="text-muted">
                                                     <span>هزینه ارسال</span>
                                                     <span class="fs-sm">
-                                                        رایگان
+                                                        {{  priceFormat($order->delivery->amount) }} {{ __('messages.toman') }}
                                                     </span>
                                                 </span>
                                             </div>
@@ -172,7 +171,6 @@
                                                         </a>
                                                         <div class="product-box-title">
                                                             {{ $product->product->title_persian }}
-
                                                         </div>
 
                                                     </div>
@@ -265,28 +263,21 @@
 
             <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
                 <div class="dt-sn dt-sn--box border mb-2">
+
                     <ul class="checkout-summary-summary">
                         <li>
-                            <span>مبلغ کل (۲ کالا)</span><span>۱۶,۸۹۷,۰۰۰ تومان</span>
+                            <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span>{{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
                         </li>
                         <li>
-                            <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip" data-html="true"
-                                    data-placement="bottom"
-                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
-                                    <span class="mdi mdi-information-outline"></span>
-                                </span></span><span>رایگان</span>
+                            <span>هزینه ارسال</span>
+                            <span>{{  priceFormat($order->delivery->amount) }} {{ __('messages.toman') }}</span>
                         </li>
-                        {{-- <li class="checkout-club-container">
-                            <span>دیدیکلاب<span class="help-sn" data-toggle="tooltip" data-html="true"
-                                    data-placement="bottom"
-                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>با امتیازهای خود در باشگاه مشتریان دیجی کالا (دیجی کلاب) از بین جوایز متنوع انتخاب کنید.</p></div>">
-                                    <span class="mdi mdi-information-outline"></span>
-                                </span></span><span><span>۱۵۰+</span><span> امتیاز</span></span>
-                        </li> --}}
                     </ul>
+
                     <div class="checkout-summary-devider">
                         <div></div>
                     </div>
+
                     <div class="checkout-summary-content">
                         <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
                         <div class="checkout-summary-price-value">
@@ -309,6 +300,7 @@
                             </span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

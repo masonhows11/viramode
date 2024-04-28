@@ -45,9 +45,9 @@ class AddressController extends Controller
             empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
             empty($user->national_code) || $user->addresses->isEmpty()
-        ) {
+        )
+        {
             session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
-            // return redirect()->back();
             return redirect()->route('user.profile');
         }
 
@@ -64,7 +64,7 @@ class AddressController extends Controller
      // this controller add common discount to carts of current user
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
-       
+
          $user = auth()->user();
 
          // calculate final price
