@@ -3,7 +3,7 @@
     {{ __('messages.payment') }}
 @endsection
 @section('checkout-step')
-    <div class="col-12">
+    {{-- <div class="col-12">
         <ul class="checkout-steps">
             @php
                 $currentRoute = 'payment';
@@ -22,11 +22,298 @@
                 <a href="#" class="checkout-steps-item  active-link">اتمام خرید و ارسال</a>
             </li>
         </ul>
-    </div
+    </div --}}
+    <header class="header-shopping  dt-sl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center pt-2">
+                    <div class="header-shopping-logo dt-sl">
+                        <a href="#">
+                            {{-- <img src="{{ asset('/front_assets/img/logo.png') }}" alt=""> --}}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <ul class="checkout-steps">
+                        <li>
+                            <a href="#" class="active">
+                                <span>اطلاعات ارسال</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>پرداخت</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>اتمام خرید و ارسال</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 @endsection
 @section('main_content')
-    <div class="container">
 
+<main class="main-content dt-sl mt-4 mb-3">
+    <div class="container main-container">
+        <div class="row">
+            <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
+                <section class="page-content dt-sl">
+
+                    <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                        <h2>انتخاب شیوه پرداخت</h2>
+                    </div>
+
+                    <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
+                        <div class="checkout-pack">
+
+                            <div class="row">
+                                <div class="checkout-time-table checkout-time-table-time">
+                                    <div class="col-12">
+                                        <div class="radio-box custom-control custom-radio pl-0 pr-3">
+                                            <input type="radio" class="custom-control-input" name="post-pishtaz"  id="1" value="1" checked>
+                                            <label for="1" class="custom-control-label">
+                                                <div class="content-box">
+                                                    <div  class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
+                                                        پرداخت اینترنتی
+                                                    </div>
+                                                    <ul class="checkout-time-table-subtitle-bar">
+                                                        <li>
+                                                            آنلاین با تمامی کارت‌های بانکی
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="radio-box custom-control custom-radio pl-0 pr-3">
+                                            <input type="radio" class="custom-control-input" name="post-pishtaz"   id="2" value="2">
+                                            <label for="2" class="custom-control-label">
+                                                <div class="content-box">
+                                                    <div class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
+                                                        پرداخت اعتباری
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
+                        <h2>خلاصه سفارش</h2>
+                    </div>
+                    <div class="dt-sn dt-sn--box pt-3 pb-3">
+                        <div class="checkout-order-summary">
+                            <div class="accordion checkout-order-summary-item" id="accordionExample">
+                                <div class="card border-bottom pt-sl-res">
+
+                                    {{-- delivery information--}}
+                                    <div class="card-header checkout-order-summary-header" id="headingOne">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="text-muted">
+                                                    مرسوله ۱ از ۱ <span class="fs-sm">(۲ کالا)</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted">
+                                                    <span class="dl-none-sm">نحوه ارسال:</span>
+                                                    <span class="dl-none-sm">
+                                                        پست پیشتاز با ظرفیت اختصاصی برای دیجی کالا
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted">
+                                                    <span>ارسال از</span>
+                                                    <span class="fs-sm">
+                                                        2 روز کاری
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted">
+                                                    <span>هزینه ارسال</span>
+                                                    <span class="fs-sm">
+                                                        رایگان
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- cart items --}}
+                                    <div class="box">
+                                        <div class="row">
+
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="product-box-container">
+                                                    <div class="product-box product-box-compact">
+                                                        <a class="product-box-img">
+                                                            <img src="./assets/img/cart/01.jpg">
+                                                        </a>
+                                                        <div class="product-box-title">
+                                                            تیشرت مردانه
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="product-box-container">
+                                                    <div class="product-box product-box-compact">
+                                                        <a class="product-box-img">
+                                                            <img src="./assets/img/cart/02.jpg">
+                                                        </a>
+                                                        <div class="product-box-title">
+                                                            کت مردانه
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        {{-- start gift cart discount --}}
+                        <div class="col-sm-6 col-12">
+                            <div class="dt-sn dt-sn--box pt-3 pb-3 px-res-1">
+                                <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
+                                    <h2>استفاده از کارت هدیه
+                                        <span class="help-sn" data-toggle="tooltip" data-html="true"
+                                            data-placement="bottom"
+                                            title="<div class='help-container is-left'><div class='help-arrow'></div><p class='help-text'>با استفاده از کد کارت هدیه، تمام یا بخشی از مبلغ سفارش توسط کارت هدیه پرداخت می‌شود.
+                                                در صورت باقی ماندن بخشی از مبلغ کارت هدیه، امکان استفاده از باقی مانده مبلغ برای خریدهای بعدی امکان‌پذیر است.</p></div>">
+                                            <span class="mdi mdi-information-outline"></span>
+                                        </span>
+                                    </h2>
+                                </div>
+                                <p>با ثبت کد کارت هدیه، مبلغ کارت هدیه از “مبلغ قابل پرداخت” کسر می‌شود.</p>
+                                <div class="form-ui">
+                                    <form action="">
+                                        <div class="row text-center">
+                                            <div class="col-xl-8 col-lg-12 px-0">
+                                                <div class="form-row">
+                                                    <input type="text" class="input-ui pr-2"
+                                                        placeholder="مثلا 1234ABCD5678EFGH0123">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 px-0">
+                                                <button class="btn btn-primary mt-res-1">ثبت کد هدیه</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                         {{-- end gift cart discount --}}
+
+                         {{-- start code discount --}}
+                        <div class="col-sm-6 col-12">
+                            <div class="dt-sn dt-sn--box pt-3 pb-3 px-res-1">
+                                <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
+                                    <h2>استفاده از کد تخفیف
+                                        <span class="help-sn" data-toggle="tooltip" data-html="true"
+                                            data-placement="bottom"
+                                            title="<div class='help-container is-left'><div class='help-arrow'></div><p class='help-text'>بعد از نهایی شدن سفارش کد تخفیف را ثبت نمایید. بعد از ثبت کد تخفیف امکان بازگشت و یا تغییر سبد وجود نخواهد داشت. در صورت تغییر سفارش، کد تخفیف از بین خواهد رفت و امکان اعمال مجدد آن وجود ندارد</p></div>">
+                                            <span class="mdi mdi-information-outline"></span>
+                                        </span>
+                                    </h2>
+                                </div>
+                                <p>با ثبت کد تخفیف، مبلغ کد تخفیف از “مبلغ قابل پرداخت” کسر می‌شود.</p>
+                                <div class="form-ui">
+                                    <form action="">
+                                        <div class="row text-center">
+                                            <div class="col-xl-8 col-lg-12 px-0">
+                                                <div class="form-row">
+                                                    <input type="text" class="input-ui pr-2"
+                                                        placeholder="مثلا 837A2CS">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 px-0">
+                                                <button class="btn btn-primary mt-res-1">ثبت کد تخفیف</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                         {{-- end code discount --}}
+                    </div>
+
+                    <div class="mt-5">
+                        <a href="{{ route('check.address') }}" class="float-right border-bottom-dt">
+                            <i class="mdi mdi-chevron-double-right"></i>بازگشت به شیوه ارسال</a>
+                        <a href="#" class="float-left border-bottom-dt">ثبت نهایی سفارش<i class="mdi mdi-chevron-double-left"></i>
+                        </a>
+                    </div>
+
+                </section>
+            </div>
+            
+            <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+                <div class="dt-sn dt-sn--box border mb-2">
+                    <ul class="checkout-summary-summary">
+                        <li>
+                            <span>مبلغ کل (۲ کالا)</span><span>۱۶,۸۹۷,۰۰۰ تومان</span>
+                        </li>
+                        <li>
+                            <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip" data-html="true"
+                                    data-placement="bottom"
+                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
+                                    <span class="mdi mdi-information-outline"></span>
+                                </span></span><span>رایگان</span>
+                        </li>
+                        {{-- <li class="checkout-club-container">
+                            <span>دیدیکلاب<span class="help-sn" data-toggle="tooltip" data-html="true"
+                                    data-placement="bottom"
+                                    title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>با امتیازهای خود در باشگاه مشتریان دیجی کالا (دیجی کلاب) از بین جوایز متنوع انتخاب کنید.</p></div>">
+                                    <span class="mdi mdi-information-outline"></span>
+                                </span></span><span><span>۱۵۰+</span><span> امتیاز</span></span>
+                        </li> --}}
+                    </ul>
+                    <div class="checkout-summary-devider">
+                        <div></div>
+                    </div>
+                    <div class="checkout-summary-content">
+                        <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
+                        <div class="checkout-summary-price-value">
+                            <span class="checkout-summary-price-value-amount">۱۶,۶۹۷,۰۰۰</span>
+                            تومان
+                        </div>
+                        <a href="#" class="mb-2 d-block">
+                            <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
+                                <i class="mdi mdi-arrow-left"></i>
+                                پرداخت و ثبت نهایی سفارش
+                            </button>
+                        </a>
+                        <div>
+                            <span>
+                              {{ __('messages.shopping_cart_message') }}
+                            </span><span class="help-sn" data-toggle="tooltip" data-html="true"
+                                data-placement="bottom"
+                                title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، دیجی‌کالا هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
+                                <span class="mdi mdi-information-outline"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    {{-- <div class="container">
         <div class="row">
             <main>
                 <div class="container">
@@ -209,7 +496,7 @@
 
 
         </div>
-    </div>
+    </div> --}}
 @endsection
 @push('custom_scripts')
     <script>
