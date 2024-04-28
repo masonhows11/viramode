@@ -12,10 +12,11 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Services\Payment\PaymentServices;
-use App\Services\Payment\SandboxService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+// use App\Services\Payment\SandboxService;
 
 class PaymentController extends Controller
 {
@@ -26,7 +27,7 @@ class PaymentController extends Controller
         $user = auth()->user()->id;
         $cartItems = CartItems::where('user_id', $user)->get();
         $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
-        return view('front.payment.payment', ['cartItems' => $cartItems, 'order' => $order]);
+        return view('front_end.payment.payment', ['cartItems' => $cartItems, 'order' => $order]);
     }
 
     public function couponDiscount(Request $request)
@@ -356,7 +357,7 @@ class PaymentController extends Controller
     {
         if ($orderNumber != null) {
             $order = Order::where('user_id', Auth::id())->where('order_number', $orderNumber)->first();
-            return view('front.payment.payment_result', ['order' => $order]);
+            return view('front_end.payment.payment_result', ['order' => $order]);
         }
         return redirect()->route('home');
 

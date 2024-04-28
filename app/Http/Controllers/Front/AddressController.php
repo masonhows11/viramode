@@ -83,7 +83,7 @@ class AddressController extends Controller
              $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
          }
 
-         //dd($total_product_price .' '. $total_final_price );
+
 
          $orderNumber = $numberServices->generateNumber();
          $delivery_amount = Delivery::findOrFail($request->delivery_id);
@@ -93,8 +93,7 @@ class AddressController extends Controller
                  'order_number' => $orderNumber,
                  'address_id' => $request->address_id,
                  'delivery_id' => $request->delivery_id,
-             ]
-         );
+             ]);
 
 
          // return $order;

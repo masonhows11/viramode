@@ -1,4 +1,4 @@
-@extends('front.layouts.master_payment')
+@extends('front_end.layouts.master_payment')
 @section('page_title')
     {{ __('messages.payment_status') }}
 @endsection
