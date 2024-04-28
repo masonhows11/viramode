@@ -68,14 +68,16 @@
                         <h2>انتخاب شیوه پرداخت</h2>
                     </div>
 
-                    <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
+                    <form action="{{ route('payment.submit') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
+                        @csrf
+
                         <div class="checkout-pack">
 
                             <div class="row">
                                 <div class="checkout-time-table checkout-time-table-time">
                                     <div class="col-12">
                                         <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                                            <input type="radio" class="custom-control-input" name="post-pishtaz"  id="1" value="1" checked>
+                                            <input type="radio" class="custom-control-input" name="paymentType"  id="1" value="1">
                                             <label for="1" class="custom-control-label">
                                                 <div class="content-box">
                                                     <div  class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
@@ -92,7 +94,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                                            <input type="radio" class="custom-control-input" name="post-pishtaz"   id="2" value="2">
+                                            <input type="radio" class="custom-control-input" name="paymentType"   id="2" value="2">
                                             <label for="2" class="custom-control-label">
                                                 <div class="content-box">
                                                     <div class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
@@ -102,7 +104,19 @@
                                             </label>
                                         </div>
                                     </div>
+
+                                    <div class="col-12">
+                                        <div class="radio-box custom-radio  custom-control  mt-2  pr-5">
+                                            @error('paymentType')
+                                            <div class="text-danger mt-2 ms-3 font-13">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
 
                         </div>
@@ -281,15 +295,14 @@
                     <div class="checkout-summary-content">
                         <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
                         <div class="checkout-summary-price-value">
-                            <span class="checkout-summary-price-value-amount">۱۶,۶۹۷,۰۰۰</span>
-                            تومان
+                            <span class="checkout-summary-price-value-amount">{{  priceFormat($order->delivery->amount + $totalProductPrice) }} {{ __('messages.toman') }}</span>
+                            {{ __('messages.toman') }}
                         </div>
-                        <a href="#" class="mb-2 d-block">
-                            <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
+                            <button type="button" onclick="document.getElementById('payment_submit').submit();" class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
                                 <i class="mdi mdi-arrow-left"></i>
                                 پرداخت و ثبت نهایی سفارش
                             </button>
-                        </a>
+
                         <div>
                             <span>
                               {{ __('messages.shopping_cart_message') }}
@@ -306,6 +319,8 @@
         </div>
     </div>
 </main>
+
+
     {{-- <div class="container">
         <div class="row">
             <main>
