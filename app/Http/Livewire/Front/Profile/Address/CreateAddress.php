@@ -40,7 +40,7 @@ class CreateAddress extends Component
         $this->cities = City::where('province_id', $this->province_id)->select('id', 'name')->get();
     }
 
-  
+
 
     protected function rules()
     {
@@ -66,7 +66,7 @@ class CreateAddress extends Component
 
              $userAddress = auth()->user()->addresses()->count();
 
-             if($userAddress > 0)
+             if($userAddress > 4)
              {
                 session()->flash('success', 'کاربر عزیز فقط تعداد 4 آدرس می توانید داشته باشید.');
 
@@ -85,9 +85,10 @@ class CreateAddress extends Component
                 'recipient_first_name' => $this->recipient_first_name,
                 'recipient_last_name' => $this->recipient_last_name,
                 'address_description' => $this->address_description,
+                'is_active' => 0,
             ]);
 
-            session()->flash('warning', __('messages.New_record_saved_successfully'));
+            session()->flash('success', __('messages.New_record_saved_successfully'));
             return redirect()->route('profile.address.index');
         } catch (\Exception $ex) {
             return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
