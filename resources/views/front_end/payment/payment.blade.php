@@ -164,104 +164,19 @@
                                     </div>
 
                                     {{-- cart items --}}
-                                    <div class="box">
-                                        <div class="row">
+                                    @include('front_end.payment.partials.cart_items',['cartItems'=> $cartItems ])
 
-                                            @foreach ($cartItems as $product)
-                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                                                <div class="product-box-container">
-                                                    <div class="product-box product-box-compact">
-
-                                                        <a href="{{ route('product', $product->product->slug) }}" class="product-box-img">
-                                                            @if ( $product->product->thumbnail_image &&
-                                                                    \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
-                                                                <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"
-                                                                    alt="Product-Thumbnail">
-                                                            @else
-                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                                                    alt="Product Thumbnail">
-                                                            @endif
-
-                                                        </a>
-                                                        <div class="product-box-title">
-                                                            {{ $product->product->title_persian }}
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-4">
-                        {{-- start gift cart discount --}}
-                        <div class="col-sm-6 col-12">
-                            <div class="dt-sn dt-sn--box pt-3 pb-3 px-res-1">
-                                <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
-                                    <h2>استفاده از کارت هدیه
-                                        <span class="help-sn" data-toggle="tooltip" data-html="true"
-                                            data-placement="bottom"
-                                            title="<div class='help-container is-left'><div class='help-arrow'></div><p class='help-text'>با استفاده از کد کارت هدیه، تمام یا بخشی از مبلغ سفارش توسط کارت هدیه پرداخت می‌شود.
-                                                در صورت باقی ماندن بخشی از مبلغ کارت هدیه، امکان استفاده از باقی مانده مبلغ برای خریدهای بعدی امکان‌پذیر است.</p></div>">
-                                            <span class="mdi mdi-information-outline"></span>
-                                        </span>
-                                    </h2>
-                                </div>
-                                <p>با ثبت کد کارت هدیه، مبلغ کارت هدیه از “مبلغ قابل پرداخت” کسر می‌شود.</p>
-                                <div class="form-ui">
-                                    <form action="">
-                                        <div class="row text-center">
-                                            <div class="col-xl-8 col-lg-12 px-0">
-                                                <div class="form-row">
-                                                    <input type="text" class="input-ui pr-2"
-                                                        placeholder="مثلا 1234ABCD5678EFGH0123">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-12 px-0">
-                                                <button class="btn btn-primary mt-res-1">ثبت کد هدیه</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                         {{-- start gift cart discount --}}
+                         @include('front_end.payment.partials.gitf_cart_discount')
                          {{-- end gift cart discount --}}
 
                          {{-- start code discount --}}
-                        <div class="col-sm-6 col-12">
-                            <div class="dt-sn dt-sn--box pt-3 pb-3 px-res-1">
-                                <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
-                                    <h2>استفاده از کد تخفیف
-                                        <span class="help-sn" data-toggle="tooltip" data-html="true"
-                                            data-placement="bottom"
-                                            title="<div class='help-container is-left'><div class='help-arrow'></div><p class='help-text'>بعد از نهایی شدن سفارش کد تخفیف را ثبت نمایید. بعد از ثبت کد تخفیف امکان بازگشت و یا تغییر سبد وجود نخواهد داشت. در صورت تغییر سفارش، کد تخفیف از بین خواهد رفت و امکان اعمال مجدد آن وجود ندارد</p></div>">
-                                            <span class="mdi mdi-information-outline"></span>
-                                        </span>
-                                    </h2>
-                                </div>
-                                <p>با ثبت کد تخفیف، مبلغ کد تخفیف از “مبلغ قابل پرداخت” کسر می‌شود.</p>
-                                <div class="form-ui">
-                                    <form action="">
-                                        <div class="row text-center">
-                                            <div class="col-xl-8 col-lg-12 px-0">
-                                                <div class="form-row">
-                                                    <input type="text" class="input-ui pr-2"
-                                                        placeholder="مثلا 837A2CS">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-12 px-0">
-                                                <button class="btn btn-primary mt-res-1">ثبت کد تخفیف</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                          @include('front_end.payment.partials.code_discount')
                          {{-- end code discount --}}
                     </div>
 
