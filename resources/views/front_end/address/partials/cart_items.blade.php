@@ -18,11 +18,11 @@
 
                     </a>
                     <div class="product-card-body">
-                        <h5 class="product-title">
+                        <h6 class="product-title">
                             <a href="{{ route('product', $product->product->slug) }}">
                                 {{ $product->product->title_persian }}
                             </a>
-                        </h5>
+                        </h6>
                     </div>
                 </div>
             </div>
