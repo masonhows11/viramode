@@ -154,30 +154,31 @@
                                     <div class="box">
                                         <div class="row">
 
+                                            @foreach ($cartItems as $product)
                                             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                                 <div class="product-box-container">
                                                     <div class="product-box product-box-compact">
-                                                        <a class="product-box-img">
-                                                            <img src="./assets/img/cart/01.jpg">
+
+                                                        <a href="{{ route('product', $product->product->slug) }}" class="product-box-img">
+                                                            @if ( $product->product->thumbnail_image &&
+                                                                    \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
+                                                                <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"
+                                                                    alt="Product-Thumbnail">
+                                                            @else
+                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                                                    alt="Product Thumbnail">
+                                                            @endif
+
                                                         </a>
                                                         <div class="product-box-title">
-                                                            تیشرت مردانه
+                                                            {{ $product->product->title_persian }}
+
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                                                <div class="product-box-container">
-                                                    <div class="product-box product-box-compact">
-                                                        <a class="product-box-img">
-                                                            <img src="./assets/img/cart/02.jpg">
-                                                        </a>
-                                                        <div class="product-box-title">
-                                                            کت مردانه
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
 
                                         </div>
                                     </div>
@@ -261,7 +262,7 @@
 
                 </section>
             </div>
-            
+
             <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
                 <div class="dt-sn dt-sn--box border mb-2">
                     <ul class="checkout-summary-summary">
