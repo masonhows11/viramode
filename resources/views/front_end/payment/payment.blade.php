@@ -3,26 +3,6 @@
     {{ __('messages.payment') }}
 @endsection
 @section('checkout-step')
-    {{-- <div class="col-12">
-        <ul class="checkout-steps">
-            @php
-                $currentRoute = 'payment';
-            @endphp
-            <li class="is-completed-extra">
-                <a href="#" class="checkout-steps-active  active-link-shopping">اطلاعات ارسال</a>
-            </li>
-            <li class="is-completed">
-                @if ($currentRoute == request()->route()->getName())
-                    <a href="#" class="checkout-steps-active active-link-shopping">پرداخت</a>
-                @else
-                    <a href="#" class="checkout-steps-item  active-link">پرداخت</a>
-                @endif
-            </li>
-            <li class="is-active">
-                <a href="#" class="checkout-steps-item  active-link">اتمام خرید و ارسال</a>
-            </li>
-        </ul>
-    </div --}}
     <header class="header-shopping  dt-sl">
         <div class="container">
             <div class="row">
