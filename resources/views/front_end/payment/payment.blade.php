@@ -73,11 +73,11 @@
                         </div>
                         <div class="row mt-4">
                             {{-- start gift cart discount --}}
-                            @include('front_end.payment.partials.gitf_cart_discount')
+                            {{-- @include('front_end.payment.partials.gitf_cart_discount') --}}
                             {{-- end gift cart discount --}}
 
                             {{-- start code discount --}}
-                            @include('front_end.payment.partials.code_discount')
+                            {{-- @include('front_end.payment.partials.code_discount') --}}
                             {{-- end code discount --}}
                         </div>
 
