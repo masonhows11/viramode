@@ -43,7 +43,7 @@ class Product extends Model
         'seo_desc',
     ];
 
-    public function  isInStock(int $quantity)
+    public function  hasStock(int $quantity)
     {
         return $this->available_in_stock >= $quantity;
     }
