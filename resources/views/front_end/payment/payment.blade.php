@@ -12,19 +12,19 @@
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
                         <li>
-                            <a href="#" class="active">
+                            <a href="javascript:void(0)" class="active">
                                 <span>اطلاعات ارسال</span>
                             </a>
                         </li>
                         <li class="active">
                             @if ($currentRoute == request()->route()->getName())
-                                <a href="#" class="active">
+                                <a href="javascript:void(0)" class="active">
                                     <span>پرداخت</span>
                                 </a>
                             @endif
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <span>اتمام خرید و ارسال</span>
                             </a>
                         </li>

@@ -14,18 +14,18 @@
                     <ul class="checkout-steps">
                         <li>
                             @if ($currentRoute == request()->route()->getName())
-                            <a href="#" class="active">
+                            <a href="javascript:void(0)" class="active">
                                 <span>اطلاعات ارسال</span>
                             </a>
                             @endif
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <span>پرداخت</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <span>اتمام خرید و ارسال</span>
                             </a>
                         </li>

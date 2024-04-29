@@ -24,6 +24,7 @@ class PaymentController extends Controller
 
     public function payment(Request $request)
     {
+        dd('hi');
         $user = auth()->user()->id;
         $cartItems = CartItems::where('user_id', $user)->get();
         // $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
