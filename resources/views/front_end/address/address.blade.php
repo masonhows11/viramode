@@ -43,14 +43,15 @@
 
                 <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
                     <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                        <h2>آدرس تحویل سفارش</h2>
+                        <h2>انتخاب آدرس تحویل سفارش</h2>
                     </div>
                     <section class="page-content dt-sl">
-                        <div class="address-section">
 
-                            <div class="checkout-contact dt-sn dt-sn--box border px-0 pt-0 pb-0">
-                                @include('front_end.address.partials.address_info',['address' => $address])
-                            </div>
+                        <div class="address-section">
+                                @include('front_end.address.partials.address_info',['addresses' => $addresses])
+                                @error('address_id')
+                                <span class="text-danger">{{ $message }}</span>
+                               @enderror
 
                         </div>
 
