@@ -58,16 +58,14 @@ class AddressController extends Controller
 
          $user = auth()->user();
 
-         // calculate final price
+       
          $cartItems = CartItems::where('user_id', $user->id)->get();
 
          $total_product_price = 0;
          $total_discount_price = 0;
          $total_final_price = 0;
          $total_final_discount_price_with_number = 0;
-
          foreach ($cartItems as $item) {
-
              $total_product_price += $item->cartItemProductPriceWithOutNumber();
              $total_discount_price += $item->cartItemProductDiscount();
              $total_final_price += $item->cartItemFinalPrice();
@@ -133,28 +131,7 @@ class AddressController extends Controller
          return redirect()->route('payment');
      }
 
-    // public function store(AddressRequest $request)
-    // {
-    //     try {
-    //         $postal_code = convertPerToEnglish($request->postal_code);
-    //         Address::create([
-    //             'user_id' => Auth::id(),
-    //             'province_id' => $request->province_id,
-    //             'city_id' => $request->city_id,
-    //             'mobile' => $request->mobile,
-    //             'plate_number' => $request->plate_number,
-    //             'postal_code' => $postal_code,
-    //             'recipient_first_name' => $request->recipient_first_name,
-    //             'recipient_last_name' => $request->recipient_last_name,
-    //             'address_description' => $request->address_description,
-    //             'is_active' => 1,
-    //         ]);
-    //         session()->flash('success', __('messages.New_record_saved_successfully'));
-    //        return redirect()->route('check.address');
-    //     } catch (\Exception $ex) {
-    //         return view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
-    //     }
-    // }
+
 
 
     // public function getCities(Request $request)
@@ -172,29 +149,6 @@ class AddressController extends Controller
     // }
 
 
-    // public function update(AddressRequest $request)
-    // {
-    //     try {
-    //         $postal_code = convertPerToEnglish($request->postal_code);
-    //         Address::where('id', $request->address)->update([
-    //             'user_id' => Auth::id(),
-    //             'province_id' => $request->province_id,
-    //             'city_id' => $request->city_id,
-    //             'mobile' => $request->mobile,
-    //             'plate_number' => $request->plate_number,
-    //             'postal_code' => $postal_code,
-    //             'recipient_first_name' => $request->recipient_first_name,
-    //             'recipient_last_name' => $request->recipient_last_name,
-    //             'address_description' => $request->address_description,
-    //             'is_active' => 1,
-    //         ]);
-    //         session()->flash('success', __('messages.The_update_was_completed_successfully'));
-    //         return redirect()->route('check.address');
-    //     } catch (\Exception $ex) {
-    //         return view('errors_custom.model_store_error')
-    //             ->with(['error' => $ex->getMessage()]);
-    //     }
-    // }
 
 
     // // this controller add common discount to carts of current user
@@ -268,17 +222,7 @@ class AddressController extends Controller
     // }
 
 
-    // public function delete(Address $address)
-    // {
-    //     try {
-    //         $address->delete();
-    //         session()->flash('success', __('messages.The_deletion_was_successful'));
-    //         return redirect()->route('check.address');
-    //     } catch (\Exception $ex) {
-    //         return view('errors_custom.model_not_found')
-    //             ->with(['error' => $ex->getMessage()]);
-    //     }
-    // }
+
 
     //            $commonPercentDiscount = $total_final_price * ($commonDiscount->percentage / 100);
     //            if ($commonPercentDiscount > $commonDiscount->discount_ceiling) {
