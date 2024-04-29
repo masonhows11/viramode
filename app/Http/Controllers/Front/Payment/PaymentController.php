@@ -23,22 +23,19 @@ class PaymentController extends Controller
 {
     //
 
-    public function payment(Request $request)
+    public function payment()
     {
 
-        $user = auth()->user()->id;
+        $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
-        // $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
-
         $order = $order = Order::with('delivery','address')
         ->where('user_id', '=', $user)
         ->where('order_status', '=', 0)->first();
-        // dd($order);
+
 
         $cartItemsCount = null;
         $totalProductPrice = null;
         $totalDiscount = null;
-
         foreach ($cartItems as $item) {
             $totalProductPrice += $item->cartItemProductPrice();
             $totalDiscount += $item->cartItemProductDiscount();
@@ -57,7 +54,7 @@ class PaymentController extends Controller
 
     public function paymentSubmit(PaymentTypeRequest $request, PaymentServices $paymentServices)
     {
-        $user = auth()->user()->id;
+        $user = Auth::id();
         $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
         $cartItems = CartItems::where('user_id', $user)->get();
         $cash_receiver = null;

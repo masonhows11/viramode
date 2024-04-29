@@ -9,7 +9,6 @@ use App\Models\CartItems;
 use App\Models\CommonDiscount;
 use App\Models\Delivery;
 use App\Models\Order;
-use App\Models\Province;
 use App\Services\OrderNumber\OrderNumberServices;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,40 +21,35 @@ class AddressController extends Controller
         $deliveries = Delivery::where('status', 1)->get();
         $user = Auth::user();
         $addresses = Address::where('user_id', $user->id)->get();
-
         $cartItems = CartItems::where('user_id', $user->id)->get();
-        $provinces = Province::all();
 
         $cartItemsCount = null;
         $totalProductPrice = null;
         $totalDiscount = null;
-
         foreach ($cartItems as $item) {
             $totalProductPrice += $item->cartItemProductPrice();
             $totalDiscount += $item->cartItemProductDiscount();
             $cartItemsCount += $item->number;
         }
 
-
-
         if (
             empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
             empty($user->national_code) || $user->addresses->isEmpty()
-        )
-        {
-            session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
-            return redirect()->route('user.profile');
-        }
+          )
+          {
+             session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
+             return redirect()->route('user.profile');
+          }
 
 
         return view('front_end.address.address')
-            ->with([
-                'totalProductPrice' => $totalProductPrice, 'totalDiscount' => $totalDiscount,
-                'cartItemsCount' => $cartItemsCount,
-                'cartItems' => $cartItems, 'addresses' => $addresses,
-                'provinces' => $provinces, 'deliveries' => $deliveries
-            ]);
+                ->with([
+                    'totalProductPrice' => $totalProductPrice, 'totalDiscount' => $totalDiscount,
+                    'cartItemsCount' => $cartItemsCount,
+                    'cartItems' => $cartItems, 'addresses' => $addresses,
+                    'deliveries' => $deliveries
+                ]);
     }
 
      // this controller add common discount to carts of current user
