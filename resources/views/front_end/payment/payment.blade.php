@@ -6,14 +6,6 @@
     <header class="header-shopping  dt-sl">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center pt-2">
-                    <div class="header-shopping-logo dt-sl">
-                        <a href="#">
-                            {{-- <img src="{{ asset('/front_assets/img/logo.png') }}" alt=""> --}}
-                        </a>
-                    </div>
-                </div>
-
                 @php
                     $currentRoute = 'payment';
                 @endphp
