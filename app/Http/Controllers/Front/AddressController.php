@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddressDeliveryRequest;
+use App\Http\Requests\PaymentRequest\AddressDeliveryRequest;
 use App\Models\Address;
 use App\Models\CartItems;
 use App\Models\CommonDiscount;
@@ -61,7 +61,7 @@ class AddressController extends Controller
      // this controller add common discount to carts of current user
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
-        
+
          $user = auth()->user();
 
          // calculate final price
@@ -93,7 +93,6 @@ class AddressController extends Controller
              ]);
 
 
-         // return $order;
          // for calculate common discount
          // if there is common discount
          // we use first discount if there is some discount

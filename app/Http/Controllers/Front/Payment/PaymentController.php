@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Front\Payment;
 
-use App\Http\Controllers\Controller;
-use App\Models\CartItems;
-use App\Models\CashPayment;
-use App\Models\Coupon;
-use App\Models\OfflinePayment;
-use App\Models\OnlinePayment;
 use App\Models\Order;
-use App\Models\OrderItem;
+use App\Models\Coupon;
 use App\Models\Payment;
-use App\Services\Payment\PaymentServices;
+use App\Models\CartItems;
+use App\Models\OrderItem;
+use App\Models\CashPayment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\OnlinePayment;
+use App\Models\OfflinePayment;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Services\Payment\PaymentServices;
+use App\Http\Requests\PaymentRequest\PaymentTypeRequest;
 
 // use App\Services\Payment\SandboxService;
 
@@ -24,7 +25,7 @@ class PaymentController extends Controller
 
     public function payment(Request $request)
     {
-        dd('hi');
+
         $user = auth()->user()->id;
         $cartItems = CartItems::where('user_id', $user)->get();
         // $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
@@ -53,90 +54,9 @@ class PaymentController extends Controller
          'cartItems' => $cartItems,]);
     }
 
-    public function couponDiscount(Request $request)
+
+    public function paymentSubmit(PaymentTypeRequest $request, PaymentServices $paymentServices)
     {
-
-        $request->validate([
-            'code' => ['required'],
-        ], $messages = [
-            'code' => 'کد تخفیف الزامی است',
-        ]);
-
-        $coupon = Coupon::where([['code', '=', $request->code],
-            ['status', '=', 1],
-            ['end_date', '>', now()],
-            ['start_date', '<', now()]])->first();
-
-        //// check  coupon is exists or not
-        if ($coupon == null) {
-            session()->flash('error', __('messages.coupon_not_exists'));
-            return redirect()->back();
-        }
-
-        //// check for coupon is belong to current user or not
-        if ($coupon->user_id != null) {
-
-            $coupon = Coupon::where([['code', '=', $request->code],
-                ['status', '=', 1],
-                ['end_date', '>', now()],
-                ['start_date', '<', now()], ['user_id', '=', Auth::id()]])->first();
-
-            if ($coupon == null) {
-                session()->flash('error', __('messages.coupon_not_exists'));
-                return redirect()->back();
-            }
-        }
-
-        // This query says that there should not be an order with the current discount code.
-        // If there is not, continue working.
-        // If this order exists with this discount code, display a message to the user
-        $order = Order::where('user_id', '=', Auth::id())
-            ->where('order_status', '=', 0)
-            ->where('coupon_id', '=', null)->first();
-
-        $couponDiscountAmount = null;
-        if ($order) {
-
-            //// coupon type is percent
-            if ($coupon->amount_type == 0) {
-
-                $couponDiscountAmount = $order->order_final_amount * ($coupon->amount / 100);
-
-                if ($couponDiscountAmount > $coupon->discount_ceiling) {
-                    $couponDiscountAmount = $coupon->discount_ceiling;
-                }
-                //// coupon type is number
-            } else {
-                $couponDiscountAmount = $coupon->amount;
-            }
-
-            // for fill the current order
-            $order_final_amount = $order->order_final_amount - $couponDiscountAmount;
-            $final_discount = $order->order_total_products_discount_amount + $couponDiscountAmount;
-            $order->update(
-                ['coupon_id' => $coupon->id,
-                    'order_final_amount' => $order_final_amount,
-                    'order_coupon_discount_amount' => $couponDiscountAmount,
-                    'order_total_products_discount_amount' => $final_discount]
-            );
-            session()->flash('success', __('messages.discount_coupon_applied'));
-            return redirect()->back();
-        } else {
-            session()->flash('error', __('messages.the_discount_coupon_has_already_been_used'));
-            return redirect()->back();
-        }
-    }
-
-    public function paymentSubmit(Request $request, PaymentServices $paymentServices)
-    {
-        ////
-        $request->validate([
-            'paymentType' => 'required'
-        ], $messages = [
-            'paymentType.required' => 'نوع پرداخت را انتخاب کنید',
-        ]);
-
-        ////
         $user = auth()->user()->id;
         $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();
         $cartItems = CartItems::where('user_id', $user)->get();
@@ -386,4 +306,79 @@ class PaymentController extends Controller
 
 
     }
+
+    public function couponDiscount(Request $request)
+    {
+
+        $request->validate([
+            'code' => ['required'],
+        ], $messages = [
+            'code' => 'کد تخفیف الزامی است',
+        ]);
+
+        $coupon = Coupon::where([['code', '=', $request->code],
+            ['status', '=', 1],
+            ['end_date', '>', now()],
+            ['start_date', '<', now()]])->first();
+
+        //// check  coupon is exists or not
+        if ($coupon == null) {
+            session()->flash('error', __('messages.coupon_not_exists'));
+            return redirect()->back();
+        }
+
+        //// check for coupon is belong to current user or not
+        if ($coupon->user_id != null) {
+
+            $coupon = Coupon::where([['code', '=', $request->code],
+                ['status', '=', 1],
+                ['end_date', '>', now()],
+                ['start_date', '<', now()], ['user_id', '=', Auth::id()]])->first();
+
+            if ($coupon == null) {
+                session()->flash('error', __('messages.coupon_not_exists'));
+                return redirect()->back();
+            }
+        }
+
+        // This query says that there should not be an order with the current discount code.
+        // If there is not, continue working.
+        // If this order exists with this discount code, display a message to the user
+        $order = Order::where('user_id', '=', Auth::id())
+            ->where('order_status', '=', 0)
+            ->where('coupon_id', '=', null)->first();
+
+        $couponDiscountAmount = null;
+        if ($order) {
+
+            //// coupon type is percent
+            if ($coupon->amount_type == 0) {
+
+                $couponDiscountAmount = $order->order_final_amount * ($coupon->amount / 100);
+
+                if ($couponDiscountAmount > $coupon->discount_ceiling) {
+                    $couponDiscountAmount = $coupon->discount_ceiling;
+                }
+                //// coupon type is number
+            } else {
+                $couponDiscountAmount = $coupon->amount;
+            }
+
+            // for fill the current order
+            $order_final_amount = $order->order_final_amount - $couponDiscountAmount;
+            $final_discount = $order->order_total_products_discount_amount + $couponDiscountAmount;
+            $order->update(
+                ['coupon_id' => $coupon->id,
+                    'order_final_amount' => $order_final_amount,
+                    'order_coupon_discount_amount' => $couponDiscountAmount,
+                    'order_total_products_discount_amount' => $final_discount]
+            );
+            session()->flash('success', __('messages.discount_coupon_applied'));
+            return redirect()->back();
+        } else {
+            session()->flash('error', __('messages.the_discount_coupon_has_already_been_used'));
+            return redirect()->back();
+        }
+    }
+
 }
