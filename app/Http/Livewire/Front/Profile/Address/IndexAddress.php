@@ -51,19 +51,14 @@ class IndexAddress extends Component
     public function status($id)
     {
 
-        $this->current_id = $id;
 
-        $currentAddress = Address::where('user_id', $this->user)->where('is_active', 1)->first();
-        $currentAddress->is_active = 0;
-        $currentAddress->save();
-
-        $address = Address::findOrFail($this->current_id);
-        if ($address->is_active == 0) {
-            $address->is_active = 1;
-        } else {
-            $address->is_active = 0;
-        }
-        $address->save();
+        $address = Address::findOrFail($id);
+            if ($address->is_active == 0) {
+                $address->is_active = 1;
+            } else {
+                $address->is_active = 0;
+            }
+            $address->save();
 
 
         $this->dispatchBrowserEvent(
