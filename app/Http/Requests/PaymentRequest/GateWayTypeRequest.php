@@ -22,14 +22,14 @@ class GateWayTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'paymentType' => 'required'
+            'gateway' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'paymentType.required' => 'درگاه پرداخت مورد نظر را انتخاب کنید',
+            'gateway.required' => 'درگاه پرداخت مورد نظر را انتخاب کنید',
         ];
     }
 }
