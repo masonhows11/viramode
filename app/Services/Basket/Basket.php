@@ -24,29 +24,30 @@ class Basket
     public function add(Product $product, int $quantity)
     {
 
-        if ($this->exists($product))
-        {
+        if ($this->exists($product)) {
             $quantity = $this->get($product)['number'] + $quantity;
         }
 
 
-        $this->update($product,$quantity);
-        // $this->storage->addItem($product, $quantity);
-
-    }
-
-
-    public function update(Product $product,int $quantity)
-    {
-
-        if(!$product->hasStock($quantity))
-        {
-
-             throw new QuantityExceededException();
-        }
-
         $this->storage->addItem($product, $quantity);
+
+        // $this->update($product,$quantity);
+
+
     }
+
+
+    // public function update(Product $product,int $quantity)
+    // {
+
+    //     if(!$product->hasStock($quantity))
+    //     {
+
+    //          throw new QuantityExceededException();
+    //     }
+
+    //     $this->storage->addItem($product, $quantity);
+    // }
 
     public function get(Product $product)
     {
@@ -65,7 +66,5 @@ class Basket
 
 
     public function delete(Product $product)
-    {
-
-    }
+    { }
 }
