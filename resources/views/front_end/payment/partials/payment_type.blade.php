@@ -3,30 +3,25 @@
 
         <div class="col-12">
             <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                <input type="radio" class="custom-control-input" name="paymentType" id="1" value="1">
+                <input type="radio" class="custom-control-input" name="gateway" id="1" value="1">
                 <label for="1" class="custom-control-label">
+                    <i  class="mdi mdi-credit-card-outline checkout-additional-options-checkbox-image"></i>
                     <div class="content-box">
                         <div class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
-                            پرداخت اینترنتی
+                           {{ __('messages.zarinpal_gateway') }}
                         </div>
-                        <ul class="checkout-time-table-subtitle-bar">
-                            <li>
-                                آنلاین با تمامی کارت‌های بانکی
-                            </li>
-                        </ul>
                     </div>
                 </label>
             </div>
         </div>
         <div class="col-12">
             <div class="radio-box custom-control custom-radio pl-0 pr-3">
-
-                <input type="radio" class="custom-control-input" name="paymentType" id="2" value="2">
-
+                <input type="radio" class="custom-control-input" name="gateway"  id="2" value="2">
                 <label for="2" class="custom-control-label">
+                    <i class="mdi mdi-credit-card-multiple-outline checkout-additional-options-checkbox-image"></i>
                     <div class="content-box">
                         <div class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
-                            پرداخت اعتباری
+                            {{ __('messages.idpay_gateway') }}
                         </div>
                     </div>
                 </label>
@@ -35,7 +30,7 @@
 
         <div class="col-12">
             <div class="radio-box custom-radio  custom-control  mt-2  pr-5">
-                @error('paymentType')
+                @error('gateway')
                 <div class="text-danger mt-2 ms-3 font-13">
                     {{ $message }}
                 </div>

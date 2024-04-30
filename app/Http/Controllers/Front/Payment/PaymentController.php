@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Payment\PaymentServices;
-use App\Http\Requests\PaymentRequest\PaymentTypeRequest;
+use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
+
 
 // use App\Services\Payment\SandboxService;
 
@@ -52,7 +53,7 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentSubmit(PaymentTypeRequest $request, PaymentServices $paymentServices)
+    public function paymentSubmit(GateWayTypeRequest $request, PaymentServices $paymentServices)
     {
         $user = Auth::id();
         $order = Order::where('user_id', '=', $user)->where('order_status', '=', 0)->first();

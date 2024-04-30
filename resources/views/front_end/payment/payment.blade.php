@@ -35,14 +35,14 @@
     </header>
 @endsection
 @section('main_content')
-    <main class="main-content dt-sl mt-4 mb-3">
+    <main class="main-content dt-sl mt-4 mb-3 shopping-page">
         <div class="container main-container">
             <div class="row">
                 <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
                     <section class="page-content dt-sl">
 
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
-                            <h2>انتخاب شیوه پرداخت</h2>
+                            <h2>انتخاب درگاه پرداخت</h2>
                         </div>
 
                         <form action="{{ route('payment.submit') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
