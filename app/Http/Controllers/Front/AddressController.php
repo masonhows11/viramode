@@ -56,6 +56,7 @@ class AddressController extends Controller
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
 
+        // dd($request);
          /// $delivery_amount = Delivery::findOrFail($request->delivery_id);
 
          $user = auth()->user();
@@ -63,9 +64,9 @@ class AddressController extends Controller
 
          $cartItems = CartItems::where('user_id', $user->id)->get();
 
-         $total_product_price = 0;
-         $total_final_price = 0;
-         $total_final_discount_price_with_number = 0;
+         $total_product_price = null;
+         $total_final_price = null;
+         $total_final_discount_price_with_number = null;
          foreach ($cartItems as $item) {
              $total_product_price += $item->cartItemProductPriceWithOutNumber();
              $total_final_price += $item->cartItemFinalPrice();
@@ -73,14 +74,16 @@ class AddressController extends Controller
          }
 
 
-
+         
          $orderNumber = $numberServices->generateNumber();
+         $delivery = Delivery::findOrFail($request->delivery_id);
          $order = Order::updateOrCreate(
              ['user_id' => $user->id, 'order_status' => 0],
              [
                  'order_number' => $orderNumber,
                  'address_id' => $request->address_id,
                  'delivery_id' => $request->delivery_id,
+                 'order_final_amount' =>  $total_final_price + $delivery->amount,
              ]);
 
          return redirect()->route('cart.checkout')->with(['order'=> $order]);
