@@ -56,18 +56,18 @@ class AddressController extends Controller
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
 
+         /// $delivery_amount = Delivery::findOrFail($request->delivery_id);
+
          $user = auth()->user();
 
 
          $cartItems = CartItems::where('user_id', $user->id)->get();
 
          $total_product_price = 0;
-         $total_discount_price = 0;
          $total_final_price = 0;
          $total_final_discount_price_with_number = 0;
          foreach ($cartItems as $item) {
              $total_product_price += $item->cartItemProductPriceWithOutNumber();
-             $total_discount_price += $item->cartItemProductDiscount();
              $total_final_price += $item->cartItemFinalPrice();
              $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
          }
@@ -75,7 +75,6 @@ class AddressController extends Controller
 
 
          $orderNumber = $numberServices->generateNumber();
-         $delivery_amount = Delivery::findOrFail($request->delivery_id);
          $order = Order::updateOrCreate(
              ['user_id' => $user->id, 'order_status' => 0],
              [
@@ -84,51 +83,7 @@ class AddressController extends Controller
                  'delivery_id' => $request->delivery_id,
              ]);
 
-
-         // for calculate common discount
-         // if there is common discount
-         // we use first discount if there is some discount
-         // example 50% of the total amount of the shopping cart is considered a discount
-         $commonDiscount = CommonDiscount::where([['status', 1], ['end_date', '>', now()], ['start_date', '<', now()]])->first();
-
-         if (empty($commonDiscount)) {
-             Order::where(['user_id' => $user->id, 'order_status' => 0])
-                 ->update([
-                     'order_final_amount' => $total_final_price + $delivery_amount->amount,
-                     'order_discount_amount' => $total_discount_price,
-                     'order_total_products_discount_amount' => $total_final_discount_price_with_number
-                 ]);
-         } else {
-
-             if ($order->common_discount_id == null) {
-                 // calculate the common discount for this cart price
-                 $commonPercentDiscount = $total_final_price * ($commonDiscount->percentage / 100);
-                 // for check maximum discount ceiling
-                 if ($commonPercentDiscount > $commonDiscount->discount_ceiling) {
-                     $commonPercentDiscount = $commonDiscount->discount_ceiling;
-                 }
-                 // for check Minimum purchase limit
-                 if ($commonDiscount != null and $total_final_price >= $commonDiscount->minimal_order_amount) {
-                     $finalPrice = $total_final_price - $commonPercentDiscount;
-                 } else {
-                     $finalPrice = $total_final_price;
-                 }
-
-                 $order_total_product_discount_amount =
-                     $commonPercentDiscount + $total_final_discount_price_with_number;
-
-                 Order::where([['user_id', $user->id], ['order_status', '=', 0]])->update(
-                     [
-                         'common_discount_id' => $commonDiscount->id,
-                         'order_final_amount' => $finalPrice + $delivery_amount,
-                         'order_discount_amount' => $total_final_discount_price_with_number,
-                         'order_common_discount_amount' => $commonPercentDiscount,
-                         'order_total_products_discount_amount' => $order_total_product_discount_amount
-                     ]
-                 );
-             }
-         }
-         return redirect()->route('cart.checkout');
+         return redirect()->route('cart.checkout')->with(['order'=> $order]);
      }
 
 
