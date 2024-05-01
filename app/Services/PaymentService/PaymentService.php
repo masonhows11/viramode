@@ -20,13 +20,13 @@ class PaymentService
     private RequestInterface $request;
 
     // RequestInterface $request  means that request is type of payment gateway we used for pay
-    public function __construct($provider_name, RequestInterface $request)
+    public function __construct($provider_name,RequestInterface $request)
     {
         $this->provider_name = $provider_name;
         $this->request = $request;
     }
 
-    // for find payment provider 
+    // for find payment provider
     // gateway like zarinpal or idPay or melLat
     private function findProvider()
     {
@@ -39,8 +39,7 @@ class PaymentService
 
         // create an instance from founded class
         // give request to construct that made as abstract class for gateway providers
-        // $this->request is type of payment provider we used and when we call construct method
-        // we should give data  , these data is request type of payment provider
+        // return created gateway instance
         return new $providerClassName($this->request);
     }
 
