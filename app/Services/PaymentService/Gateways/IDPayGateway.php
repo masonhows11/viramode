@@ -4,14 +4,14 @@
 namespace App\Services\PaymentService\Gateways;
 
 
-use App\Services\PaymentService\Interfaces\AbstractProviderConstructor;
+use App\Services\PaymentService\Interfaces\AbstractGatewayConstructor;
 use App\Services\PaymentService\Interfaces\PayableInterface;
 use App\Services\PaymentService\Interfaces\VerifyInterface;
 
 //use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\Config;
 
-class IDPayGateway extends AbstractProviderConstructor implements PayableInterface, VerifyInterface
+class IDPayGateway extends AbstractGatewayConstructor implements PayableInterface, VerifyInterface
 {
 
     private int $StatusOk = 100;

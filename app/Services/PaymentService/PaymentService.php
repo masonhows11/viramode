@@ -26,7 +26,8 @@ class PaymentService
         $this->request = $request;
     }
 
-    // for find payment provider / gateway like zarinpal or idPay or melLat
+    // for find payment provider 
+    // gateway like zarinpal or idPay or melLat
     private function findProvider()
     {
         // find provider
@@ -47,7 +48,6 @@ class PaymentService
     public function pay()
     {
         try {
-
             // the pay() method is defined in interface
             return $this->findProvider()->pay();
         } catch (ProviderNotFoundException $e) {

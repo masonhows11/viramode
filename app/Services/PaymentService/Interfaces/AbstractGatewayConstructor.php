@@ -5,7 +5,7 @@ namespace App\Services\PaymentService\Interfaces;
 
 
 // make constructor for all payment providers
-abstract class AbstractProviderConstructor
+abstract class AbstractGatewayConstructor
 {
     // when set Access level this property as protected
     // the child class can access to
