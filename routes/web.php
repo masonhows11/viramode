@@ -326,9 +326,9 @@ Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->gr
 
     Route::post('/coupon-discount')->name('coupon-discount');
 
-    Route::get('/payment','payment')->name('payment');
+    Route::get('/cart/checkout','checkOut')->name('cart.checkout');
 
-    Route::post('/payment-submit','paymentSubmit')->name('payment.submit');
+    Route::post('/payment','payment')->name('payment');
 
     Route::get('/payment-callback/{order}/{onlinePayment}','paymentCallback')->name('payment.callback');
 

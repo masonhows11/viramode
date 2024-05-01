@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 @php
-                    $currentRoute = 'payment';
+                    $currentRoute = 'cart.checkout';
                 @endphp
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
@@ -45,7 +45,7 @@
                             <h2>انتخاب درگاه پرداخت</h2>
                         </div>
 
-                        <form action="{{ route('payment.submit') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
+                        <form action="{{ route('payment') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
                             @csrf
                             <div class="checkout-pack">
                                 @include('front_end.payment.partials.payment_type')

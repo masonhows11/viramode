@@ -24,7 +24,7 @@ class PaymentController extends Controller
 {
     //
 
-    public function payment()
+    public function checkOut()
     {
 
         $user = Auth::id();
@@ -53,7 +53,7 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentSubmit(GateWayTypeRequest $request)
+    public function payment(GateWayTypeRequest $request)
     {
 
     }

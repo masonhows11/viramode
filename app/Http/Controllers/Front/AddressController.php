@@ -58,7 +58,7 @@ class AddressController extends Controller
 
          $user = auth()->user();
 
-       
+
          $cartItems = CartItems::where('user_id', $user->id)->get();
 
          $total_product_price = 0;
@@ -128,7 +128,7 @@ class AddressController extends Controller
                  );
              }
          }
-         return redirect()->route('payment');
+         return redirect()->route('cart.checkout');
      }
 
 
