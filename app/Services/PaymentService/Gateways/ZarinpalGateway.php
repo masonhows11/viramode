@@ -4,11 +4,11 @@
 namespace App\Services\PaymentService\Gateways;
 
 
-use App\Services\PaymentService\Interfaces\AbstractProviderConstructor;
+use App\Services\PaymentService\Interfaces\AbstractGatewayConstructor;
 use App\Services\PaymentService\Interfaces\PayableInterface;
 use App\Services\PaymentService\Interfaces\VerifyInterface;
 
-class ZarinpalGateway extends AbstractProviderConstructor implements PayableInterface , VerifyInterface
+class ZarinpalGateway extends AbstractGatewayConstructor implements PayableInterface , VerifyInterface
 {
 
 
