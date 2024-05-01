@@ -8,5 +8,4 @@ namespace App\Services\PaymentService\Interfaces;
 interface VerifyInterface
 {
     public function verify();
-
 }

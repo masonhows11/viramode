@@ -20,7 +20,6 @@ class IDPayGateway extends AbstractProviderConstructor implements PayableInterfa
     public function pay()
     {
         // this request coming from AbstractProviderConstructor class
-        // $this->request;
         // $this->request is content info for payment operation
         $callBack = route('payment.verify', 'idPay');
         $info = $this->request;
