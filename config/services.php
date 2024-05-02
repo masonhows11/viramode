@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'gateways' => [
+        'id_pay' => ['api_key' => 'e27fc9b4-ddaa-422b-9192-c132130fc476'],
+        'zarinpal' => ['api_key' => ''],
+        'mellat' => ['api_key' => ''],
+    ],
 
 ];
