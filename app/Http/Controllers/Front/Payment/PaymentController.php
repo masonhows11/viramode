@@ -14,6 +14,7 @@ use App\Services\Payment\PaymentServices;
 use App\Services\PaymentService\PaymentService;
 use App\Services\PaymentService\Request\IDPayRequest;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
+use App\Services\PaymentService\Request\IDPayVerifyRequest;
 
 
 // use App\Services\Payment\SandboxService;
@@ -100,7 +101,17 @@ class PaymentController extends Controller
 
     public function paymentVerify(Request $request)
     {
+        $paymentInfo = $request->all();
 
+        $idPayVerifyRequest = new  IDPayVerifyRequest([
+            'apiKey' => config('services.gateways.id_pay.api_key'),
+            'id' => $paymentInfo['id'],
+            'orderId' => $paymentInfo['order_id'],
+            'gateway' => 'idPay',
+        ]);
+
+        $paymentService = new PaymentService(PaymentService::IDPAY, $idPayVerifyRequest);
+        $result = $paymentService->verify();
 
     }
 
