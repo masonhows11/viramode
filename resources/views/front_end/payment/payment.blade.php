@@ -47,6 +47,9 @@
 
                         <form action="{{ route('payment') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
                             @csrf
+
+                            <input type="hidden" name="order" value="{{ $order->id}}">
+
                             <div class="checkout-pack">
                                 @include('front_end.payment.partials.payment_type')
                             </div>
@@ -110,7 +113,7 @@
                             <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
                             <div class="checkout-summary-price-value">
                                 <span
-                                    class="checkout-summary-price-value-amount">{{ priceFormat($order->delivery->amount + $totalProductPrice) }}
+                                    class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}
                                     {{ __('messages.toman') }}</span>
                                 {{ __('messages.toman') }}
                             </div>

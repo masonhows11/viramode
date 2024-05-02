@@ -46,7 +46,7 @@ class PaymentController extends Controller
         return view('front_end.payment.payment',
         ['cartItems' => $cartItems,
          'order' => $order ,
-         'totalProductPrice' => $totalProductPrice,
+         'totalProductPrice' => $totalProductPrice + $order->delivery->amount,
          'totalDiscount' => $totalDiscount,
          'cartItemsCount' => $cartItemsCount,
          'cartItems' => $cartItems,]);
@@ -55,6 +55,8 @@ class PaymentController extends Controller
 
     public function payment(GateWayTypeRequest $request)
     {
+
+
 
     }
 
