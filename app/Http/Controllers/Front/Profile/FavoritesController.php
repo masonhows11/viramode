@@ -11,7 +11,7 @@ class FavoritesController extends Controller
     public function favorites(){
 
         $products = auth()->user()->products()->paginate(10);
-        return view('front.profile.favorites',[ 'products' => $products ]);
+        return view('front_end.profile.favorites',[ 'products' => $products ]);
 
     }
     public function favoritesDelete(Product $product){

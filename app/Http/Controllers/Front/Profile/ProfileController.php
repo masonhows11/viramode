@@ -178,8 +178,14 @@ class ProfileController extends Controller
     }
 
 
-    public function orderReturnedRequest(){
-        return view('errors_custom.404_error');
+    public function orderReturnedRequest()
+    {
+        try {
+            $user = Auth::id();
+            return view('front_end.profile.orders.return_orders');
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
     }
 
 

@@ -78,8 +78,8 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('order.returned.request') }}"
-                                                    class="{{ $route === 'order.returned.request' ? 'active' : '' }}">
+                                                    <a href="{{ route('returned.orders.request') }}"
+                                                    class="{{ $route === 'returned.orders.request' ? 'active' : '' }}">
                                                         <i class="mdi mdi-backburger"></i>
                                                         درخواست مرجوعی
                                                     </a>

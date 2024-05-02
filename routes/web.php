@@ -226,7 +226,7 @@ Route::controller(ProfileController::class)->prefix('profile')->middleware(['aut
 
     Route::get('/order-details/{order}','orderDetails')->name('order.details');
 
-    Route::get('/order-returned/request','orderReturnedRequest')->name('order.returned.request');
+    Route::get('/returned-orders/request','orderReturnedRequest')->name('returned.orders.request');
 
     //// comments
 
