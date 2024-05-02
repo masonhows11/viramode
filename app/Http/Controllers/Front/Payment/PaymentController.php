@@ -63,7 +63,9 @@ class PaymentController extends Controller
     {
 
         $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
-        if (!in_array($request->gateway, $gateWayList)) {
+
+        if (!in_array($request->gateway, $gateWayList))
+        {
             session()->flash('error', __('messages.there_is_no_payment_gateway'));
             return  redirect()->back();
         }
@@ -79,7 +81,7 @@ class PaymentController extends Controller
              {
                 session()->flash('error', __('messages.this_part_is_being_prepared'));
                 return  redirect()->back();
-            }
+             }
 
             $gateWayRequest = new $gatewayClassRequest([
                 'amount' => 1000,

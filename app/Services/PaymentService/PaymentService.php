@@ -9,9 +9,9 @@ use App\Services\PaymentService\Exceptions\ProviderNotFoundException;
 class PaymentService
 {
 
-    public const IDPAY = 'IDPayGateway';
-    public const ZARRINPAL = 'ZarinpalGateway';
-    public const MELLAT = 'MellatGateway';
+    // public const IDPAY = 'IDPayGateway';
+    // public const ZARRINPAL = 'ZarinpalGateway';
+    // public const MELLAT = 'MellatGateway';
 
     private $provider_name;
     // RequestInterface $request  means that request is type of payment gateway we used for pay

@@ -14,11 +14,11 @@ class ZarinpalGateway extends AbstractGatewayConstructor implements PayableInter
 
     public function pay()
     {
-
+       return 'hi this is zarinpal pay';
     }
 
     public function verify()
     {
-
+        return 'hi this is zarinpal verify';
     }
 }

@@ -19,6 +19,8 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
     public function pay()
     {
+
+        return 'hi this is Idpay pay';
         // this request coming from AbstractProviderConstructor class
         // $this->request is content info for payment operation
         $callBack = route('payment.verify', 'idPay');
@@ -58,7 +60,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
     public function verify()
     {
-        // dd($this->request);
+        return 'hi this is Idpay verify';
         $params = array(
             'id' => $this->request->getId(),
             'order_id' => $this->request->getOrderId(),
