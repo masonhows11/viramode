@@ -62,25 +62,11 @@ class PaymentController extends Controller
     public function payment(GateWayTypeRequest $request)
     {
 
-        // $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
-        // if (!in_array($request->gateway, $gateWayList)) {
-        //     session()->flash('error', __('messages.there_is_no_payment_gateway'));
-        //     return  redirect()->back();
-        // }
-
-        $gateway = $request->gateway;
-        $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
-        $class = new $gatewayClassRequest;
-        dd($class);
-
-        if (class_exists($gatewayClassRequest))
-        {
-            session()->flash('error', 'hi its exists');
+        $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
+        if (!in_array($request->gateway, $gateWayList)) {
+            session()->flash('error', __('messages.there_is_no_payment_gateway'));
             return  redirect()->back();
         }
-
-        // dd(new $gatewayClassRequest([]));
-
 
         // if(class_exists($gatewayClassRequest))
         // {
@@ -94,7 +80,18 @@ class PaymentController extends Controller
         // }
 
 
+
+
         try {
+
+            $gateway = $request->gateway;
+            $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
+            if (class_exists($gatewayClassRequest))
+            {
+                $class = new $gatewayClassRequest;
+                dd($class);
+
+            }
 
          } catch (\Exception $e) {
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
