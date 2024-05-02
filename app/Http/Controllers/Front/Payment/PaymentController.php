@@ -71,13 +71,20 @@ class PaymentController extends Controller
             $gateway = $request->gateway;
             $gateWayName = $request->gateway . 'GateWay';
             $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
-    
+
             if (!class_exists($gatewayClassRequest)) {
                 session()->flash('error', __('messages.this_part_is_being_prepared'));
                 return  redirect()->back();
             }
 
-            $paymentService = $this->gateWay($order,$gateWayName,$gateway,$gatewayClassRequest);
+            $gateWayRequest = new $gatewayClassRequest([
+                'amount' => $order->order_final_amount,
+                'orderId' => $order->order_number,
+                'user' => Auth::user(),
+                'apiKey' => Config::get('services.gateways.' . "$gateway" . '.api_key'),
+            ]);
+
+            $paymentService = new PaymentService($gateWayName, $gateWayRequest);
             return $paymentService->pay();
 
         } catch (\Exception $ex) {
@@ -86,21 +93,11 @@ class PaymentController extends Controller
             return  redirect()->back();
         }
     }
-    private function gateWay($order,$gateWayName,$gateway,$gatewayClassRequest)
-    {
-       
-        $gateWayRequest = new $gatewayClassRequest([
-            'amount' => $order->order_final_amount,
-            'orderId' => $order->order_number,
-            'user' => Auth::user(),
-            'apiKey' => Config::get('services.gateways.' . "$gateway" . '.api_key'),
-        ]);
 
-        return   new PaymentService($gateWayName, $gateWayRequest);
-    }
 
     public function paymentVerify(Request $request)
     {
+
         $paymentInfo = $request->all();
 
         $idPayVerifyRequest = new  IDPayVerifyRequest([
