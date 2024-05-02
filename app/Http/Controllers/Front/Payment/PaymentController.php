@@ -113,6 +113,17 @@ class PaymentController extends Controller
         $paymentService = new PaymentService(PaymentService::IDPAY, $idPayVerifyRequest);
         $result = $paymentService->verify();
 
+        
+        if ($result['status'] == false) {
+            dd('payment failed');
+           // return redirect()->route('payment.failed.result')->with('result',$result);
+        }
+        if ($result['status'] == true) {
+            dd('payment success');
+          //  return $this->sendSuccessResponse($result);
+        }
+        return null;
+
     }
 
 
