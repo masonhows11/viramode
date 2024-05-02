@@ -14,11 +14,13 @@ class ZarinpalGateway extends AbstractGatewayConstructor implements PayableInter
 
     public function pay()
     {
-       return 'hi this is zarinpal pay';
+        session()->flash('error', __('messages.this_part_is_being_prepared'));
+        return  redirect()->back();
     }
 
     public function verify()
     {
-        return 'hi this is zarinpal verify';
+        session()->flash('error', __('messages.this_part_is_being_prepared'));
+        return  redirect()->back();
     }
 }

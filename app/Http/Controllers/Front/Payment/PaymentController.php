@@ -91,7 +91,8 @@ class PaymentController extends Controller
             $paymentService = new PaymentService($gateWayName,$gateWayRequest);
             return $paymentService->pay();
 
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
             return  redirect()->back();
         }

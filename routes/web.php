@@ -334,9 +334,9 @@ Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->gr
 
 Route::controller(FrontPaymentController::class)->group(function(){
 
-    Route::get('/payment-callback/{order}/{onlinePayment}','paymentCallback')->name('payment.callback');
+    Route::get('/payment-verify/{gateway}/{order}','paymentVerify')->name('payment.verify');
 
-    Route::get('/payment-result/{orderNumber}','paymentResult')->name('payment.result');
+    Route::get('/payment-result/{order}','paymentResult')->name('payment.result');
 
 });
 /* ------------------- admin Routes ------------------------**/

@@ -20,12 +20,12 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
     public function pay()
     {
 
-        return 'hi this is Idpay pay';
-        // this request coming from AbstractProviderConstructor class
-        // $this->request is content info for payment operation
-        $callBack = route('payment.verify', 'idPay');
+        //return 'hi this is Idpay pay';
+       
+     
         $info = $this->request;
         $full_user = $info->getUser()->first_name . ' ' . $info->getUser()->last_name;
+        $callBack = route('payment.verify', [$info->getOrderId(),'idPay']);
         $params = array(
             'order_id' => $info->getOrderId(),
             'amount' => $info->getAmount(),
@@ -36,6 +36,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'callback' => $callBack,
         );
 
+        // dd($params);
 
 
 
@@ -49,6 +50,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'X-SANDBOX: 1' // for real gateway comment the sandbox line
         ));
         $result = curl_exec($ch);
+        dd($result);
         curl_close($ch);
         $send_result = json_decode($result, true);
         if (isset($send_result['error_code'])) {
@@ -60,7 +62,8 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
     public function verify()
     {
-        return 'hi this is Idpay verify';
+        // return 'hi this is Idpay verify';
+
         $params = array(
             'id' => $this->request->getId(),
             'order_id' => $this->request->getOrderId(),
@@ -83,17 +86,15 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
 
         // verify failed
-        if (isset($result['error_code'])) {
-
-
+        if (isset($result['error_code'])) 
+        {
             return [
                 'status' => false,
                 'statusCode' => $result['error_code'],
                 'gateway' => $this->request->getGateway(),
                 'msg' => $result['error_message'],
             ];
-        }
-        // verify successfully
+        }  // verify successfully
         if ($result['status'] == $this->StatusOk) {
             return [
                 'status' => true,
@@ -102,8 +103,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
                 'gateway' => $this->request->getGateway(),
                 'data' => $result,
             ];
-        }
-        // already verified  successfully
+        }   // already verified  successfully
         if ($result['status'] == $this->StatusOKAlready) {
             return [
                 'status' => true,
