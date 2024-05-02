@@ -68,37 +68,28 @@ class PaymentController extends Controller
             return  redirect()->back();
         }
 
-        // if(class_exists($gatewayClassRequest))
-        // {
-        //     //dd('hi its exists');
-        //      dd(new IDPayRequest([
-        //         'amount' => 1000,
-        //         'orderId' => 1231564,
-        //         'user' => Auth::user(),
-        //         'apiKey' => Config::get('services.gateways.id_pay.api_key'),
-        //      ]));
-        // }
-
-
-
 
         try {
 
             $gateway = $request->gateway;
+            $gateWayName = $request->gateway .'GateWay';
             $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
-            if (class_exists($gatewayClassRequest))
+
+            if (!class_exists($gatewayClassRequest))
              {
-                $class = new $gatewayClassRequest([
-                    'amount' => 1000,
-                    'orderId' => 1231564,
-                    'user' => Auth::user(),
-                    'apiKey' => Config::get('services.gateways.'."$gateway".'.api_key'),
-                ]);
-                dd($class);
-            }else {
                 session()->flash('error', __('messages.this_part_is_being_prepared'));
                 return  redirect()->back();
             }
+
+            $gateWayRequest = new $gatewayClassRequest([
+                'amount' => 1000,
+                'orderId' => 1231564,
+                'user' => Auth::user(),
+                'apiKey' => Config::get('services.gateways.'."$gateway".'.api_key'),
+            ]);
+
+            $paymentService = new PaymentService($gateWayName,$gateWayRequest);
+            return $paymentService->pay();
 
         } catch (\Exception $e) {
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
