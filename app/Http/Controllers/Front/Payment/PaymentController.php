@@ -66,7 +66,23 @@ class PaymentController extends Controller
             return redirect()->back();
         }
 
-        
+        try {
+
+            $gateway = $this->request->gateway;
+            
+
+
+        } catch (\Exception $e)
+        {
+            session()->flash('error',__('messages.there_is_an_error_in_payment_process'));
+            return redirect()->back();
+        }
+
+
+
+
+
+
     }
 
     public function paymentVerify(Request $request)

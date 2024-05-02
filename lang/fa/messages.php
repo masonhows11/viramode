@@ -576,6 +576,7 @@ return [
     'save_address_and_delivert_to' => 'ثبت آدرس',
     'cancel_return' => 'انصراف و بازگشت',
     'there_is_no_payment_gateway' => 'درگاه پرداخت انتخاب شده وجود ندارد',
+    'there_is_an_error_in_payment_process' => 'خطایی در عملیات پرداخت رخ داده است',
 
 
 ];
