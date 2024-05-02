@@ -14,8 +14,8 @@ use App\Services\PaymentService\Interfaces\VerifyInterface;
 class IDPayGateway extends AbstractGatewayConstructor implements PayableInterface, VerifyInterface
 {
 
-    private int $StatusOk = 100;
-    private int $StatusOKAlready = 101;
+    private const StatusOk = 100;
+    private const StatusOKAlready = 101;
 
     public function pay()
     {
