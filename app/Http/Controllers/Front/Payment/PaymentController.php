@@ -86,15 +86,20 @@ class PaymentController extends Controller
 
             $gateway = $request->gateway;
             $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
-            if (class_exists($gatewayClassRequest)) {
+            if (class_exists($gatewayClassRequest))
+             {
                 $class = new $gatewayClassRequest([
                     'amount' => 1000,
                     'orderId' => 1231564,
                     'user' => Auth::user(),
-                    'apiKey' => Config::get('services.gateways.id_pay.api_key'),
+                    'apiKey' => Config::get('services.gateways.'."$gateway".'.api_key'),
                 ]);
                 dd($class);
+            }else {
+                session()->flash('error', __('messages.this_part_is_being_prepared'));
+                return  redirect()->back();
             }
+
         } catch (\Exception $e) {
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
             return  redirect()->back();
