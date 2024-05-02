@@ -3,19 +3,15 @@
 namespace App\Http\Controllers\Front\Payment;
 
 use App\Models\Order;
-use App\Models\Coupon;
+
 use App\Models\Payment;
 use App\Models\CartItems;
-use App\Models\OrderItem;
-use App\Models\CashPayment;
 use Illuminate\Http\Request;
-use App\Models\OnlinePayment;
-use App\Models\OfflinePayment;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use App\Services\Payment\PaymentServices;
+use App\Services\PaymentService\PaymentService;
 use App\Services\PaymentService\Request\IDPayRequest;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
 
@@ -31,7 +27,7 @@ class PaymentController extends Controller
 
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
-        $order = $order = Order::with('delivery', 'address')
+        $order =  Order::with('delivery', 'address')
             ->where('user_id', '=', $user)
             ->where('order_status', '=', 0)->first();
 
@@ -62,6 +58,8 @@ class PaymentController extends Controller
     public function payment(GateWayTypeRequest $request)
     {
 
+        $order =  Order::findOrFail($request->order);
+
         $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
 
         if (!in_array($request->gateway, $gateWayList))
@@ -84,8 +82,8 @@ class PaymentController extends Controller
              }
 
             $gateWayRequest = new $gatewayClassRequest([
-                'amount' => 1000,
-                'orderId' => 1231564,
+                'amount' => $order->order_final_amount,
+                'orderId' => $order->order_number,
                 'user' => Auth::user(),
                 'apiKey' => Config::get('services.gateways.'."$gateway".'.api_key'),
             ]);
@@ -100,7 +98,10 @@ class PaymentController extends Controller
     }
 
     public function paymentVerify(Request $request)
-    { }
+    {
+
+
+    }
 
 
     public function paymentResult(Request $request)

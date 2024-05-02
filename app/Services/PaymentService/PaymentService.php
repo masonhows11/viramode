@@ -3,7 +3,7 @@
 
 namespace App\Services\PaymentService;
 
-use App\Services\PaymentService\Contracts\RequestInterface;
+use App\Services\PaymentService\Interfaces\RequestInterface;
 use App\Services\PaymentService\Exceptions\ProviderNotFoundException;
 
 class PaymentService
