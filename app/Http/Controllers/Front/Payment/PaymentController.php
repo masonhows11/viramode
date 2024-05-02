@@ -14,7 +14,9 @@ use App\Models\OfflinePayment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use App\Services\Payment\PaymentServices;
+use App\Services\PaymentService\Request\IDPayRequest;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
 
 
@@ -60,22 +62,45 @@ class PaymentController extends Controller
     public function payment(GateWayTypeRequest $request)
     {
 
-        $gateWayList = ['zarinpal', 'idpay', 'mellat'];
-        if (!in_array($request->gateway, $gateWayList)) {
+        $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
+        if (!in_array($request->gateway, $gateWayList))
+        {
             session()->flash('error',__('messages.there_is_no_payment_gateway'));
-            return redirect()->back();
+            return  redirect()->back();
         }
+
+        $gateway = $request->gateway;
+        $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request.php";
+
+        dd(new $gatewayClassRequest([]));
+
+
+        // if(class_exists($gatewayClassRequest))
+        // {
+        //     //dd('hi its exists');
+        //      dd(new IDPayRequest([
+        //         'amount' => 1000,
+        //         'orderId' => 1231564,
+        //         'user' => Auth::user(),
+        //         'apiKey' => Config::get('services.gateways.id_pay.api_key'),
+        //      ]));
+        // }
+
 
         try {
 
-            $gateway = $this->request->gateway;
-            
+
+
+
+
+
+
 
 
         } catch (\Exception $e)
         {
             session()->flash('error',__('messages.there_is_an_error_in_payment_process'));
-            return redirect()->back();
+            return  redirect()->back();
         }
 
 

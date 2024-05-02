@@ -3,7 +3,7 @@
 
         <div class="col-12">
             <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                <input type="radio" class="custom-control-input" name="gateway" id="1" value="zarinpal">
+                <input type="radio" class="custom-control-input" name="gateway" id="1" value="Zarinpal">
                 <label for="1" class="custom-control-label">
                     <i class="mdi mdi-credit-card-multiple-outline checkout-additional-options-checkbox-image"></i>
                     <div class="content-box">
@@ -16,7 +16,7 @@
         </div>
         <div class="col-12">
             <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                <input type="radio" class="custom-control-input" name="gateway"  id="2" value="idpay">
+                <input type="radio" class="custom-control-input" name="gateway"  id="2" value="IDPay">
                 <label for="2" class="custom-control-label">
                     <i class="mdi mdi-credit-card-multiple-outline checkout-additional-options-checkbox-image"></i>
                     <div class="content-box">
@@ -29,7 +29,7 @@
         </div>
         <div class="col-12">
             <div class="radio-box custom-control custom-radio pl-0 pr-3">
-                <input type="radio" class="custom-control-input" name="gateway"  id="3" value="mellat">
+                <input type="radio" class="custom-control-input" name="gateway"  id="3" value="Mellat">
                 <label for="3" class="custom-control-label">
                     <i class="mdi mdi-credit-card-multiple-outline checkout-additional-options-checkbox-image"></i>
                     <div class="content-box">

@@ -16,7 +16,7 @@
                                 <span>اطلاعات ارسال</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li class="">
                             @if ($currentRoute == request()->route()->getName())
                                 <a href="javascript:void(0)" class="active">
                                     <span>پرداخت</span>
