@@ -106,12 +106,6 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('page.not.found') }}">
-                                                        <i class="mdi mdi-eye-outline"></i>
-                                                        بازدیدهای اخیر
-                                                    </a>
-                                                </li>
-                                                <li>
                                                     <a href="{{ route('user.account.information') }}"
                                                     class="{{ $route === 'user.account.information' ? 'active' : '' }}">
                                                         <i class="mdi mdi-account-edit-outline"></i>
