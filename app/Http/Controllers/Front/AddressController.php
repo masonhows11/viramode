@@ -56,12 +56,8 @@ class AddressController extends Controller
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
 
-        // dd($request);
-         /// $delivery_amount = Delivery::findOrFail($request->delivery_id);
 
          $user = auth()->user();
-
-
          $cartItems = CartItems::where('user_id', $user->id)->get();
 
          $total_product_price = null;
@@ -74,7 +70,7 @@ class AddressController extends Controller
          }
 
 
-         
+
          $orderNumber = $numberServices->generateNumber();
          $delivery = Delivery::findOrFail($request->delivery_id);
          $order = Order::updateOrCreate(
@@ -93,6 +89,7 @@ class AddressController extends Controller
 
 
     // public function getCities(Request $request)
+
     // {
     //     try {
     //         $cities = City::where('province_id', $request->id)->get();
@@ -109,7 +106,8 @@ class AddressController extends Controller
 
 
 
-    // // this controller add common discount to carts of current user
+    // this controller add common discount to carts of current user
+
     // public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
     // {
     //     $user = auth()->user();
