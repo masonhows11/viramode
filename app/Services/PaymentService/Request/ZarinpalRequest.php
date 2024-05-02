@@ -10,11 +10,13 @@ class ZarinpalRequest implements RequestInterface
 {
     private $user;
     private $amount;
+    private $apiKey;
 
     public function __construct(array $data)
     {
         $this->user = $data['user'];
         $this->amount = $data['amount'];
+        $this->apiKey = $data['apiKey'];
     }
 
     public function getAmount()
@@ -24,5 +26,9 @@ class ZarinpalRequest implements RequestInterface
     public function getUser()
     {
         return $this->user;
+    }
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 }
