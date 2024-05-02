@@ -330,12 +330,15 @@ Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->gr
 
     Route::post('/payment','payment')->name('payment');
 
+});
+
+Route::controller(FrontPaymentController::class)->group(function(){
+
     Route::get('/payment-callback/{order}/{onlinePayment}','paymentCallback')->name('payment.callback');
 
     Route::get('/payment-result/{orderNumber}','paymentResult')->name('payment.result');
 
 });
-
 /* ------------------- admin Routes ------------------------**/
 
 // Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|admin'])->group(function () {
