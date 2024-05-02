@@ -29,9 +29,9 @@ class PaymentController extends Controller
 
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
-        $order = $order = Order::with('delivery','address')
-        ->where('user_id', '=', $user)
-        ->where('order_status', '=', 0)->first();
+        $order = $order = Order::with('delivery', 'address')
+            ->where('user_id', '=', $user)
+            ->where('order_status', '=', 0)->first();
 
 
         $cartItemsCount = null;
@@ -43,33 +43,36 @@ class PaymentController extends Controller
             $cartItemsCount += $item->number;
         }
 
-        return view('front_end.payment.payment',
-        ['cartItems' => $cartItems,
-         'order' => $order ,
-         'totalProductPrice' => $totalProductPrice + $order->delivery->amount,
-         'totalDiscount' => $totalDiscount,
-         'cartItemsCount' => $cartItemsCount,
-         'cartItems' => $cartItems,]);
+        return view(
+            'front_end.payment.payment',
+            [
+                'cartItems' => $cartItems,
+                'order' => $order,
+                'totalProductPrice' => $totalProductPrice + $order->delivery->amount,
+                'totalDiscount' => $totalDiscount,
+                'cartItemsCount' => $cartItemsCount,
+                'cartItems' => $cartItems,
+            ]
+        );
     }
 
 
     public function payment(GateWayTypeRequest $request)
     {
 
-
-
+        $gateWayList = ['zarinpal', 'idpay', 'mellat'];
+        if (!in_array($request->gateway, $gateWayList)) {
+            session()->flash('error',__('messages.there_is_no_payment_gateway'));
+            return redirect()->back();
+        }
     }
 
     public function paymentVerify(Request $request)
-    {
-
-    }
+    { }
 
 
     public function paymentResult(Request $request)
-    {
-
-    }
+    { }
 
 
 

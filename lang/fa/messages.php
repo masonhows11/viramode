@@ -575,6 +575,7 @@ return [
     'your_login_was_successful' => 'ورود شما با موفقیت انجام شد',
     'save_address_and_delivert_to' => 'ثبت آدرس',
     'cancel_return' => 'انصراف و بازگشت',
+    'there_is_no_payment_gateway' => 'درگاه پرداخت انتخاب شده وجود ندارد',
 
 
 ];
