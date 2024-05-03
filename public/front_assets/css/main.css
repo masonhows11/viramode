@@ -2696,14 +2696,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 /* ------------ Start my-pagination */
 
-.my-pagination {
+.pagination {
     width: 100%;
     display: inline-block;
     margin: 0 auto;
     text-align: center;
 }
 
-.my-pagination a {
+.pagination a {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -2713,7 +2713,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     color: #212121;
 }
 
-.my-pagination a.next {
+.pagination a.next {
     display: inline-block;
     width: auto;
     height: auto;
@@ -2721,7 +2721,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     color: #333;
 }
 
-.my-pagination a.prev {
+.pagination a.prev {
     display: inline-block;
     width: auto;
     height: auto;
@@ -2729,7 +2729,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     color: #333;
 }
 
-.my-pagination a.active-page {
+.pagination a.active-page {
     background-color: #f7858d;
     border-color: #f7858d;
     color: #fff;

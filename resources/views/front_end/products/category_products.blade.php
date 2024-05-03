@@ -6,10 +6,13 @@
 
 <main class="main-content dt-sl mb-3">
     <div class="container main-container">
-        <div class="row">
 
-            @include('front_end.products.partials.filter_sidebar')
+        <div class="row mb-3 mx-0">
 
+            @include('front_end.products.partials.products_section',['products' => $products])
+
+
+            {{-- @include('front_end.products.partials.filter_sidebar')
             <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
                 <div class="d-md-none">
                     <button class="btn-filter-sidebar">
@@ -18,29 +21,30 @@
                 </div>
                 <div class="dt-sl dt-sn px-0 search-amazing-tab">
 
-                     {{-- <div class="ah-tab-wrapper dt-sl">
+                     <div class="ah-tab-wrapper dt-sl">
                         @include('front_end.products.partials.filter_top')
-                     </div> --}}
+                     </div>
 
                     <div class="ah-tab-content-wrapper dt-sl px-res-0">
+
                         <div class="ah-tab-content dt-sl" data-ah-tab-active="true">
-
                             @include('front_end.products.partials.products_section',['products' => $products])
-
-                            <div class="row">
-                                <div class="col-12">
-                                    {{  $products->links() }}
-                                </div>
-                            </div>
-
                         </div>
 
-                         {{-- @include('front_end.products.partials.tab_content') --}}
+                         @include('front_end.products.partials.tab_content')
 
                     </div>
+                    
                 </div>
+            </div> --}}
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                {{  $products->links() }}
             </div>
         </div>
+
     </div>
 </main>
     <!-- start breadcrumb -->

@@ -1,7 +1,6 @@
-<div class="row mb-3 mx-0 px-res-0">
 
     @foreach ($products as $product )
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1 px-res-0">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1">
         <div class="product-card mb-2 mx-res-0">
             <div class="product-head">
                 <div class="rating-stars">
@@ -31,13 +30,13 @@
                 @foreach ( $product->categories as $category )
                 <a class="product-meta" href="javascript:void(0)">{{ $category->title_persian }}</a>
                 @endforeach
-               
+
                 <span class="product-price">{{ number_format($product->origin_price) }} {{ __('messages.toman') }}</span>
             </div>
         </div>
-    </div> 
+    </div>
     @endforeach
-    
+
 
     {{-- <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1 px-res-0">
         <div class="product-card mb-2 mx-res-0">
@@ -109,4 +108,4 @@
         </div>
     </div> --}}
 
-</div>
+

@@ -32,13 +32,14 @@
     <!-- End header -->
 
     <!-- Start main-content -->
-    <main class="main-content dt-sl mb-3">
+    @yield('main_content')
+    {{-- <main class="main-content dt-sl mb-3">
         <div class="container main-container">
 
-            @yield('main_content')
+
 
         </div>
-    </main>
+    </main> --}}
     <!-- End main-content -->
 
     <!-- Start footer -->

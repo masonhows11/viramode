@@ -59,7 +59,7 @@ class ProductController extends Controller
         $products = $category->products()
             ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
             ->orderBy('created_at', 'DESC')
-            ->paginate(8);
+            ->paginate(50);
 
         // dd($products);
 
