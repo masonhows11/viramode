@@ -6,9 +6,9 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
-// use App\Models\Compare;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+// use App\Models\Compare;
+// use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -44,8 +44,7 @@ class ProductController extends Controller
     {
 
 
-        // $categories = Category::tree()->get()->toTree();
-
+        
         if ($request->search)
         {
             $products = Product::where('title_english', 'LIKE', "%" . $request->search . "%")
@@ -62,16 +61,14 @@ class ProductController extends Controller
       
 
         $category_slug = $request->slug;
-
-        /// get products by category by eloquent query
         $category = Category::where('slug', $category_slug)->select('id')->first();
+
         $products = $category->products()
             ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
             ->orderBy('created_at', 'DESC')
             ->paginate(50);
-
-          
-
+        // dd($products);
+        
         return view('front_end.products.category_products',['products' => $products,]);
             
     }

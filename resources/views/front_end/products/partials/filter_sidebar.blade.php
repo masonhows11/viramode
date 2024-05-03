@@ -17,7 +17,7 @@
                     <input type="text" name="s"
                         placeholder="نام محصول یا برند مورد نظر را بنویسید...">
                     <button class="btn-search-widget">
-                        <img src="./assets/img/theme/search.png" alt="">
+                        <img src="{{ asset('/front_assets/img/theme/search.png') }}" alt="">
                     </button>
                 </div>
             </div>
