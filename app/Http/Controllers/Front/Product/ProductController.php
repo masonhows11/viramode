@@ -53,18 +53,18 @@ class ProductController extends Controller
 
     public function searchCategory(Request $request)
     {
-      
+
         $category_slug = $request->slug;
         $category = Category::where('slug', $category_slug)->select('id')->first();
         $products = $category->products()
             ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
             ->orderBy('created_at', 'DESC')
-            ->paginate(50);
+            ->paginate(8);
 
         // dd($products);
-        
+
         return view('front_end.products.category_products',['products' => $products,]);
-            
+
     }
 
 

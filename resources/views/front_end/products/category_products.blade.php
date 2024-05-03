@@ -9,7 +9,7 @@
         <div class="row">
 
             @include('front_end.products.partials.filter_sidebar')
-          
+
             <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
                 <div class="d-md-none">
                     <button class="btn-filter-sidebar">
@@ -18,34 +18,25 @@
                 </div>
                 <div class="dt-sl dt-sn px-0 search-amazing-tab">
 
-                     <div class="ah-tab-wrapper dt-sl">
+                     {{-- <div class="ah-tab-wrapper dt-sl">
                         @include('front_end.products.partials.filter_top')
-                     </div>
+                     </div> --}}
 
                     <div class="ah-tab-content-wrapper dt-sl px-res-0">
                         <div class="ah-tab-content dt-sl" data-ah-tab-active="true">
 
                             @include('front_end.products.partials.products_section',['products' => $products])
-                        
+
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="pagination">
-                                        <a href="#" class="prev"><i  class="mdi mdi-chevron-double-right"></i></a>
-                                        <a href="#">1</a>
-                                        <a href="#" class="active-page">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">...</a>
-                                        <a href="#">7</a>
-                                        <a href="#" class="next"><i class="mdi mdi-chevron-double-left"></i></a>
-                                    </div>
+                                    {{  $products->links() }}
                                 </div>
                             </div>
 
                         </div>
 
                          {{-- @include('front_end.products.partials.tab_content') --}}
-                       
+
                     </div>
                 </div>
             </div>

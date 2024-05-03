@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
             return new DBStorage();
         });
 
-        Paginator::useBootstrapFive();
-        Paginator::defaultView('vendor.pagination.custom-paginate');
+        Paginator::useBootstrapFour();
+        Paginator::defaultView('vendor.pagination.my-custom-paginate');
 
         Facades\View::composer('admin_end.include.header', function (View $view) {
             $view->with(['unseenComments' => Comment::where('seen', 0)->get(), 'notifications' => Notification::where('read_at', 0)->get()]);
