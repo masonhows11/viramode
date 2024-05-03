@@ -49,7 +49,9 @@ class ProductController extends Controller
         if ($request->search)
         {
             $products = Product::where('title_english', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('title_persian', 'LIKE', "%" . $request->search . "%")->paginate(50);
+                ->orWhere('title_persian', 'LIKE', "%" . $request->search . "%")
+                ->orderBy('created_at', 'DESC')
+                ->paginate(50);
         }
 
         return view('front_end.products.search_products')
@@ -58,6 +60,7 @@ class ProductController extends Controller
 
     public function searchCategory(Request $request)
     {
+        $request->all();
 
         $category_slug = $request->slug;
         $categories = Category::where('status', 1)->tree()->get()->toTree();
@@ -65,7 +68,9 @@ class ProductController extends Controller
         /// get products by category by eloquent query
         $category = Category::where('slug', $category_slug)->select('id')->first();
         $products = $category->products()
-            ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')->orderBy($column, $direction);
+            ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(50);
 
         return view('front_end.products.category_products')
             ->with([
