@@ -119,7 +119,7 @@ class ProductController extends Controller
 
         $categories = Category::tree()->get()->toTree();
 
-        return view('front_end.product.search_products')
+        return view('front_end.products.search_products')
             ->with(['products' => $products, 'brands' => $brands,
                 'max_price' => $max_price, 'min_price' => $min_price,
                 'selected_brands' => $selectedBrandsArray,
@@ -217,7 +217,7 @@ class ProductController extends Controller
                 array_push($selectedBrandsArray, $item->title_persian);
             }
         }
-        return view('front_end.product.category_products')
+        return view('front_end.products.category_products')
             ->with(['products' => $products,
                 'max_price' => $max_price,
                 'min_price' => $min_price,
