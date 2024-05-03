@@ -3,7 +3,7 @@
         {{ __('messages.basket') }}
 @endsection
 @section( 'main_content')
-    <div class="container-fluid">
+    <div class="main-content dt-sl mb-3">
 
          <livewire:front.cart.shopping-cart />
 
