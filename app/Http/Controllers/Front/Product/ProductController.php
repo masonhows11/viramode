@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Front\Product;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 // use App\Models\Compare;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -128,10 +129,9 @@ class ProductController extends Controller
 
     public function searchCategory(Request $request)
     {
-        dd('hi');
+        // dd('hi');
         $category_slug = $request->slug;
-        $brands = Brand::select('id', 'title_persian')->get();
-        $colors = Color::select('id', 'title_persian', 'code')->get();
+
         $categories = Category::where('status', 1)->tree()->get()->toTree();
         $prices = collect(Product::select('origin_price')->get());
         $max_price = $prices->max(['origin_price']);
@@ -219,12 +219,10 @@ class ProductController extends Controller
         }
         return view('front_end.product.category_products')
             ->with(['products' => $products,
-                'brands' => $brands,
                 'max_price' => $max_price,
                 'min_price' => $min_price,
                 'selected_brands' => $selectedBrandsArray,
-                'categories' => $categories,
-                'colors' => $colors]);
+                'categories' => $categories]);
     }
 
     // public function addToFavoriteProducts(Request $request)
