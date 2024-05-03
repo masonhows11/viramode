@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
 
 
-        $categories = Category::where('status', 1)->tree()->get()->toTree();
+        // $categories = Category::tree()->get()->toTree();
 
         if ($request->search)
         {
@@ -54,16 +54,14 @@ class ProductController extends Controller
                 ->paginate(50);
         }
 
-        return view('front_end.products.search_products')
-            ->with(['products' => $products, 'categories' => $categories,]);
+        return view('front_end.products.search_products',['products' => $products]);
     }
 
     public function searchCategory(Request $request)
     {
-       //dd( $request->slug);
+      
 
         $category_slug = $request->slug;
-        $categories = Category::where('status', 1)->tree()->get()->toTree();
 
         /// get products by category by eloquent query
         $category = Category::where('slug', $category_slug)->select('id')->first();
@@ -72,13 +70,10 @@ class ProductController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(50);
 
-           // dd($products);
+          
 
-        return view('front_end.products.category_products')
-            ->with([
-                'products' => $products,
-                'categories' => $categories
-            ]);
+        return view('front_end.products.category_products',['products' => $products,]);
+            
     }
 
 
