@@ -1,4 +1,5 @@
-<div class="custom-sidebar">
+
+{{-- <div class="custom-sidebar">
     <p class="font-12 border-bottom pb-2">دسته بندی ها</p>
     <div class="category-section accordion">
         @include('front.category.categories' ,['categories' => $categories])
@@ -65,4 +66,4 @@
             <i class="fa fa-filter align-middle font-12 me-2"></i>فیلتر
         </button>
     </div>
-</form>
+</form> --}}

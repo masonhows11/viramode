@@ -1,4 +1,5 @@
-<div class="custom-sidebar">
+
+{{-- <div class="custom-sidebar">
     <p class="font-12 border-bottom pb-2">دسته بندی ها</p>
     <div class="category-section accordion">
         @include('front.category.categories' ,['categories' => $categories])
@@ -6,8 +7,6 @@
 
 </div>
 <form action="{{ route('search.products') }}" method="get">
-
-
 
     <div class="custom-sidebar">
         <p class="font-12 border-bottom pb-2">جستجو در نتایج</p>
@@ -18,20 +17,12 @@
         </div>
     </div>
 
-   {{-- <div class="custom-sidebar">
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="send">
-            <label class="form-check-label font-12" for="send">فقط ارسال فوری</label>
-        </div>
-    </div>
-
     <div class="custom-sidebar">
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="product">
             <label class="form-check-label font-12" for="product">فقط کالاهای موجود</label>
         </div>
-    </div>--}}
-
+    </div>
 
     <div class="custom-sidebar">
         <p class="font-12 border-bottom pb-2">برند</p>
@@ -54,8 +45,6 @@
 
         </div>
     </div>
-
-
 
     <div class="custom-sidebar">
         <p class="font-12 border-bottom pb-2">انتخاب رنگ</p>
@@ -98,4 +87,4 @@
             <i class="fa fa-filter align-middle font-12 me-2"></i>فیلتر
         </button>
     </div>
-</form>
+</form> --}}
