@@ -161,10 +161,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('home');
 
     Route::get('/page/notFound','notFound')->name('page.not.found');
-
-    Route::get('/search/products', 'products')->name('search.products');
-
-    Route::get('/category/{slug?}', 'searchCategory')->name('category');
 });
 
 
@@ -246,7 +242,7 @@ Route::controller(FavoritesController::class)->prefix('profile')->middleware(['a
 
 
 
-Route::get('/compare-products', [CompareController::class, 'index'])->name('compare.products');
+// Route::get('/compare-products', [CompareController::class, 'index'])->name('compare.products');
 
 
 Route::controller(FrontAddressController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
@@ -288,10 +284,18 @@ Route::get('/contact_us', [\App\Http\Controllers\Front\ContactUs\ContactUsContro
 
 Route::controller(ProductController::class)->group(function () {
 
+    // single product
     Route::get('/product/{product:slug}', 'show')->name('product');
 
-    Route::post('/product/add-to-favorites', 'addToFavoriteProducts')->middleware('auth', 'web')->name('product.add.to.favorites');
+    // search product
+    Route::get('/search/products', 'products')->name('search.products');
 
+    // get products by category
+    Route::get('/category/{slug?}', 'searchCategory')->name('category');
+
+    // add to favorites
+    Route::post('/product/add-to-favorites', 'addToFavoriteProducts')->middleware('auth', 'web')->name('product.add.to.favorites');
+    // add to compare
     Route::post('/product/add-to-compare', 'addToCompareProducts')->middleware('auth', 'web')->name('product.add.to.compares');
 
 });
