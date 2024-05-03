@@ -27,8 +27,6 @@ class ProductController extends Controller
         $images = ProductImage::where('product_id', $product_id)->where('is_active', 1)->get();
 
         $categories = $productCategories->implode('title_persian', ' - ');
-
-
         return view('front_end.product.product')
             ->with([
                 'product' => $product,
@@ -43,8 +41,6 @@ class ProductController extends Controller
     public function products(Request $request)
     {
 
-
-        
         if ($request->search)
         {
             $products = Product::where('title_english', 'LIKE', "%" . $request->search . "%")
@@ -52,21 +48,19 @@ class ProductController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->paginate(50);
         }
-
         return view('front_end.products.search_products',['products' => $products]);
     }
 
     public function searchCategory(Request $request)
     {
       
-
         $category_slug = $request->slug;
         $category = Category::where('slug', $category_slug)->select('id')->first();
-
         $products = $category->products()
             ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
             ->orderBy('created_at', 'DESC')
             ->paginate(50);
+
         // dd($products);
         
         return view('front_end.products.category_products',['products' => $products,]);
