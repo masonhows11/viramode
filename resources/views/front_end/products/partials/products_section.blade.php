@@ -1,4 +1,4 @@
-
+ 
     @foreach ($products as $product )
     <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1">
         <div class="product-card mb-2 mx-res-0">

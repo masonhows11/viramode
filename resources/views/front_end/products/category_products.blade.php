@@ -3,15 +3,11 @@
     {{ __('messages.site_name') }}
 @endsection
 @section('main_content')
-
 <main class="main-content dt-sl mb-3">
     <div class="container main-container">
-
+        @if($products->isNotEmpty())
         <div class="row mb-3 mx-0">
-
             @include('front_end.products.partials.products_section',['products' => $products])
-
-
             {{-- @include('front_end.products.partials.filter_sidebar')
             <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
                 <div class="d-md-none">
@@ -34,7 +30,7 @@
                          @include('front_end.products.partials.tab_content')
 
                     </div>
-                    
+
                 </div>
             </div> --}}
         </div>
@@ -44,6 +40,19 @@
                 {{  $products->links() }}
             </div>
         </div>
+        @else
+        <div class="row h-75">
+            <div class="col-12  d-flex justify-content-center" style="height:500px">
+
+                <div>
+                    <p class="font-weight-normal h3">
+                        {{ __('messages.your_search_returned_no_results')}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        @endif
 
     </div>
 </main>
