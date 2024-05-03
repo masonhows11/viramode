@@ -60,7 +60,7 @@ class ProductController extends Controller
 
     public function searchCategory(Request $request)
     {
-        $request->all();
+       //dd( $request->slug);
 
         $category_slug = $request->slug;
         $categories = Category::where('status', 1)->tree()->get()->toTree();
@@ -71,6 +71,8 @@ class ProductController extends Controller
             ->select('products.id', 'products.title_persian', 'thumbnail_image', 'products.created_at')
             ->orderBy('created_at', 'DESC')
             ->paginate(50);
+
+           // dd($products);
 
         return view('front_end.products.category_products')
             ->with([
