@@ -38,7 +38,7 @@
                                 <h1>{{ $product->title_persian }}</h1>
                                 <h3>{{ $product->title_english }}</h3>
                             </div>
-                            
+
                             <div class="row">
                                 <!-- first col -->
 
@@ -66,24 +66,22 @@
             {{--   @include('front_end.product.partials.sellers_section')--}}
             <!-- end sellers -->
 
-            <div class="dt-sn mb-5 px-0 dt-sl pt-0">
-                <!-- start tabs -->
-                <section class="tabs-product-info mb-3 dt-sl">
+            <!-- start tabs -->
+            {{-- <div class="dt-sn mb-5 px-0 dt-sl pt-0">
 
+                <section class="tabs-product-info mb-3 dt-sl">
                     @include('front_end.product.partials.product_tab_section_links')
                     <div class="ah-tab-content-wrapper product-info px-4 dt-sl">
-                        <!-- product description / introduce -->
                         @include('front_end.product.partials.product_description')
-                        <!-- product technical specification -->
                         @include('front_end.product.partials.product_specifications')
-                        <!-- product comments -->
                         @include('front_end.product.partials.product_comments')
-                        <!-- product answer & question -->
                         @include('front_end.product.partials.product_answer_question')
                     </div>
                 </section>
-                <!-- End tabs -->
-            </div>
+
+            </div> --}}
+
+             <!-- End tabs -->
             <!-- End Product -->
 
 

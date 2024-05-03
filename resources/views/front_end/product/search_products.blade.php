@@ -1,4 +1,4 @@
-@extends( 'front.layouts.master_front')
+@extends( 'front_end.layouts.master_front')
 @section( 'page_title')
     {{ __('messages.site_name') }}
 @endsection
@@ -29,8 +29,8 @@
      </div>--}}
     <!-- end breadcrumb -->
 
-
-    <div class="container mt-5">
+   <!-- start main -->
+    {{-- <div class="container mt-5">
 
 
         <div class="row">
@@ -61,14 +61,14 @@
                             </span>
                             @endif
 
-                            {{-- @if( request()->categories )
+                             @if( request()->categories )
                                  <span class="d-inline-block border p-1 rounded bg-light">
                                  {{ __('messages.category') }}
                                  <span class="badge bg-blue-100 text-dark">
                                      {{ request()->categoies }}
                                  </span>
                              </span>
-                             @endif--}}
+                             @endif
 
                             @if( request()->min_price )
                                 <span class="d-inline-block border p-1 rounded bg-light">
@@ -163,8 +163,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </div> --}}
+   <!-- end main -->
 
 
 

@@ -40,6 +40,7 @@
                 کند.</p>
         </div>
     </div>
+{{--
     <div class="accordion dt-sl accordion-product" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -223,7 +224,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 {{--
 <p class="m-3 font-14">نقد و بررسی اجمالی</p>

@@ -1,10 +1,11 @@
-@extends( 'front.layouts.master_front')
+@extends( 'front_end.layouts.master_front')
 @section( 'page_title')
     {{ __('messages.site_name') }}
 @endsection
 @section('main_content')
 
     <!-- start breadcrumb -->
+
     {{-- <div class="container">
          <div class="row mt-3">
              <div class="col-12">
@@ -27,19 +28,21 @@
              </div>
          </div>
      </div>--}}
+
     <!-- end breadcrumb -->
 
     <!-- start main -->
-
-    <div class="container mt-5">
+    {{-- <div class="container mt-5">
 
 
         <div class="row">
+
             <!-- sidebar section-->
             <div class="col-lg-3">
                 @include('front.product.partials.sidebar_category_products')
             </div>
             <!-- products section -->
+
             <div class="col-lg-9">
                 <div class="product-items">
                     <div class="row d-flex flex-column">
@@ -62,14 +65,14 @@
                             </span>
                             @endif
 
-                            {{-- @if( request()->categories )
+                           @if( request()->categories )
                                  <span class="d-inline-block border p-1 rounded bg-light">
                                  {{ __('messages.category') }}
                                  <span class="badge bg-blue-100 text-dark">
                                      {{ request()->categoies }}
                                  </span>
                              </span>
-                             @endif--}}
+                             @endif
 
                             @if( request()->min_price )
                                 <span class="d-inline-block border p-1 rounded bg-light">
@@ -90,7 +93,9 @@
                             @endif
                         </div>
 
-                        <div class="col-12 mb-2"><!-- start sort nav -->
+                        <!-- start sort nav -->
+
+                        <div class="col-12 mb-2">
                             <ul class="nav nav-pills sort-by">
                                 <span class="font-13 mt-2 me-2"> مرتب سازی بر اساس :</span>
                                 <li class="nav-product">
@@ -105,6 +110,7 @@
                                     <a href="{{ route('search.category',['slug' => request()->slug ,'search' => request()->category_search ,'sort' => '5' , 'min_price' => request()->min_price , 'max_price' => request()->max_price  ,'brands' => request()->brands ]) }}" class="nav-link font-13 {{ request()->sort == 5 ? 'active' : 'text-dark' }}">پر فروش ترین </a></li>
                             </ul>
                         </div>
+
                     </div>
 
 
@@ -165,13 +171,13 @@
                         </div>
                     @endif
                 </div>
+
             </div>
         </div>
-    </div>
-
+    </div> --}}
+    <!-- end main -->
 @endsection
 @push('front_custom_scripts')
-
     <script>
         $(document).ready(function () {
             //  add to favorites
