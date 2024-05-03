@@ -8,12 +8,8 @@
     <div class="container main-container">
         <div class="row">
 
-            <!-- Start Sidebar -->
-
             @include('front_end.products.partials.filter_sidebar')
-
-            <!-- End Sidebar -->
-            <!-- Start Content -->
+          
             <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
                 <div class="d-md-none">
                     <button class="btn-filter-sidebar">
@@ -22,25 +18,19 @@
                 </div>
                 <div class="dt-sl dt-sn px-0 search-amazing-tab">
 
-                    {{-- <div class="ah-tab-wrapper dt-sl">
-
+                     <div class="ah-tab-wrapper dt-sl">
                         @include('front_end.products.partials.filter_top')
-
-                    </div> --}}
+                     </div>
 
                     <div class="ah-tab-content-wrapper dt-sl px-res-0">
                         <div class="ah-tab-content dt-sl" data-ah-tab-active="true">
 
-                            {{-- start products section --}}
                             @include('front_end.products.partials.products_section',['products' => $products])
-                            {{-- end products section --}}
-
-                            {{-- start paginate --}}
+                        
                             <div class="row">
                                 <div class="col-12">
                                     <div class="pagination">
-                                        <a href="#" class="prev"><i
-                                                class="mdi mdi-chevron-double-right"></i></a>
+                                        <a href="#" class="prev"><i  class="mdi mdi-chevron-double-right"></i></a>
                                         <a href="#">1</a>
                                         <a href="#" class="active-page">2</a>
                                         <a href="#">3</a>
@@ -51,18 +41,14 @@
                                     </div>
                                 </div>
                             </div>
-                             {{-- end paginate --}}
 
                         </div>
 
-                        {{-- tab content product --}}
                          {{-- @include('front_end.products.partials.tab_content') --}}
-                        {{-- tab content product --}}
-
+                       
                     </div>
                 </div>
             </div>
-            <!-- End Content -->
         </div>
     </div>
 </main>
