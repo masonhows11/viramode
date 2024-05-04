@@ -24,7 +24,7 @@
 
                                             </div>
                                             <div class="profile-header-content mr-3 mt-2">
-                                                <span class="d-block profile-username">جلال بهرامی راد</span>
+                                                <span class="d-block profile-username">{{ $user->first_name ? $user->first_name : 'کاربر' }} {{ $user->last_name ? $user->last_name : ' گرامی ' }}</span>
                                                 <span class="d-block profile-phone">{{  $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered') }}</span>
                                             </div>
                                         </div>
