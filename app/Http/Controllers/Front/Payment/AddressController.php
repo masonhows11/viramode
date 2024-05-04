@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Front\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaymentRequest\AddressDeliveryRequest;

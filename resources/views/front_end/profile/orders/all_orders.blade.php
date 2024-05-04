@@ -13,6 +13,7 @@
                     class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
                     <h2>همه سفارش‌ها</h2>
                 </div>
+
                 <div class="dt-sl">
                     <div class="table-responsive">
                         <table class="table table-order">
@@ -28,6 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <tr>
                                     <td>1</td>
                                     <td>DDC-57456951</td>
@@ -41,32 +43,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>DKC-45173498</td>
-                                    <td>۱۰ خرداد ۱۳۹۸</td>
-                                    <td>۰</td>
-                                    <td>۱۸,۰۴۹,۰۰۰ تومان</td>
-                                    <td>لغو شده</td>
-                                    <td class="details-link">
-                                        <a href="#">
-                                            <i class="mdi mdi-chevron-left"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>DDC-58976951</td>
-                                    <td>۲۱ مرداد ۱۳۹۸</td>
-                                    <td>۰</td>
-                                    <td>۹,۱۸۹,۰۰۰ تومان</td>
-                                    <td>لغو شده</td>
-                                    <td class="details-link">
-                                        <a href="#">
-                                            <i class="mdi mdi-chevron-left"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
