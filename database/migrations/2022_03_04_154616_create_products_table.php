@@ -50,6 +50,8 @@ class CreateProductsTable extends Migration
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
 
+            $table->index(['title_persian', 'title_english']);
+
             $table->softDeletes();
             $table->timestamps();
         });
