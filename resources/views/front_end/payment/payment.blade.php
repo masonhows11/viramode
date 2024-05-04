@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 @php
-                    $currentRoute = 'cart.checkout';
+                    $currentRoute = 'payment.checkout';
                 @endphp
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
