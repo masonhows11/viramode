@@ -41,7 +41,8 @@ class ProductController extends Controller
     public function products(Request $request)
     {
 
-        if ($request->search) {
+        if ($request->search)
+        {
             $products = Product::where('title_english', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('title_persian', 'LIKE', "%" . $request->search . "%")
                 ->orderBy('created_at', 'DESC')
