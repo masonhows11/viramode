@@ -10,8 +10,8 @@
                         name="delivery_id"
                         class="custom-control-input address-radio-check"
                         name="delivery"
-                        id="radio-{{ $delivery->id }}" value="{{ $delivery->id }}">
-                <label for="radio-{{ $delivery->id }}" class="custom-control-label address-radio-label">
+                        id="radio-delivery-{{ $delivery->id }}" value="{{ $delivery->id }}">
+                <label for="radio-delivery-{{ $delivery->id }}" class="custom-control-label address-radio-label">
                     {{ $delivery->title }}
                 </label>
             </div>

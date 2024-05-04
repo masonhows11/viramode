@@ -30,8 +30,8 @@
             </ul>
             <div class="checkout-contact-badge custom-radio">
 
-                <input type="radio" id="radio-{{ $address->id }}" class="custom-control-input address-radio-check" form="my-form" name="address_id" value="{{ $address->id }}">
-                <label for="radio-{{ $address->id }}" class="custom-control-label pr-3 pt-5 mt-2 border-danger address-radio-label"></label>
+                <input type="radio" id="radio-address-{{ $address->id }}" class="custom-control-input address-radio-check" form="my-form" name="address_id" value="{{ $address->id }}">
+                <label for="radio-address-{{ $address->id }}" class="custom-control-label pr-3 pt-5 mt-2 border-danger address-radio-label"></label>
 
             </div>
         </div>
