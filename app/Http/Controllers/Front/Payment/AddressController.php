@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Front\Payment;
 
 use App\Models\Order;
 use App\Models\Address;
+use App\Models\Payment;
 use App\Models\Delivery;
 use App\Models\CartItems;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Services\Basket\Basket;
 use App\Http\Controllers\Controller;
@@ -21,22 +23,24 @@ class AddressController extends Controller
     private Request $request;
     private Basket $basket;
     private $cartItems;
-    private $user;
+    
 
     public function __construct( Request $request, Basket $basket)
     {
-        $this->user = Auth::user();
+       
         $this->request = $request;
         $this->basket = $basket;
-        $this->cartItems = CartItems::where('user_id', $this->user->id)->get();
+       
     }
 
 
     public function checkAddress()
     {
+        $user = Auth::user();
         $deliveries = Delivery::where('status', 1)->get();
-        $addresses = Address::where('user_id', $this->user->id)->get();
-        $cartItems = $this->cartItems;
+        $addresses = Address::where('user_id', $user->id)->get();
+        $cartItems = CartItems::where('user_id', $user->id)->get();
+        
 
         $cartItemsCount = null;
         $totalProductPrice = null;
@@ -48,9 +52,9 @@ class AddressController extends Controller
         }
 
         if (
-            empty($this->user->mobile) || empty($this->user->first_name) ||
-            empty($this->user->last_name) || empty($this->user->email) ||
-            empty($this->user->national_code) || $this->user->addresses->isEmpty()
+            empty($user->mobile) || empty($user->first_name) ||
+            empty($user->last_name) || empty($user->email) ||
+            empty($user->national_code) || $user->addresses->isEmpty()
           )
           {
              session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
@@ -71,7 +75,8 @@ class AddressController extends Controller
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
 
-         $cartItems = $this->cartItems;
+        $user = Auth::id();
+        $cartItems = CartItems::where('user_id', $user)->get();
 
          $total_product_price = null;
          $total_final_price = null;
@@ -103,17 +108,28 @@ class AddressController extends Controller
                 'delivery_id' => $delivery_id,
                 'order_final_amount' =>  $order_final_amount,
             ]);
-
-
         $this->makeOrderItems($order);
         return $order;
      }
 
+
      private function makeOrderItems($order)
      {
-
-
-
+        $user = Auth::id();
+        $cartItems = CartItems::where('user_id', $user)->get();
+        foreach($cartItems as $item){
+            OrderItem::updateOrCreate(
+                ['order_id' => $order->id, 'user_id' => $user],
+                [
+                'user_id' => $user,
+                'order_id' => $order->id,
+                'product_id' => $item->product_id,
+                'number' => $item->number,
+                'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
+                'final_total_price' => $item->cartItemFinalPrice(),
+            ]);
+        }
+       
      }
  
 
@@ -122,7 +138,6 @@ class AddressController extends Controller
          return Payment::updateOrCreate(
              ['order_id' => $order->id, 'status' => 0],
              ['amount' => $order->order_final_amount,] );
-
      }
 
 
@@ -143,103 +158,4 @@ class AddressController extends Controller
     //     }
     // }
 
-
-
-
-    // this controller add common discount to carts of current user
-
-    // public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
-    // {
-    //     $user = auth()->user();
-    //     // calculate final price
-    //     $cartItems = CartItems::where('user_id', $user->id)->get();
-    //     $total_product_price = 0;
-    //     $total_discount_price = 0;
-    //     $total_final_price = 0;
-    //     $total_final_discount_price_with_number = 0;
-    //     foreach ($cartItems as $item) {
-    //         $total_product_price += $item->cartItemProductPriceWithOutNumber();
-    //         $total_discount_price += $item->cartItemProductDiscount();
-    //         $total_final_price += $item->cartItemFinalPrice();
-    //         $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
-    //     }
-    //
-    //     $orderNumber = $numberServices->generateNumber();
-    //     $delivery_amount = Delivery::findOrFail($request->delivery_id);
-    //     $order = Order::updateOrCreate(
-    //         ['user_id' => $user->id, 'order_status' => 0],
-    //         [
-    //             'order_number' => $orderNumber,
-    //             'address_id' => $request->address_id,
-    //             'delivery_id' => $request->delivery_id,
-    //         ]
-    //     );
-    //     // return $order;
-    //     // for calculate common discount
-    //     // if there is common discount
-    //     // we use first discount if there is some discount
-    //     // example 50% of the total amount of the shopping cart is considered a discount
-    //     $commonDiscount = CommonDiscount::where([['status', 1], ['end_date', '>', now()], ['start_date', '<', now()]])->first();
-    //     if (empty($commonDiscount)) {
-    //         Order::where(['user_id' => $user->id, 'order_status' => 0])
-    //             ->update([
-    //                 'order_final_amount' => $total_final_price + $delivery_amount->amount,
-    //                 'order_discount_amount' => $total_discount_price,
-    //                 'order_total_products_discount_amount' => $total_final_discount_price_with_number
-    //             ]);
-    //     } else {
-    //         if ($order->common_discount_id == null) {
-    //             // calculate the common discount for this cart price
-    //             $commonPercentDiscount = $total_final_price * ($commonDiscount->percentage / 100);
-    //             // for check maximum discount ceiling
-    //             if ($commonPercentDiscount > $commonDiscount->discount_ceiling) {
-    //                 $commonPercentDiscount = $commonDiscount->discount_ceiling;
-    //             }
-    //             // for check Minimum purchase limit
-    //             if ($commonDiscount != null and $total_final_price >= $commonDiscount->minimal_order_amount) {
-    //                 $finalPrice = $total_final_price - $commonPercentDiscount;
-    //             } else {
-    //                 $finalPrice = $total_final_price;
-    //             }
-    //             $order_total_product_discount_amount =
-    //                 $commonPercentDiscount + $total_final_discount_price_with_number;
-    //             Order::where([['user_id', $user->id], ['order_status', '=', 0]])->update(
-    //                 [
-    //                     'common_discount_id' => $commonDiscount->id,
-    //                     'order_final_amount' => $finalPrice + $delivery_amount,
-    //                     'order_discount_amount' => $total_final_discount_price_with_number,
-    //                     'order_common_discount_amount' => $commonPercentDiscount,
-    //                     'order_total_products_discount_amount' => $order_total_product_discount_amount
-    //                 ]
-    //             );
-    //         }
-    //     }
-    //     return redirect()->route('payment');
-    // }
-
-
-
-
-    //            $commonPercentDiscount = $total_final_price * ($commonDiscount->percentage / 100);
-    //            if ($commonPercentDiscount > $commonDiscount->discount_ceiling) {
-    //                $commonPercentDiscount = $commonDiscount->discount_ceiling;
-    //            }
-    //            if ($commonDiscount != null and $total_final_price >= $commonDiscount->minimal_order_amount) {
-    //                $finalPrice = $total_final_price - $commonPercentDiscount;
-    //            } else {
-    //                $finalPrice = $total_final_price;
-    //            }
-    //            $order_total_product_discount_amount =
-    //                $commonPercentDiscount + $total_final_discount_price_with_number;
-    //            Order::updateOrCreate(
-    //                ['user_id' => $user->id, 'order_status' => 0],
-    //                ['user_id' => $user->id,
-    //                    'address_id' => $request->address_id,
-    //                    'delivery_id' => $request->delivery_id,
-    //                    'common_discount_id' => $commonDiscount->id ?? null,
-    //                    'order_final_amount' => $finalPrice ?? $total_final_price,
-    //                    'order_discount_amount' => $total_final_discount_price_with_number,
-    //                    'order_common_discount_amount' => $commonPercentDiscount,
-    //                    'order_total_products_discount_amount' => $order_total_product_discount_amount ]
-    //            );
 }
