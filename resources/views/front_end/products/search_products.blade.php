@@ -4,7 +4,59 @@
 @endsection
 @section('main_content')
 
+<main class="main-content dt-sl mb-3">
+    <div class="container main-container">
+        @if($products->isNotEmpty())
+        <div class="row mb-3 mx-0">
+            @include('front_end.products.partials.products_section',['products' => $products])
+            {{-- @include('front_end.products.partials.filter_sidebar')
+            <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
+                <div class="d-md-none">
+                    <button class="btn-filter-sidebar">
+                        جستجوی پیشرفته <i class="fad fa-sliders-h"></i>
+                    </button>
+                </div>
+                <div class="dt-sl dt-sn px-0 search-amazing-tab">
 
+                     <div class="ah-tab-wrapper dt-sl">
+                        @include('front_end.products.partials.filter_top')
+                     </div>
+
+                    <div class="ah-tab-content-wrapper dt-sl px-res-0">
+
+                        <div class="ah-tab-content dt-sl" data-ah-tab-active="true">
+                            @include('front_end.products.partials.products_section',['products' => $products])
+                        </div>
+
+                         @include('front_end.products.partials.tab_content')
+
+                    </div>
+
+                </div>
+            </div> --}}
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                {{  $products->links() }}
+            </div>
+        </div>
+        @else
+        <div class="row h-75">
+            <div class="col-12  d-flex justify-content-center" style="height:500px">
+
+                <div>
+                    <p class="font-weight-normal h3">
+                        {{ __('messages.your_search_returned_no_results')}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        @endif
+
+    </div>
+</main>
     <!-- start breadcrumb -->
     {{-- <div class="container">
          <div class="row mt-3">
