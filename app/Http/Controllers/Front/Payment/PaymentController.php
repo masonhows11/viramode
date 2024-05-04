@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use App\Services\Payment\PaymentServices;
 use App\Services\PaymentService\PaymentService;
-use App\Services\PaymentService\Request\IDPayRequest;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
 use App\Services\PaymentService\Request\IDPayVerifyRequest;
 
@@ -42,8 +40,7 @@ class PaymentController extends Controller
             $cartItemsCount += $item->number;
         }
 
-        return view(
-            'front_end.payment.payment',
+        return view('front_end.payment.payment',
             [
                 'cartItems' => $cartItems,
                 'order' => $order,
@@ -124,7 +121,9 @@ class PaymentController extends Controller
 
 
     public function paymentResult(Request $request)
-    { }
+    {
+
+    }
 
 
 

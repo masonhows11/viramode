@@ -88,11 +88,11 @@ use App\Http\Controllers\Dash\Product\ProductCreateTagController;
 use App\Http\Controllers\Dash\Notifications\AdminSMSNoticeController;
 use App\Http\Controllers\Dash\Notifications\AdminEmailNoticesController;
 use App\Http\Controllers\Dash\Notifications\AdminEmailNoticeFileController;
-//  
+//
 use App\Http\Controllers\Dash\Delivery\AdminDeliveryController;
 use App\Http\Controllers\Dash\Address\AdminProvinceController;
 use App\Http\Controllers\Dash\Comments\AdminCommentController;
-// 
+//
 use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
 use App\Http\Controllers\Dash\Banner2\AdminNewestController;
 use App\Http\Controllers\Dash\Banner2\AdminBestSellerController;
@@ -222,17 +222,17 @@ Route::controller(ProfileController::class)->prefix('profile')->middleware(['aut
 
     Route::get('/email-update',  'updateEmailForm')->name('email.update.form');
     Route::post('/email-update',  'updateEmail')->name('email.update');
-    
+
 });
 
-  
+
 
 
 
 
 
 Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
- 
+
     //// orders
   Route::get('/all-orders/{status?}/{type?}', 'allOrders')->name('all.orders');
 
@@ -348,7 +348,7 @@ Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->gr
 
     Route::post('/coupon-discount')->name('coupon-discount');
 
-    Route::get('/cart/checkout','checkOut')->name('cart.checkout');
+    Route::get('/payment/checkout','checkOut')->name('payment.checkout');
 
     Route::post('/payment','payment')->name('payment');
 

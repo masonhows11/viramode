@@ -49,10 +49,10 @@
 
                         <div class="address-section">
                                 @include('front_end.address.partials.address_info',['addresses' => $addresses])
+
                                 @error('address_id')
                                 <span class="text-danger">{{ $message }}</span>
-                               @enderror
-
+                                @enderror
                         </div>
 
                         <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">

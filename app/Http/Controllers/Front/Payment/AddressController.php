@@ -2,26 +2,41 @@
 
 namespace App\Http\Controllers\Front\Payment;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\PaymentRequest\AddressDeliveryRequest;
-use App\Models\Address;
-use App\Models\CartItems;
-use App\Models\CommonDiscount;
-use App\Models\Delivery;
 use App\Models\Order;
-use App\Services\OrderNumber\OrderNumberServices;
+use App\Models\Address;
+use App\Models\Delivery;
+use App\Models\CartItems;
+use Illuminate\Http\Request;
+use App\Services\Basket\Basket;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Services\OrderNumber\OrderNumberServices;
+use App\Http\Requests\PaymentRequest\AddressDeliveryRequest;
 
 // use Illuminate\Http\Request;
 class AddressController extends Controller
 {
     //
+
+    private Request $request;
+    private Basket $basket;
+    private $cartItems;
+    private $user;
+
+    public function __construct( Request $request, Basket $basket)
+    {
+        $this->user = Auth::user();
+        $this->request = $request;
+        $this->basket = $basket;
+        $this->cartItems = CartItems::where('user_id', $this->user->id)->get();
+    }
+
+
     public function checkAddress()
     {
         $deliveries = Delivery::where('status', 1)->get();
-        $user = Auth::user();
-        $addresses = Address::where('user_id', $user->id)->get();
-        $cartItems = CartItems::where('user_id', $user->id)->get();
+        $addresses = Address::where('user_id', $this->user->id)->get();
+        $cartItems = $this->cartItems;
 
         $cartItemsCount = null;
         $totalProductPrice = null;
@@ -33,9 +48,9 @@ class AddressController extends Controller
         }
 
         if (
-            empty($user->mobile) || empty($user->first_name) ||
-            empty($user->last_name) || empty($user->email) ||
-            empty($user->national_code) || $user->addresses->isEmpty()
+            empty($this->user->mobile) || empty($this->user->first_name) ||
+            empty($this->user->last_name) || empty($this->user->email) ||
+            empty($this->user->national_code) || $this->user->addresses->isEmpty()
           )
           {
              session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
@@ -52,13 +67,11 @@ class AddressController extends Controller
                 ]);
     }
 
-     // this controller add common discount to carts of current user
+   
      public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
      {
 
-
-         $user = auth()->user();
-         $cartItems = CartItems::where('user_id', $user->id)->get();
+         $cartItems = $this->cartItems;
 
          $total_product_price = null;
          $total_final_price = null;
@@ -69,20 +82,47 @@ class AddressController extends Controller
              $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
          }
 
-
-
          $orderNumber = $numberServices->generateNumber();
          $delivery = Delivery::findOrFail($request->delivery_id);
-         $order = Order::updateOrCreate(
-             ['user_id' => $user->id, 'order_status' => 0],
-             [
-                 'order_number' => $orderNumber,
-                 'address_id' => $request->address_id,
-                 'delivery_id' => $request->delivery_id,
-                 'order_final_amount' =>  $total_final_price + $delivery->amount,
-             ]);
+         $order_final_amount =  $total_final_price + $delivery->amount;
 
-         return redirect()->route('cart.checkout')->with(['order'=> $order]);
+         $order = $this->makeOrder($orderNumber,$delivery->id,$request->address_id,$order_final_amount);
+         $payment = $this->makePayment($order);
+        
+         return redirect()->route('payment.checkout')->with(['order'=> $order]);
+     }
+
+
+     private function makeOrder($orderNumber,$delivery_id,$address_id,$order_final_amount)
+     {
+        $order = Order::updateOrCreate(
+            ['user_id' => Auth::id(), 'order_status' => 0],
+            [
+                'order_number' => $orderNumber,
+                'address_id' => $address_id,
+                'delivery_id' => $delivery_id,
+                'order_final_amount' =>  $order_final_amount,
+            ]);
+
+
+        $this->makeOrderItems($order);
+        return $order;
+     }
+
+     private function makeOrderItems($order)
+     {
+
+
+
+     }
+ 
+
+     private function makePayment($order)
+     {
+         return Payment::updateOrCreate(
+             ['order_id' => $order->id, 'status' => 0],
+             ['amount' => $order->order_final_amount,] );
+
      }
 
 
