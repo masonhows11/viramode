@@ -578,6 +578,7 @@ return [
     'there_is_no_payment_gateway' => 'درگاه پرداخت انتخاب شده وجود ندارد',
     'there_is_an_error_in_payment_process' => 'خطایی در عملیات پرداخت رخ داده است',
     'your_search_returned_no_results' => 'جستجوی شما نتیجه ای نداشت.',
+    'communication_with_the_payment_gateway_is_not_established' => 'ارتباط با درگاه پرداخت برقرار نمی شود',
 
 
 ];

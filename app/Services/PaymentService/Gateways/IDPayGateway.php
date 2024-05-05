@@ -21,8 +21,8 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
     {
 
         //return 'hi this is Idpay pay';
-       
-     
+
+
         $info = $this->request;
         $full_user = $info->getUser()->first_name . ' ' . $info->getUser()->last_name;
         $callBack = route('payment.verify', [$info->getOrderId(),'idPay']);
@@ -50,7 +50,11 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'X-SANDBOX: 1' // for real gateway comment the sandbox line
         ));
         $result = curl_exec($ch);
-        dd($result);
+        if($result == false){
+            session()->flash('error',__('messages.communication_with_the_payment_gateway_is_not_established'));
+            return redirect()->back();
+        }
+
         curl_close($ch);
         $send_result = json_decode($result, true);
         if (isset($send_result['error_code'])) {
@@ -86,7 +90,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
 
         // verify failed
-        if (isset($result['error_code'])) 
+        if (isset($result['error_code']))
         {
             return [
                 'status' => false,
