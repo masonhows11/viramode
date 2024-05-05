@@ -236,6 +236,8 @@ Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(
     //// orders
   Route::get('/all-orders', 'allOrders')->name('all.orders');
 
+  Route::get('/current-orders', 'currentOrders')->name('current.orders');
+
   Route::get('/paid-orders', 'paidOrders')->name('paid.orders');
 
   Route::get('/unpaid-orders', 'unPaidOrders')->name('unpaid.orders');
