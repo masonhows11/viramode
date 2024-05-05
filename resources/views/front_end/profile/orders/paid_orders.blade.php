@@ -1,10 +1,8 @@
-@extends('front.profile.master_dash')
+@extends('front_end.profile.master_profile')
 @section('page_title')
     سفارشات پرداخت شده
 @endsection
-@section('info_dash_left_side')
-    <div class="container">
+@section('left_profile_content')
 
-    </div>
 @endsection
 

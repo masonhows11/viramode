@@ -69,7 +69,7 @@ class ProfileOrderController extends Controller
 
             $user = Auth::id();
             $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(5);
-            return view('front_end.profile.orders.failed_orders', ['orders' => $orders]);
+            return view('front_end.profile.orders.unPaid_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {
             return view('errors_custom.404_error');
@@ -95,7 +95,7 @@ class ProfileOrderController extends Controller
             $order = Order::findOrFail($request->order);
             $order_items = OrderItem::where('user_id', $user)->where('order_id', $request->order)->get();
             return view('front_end.profile.order_details.order_details', ['order_items' => $order_items, 'order' => $order]);
-            
+
         } catch (\Exception $ex) {
             return view('errors_custom.404_error');
         }
