@@ -12,7 +12,7 @@ class ProfileOrderController extends Controller
 {
     public function allOrders(Request $request)
     {
-       
+
         // if (isset(request()->status) && isset(request()->type) && $request->type === 'order_delivered') {
 
         //     $orders = Order::where('user_id', $user)->where('delivery_status', request()->status)->orderBy('id', 'asc')->paginate(5);
@@ -23,12 +23,32 @@ class ProfileOrderController extends Controller
         // } else {
         //     $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
         // }
-        
+
         $user = Auth::id();
         $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
         return view('front_end.profile.orders.all_orders', ['orders' => $orders]);
     }
 
+
+    public function paidOrders()
+    {
+
+    }
+
+    public function unPaidOrders()
+    {
+
+    }
+
+    public function orderReturnedRequest()
+    {
+        try {
+
+            return view('front_end.profile.orders.return_orders');
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
+    }
 
     public function orderDetails(Request $request)
     {
@@ -44,14 +64,6 @@ class ProfileOrderController extends Controller
     }
 
 
-    public function orderReturnedRequest()
-    {
-        try {
-          
-            return view('front_end.profile.orders.return_orders');
-        } catch (\Exception $ex) {
-            return view('errors_custom.404_error');
-        }
-    }
+
 
 }

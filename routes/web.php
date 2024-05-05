@@ -234,7 +234,11 @@ Route::controller(ProfileController::class)->prefix('profile')->middleware(['aut
 Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
 
     //// orders
-  Route::get('/all-orders/{status?}/{type?}', 'allOrders')->name('all.orders');
+  Route::get('/all-orders', 'allOrders')->name('all.orders');
+
+  Route::get('/paid-orders', 'paidOrders')->name('paid.orders');
+
+  Route::get('/unpaid-orders', 'unPaidOrders')->name('unpaid.orders');
 
   Route::get('/order-details/{order}','orderDetails')->name('order.details');
 
