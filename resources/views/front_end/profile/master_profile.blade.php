@@ -80,21 +80,21 @@
                                                 <li>
                                                     <a href="{{ route('current.orders') }}"
                                                     class="{{ $route === 'current.orders' ? 'active' : '' }}">
-                                                        <i class="mdi mdi-basket"></i>
+                                                      <i class="fas fa-cart-plus" style="font-size:17px"></i>
                                                         {{  __('messages.orders_new') }}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('paid.orders') }}"
                                                     class="{{ $route === 'paid.orders' ? 'active' : '' }}">
-                                                        <i class="mdi mdi-basket"></i>
+                                                    <i class="fas fa-check-circle fa-xs" style="font-size:17px"></i>
                                                     {{ __('messages.orders_paid')}}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('unpaid.orders') }}"
                                                     class="{{ $route === 'unpaid.orders' ? 'active' : '' }}">
-                                                        <i class="mdi mdi-basket"></i>
+                                                     <i class="fas fa-shopping-basket fa-xs" style="font-size:17px"></i>
                                                         {{ __('messages.orders_unpaid')}}
                                                     </a>
                                                 </li>
