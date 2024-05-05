@@ -74,14 +74,35 @@
                                                     <a href="{{ route('all.orders') }}"
                                                     class="{{ $route === 'all.orders' ? 'active' : '' }}">
                                                         <i class="mdi mdi-basket"></i>
-                                                        همه سفارش ها
+                                                        {{  __('messages.all_orders') }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('current.orders') }}"
+                                                    class="{{ $route === 'current.orders' ? 'active' : '' }}">
+                                                        <i class="mdi mdi-basket"></i>
+                                                        {{  __('messages.orders_new') }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('paid.orders') }}"
+                                                    class="{{ $route === 'paid.orders' ? 'active' : '' }}">
+                                                        <i class="mdi mdi-basket"></i>
+                                                    {{ __('messages.orders_paid')}}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('unpaid.orders') }}"
+                                                    class="{{ $route === 'unpaid.orders' ? 'active' : '' }}">
+                                                        <i class="mdi mdi-basket"></i>
+                                                        {{ __('messages.orders_unpaid')}}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('returned.orders.request') }}"
                                                     class="{{ $route === 'returned.orders.request' ? 'active' : '' }}">
                                                         <i class="mdi mdi-backburger"></i>
-                                                        درخواست مرجوعی
+                                                        {{ __('messages.orders_returned') }}
                                                     </a>
                                                 </li>
                                                 <li>

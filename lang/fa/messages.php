@@ -240,6 +240,7 @@ return [
 
     'orders_new' => 'سفارشات جدید',
     'orders_sending' => 'سفارشات در حال ارسال',
+    'orders_paid' => 'سفارشات پرداخت شده',
     'orders_unpaid' => 'سفارشات پرداخت نشده',
     'orders_canceled' => 'سفارشات باطل شده',
     'orders_returned' => 'سفارشات مرجوعی',
