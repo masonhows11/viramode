@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileOrderController extends Controller
 {
+
+
     public function allOrders(Request $request)
     {
 
@@ -24,27 +26,63 @@ class ProfileOrderController extends Controller
         //     $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
         // }
 
-        $user = Auth::id();
-        $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
-        return view('front_end.profile.orders.all_orders', ['orders' => $orders]);
+
+        try {
+
+            $user = Auth::id();
+            $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
+            return view('front_end.profile.orders.all_orders', ['orders' => $orders]);
+
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
+    }
+
+    public function currentOrders()
+    {
+        try {
+            $user = Auth::id();
+            $orders = Order::where('user_id', $user)->where('order_status', 0)->orderBy('id', 'asc')->paginate(5);
+            return view('front_end.profile.orders.current_orders', ['orders' => $orders]);
+
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
     }
 
 
     public function paidOrders()
     {
+        try {
+            $user = Auth::id();
+            $orders = Order::where('user_id', $user)->where('order_status', 1)->orderBy('id', 'asc')->paginate(5);
+            return view('front_end.profile.orders.paid_orders', ['orders' => $orders]);
 
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
     }
 
     public function unPaidOrders()
     {
+        try {
 
+            $user = Auth::id();
+            $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(5);
+            return view('front_end.profile.orders.failed_orders', ['orders' => $orders]);
+
+        } catch (\Exception $ex) {
+            return view('errors_custom.404_error');
+        }
     }
 
     public function orderReturnedRequest()
     {
         try {
+            $user = Auth::id();
+            $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(5);
+            return view('front_end.profile.orders.return_orders', ['orders' => $orders]);
 
-            return view('front_end.profile.orders.return_orders');
         } catch (\Exception $ex) {
             return view('errors_custom.404_error');
         }
@@ -57,13 +95,9 @@ class ProfileOrderController extends Controller
             $order = Order::findOrFail($request->order);
             $order_items = OrderItem::where('user_id', $user)->where('order_id', $request->order)->get();
             return view('front_end.profile.order_details.order_details', ['order_items' => $order_items, 'order' => $order]);
+            
         } catch (\Exception $ex) {
             return view('errors_custom.404_error');
         }
-
     }
-
-
-
-
 }
