@@ -12,20 +12,8 @@ class ProfileOrderController extends Controller
 {
 
 
-    public function allOrders(Request $request)
+    public function allOrders()
     {
-
-        // if (isset(request()->status) && isset(request()->type) && $request->type === 'order_delivered') {
-
-        //     $orders = Order::where('user_id', $user)->where('delivery_status', request()->status)->orderBy('id', 'asc')->paginate(5);
-
-        // } elseif (isset(request()->status)) {
-        //     $orders = Order::where('user_id', $user)->where('order_status', request()->status)->orderBy('id', 'asc')->paginate(5);
-
-        // } else {
-        //     $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
-        // }
-
 
         try {
 
