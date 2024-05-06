@@ -242,7 +242,7 @@ Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(
 
   Route::get('/unpaid-orders', 'unPaidOrders')->name('unpaid.orders');
 
-  Route::get('/order-details/{order}','orderDetails')->name('order.details');
+  Route::get('/order-details/{order}/{order_number}','orderDetails')->name('order.details');
 
   Route::get('/returned-orders/request','orderReturnedRequest')->name('returned.orders.request');
 

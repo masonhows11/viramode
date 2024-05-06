@@ -50,58 +50,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 mb-4">
-            <section class="slider-section dt-sl mb-5">
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="section-title text-sm-title title-wide no-after-title-wide">
-                            <h2>مرسوله 1 از 1</h2>
-                            <a href="#">لغو دریافت مرسوله</a>
-                        </div>
-                    </div>
 
-                    <!-- Start Profile-order-step-Slider -->
-                    <div class="col-12">
-                        <div class="profile-order-steps carousel-lg owl-carousel owl-theme">
-                            <div class="item profile-order-steps-item is-active">
-                                <img src="./assets/img/svg/0eab59b0.svg">
-                                <span>لغو شده</span>
-                            </div>
-                            <div class="item profile-order-steps-item is-active">
-                                <img src="./assets/img/svg/d5d5e1d2.svg">
-                                <span>تایید سفارش</span>
-                            </div>
-                            <div class="item profile-order-steps-item">
-                                <img src="./assets/img/svg/3db3cdeb.svg">
-                                <span>آماده‌سازی سفارش</span>
-                            </div>
-                            <div class="item profile-order-steps-item">
-                                <img src="./assets/img/svg/332b9ff1.svg">
-                                <span>خروج از مرکز پردازش</span>
-                            </div>
-                            <div class="item profile-order-steps-item">
-                                <img src="./assets/img/svg/07a0808a.svg">
-                                <span>تحویل به پست</span>
-                            </div>
-                            <div class="item profile-order-steps-item">
-                                <img src="./assets/img/svg/dbab74ce.svg">
-                                <span>مرکز مبادلات پست</span>
-                            </div>
-                            <div class="item profile-order-steps-item">
-                                <img src="./assets/img/svg/50450a73.svg">
-                                <span>تحویل به مشتری</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Profile-order-step-Slider -->
-
-                </div>
-            </section>
-        </div>
         <div class="col-12">
             <div
                 class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
-                <h2>همه سفارش‌ها</h2>
+                <h2>آیتم های سفارش‌ها</h2>
             </div>
             <div class="dt-sl">
                 <div class="table-responsive">

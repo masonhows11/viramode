@@ -76,12 +76,11 @@ class ProfileOrderController extends Controller
         }
     }
 
-    public function orderDetails(Request $request)
+    public function orderDetails(Order $order)
     {
         try {
             $user = Auth::id();
-            $order = Order::findOrFail($request->order);
-            $order_items = OrderItem::where('user_id', $user)->where('order_id', $request->order)->get();
+            $order_items = OrderItem::where('user_id', $user)->where('order_id', $order->id)->get();
             return view('front_end.profile.order_details.order_details', ['order_items' => $order_items, 'order' => $order]);
 
         } catch (\Exception $ex) {
