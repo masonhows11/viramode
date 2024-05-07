@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ShipmentRequest extends FormRequest
 {
@@ -21,6 +22,7 @@ class ShipmentRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'title' => 'required|min:2|max:125',
             'delivery_amount' => 'required|min:1|max:1000000000000|numeric',

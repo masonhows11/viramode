@@ -139,7 +139,7 @@ return [
     'salable_quantity' => 'تعداد قابل فروش',
     'attribute' => 'ویژگی',
     'attribute_type' => 'نوع نمایش',
-    'price_variables_list'=>'لیست متغیرهای قیمت',
+    'price_variables_list' => 'لیست متغیرهای قیمت',
     'price_variables_value_management' => 'مقادیر متغیرهای قیمت',
     'price_variables_management' => 'مدیریت متغیرهای قیمت',
     'unit' => 'واحد اندازه گیری',
@@ -150,7 +150,7 @@ return [
     'type' => 'نوع',
     'simple' => 'ساده',
     'select' => 'انتخابی',
-    'radio'=> 'رادیویی',
+    'radio' => 'رادیویی',
     'comments' => 'نظرات',
     'management_comments' => 'مدیریت نظرات',
     'approved_comments' => 'نظرات تایید شده',
@@ -580,6 +580,7 @@ return [
     'there_is_an_error_in_payment_process' => 'خطایی در عملیات پرداخت رخ داده است',
     'your_search_returned_no_results' => 'جستجوی شما نتیجه ای نداشت.',
     'communication_with_the_payment_gateway_is_not_established' => 'ارتباط با درگاه پرداخت برقرار نمی شود',
+    'the_selected_payment_gateway_could_not_be_found' => 'درگاه پرداخت انتخاب شده وجود ندارد',
 
 
 ];

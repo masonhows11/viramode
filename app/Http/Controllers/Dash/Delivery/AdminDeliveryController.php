@@ -19,12 +19,17 @@ class AdminDeliveryController extends Controller
 
     public function store(ShipmentRequest $request)
     {
+
+        //dd($request->all());
+        //dd(convertPerToEnglish($request->delivery_amount));
+
         try {
+
 
             Delivery::create([
                 'title' => $request->title,
-                'amount' => $request->delivery_amount,
-                'delivery_time' => $request->delivery_time,
+                'amount' => (int) convertPerToEnglish($request->delivery_amount),
+                'delivery_time' => (int) convertPerToEnglish($request->delivery_time),
                 'delivery_time_unit' => $request->delivery_time_unit,
             ]);
 
@@ -43,7 +48,6 @@ class AdminDeliveryController extends Controller
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }
-
     }
 
 
@@ -51,10 +55,10 @@ class AdminDeliveryController extends Controller
     {
         try {
 
-            Delivery::where('id',$request->delivery_id)->update([
+            Delivery::where('id', $request->delivery_id)->update([
                 'title' => $request->title,
-                'amount' => $request->delivery_amount,
-                'delivery_time' => $request->delivery_time,
+                'amount' => convertPerToEnglish($request->delivery_amount),
+                'delivery_time' => convertPerToEnglish($request->delivery_time),
                 'delivery_time_unit' => $request->delivery_time_unit,
             ]);
 
