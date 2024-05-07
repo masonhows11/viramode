@@ -40,7 +40,8 @@ class PaymentController extends Controller
             $cartItemsCount += $item->number;
         }
 
-        return view('front_end.payment.payment',
+        return view(
+            'front_end.payment.payment',
             [
                 'cartItems' => $cartItems,
                 'order' => $order,
@@ -62,11 +63,10 @@ class PaymentController extends Controller
             return  redirect()->back();
         }
 
-        try
-        {
+        try {
             $order =  Order::findOrFail($request->order);
             $gateway = $request->gateway;
-            $gateWayName = $request->gateway . 'GateWay';
+            $gateWayName = $request->gateway . 'Gateway';
             $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
 
             if (!class_exists($gatewayClassRequest)) {
@@ -83,7 +83,6 @@ class PaymentController extends Controller
 
             $paymentService = new PaymentService($gateWayName, $gateWayRequest);
             return $paymentService->pay();
-
         } catch (\Exception $ex) {
             return $ex->getMessage();
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
@@ -121,9 +120,7 @@ class PaymentController extends Controller
 
 
     public function paymentResult(Request $request)
-    {
-
-    }
+    { }
 
 
 

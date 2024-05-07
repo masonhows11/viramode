@@ -26,6 +26,7 @@ class PaymentService
     private function findProvider()
     {
 
+       // dd($this->provider_name);
         $providerClassName = 'App\\Services\\PaymentService\\Gateways\\' . $this->provider_name;
        // dd($providerClassName);
         if (!class_exists($providerClassName)) {
