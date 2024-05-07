@@ -79,9 +79,12 @@ class ProfileOrderController extends Controller
     public function orderDetails(Order $order)
     {
         try {
+
             $user = Auth::id();
+            $address = $order->address;
             $order_items = OrderItem::where('user_id', $user)->where('order_id', $order->id)->get();
-            return view('front_end.profile.order_details.order_details', ['order_items' => $order_items, 'order' => $order]);
+            return view('front_end.profile.order_details.order_details',
+             ['order_items' => $order_items, 'order' => $order ,'address' => $address]);
 
         } catch (\Exception $ex) {
             return view('errors_custom.404_error');
