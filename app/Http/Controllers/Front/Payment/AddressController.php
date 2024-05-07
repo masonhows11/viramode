@@ -101,9 +101,9 @@ class AddressController extends Controller
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
-        $orderItems = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->first();
-        if ($orderItems) {
-            foreach ($cartItems as $item) 
+        $exists = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->exists();
+        if ($exists) {
+            foreach ($cartItems as $item)
             {
                 OrderItem::where([['order_id' , $order->id],['user_id' , $order->user_id],['product_id',$item->product_id]])->update(
                     [
