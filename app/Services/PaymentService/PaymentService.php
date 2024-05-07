@@ -22,12 +22,12 @@ class PaymentService
         $this->request = $request;
     }
 
-   
+
     private function findProvider()
     {
-       
-        $providerClassName = 'App\\Services\\PaymentService\\Gateways\\' . $this->provider_name;
 
+        $providerClassName = 'App\\Services\\PaymentService\\Gateways\\' . $this->provider_name;
+       // dd($providerClassName);
         if (!class_exists($providerClassName)) {
             throw new ProviderNotFoundException(__('messages.the_selected_payment_gateway_could_not_be_found'));
         }
