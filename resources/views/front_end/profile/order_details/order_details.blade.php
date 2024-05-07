@@ -16,6 +16,7 @@
         <div class="col-12 mb-4">
             <div class="dt-sl dt-sn border">
                 <div class="row table-draught px-3">
+
                     <div class="col-md-6 col-sm-12">
                         <span class="title">تحویل گیرنده:</span>
                         <span class="value">جلال بهرامی راد</span>
@@ -24,6 +25,7 @@
                         <span class="title">شماره تماس تحویل گیرنده:</span>
                         <span class="value">09xxxxxxxxx</span>
                     </div>
+
                     <div class="col-md-6 col-sm-12">
                         <span class="title">کد مرسوله:</span>
                         <span class="value">38776122</span>
@@ -32,21 +34,23 @@
                         <span class="title">نحوه ارسال سفارش:</span>
                         <span class="value">پست پیشتاز با ظرفیت اختصاصی برای دیدیکالا</span>
                     </div>
+
                     <div class="col-md-6 col-sm-12">
                         <span class="title">هزینه ارسال:</span>
                         <span class="value">رایگان</span>
                     </div>
+
+
                     <div class="col-md-6 col-sm-12">
-                        <span class="title">زمان تحویل:</span>
-                        <span class="value">بازه دو‌شنبه ۴ شهریور - پنج‌شنبه ۷ شهریور</span>
-                        <button class="btn btn-light">
-                            تغییر زمان ارسال
-                        </button>
-                    </div>
-                    <div class="col-12 text-center pb-0">
                         <span class="title">مبلغ این مرسوله:</span>
                         <span class="value">۹,۹۸۹,۰۰۰ تومان</span>
                     </div>
+
+                    <div class="col-12  pb-0">
+                        <span class="title">مبلغ این مرسوله:</span>
+                        <span class="value">۹,۹۸۹,۰۰۰ تومان</span>
+                    </div>
+
                 </div>
             </div>
         </div>
