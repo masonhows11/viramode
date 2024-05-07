@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front\Payment;
 
 use App\Models\Order;
 
-use App\Models\Payment;
+// use App\Models\Payment;
 use App\Models\CartItems;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,6 +20,8 @@ use App\Services\PaymentService\Request\IDPayVerifyRequest;
 class PaymentController extends Controller
 {
     //
+
+    private $gateWayName;
 
     public function checkOut()
     {
@@ -65,9 +67,10 @@ class PaymentController extends Controller
 
         try {
             $order =  Order::findOrFail($request->order);
-            $gateway = $request->gateway;
             $gateWayName = $request->gateway . 'Gateway';
-            $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$gateway}Request";
+
+            $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$request->gateway}Request";
+            $this->gateWay =  $request->gateway;
 
             if (!class_exists($gatewayClassRequest)) {
                 session()->flash('error', __('messages.this_part_is_being_prepared'));
@@ -78,11 +81,12 @@ class PaymentController extends Controller
                 'amount' => $order->order_final_amount,
                 'orderId' => $order->order_number,
                 'user' => Auth::user(),
-                'apiKey' => Config::get('services.gateways.' . "$gateway" . '.api_key'),
+                'apiKey' => Config::get('services.gateways.' . "$request->gateway" . '.api_key'),
             ]);
 
-            $paymentService = new PaymentService($gateWayName, $gateWayRequest);
-            return $paymentService->pay();
+             $paymentService = new PaymentService($gateWayName, $gateWayRequest);
+             return $paymentService->pay();
+
         } catch (\Exception $ex) {
             return $ex->getMessage();
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
@@ -96,14 +100,16 @@ class PaymentController extends Controller
 
         $paymentInfo = $request->all();
 
-        $idPayVerifyRequest = new  IDPayVerifyRequest([
+        $gatewayVerifyRequest = "App\\Services\\PaymentService\\Request\\{$this->gateWayName}VerifyRequest";
+
+        $idPayVerifyRequest = new  $gatewayVerifyRequest([
             'apiKey' => config('services.gateways.id_pay.api_key'),
             'id' => $paymentInfo['id'],
             'orderId' => $paymentInfo['order_id'],
             'gateway' => 'idPay',
         ]);
 
-        $paymentService = new PaymentService(PaymentService::IDPAY, $idPayVerifyRequest);
+        $paymentService = new PaymentService($this->gateWayName, $idPayVerifyRequest);
         $result = $paymentService->verify();
 
 
