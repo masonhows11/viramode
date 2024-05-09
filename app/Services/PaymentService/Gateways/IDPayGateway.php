@@ -25,7 +25,8 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
 
         $info = $this->request;
         $full_user = $info->getUser()->first_name . ' ' . $info->getUser()->last_name;
-        $callBack = route('payment.verify', [$info->getOrderId(),'idPay']);
+        $callBack = route('payment.verify', ['IDPay',$info->getOrderId()]);
+        // dd($callBack);
         $params = array(
             'order_id' => $info->getOrderId(),
             'amount' => $info->getAmount(),
