@@ -117,26 +117,30 @@ class PaymentController extends Controller
 
         if ($result['status'] == false) {
             dd('payment failed');
+
+            $this->paymentFailed($result);
             // return redirect()->route('payment.failed.result')->with('result',$result);
         }
         if ($result['status'] == true) {
             dd('payment success');
+            $this->paymentSuccess($result);
             //  return $this->sendSuccessResponse($result);
         }
         return null;
     }
 
 
-    public function paymentSuccess(Request $request)
+    public function paymentSuccess($result)
     {
-
-        return view();
+        dd($result);
+        return view('front_end.payment.payment_success');
 
     }
 
-    public function paymentFailed(Request $request)
+    public function paymentFailed($result)
     {
-        return view();
+        dd($result);
+        return view('front_end.payment.payment_failed');
     }
 
 
