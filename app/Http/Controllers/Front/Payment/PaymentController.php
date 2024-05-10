@@ -7,6 +7,7 @@ use App\Models\Order;
 // use App\Models\Payment;
 use App\Models\CartItems;
 use Illuminate\Http\Request;
+use App\Services\Basket\Basket;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -17,6 +18,14 @@ class PaymentController extends Controller
 {
     //
 
+
+    private Basket $basket;
+
+
+    public function __construct(Basket $basket)
+    {
+        $this->basket = $basket;
+    }
 
 
     public function checkOut()
@@ -131,8 +140,8 @@ class PaymentController extends Controller
     {
 
         $order = Order::where('order_number',$result['order_id'])->first();
-        $this->completeOrder($order,$result);
-        $this->completePayment();
+        $this->completeOrder($order);
+        $this->completePayment($order,$result);
         return view('front_end.payment.payment_success');
 
     }
@@ -144,14 +153,15 @@ class PaymentController extends Controller
         return view('front_end.payment.payment_failed');
     }
 
-    private function completeOrder(Order $order,$result)
+    private function completeOrder(Order $order)
     {
-
+        $order->complete();
+        $this->basket->clearBasket();
     }
 
-    private function completePayment()
+    private function completePayment(Order $order,$result)
     {
-
+        $order->payment->confirm($result);
     }
 
 

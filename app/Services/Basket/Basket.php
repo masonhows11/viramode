@@ -66,5 +66,12 @@ class Basket
 
 
     public function delete(Product $product)
-    { }
+    {
+
+    }
+
+    public function clearBasket()
+    {
+        return $this->storage->deleteAllItems();
+    }
 }

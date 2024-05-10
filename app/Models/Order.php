@@ -38,9 +38,14 @@ class Order extends Model
     }
 
 
+    // public function payment()
+    // {
+    //     return $this->belongsTo(Payment::class);
+    // }
+
     public function payment()
     {
-        return $this->belongsTo(Payment::class);
+        return $this->hasOne(Payment::class);
     }
 
     public function delivery()
@@ -160,7 +165,9 @@ class Order extends Model
 
     private function complete()
     {
-        
+        $this->payment_status = 1;
+        $this->order_status = 1;
+        $this->save();
     }
 
 
