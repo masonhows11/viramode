@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\CartItems;
 use Illuminate\Http\Request;
 use App\Services\Basket\Basket;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -147,8 +148,6 @@ class PaymentController extends Controller
         $this->completeOrder($order);
         $this->completePayment($order,$track_id);
         $this->normalizeQuantity($order);
-
-        dd( $this->basket->getAll(Auth::id()) ) ;
         return view('front_end.payment.payment_success');
 
     }
@@ -156,7 +155,6 @@ class PaymentController extends Controller
     public function paymentFailed()
     {
 
-        //$order = Order::where('order_number',$result['order_id'])->first();
         return view('front_end.payment.payment_failed');
     }
 
@@ -176,7 +174,7 @@ class PaymentController extends Controller
     {
         foreach($order->orderItems as $product)
         {
-              Product::decrement('available_in_stock',$product->number);
+            DB::table('products')->where('id', $product->product_id)->decrement('available_in_stock', $product->number);
         };
         $this->basket->clearBasket(Auth::id());
     }
