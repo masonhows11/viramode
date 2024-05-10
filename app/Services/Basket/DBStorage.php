@@ -15,60 +15,52 @@ class DBStorage implements BasketInterface
 
     //// for get item
 
-    private $user_id;
-
-
-    public function __construct()
-    {
-        $this->user_id = Auth::id();
-    }
-
-    public function getItem($item)
+    public function getItem($item,int $user = null)
     {
 
-        $item = CartItems::where([['product_id', '=', $item->id], ['user_id', '=', $this->user_id]])->first();
+        $item = CartItems::where([['product_id', '=', $item->id], ['user_id', '=', $user]])->first();
 
         return $item;
     }
 
     //// for add item
-    public function addItem($items = [], int $quantity)
+    public function addItem($items = [], int $quantity,int $user = null)
     {
 
         // u can use this part for instagram post
         CartItems::updateOrCreate(
-            ['user_id' => $this->user_id, 'product_id' => $items['id']],
-            ['user_id' => $this->user_id, 'product_id' => $items['id'], 'number' => $quantity]
+            ['user_id' => $user, 'product_id' => $items['id']],
+            ['user_id' => $user, 'product_id' => $items['id'], 'number' => $quantity]
         );
     }
 
 
     //// for get all items
-    public function getAllItems()
+    public function getAllItems(int $user = null)
     {
-        return $items = CartItems::where('user_id', $this->user_id)->get();
+        return $items = CartItems::where('user_id', $user)->get();
     }
 
     //// for check  item is exists or not
-    public function existsItem($item = null)
+    public function existsItem($item = null,int $user = null)
     {
-        return CartItems::where([['user_id', $this->user_id], ['product_id', '=', $item]])->first();
+        return CartItems::where([['user_id', $user], ['product_id', '=', $item]])->first();
     }
 
     //// for delete item from
-    public function deleteItem($item = null)
+    public function deleteItem($item = null,int $user = null)
     {
-        return  CartItems::where([['user_id', $this->user_id], ['product_id', '=', $item]])->delete();
+        return  CartItems::where([['user_id', $user], ['product_id', '=', $item]])->delete();
     }
 
     //// for delete all items
-    public function deleteAllItems()
+    public function deleteAllItems(int $user = null)
     {
 
-        CartItems::where('user_id', $this->user_id)->delete();
+        CartItems::where('user_id', $user)->delete();
     }
 
-    public function count()
+    public function count(int $user = null)
     {
         return  $this->getAllItems()->count();
     }

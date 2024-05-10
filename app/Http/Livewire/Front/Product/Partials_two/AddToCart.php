@@ -46,7 +46,7 @@ class AddToCart extends Component
     {
         if (Auth::check()) {
 
-                $this->basket->add($this->product,$this->number);
+                $this->basket->add($this->product,$this->number,$this->user_id);
                 $this->emitTo(CartHeader::class, 'addToCart', $this->number);
 
                 $this->dispatchBrowserEvent('show-result',

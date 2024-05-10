@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Payment;
 use App\Models\Order;
 
 // use App\Models\Payment;
+use App\Models\Product;
 use App\Models\CartItems;
 use Illuminate\Http\Request;
 use App\Services\Basket\Basket;
@@ -143,6 +144,7 @@ class PaymentController extends Controller
         $this->completeOrder($order);
         $this->completePayment($order,$result);
         $this->normalizeQuantity($order);
+        dd($this->basket->getAll());
         return view('front_end.payment.payment_success');
 
     }
@@ -157,7 +159,7 @@ class PaymentController extends Controller
     private function completeOrder(Order $order)
     {
         $order->complete();
-        $this->basket->clearBasket();
+
     }
 
     private function completePayment(Order $order,$result)
@@ -170,8 +172,9 @@ class PaymentController extends Controller
     {
         foreach($order->orderItems as $product)
         {
-               $product->decrementStock($product->number);
+              Product::decrement('available_in_stock',$product->number);
         };
+        $this->basket->clearBasket();
     }
 
 

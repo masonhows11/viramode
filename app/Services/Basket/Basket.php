@@ -21,7 +21,7 @@ class Basket
 
 
 
-    public function add(Product $product, int $quantity)
+    public function add(Product $product, int $quantity,int $user = null)
     {
 
         if ($this->exists($product)) {
@@ -29,7 +29,7 @@ class Basket
         }
 
 
-        $this->storage->addItem($product, $quantity);
+        $this->storage->addItem($product, $quantity,$user);
 
         // $this->update($product,$quantity);
 
@@ -49,29 +49,35 @@ class Basket
     //     $this->storage->addItem($product, $quantity);
     // }
 
-    public function get(Product $product)
+    public function get(Product $product,int $user = null)
     {
-        return $this->storage->getItem($product);
+        return $this->storage->getItem($product,$user);
+    }
+
+
+    public function getAll(int $user = null)
+    {
+        return $this->storage->getAllItems($user);
     }
 
 
 
 
 
-    public function exists(Product $product)
+    public function exists(Product $product,int $user = null)
     {
 
-        return $this->storage->existsItem($product->id);
+        return $this->storage->existsItem($product->id,$user);
     }
 
 
-    public function delete(Product $product)
+    public function delete(Product $product,int $user = null)
     {
 
     }
 
-    public function clearBasket()
+    public function clearBasket(int $user = null)
     {
-        return $this->storage->deleteAllItems();
+        return $this->storage->deleteAllItems($user);
     }
 }
