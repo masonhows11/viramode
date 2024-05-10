@@ -131,6 +131,8 @@ class PaymentController extends Controller
     {
 
         $order = Order::where('order_number',$result['order_id'])->first();
+        $this->completeOrder($order,$result);
+        $this->completePayment();
         return view('front_end.payment.payment_success');
 
     }
@@ -142,7 +144,7 @@ class PaymentController extends Controller
         return view('front_end.payment.payment_failed');
     }
 
-    private function completeOrder()
+    private function completeOrder(Order $order,$result)
     {
 
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->decimal('amount',20,3);
+            $table->text('bank_ref_number')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('type')->default(0)->comment('0 => online , 1 => offline , 2 => cash');
             $table->unsignedBigInteger('paymentable_id')->nullable();

@@ -158,6 +158,12 @@ class Order extends Model
     }
 
 
-    
+    private function complete()
+    {
+        
+    }
+
+
+
 
 }

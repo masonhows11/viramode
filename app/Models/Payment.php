@@ -15,6 +15,7 @@ class Payment extends Model
         'amount',
         'status',
         'type',
+        'bank_ref_number',
         'paymentable_id',
         'paymentable_type'
     ];
@@ -29,5 +30,13 @@ class Payment extends Model
     public function paymentable(){
 
         return $this->morphTo();
+    }
+
+
+    public function confirm($result)
+    {
+      $this->status = 1;
+      $this->bank_ref_number = $result['data']['track_id'];
+      $this->save();
     }
 }
