@@ -3,9 +3,8 @@
 namespace App\Services\Basket;
 
 use App\Models\CartItems;
-
 use App\Services\Basket\Contracts\BasketInterface;
-use Illuminate\Support\Facades\Auth;
+
 
 class DBStorage implements BasketInterface
 {
@@ -38,8 +37,9 @@ class DBStorage implements BasketInterface
     //// for get all items
     public function getAllItems(int $user = null)
     {
-       
-        return  CartItems::where('user_id', $user)->get();
+        return CartItems::all();
+      // $items = CartItems::where('user_id', $user)->get();
+      // return $items;
     }
 
     //// for check  item is exists or not
