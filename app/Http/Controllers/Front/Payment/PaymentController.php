@@ -100,6 +100,8 @@ class PaymentController extends Controller
 
         $paymentInfo = $request->all();
 
+        dd($paymentInfo);
+
         $gatewayVerifyRequest = "App\\Services\\PaymentService\\Request\\{$this->gateWayName}VerifyRequest";
 
         $idPayVerifyRequest = new  $gatewayVerifyRequest([

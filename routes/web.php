@@ -362,7 +362,7 @@ Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->gr
 
 Route::controller(FrontPaymentController::class)->group(function(){
 
-    Route::get('/payment-verify/{gateway}/{order}','paymentVerify')->name('payment.verify');
+    Route::post('/payment/verify','paymentVerify')->name('payment.verify');
 
     Route::get('/payment-result/{order}','paymentResult')->name('payment.result');
 
