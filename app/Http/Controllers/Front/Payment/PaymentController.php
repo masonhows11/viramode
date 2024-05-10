@@ -115,16 +115,16 @@ class PaymentController extends Controller
         $result = $paymentService->verify();
 
 
-        if ($result['status'] == false) {
-            dd('payment failed');
+        if ($result['status'] == false)
+        {
 
             $this->paymentFailed($result);
-            // return redirect()->route('payment.failed.result')->with('result',$result);
+
         }
-        if ($result['status'] == true) {
-            dd('payment success');
+        if ($result['status'] == true)
+        {
+
             $this->paymentSuccess($result);
-            //  return $this->sendSuccessResponse($result);
         }
         return null;
     }
