@@ -144,7 +144,7 @@ class PaymentController extends Controller
         $this->completeOrder($order);
         $this->completePayment($order,$result);
         $this->normalizeQuantity($order);
-        dd($this->basket->getAll());
+        dd( $this->basket->getAll(Auth::id()) ) ;
         return view('front_end.payment.payment_success');
 
     }
@@ -174,7 +174,7 @@ class PaymentController extends Controller
         {
               Product::decrement('available_in_stock',$product->number);
         };
-        $this->basket->clearBasket();
+        $this->basket->clearBasket(Auth::id());
     }
 
 
