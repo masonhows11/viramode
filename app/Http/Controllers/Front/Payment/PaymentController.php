@@ -168,7 +168,7 @@ class PaymentController extends Controller
 
     private function normalizeQuantity(Order $order)
     {
-        foreach($order->orderItems->product as $product)
+        foreach($order->orderItems as $product)
         {
                $product->decrementStock($product->number);
         };
