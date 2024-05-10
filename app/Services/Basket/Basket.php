@@ -24,8 +24,8 @@ class Basket
     public function add(Product $product, int $quantity,int $user = null)
     {
 
-        if ($this->exists($product)) {
-            $quantity = $this->get($product)['number'] + $quantity;
+        if ($this->exists($product,$user)) {
+            $quantity = $this->get($product,$user)['number'] + $quantity;
         }
 
 
