@@ -163,7 +163,7 @@ class Order extends Model
     }
 
 
-    private function complete()
+    public function complete()
     {
         $this->payment_status = 1;
         $this->order_status = 1;

@@ -142,6 +142,7 @@ class PaymentController extends Controller
         $order = Order::where('order_number',$result['order_id'])->first();
         $this->completeOrder($order);
         $this->completePayment($order,$result);
+        $this->normalizeQuantity($order);
         return view('front_end.payment.payment_success');
 
     }
@@ -165,9 +166,12 @@ class PaymentController extends Controller
     }
 
 
-    private function normalizeQuantity()
+    private function normalizeQuantity(Order $order)
     {
-
+        foreach($order->orderItems->product as $product)
+        {
+               $product->decrementStock($product->number);
+        };
     }
 
 
