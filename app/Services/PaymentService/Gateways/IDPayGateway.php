@@ -20,13 +20,10 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
     public function pay()
     {
 
-        //return 'hi this is Idpay pay';
-
 
         $info = $this->request;
         $full_user = $info->getUser()->first_name . ' ' . $info->getUser()->last_name;
         $callBack = route('payment.verify');
-
         $params = array(
             'order_id' => $info->getOrderId(),
             'amount' => $info->getAmount(),
@@ -36,10 +33,6 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'desc' => 'توضیحات پرداخت کننده',
             'callback' => $callBack,
         );
-
-
-
-
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://api.idpay.ir/v1.1/payment');
@@ -98,7 +91,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
                 'msg' => $result['error_message'],
             ];
         }  // verify successfully
-        if ($result['status'] == $this->StatusOk) {
+        if ($result['status'] == self::StatusOk) {
             return [
                 'status' => true,
                 'order_id' => $result['order_id'],
@@ -107,7 +100,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
                 'data' => $result,
             ];
         }   // already verified  successfully
-        if ($result['status'] == $this->StatusOKAlready) {
+        if ($result['status'] == self::StatusOKAlready) {
             return [
                 'status' => true,
                 'order_id' => $result['order_id'],

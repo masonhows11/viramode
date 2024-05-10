@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use App\Services\PaymentService\PaymentService;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
-use App\Services\PaymentService\Request\IDPayVerifyRequest;
-
-
-// use App\Services\Payment\SandboxService;
 
 class PaymentController extends Controller
 {
@@ -125,6 +121,7 @@ class PaymentController extends Controller
         {
 
             $this->paymentSuccess($result);
+
         }
         return null;
     }
@@ -132,17 +129,34 @@ class PaymentController extends Controller
 
     public function paymentSuccess($result)
     {
-        dd($result);
+
+        $order = Order::where('order_number',$result['order_id'])->first();
         return view('front_end.payment.payment_success');
 
     }
 
     public function paymentFailed($result)
     {
-        dd($result);
+
+        $order = Order::where('order_number',$result['order_id'])->first();
         return view('front_end.payment.payment_failed');
     }
 
+    private function completeOrder()
+    {
+
+    }
+
+    private function completePayment()
+    {
+
+    }
+
+
+    private function normalizeQuantity()
+    {
+
+    }
 
 
 
