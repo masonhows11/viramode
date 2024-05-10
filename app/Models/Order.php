@@ -19,7 +19,7 @@ class Order extends Model
         'delivery_id',
         'coupon_id',
         'common_discount_id',
-
+        
         'order_final_amount',
         'order_discount_amount',
         'order_coupon_discount_amount',

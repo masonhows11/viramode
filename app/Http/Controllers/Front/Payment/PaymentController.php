@@ -21,7 +21,7 @@ class PaymentController extends Controller
 {
     //
 
-    private $gateWayName;
+
 
     public function checkOut()
     {
@@ -67,10 +67,10 @@ class PaymentController extends Controller
 
         try {
             $order =  Order::findOrFail($request->order);
+            $order->
             $gateWayName = $request->gateway . 'Gateway';
-
             $gatewayClassRequest = "App\\Services\\PaymentService\\Request\\{$request->gateway}Request";
-            $this->gateWay =  $request->gateway;
+
 
             if (!class_exists($gatewayClassRequest)) {
                 session()->flash('error', __('messages.this_part_is_being_prepared'));

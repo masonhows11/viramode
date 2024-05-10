@@ -23,7 +23,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('payment_id')->nullable();
             $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
-            $table->longText('payment_object')->nullable();
+            $table->string('gateway',128)->nullable();
 
             $table->unsignedBigInteger('delivery_id')->nullable();
             $table->foreign('delivery_id')->references('id')->on('delivery')->onDelete('cascade');
