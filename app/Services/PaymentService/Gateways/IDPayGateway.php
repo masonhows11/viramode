@@ -26,7 +26,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
         $info = $this->request;
         $full_user = $info->getUser()->first_name . ' ' . $info->getUser()->last_name;
         $callBack = route('payment.verify');
-        // dd($callBack);
+
         $params = array(
             'order_id' => $info->getOrderId(),
             'amount' => $info->getAmount(),
@@ -37,7 +37,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'callback' => $callBack,
         );
 
-        // dd($params);
+
 
 
 
@@ -61,19 +61,17 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
         if (isset($send_result['error_code'])) {
             throw  new \InvalidArgumentException($send_result['error_message']);
         }
-        // dd($send_result);
+
         return redirect()->away($send_result['link']);
     }
 
     public function verify()
     {
-        // return 'hi this is Idpay verify';
 
         $params = array(
             'id' => $this->request->getId(),
             'order_id' => $this->request->getOrderId(),
         );
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://api.idpay.ir/v1.1/payment/verify');
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
@@ -83,12 +81,11 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
             'X-API-KEY: ' . $this->request->getApiKey() . '',
             'X-SANDBOX: 1',
         ));
-
-
         $result = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($result, true);
-        dd($result);
+
+
 
 
         // verify failed

@@ -127,10 +127,16 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentResult(Request $request)
+    public function paymentSuccess(Request $request)
     {
 
+        return view();
 
+    }
+
+    public function paymentFailed(Request $request)
+    {
+        return view();
     }
 
 
