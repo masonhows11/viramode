@@ -364,9 +364,9 @@ Route::controller(FrontPaymentController::class)->group(function(){
 
     Route::post('/payment/verify','paymentVerify')->name('payment.verify');
 
-    Route::get('/payment/failed/{order}','paymentSuccess')->name('payment.success');
+    Route::get('/payment/success/{trackId}/{order}','paymentSuccess')->name('payment.success');
 
-    Route::get('/payment/success/{order}','paymentFailed')->name('payment.failed');
+    Route::get('/payment/failed','paymentFailed')->name('payment.failed');
 
 });
 /* ------------------- admin Routes ------------------------**/

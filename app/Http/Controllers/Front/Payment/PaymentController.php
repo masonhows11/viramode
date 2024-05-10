@@ -124,35 +124,39 @@ class PaymentController extends Controller
         if ($result['status'] == false)
         {
 
-            $this->paymentFailed($result);
+            return redirect()->route('payment.failed');
+
 
         }
         if ($result['status'] == true)
         {
+            $trackId = $result['data']['track_id'];
+            $order = $result['order_id'];
+            return redirect()->route('payment.success',[$trackId,$order]);
 
-            $this->paymentSuccess($result);
 
         }
         return null;
     }
 
 
-    public function paymentSuccess($result)
+    public function paymentSuccess($track_id,$order)
     {
 
-        $order = Order::where('order_number',$result['order_id'])->first();
+        $order = Order::where('order_number',$order)->first();
         $this->completeOrder($order);
-        $this->completePayment($order,$result);
+        $this->completePayment($order,$track_id);
         $this->normalizeQuantity($order);
+
         dd( $this->basket->getAll(Auth::id()) ) ;
         return view('front_end.payment.payment_success');
 
     }
 
-    public function paymentFailed($result)
+    public function paymentFailed()
     {
 
-        $order = Order::where('order_number',$result['order_id'])->first();
+        //$order = Order::where('order_number',$result['order_id'])->first();
         return view('front_end.payment.payment_failed');
     }
 
@@ -162,9 +166,9 @@ class PaymentController extends Controller
 
     }
 
-    private function completePayment(Order $order,$result)
+    private function completePayment(Order $order,$track_id)
     {
-        $order->payment->confirm($result);
+        $order->payment->confirm($track_id);
     }
 
 

@@ -33,10 +33,10 @@ class Payment extends Model
     }
 
 
-    public function confirm($result)
+    public function confirm($track_id)
     {
       $this->status = 1;
-      $this->bank_ref_number = $result['data']['track_id'];
+      $this->bank_ref_number = $track_id;
       $this->save();
     }
 }
