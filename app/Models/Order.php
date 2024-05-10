@@ -19,17 +19,14 @@ class Order extends Model
         'delivery_id',
         'coupon_id',
         'common_discount_id',
-        
         'order_final_amount',
         'order_discount_amount',
         'order_coupon_discount_amount',
         'order_common_discount_amount',
         'order_total_products_discount_amount',
         'delivery_amount',
-
         'delivery_date',
-        'payment_type',
-
+        'gateway',
         'payment_status',
         'order_status',
         'delivery_status',
