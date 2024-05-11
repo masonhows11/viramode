@@ -34,12 +34,12 @@
                                         </div> --}}
                                         <div class="profile-link mt-2 dt-sl">
                                             <div class="row">
-                                                <div class="col-6 text-center">
+                                                {{-- <div class="col-6 text-center">
                                                     <a href="javascript:void(0)">
                                                         <i class="mdi mdi-lock-reset"></i>
                                                         <span class="d-block">تغییر رمز</span>
                                                     </a>
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-6 text-center">
                                                     <a href="{{  route('auth.log.out') }}">
                                                         <i class="mdi mdi-logout-variant"></i>
@@ -112,13 +112,13 @@
                                                         لیست علاقمندی ها
                                                     </a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="{{ route('comments') }}"
                                                     class="{{ $route === 'comments' ? 'active' : '' }}">
                                                         <i class="mdi mdi-glasses"></i>
                                                         نقد و نظرات
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 <li>
                                                     <a href="{{ route('profile.address.index') }}"
                                                     class="{{ $route === 'profile.address.index' ? 'active' : '' }}">
