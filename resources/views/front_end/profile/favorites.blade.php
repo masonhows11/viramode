@@ -10,19 +10,30 @@
                 class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
                 <h2>علاقمندی ها</h2>
             </div>
+
             <div class="dt-sl">
                 <div class="row">
+
+                    @forelse ($products as $product)
                     <div class="col-lg-6 col-md-12">
                         <div class="card-horizontal-product border-bottom rounded-0">
                             <div class="card-horizontal-product-thumb">
-                                <a href="#">
-                                    <img src="{{  asset('/front_assets/img/products/017.jpg') }}" alt="">
+
+                                <a class="product-thumb" href="{{ route('product', $product->slug) }}">
+                                    @if ($product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image))
+                                        <img src="{{ asset('storage/' . $product->thumbnail_image) }}"
+                                            alt="thumbnail-product">
+                                    @else
+                                        <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                            alt="thumbnail-product">
+                                    @endif
                                 </a>
+
                             </div>
                             <div class="card-horizontal-product-content">
                                 <div class="card-horizontal-product-title">
                                     <a href="#">
-                                        <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+                                        <h3>{{ $product->title_persian}}</h3>
                                     </a>
                                 </div>
                                 <div class="rating-stars">
@@ -33,10 +44,10 @@
                                     <i class="mdi mdi-star"></i>
                                 </div>
                                 <div class="card-horizontal-product-price">
-                                    <span>199,000 تومان</span>
+                                    <span>{{ $product->origin_price }} تومان</span>
                                 </div>
                                 <div class="card-horizontal-product-buttons">
-                                    <a href="#" class="btn">مشاهده محصول</a>
+                                    <a href="{{ route('product', $product->slug) }}" class="btn">مشاهده محصول</a>
                                     <button class="remove-btn">
                                         <i class="mdi mdi-trash-can-outline"></i>
                                     </button>
@@ -44,71 +55,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card-horizontal-product border-bottom rounded-0">
-                            <div class="card-horizontal-product-thumb">
-                                <a href="#">
-                                    <img src="{{  asset('/front_assets/img/products/020.jpg') }}" alt="">
-                                </a>
-                            </div>
-                            <div class="card-horizontal-product-content">
-                                <div class="card-horizontal-product-title">
-                                    <a href="#">
-                                        <h3>کت مردانه مجلسی مدل k-m-5110</h3>
-                                    </a>
-                                </div>
-                                <div class="rating-stars">
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star"></i>
-                                </div>
-                                <div class="card-horizontal-product-price">
-                                    <span>199,000 تومان</span>
-                                </div>
-                                <div class="card-horizontal-product-buttons">
-                                    <a href="#" class="btn">مشاهده محصول</a>
-                                    <button class="remove-btn">
-                                        <i class="mdi mdi-trash-can-outline"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card-horizontal-product">
-                            <div class="card-horizontal-product-thumb">
-                                <a href="#">
-                                    <img src="{{  asset('/front_assets/img/products/06.jpg') }}" alt="">
-                                </a>
-                            </div>
-                            <div class="card-horizontal-product-content">
-                                <div class="card-horizontal-product-title">
-                                    <a href="#">
-                                        <h3>کت مردانه مجلسی مدل k-m-5110</h3>
-                                    </a>
-                                </div>
-                                <div class="rating-stars">
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star active"></i>
-                                    <i class="mdi mdi-star"></i>
-                                </div>
-                                <div class="card-horizontal-product-price">
-                                    <span>199,000 تومان</span>
-                                </div>
-                                <div class="card-horizontal-product-buttons">
-                                    <a href="#" class="btn">مشاهده محصول</a>
-                                    <button class="remove-btn">
-                                        <i class="mdi mdi-trash-can-outline"></i>
-                                    </button>
-                                    <span class="label-card-horizontal-product">ناموجود</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
+
+                    @endforelse
+
+
+
+
                 </div>
             </div>
         </div>

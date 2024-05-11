@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Front\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\User;
-// use App\Notifications\UserAuthNotification;
 use App\Rules\NationalCode;
 use App\Services\GenerateAdminToken;
 use Illuminate\Http\Request;
@@ -14,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+// use App\Notifications\UserAuthNotification;
 
 class ProfileController extends Controller
 {
@@ -27,8 +26,10 @@ class ProfileController extends Controller
     {
 
         $user = Auth::user();
+        $orders = Order::where('user_id', $user->id)->orderBy('id', 'asc')->paginate(4);
         $products = auth()->user()->products()->select('id','title_persian','thumbnail_image','slug')->take(2)->get();
-        return view('front_end.profile.profile', ['user' => $user, 'products' => $products]);
+       // dd($products);
+        return view('front_end.profile.profile', ['orders' => $orders,'user' => $user, 'products' => $products]);
     }
 
     public function accountInformation()

@@ -9,6 +9,7 @@ class CompareController extends Controller
 {
    public function index()
    {
+
        return view('front.profile.compare.index');
    }
 }

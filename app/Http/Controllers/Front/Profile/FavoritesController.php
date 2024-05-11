@@ -10,7 +10,7 @@ class FavoritesController extends Controller
 {
     public function favorites(){
 
-        $products = auth()->user()->products()->paginate(10);
+        $products = auth()->user()->products()->select('id','title_persian','thumbnail_image','slug','origin_price')->take(10)->get();
         return view('front_end.profile.favorites',[ 'products' => $products ]);
 
     }

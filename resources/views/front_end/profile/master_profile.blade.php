@@ -28,10 +28,10 @@
                                                 <span class="d-block profile-phone">{{  $user->mobile ? $user->mobile : __('messages.mobile_number_not_registered') }}</span>
                                             </div>
                                         </div>
-                                        <div class="profile-point mt-3 mb-2 dt-sl">
+                                        {{-- <div class="profile-point mt-3 mb-2 dt-sl">
                                             <span class="label-profile-point">امتیاز شما:</span>
                                             <span class="float-left value-profile-point">120</span>
-                                        </div>
+                                        </div> --}}
                                         <div class="profile-link mt-2 dt-sl">
                                             <div class="row">
                                                 <div class="col-6 text-center">
