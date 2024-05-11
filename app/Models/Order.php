@@ -147,10 +147,10 @@ class Order extends Model
                 $result = __('messages.order_wait_for_confirmed');
                 break;
             case 1:
-                $result = __('messages.order_not_confirmed');
+                $result = __('messages.order_confirmed');
                 break;
             case 2:
-                $result = __('messages.order_confirmed');
+                $result = __('messages.order_not_confirmed');
                 break;
             case 3:
                 $result = __('messages.order_returned');
