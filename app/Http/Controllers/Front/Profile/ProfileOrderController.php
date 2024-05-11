@@ -29,7 +29,7 @@ class ProfileOrderController extends Controller
     {
         try {
             $user = Auth::id();
-            $orders = Order::where('user_id', $user)->where('order_status', 0)->orderBy('id', 'asc')->paginate(5);
+            $orders = Order::where('user_id', $user)->where('order_status', 0)->orderBy('id', 'asc')->paginate(8);
             return view('front_end.profile.orders.current_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {
@@ -42,7 +42,7 @@ class ProfileOrderController extends Controller
     {
         try {
             $user = Auth::id();
-            $orders = Order::where('user_id', $user)->where('order_status', 1)->orderBy('id', 'asc')->paginate(5);
+            $orders = Order::where('user_id', $user)->where('order_status', 1)->orderBy('id', 'asc')->paginate(8);
             return view('front_end.profile.orders.paid_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {
@@ -55,7 +55,7 @@ class ProfileOrderController extends Controller
         try {
 
             $user = Auth::id();
-            $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(5);
+            $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(8);
             return view('front_end.profile.orders.unPaid_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {
@@ -67,7 +67,7 @@ class ProfileOrderController extends Controller
     {
         try {
             $user = Auth::id();
-            $orders = Order::where('user_id', $user)->where('order_status', 2)->orderBy('id', 'asc')->paginate(5);
+            $orders = Order::where('user_id', $user)->where('order_status', 3)->orderBy('id', 'asc')->paginate(8);
             return view('front_end.profile.orders.return_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {

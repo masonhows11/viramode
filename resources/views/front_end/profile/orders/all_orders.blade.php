@@ -42,7 +42,9 @@
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        {{ __('messages.not_record_found') }}
+                                        <td colspan="7">
+                                            <p class="text-center h5">{{ __('messages.not_record_found') }}</p>
+                                        </td>
                                     </tr>
                                 @endforelse
 

@@ -20,32 +20,40 @@
                                 <th>شماره سفارش</th>
                                 <th>تاریخ ثبت سفارش</th>
                                 <th>مبلغ قابل پرداخت</th>
-                                <th>مبلغ کل</th>
                                 <th>عملیات پرداخت</th>
                                 <th>جزییات</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @forelse ($orders as $order)
                             <tr>
-                                <td>1</td>
-                                <td>DDC-57456951</td>
-                                <td>۳۱ مرداد ۱۳۹۸</td>
-                                <td>۰</td>
-                                <td>۹,۹۸۹,۰۰۰ تومان</td>
-                                <td>لغو شده</td>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->order_number }}</td>
+                                <td>{{ jdate($order->created_at) }}</td>
+                                <td> {{ priceFormat($order->order_final_amount) }} {{ __('messages.toman') }}</td>
+                                <td>{{ $order->order_status_value }}</td>
                                 <td class="details-link">
-                                    <a href="#">
+                                    <a href="{{ route('order.details', [$order->id, $order->order_number]) }}">
                                         <i class="mdi mdi-chevron-left"></i>
                                     </a>
                                 </td>
                             </tr>
+                        @empty
+                            <tr class="text-center">
+                                <td colspan="7">
+                                    <p class="text-center h5">{{ __('messages.not_record_found') }}</p>
+                                </td>
+                            </tr>
+                        @endforelse
 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        {{ $orders->links() }}
     </div>
 </div>
 @endsection
