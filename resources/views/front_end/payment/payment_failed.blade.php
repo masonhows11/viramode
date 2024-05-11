@@ -186,7 +186,7 @@
                                                 <p>۱</p>
                                             </td>
                                             <td class="gateway">
-                                                <p>{{ __('messages.IDPay') }}</p>
+                                                <p>{{ __("messages.{$order->gateway}") }}</p>
                                             </td>
                                             <td class="id">
                                                 <p> {{ $order->order_number }}</p>

@@ -115,7 +115,7 @@ class PaymentController extends Controller
             'apiKey' => Config::get('services.gateways.' . "$order->gateway" . '.api_key'),
             'id' => $paymentInfo['id'],
             'orderId' => $paymentInfo['order_id'],
-            'gateway' => 'idPay',
+            'gateway' => 'IDPay',
         ]);
 
         $paymentService = new PaymentService($gateWayName, $idPayVerifyRequest);
