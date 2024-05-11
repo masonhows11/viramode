@@ -469,6 +469,7 @@ return [
     'zarinpal_gateway' => 'زرین پال',
     'idpay_gateway' => 'آی دی پی',
     'mellat_gateway' => 'ملت',
+    'payment_order_failed' => 'پرداخت ناموفق',
     'payment_failed' => 'پرداخت سفارش با خطا مواجه شد',
     'payment_successfully' => 'پرداخت با موفقیت انجام شد',
     'order_number' => 'شماره سفارش',
@@ -581,6 +582,8 @@ return [
     'your_search_returned_no_results' => 'جستجوی شما نتیجه ای نداشت.',
     'communication_with_the_payment_gateway_is_not_established' => 'ارتباط با درگاه پرداخت برقرار نمی شود',
     'the_selected_payment_gateway_could_not_be_found' => 'درگاه پرداخت انتخاب شده وجود ندارد',
-
+    'IDPay' => 'آی دی پی',
+    'Zarinapl' => 'زرین پال',
+    'Mellat' => 'ملت',
 
 ];

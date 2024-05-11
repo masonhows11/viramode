@@ -39,4 +39,12 @@ class Payment extends Model
       $this->bank_ref_number = $track_id;
       $this->save();
     }
+
+    public function confirmFailed()
+    {
+      $this->status = 2;
+      $this->save();
+    }
+
+    
 }

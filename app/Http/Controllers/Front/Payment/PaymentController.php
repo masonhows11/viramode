@@ -124,8 +124,8 @@ class PaymentController extends Controller
 
         if ($result['status'] == false)
         {
-
-            return redirect()->route('payment.failed');
+            $order = $result['order_id'];
+            return redirect()->route('payment.failed',[$order]);
 
 
         }
@@ -141,21 +141,33 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentSuccess($track_id,$order)
+    public function paymentSuccess($track_id,$order_id)
     {
 
-        $order = Order::where('order_number',$order)->first();
+        $order = Order::where('order_number',$order_id)->first();
+        $address = $order->address;
         $this->completeOrder($order);
         $this->completePayment($order,$track_id);
         $this->normalizeQuantity($order);
-        return view('front_end.payment.payment_success');
+        return view('front_end.payment.payment_success',
+        ['address' => $address ,'order' => $order]);
 
     }
 
-    public function paymentFailed()
+    public function paymentFailed($order_id)
     {
+        $order = Order::where('order_number',$order_id)->first();
 
-        return view('front_end.payment.payment_failed');
+        // complete failed order
+        $order->order_status = 2;
+        $order->payment_status = 2;
+        $order->save();
+        // complete failed payment
+        $order->payment->confirmFailed();
+        // get address
+        $address = $order->address;
+        return view('front_end.payment.payment_failed',
+        ['address' => $address ,'order' => $order]);
     }
 
     private function completeOrder(Order $order)

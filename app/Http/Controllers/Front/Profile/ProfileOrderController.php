@@ -17,7 +17,7 @@ class ProfileOrderController extends Controller
         try {
 
             $user = Auth::id();
-            $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(5);
+            $orders = Order::where('user_id', $user)->orderBy('id', 'asc')->paginate(8);
             return view('front_end.profile.orders.all_orders', ['orders' => $orders]);
 
         } catch (\Exception $ex) {

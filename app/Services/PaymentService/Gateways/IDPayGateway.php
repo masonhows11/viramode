@@ -77,7 +77,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
         $result = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($result, true);
-
+        // dd($result);
 
 
 
@@ -86,6 +86,7 @@ class IDPayGateway extends AbstractGatewayConstructor implements PayableInterfac
         {
             return [
                 'status' => false,
+                'order_id' => $this->request->getOrderId(),
                 'statusCode' => $result['error_code'],
                 'gateway' => $this->request->getGateway(),
                 'msg' => $result['error_message'],

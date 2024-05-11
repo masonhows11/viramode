@@ -44,45 +44,20 @@
                         </div>
                         <div class="checkout-alert-title">
                             <h4> سفارش <span
-                                    class="checkout-alert-highlighted checkout-alert-highlighted-success">DDC-75007560</span>
+                                    class="checkout-alert-highlighted checkout-alert-highlighted-success">{{ $order->order_number }}</span>
                                 با موفقیت در سیستم ثبت شد.
                             </h4>
                         </div>
-                        <div class="checkout-alert-content">
-                            <p class="checkout-alert-content-success">
-                                سفارش نهایتا تا یک روز آماده ارسال خواهد شد.
-                            </p>
-                        </div>
+                       
                     </div>
                     <section class="checkout-details dt-sl dt-sn dt-sn--box mt-4 pt-4 pb-3 pr-3 pl-3 mb-5 px-res-1">
                         <div class="checkout-details-title">
                             <h4>
                                 کد سفارش:
                                 <span>
-                                    DDC-75007560
+                                    {{ $order->order_number }}
                                 </span>
                             </h4>
-                            <div class="row">
-                                <div class="col-lg-9 col-md-8 col-sm-12">
-                                    <div class="checkout-details-title">
-                                        <p>
-                                            سفارش شما با موفقیت در سیستم ثبت شد و هم اکنون
-                                            <span class="text-highlight text-highlight-success">تکمیل شده</span>
-                                            است.
-                                            جزئیات این سفارش را می‌توانید با کلیک بر روی دکمه
-                                            <a href="#" class="border-bottom-dt">پیگیری سفارش</a>
-                                            مشاهده نمایید.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 col-sm-12">
-                                    <a href="#"
-                                        class="btn-primary-cm bg-secondary btn-with-icon d-block text-center pr-0">
-                                        <i class="mdi mdi-shopping"></i>
-                                        پیگیری سفارش
-                                    </a>
-                                </div>
-                            </div>
                             <div class="row mt-3">
                                 <div class="col-12 px-res-0">
                                     <div class="checkout-table">
@@ -91,7 +66,7 @@
                                                 <p>
                                                     نام تحویل گیرنده:
                                                     <span>
-                                                        جلال بهرامی راد
+                                                        {{ $address->recipient_first_name . ' ' . $address->recipient_last_name }}
                                                     </span>
                                                 </p>
                                             </div>
@@ -99,7 +74,7 @@
                                                 <p>
                                                     شماره تماس :
                                                     <span>
-                                                        09xxxxxxxxx
+                                                        {{ $address->mobile }}
                                                     </span>
                                                 </p>
                                             </div>
@@ -117,7 +92,7 @@
                                                 <p>
                                                     مبلغ کل:
                                                     <span>
-                                                        ۴,۴۳۹,۰۰۰ تومان
+                                                        {{ priceFormat($order->order_final_amount) }} تومان
                                                     </span>
                                                 </p>
                                             </div>
@@ -144,8 +119,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <p>آدرس : استان خراسان شمالی
-                                                    ، شهربجنورد، خراسان شمالی-بجنورد</p>
+                                                <p>آدرس :
+                                                 {{  $address->province->name . ' , ' . $address->city->name . ' , ' . $address->address_description }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
