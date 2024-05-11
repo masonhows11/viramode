@@ -227,10 +227,6 @@ Route::controller(ProfileController::class)->prefix('profile')->middleware(['aut
 
 
 
-
-
-
-
 Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
 
     //// orders
