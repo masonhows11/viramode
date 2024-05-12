@@ -113,7 +113,7 @@
                             <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
                             <div class="checkout-summary-price-value">
                                 <span
-                                    class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}
+                                    class="checkout-summary-price-value-amount">{{ priceFormat($order->order_final_amount) }}
                                     {{ __('messages.toman') }}</span>
                                 {{ __('messages.toman') }}
                             </div>

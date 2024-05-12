@@ -49,12 +49,11 @@ class PaymentController extends Controller
             $cartItemsCount += $item->number;
         }
 
-        return view(
-            'front_end.payment.payment',
+        return view('front_end.payment.payment',
             [
                 'cartItems' => $cartItems,
                 'order' => $order,
-                'totalProductPrice' => $totalProductPrice + $order->delivery->amount,
+                'totalProductPrice' => $totalProductPrice,
                 'totalDiscount' => $totalDiscount,
                 'cartItemsCount' => $cartItemsCount,
                 'cartItems' => $cartItems,

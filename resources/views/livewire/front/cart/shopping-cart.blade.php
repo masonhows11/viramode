@@ -128,7 +128,7 @@
                                                         data-html="true" data-placement="bottom"
                                                         title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
                                                         <span class="mdi mdi-information-outline"></span>
-                                                    </span></span><span>وابسته به آدرس</span>
+                                                    </span></span><span>وابسته به نوع ارسال</span>
                                             </li>
                                         </ul>
                                         <div class="checkout-summary-devider">
