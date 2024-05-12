@@ -1,3 +1,4 @@
+@if($products->isNotEmpty())
 <div>
     <section class="dt-sl dt-sn mb-5">
         <div class="row">
@@ -53,3 +54,5 @@
         </div>
     </section>
 </div>
+@endif
+

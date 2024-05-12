@@ -1,9 +1,9 @@
+@if($banners->isNotEmpty())
 <div>
     <div class="row mt-3 mb-3">
         <div class="col-12">
             <div class="section-title text-sm-title title-wide-custom no-after-title-wide">
                 <h2>جدید ترین ها</h2>
-                <a href="#">مشاهده همه</a>
             </div>
         </div>
 
@@ -26,3 +26,4 @@
         </div>
     </div>
 </div>
+@endif

@@ -1,10 +1,10 @@
+@if($products->isNotEmpty())
 <div>
     <section class="slider-section dt-sl mb-5">
         <div class="row mb-3">
             <div class="col-12">
                 <div class="section-title text-sm-title title-wide no-after-title-wide">
                     <h2>پر بازدید ترینها</h2>
-                    <a href="#">مشاهده همه</a>
                 </div>
             </div>
 
@@ -58,3 +58,4 @@
         </div>
     </section>
 </div>
+@endif
