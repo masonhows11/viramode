@@ -145,11 +145,20 @@
                                             <img src="{{ asset('default_image/no-image-icon-23494.png') }}"alt="thumbnail-product">
                                         @endif
                                         <span>{{ $product->title_persian }}</span>
-                                        
+
                                     </a>
-                                    <button>
+
+                                    <form action="{{ route('favorites.delete', $product) }}" method="get"
+                                                class="d-inline favorites-form">
+                                                @csrf
+                                                <button type="submit" class="delete-item remove-btn">
+                                                    <i class="mdi mdi-trash-can-outline" id="delete-item"></i>
+                                                </button>
+                                    </form>
+
+                                    {{-- <button>
                                         <i class="mdi mdi-trash-can-outline"></i>
-                                    </button>
+                                    </button> --}}
                                 </li>
                             @endforeach
 

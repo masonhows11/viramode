@@ -12,7 +12,7 @@
 @auth
     @if( $product->user->contains(auth()->user()->id))
         <span class="" style="font-size: 1.2em">
-                                        <i class="add-to-fav-product fa-solid fa-heart  heart  text-danger  d-block my-4"
+                                        <i class="add-to-fav-product fas fa-heart  heart  text-danger  d-block my-4"
                                            data-url="{{ route('product.add.to.favorites' )}}"
                                            data-bs-toggle="tooltip"
                                            data-product="{{ $product_id }}"
