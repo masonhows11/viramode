@@ -155,10 +155,6 @@
                                                     <i class="mdi mdi-trash-can-outline" id="delete-item"></i>
                                                 </button>
                                     </form>
-
-                                    {{-- <button>
-                                        <i class="mdi mdi-trash-can-outline"></i>
-                                    </button> --}}
                                 </li>
                             @endforeach
 
