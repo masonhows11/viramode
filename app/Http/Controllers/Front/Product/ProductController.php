@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
 
         $product_id = $product->id;
-        $productCategories = $product->categories()->get(['title_persian']);
+        $productCategories = $product->categories()->get(['title_persian','slug']);
         $relatedProducts = Product::with('tags')->whereHas('tags', function ($q) use ($product) {
             $q->whereIn('tag_id', $product->tags()->select('tag_id'));
         })->where('status', 1)

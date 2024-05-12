@@ -86,9 +86,11 @@
 
 
             <!-- Start Product-Slider -->
+            @if($relatedProducts->isNotEmpty())
             <section class="slider-section dt-sl mb-5">
-               @include('front_end.product.partials.product_related_products')
+               @include('front_end.product.partials.product_related_products',['relatedProducts' => $relatedProducts])
             </section>
+            @endif
             <!-- End Product-Slider -->
         </div>
     </main>

@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}" class="pt-1">{{ __('messages.home') }}</a>
             @if( !empty($productCategories) )
                 @foreach( $productCategories as $category)
-                    <a href="#" class="pt-1">{{ $category->title_persian }}</a>
+                    <a href="{{ route('category',['slug' => $category->slug]) }}" class="pt-1">{{ $category->title_persian }}</a>
                 @endforeach
             @endif
             <a href="#" class="pt-1">{{ $product->title_persian }}</a>

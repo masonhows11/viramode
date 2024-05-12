@@ -1,4 +1,4 @@
- 
+
     @foreach ($products as $product )
     <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1">
         <div class="product-card mb-2 mx-res-0">
@@ -31,7 +31,7 @@
                 <a class="product-meta" href="javascript:void(0)">{{ $category->title_persian }}</a>
                 @endforeach
 
-                <span class="product-price">{{ number_format($product->origin_price) }} {{ __('messages.toman') }}</span>
+                <span class="product-price">{{ number_format($product->origin_price) . ' ' . __('messages.toman') }}</span>
             </div>
         </div>
     </div>
