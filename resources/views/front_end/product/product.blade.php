@@ -20,7 +20,7 @@
                     <div class="col-lg-4 col-md-6 ps-relative">
 
                         <ul class="gallery-options">
-                            @include('front_end.product.partials.add_to_favorites',['product' => $product])
+                            {{-- @include('front_end.product.partials.add_to_favorites',['product' => $product]) --}}
                         </ul>
                         {{--  @include('front_end.product.partials.special_sale')--}}
 
