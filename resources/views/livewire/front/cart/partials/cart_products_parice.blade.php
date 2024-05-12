@@ -20,21 +20,17 @@
                     @endphp
 
                     <div class="cart-item py-4 px-3">
-                        <div class="item-thumbnail">
 
+                        <div class="item-thumbnail">
                             <a href="{{ route('product', $product->product->slug) }}">
-                                @if (
-                                    $product->product->thumbnail_image &&
-                                        \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
-                                    <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"
-                                        alt="Product Thumbnail">
+                                @if ($product->product->thumbnail_image &&   \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
+                                    <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"  alt="Product Thumbnail">
                                 @else
-                                    <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                        alt="Product Thumbnail">
+                                    <img src="{{ asset('default_image/no-image-icon-23494.png') }}"  alt="Product Thumbnail">
                                 @endif
                             </a>
-
                         </div>
+
                         <div class="item-info flex-grow-1">
                             <div class="item-title">
                                 <h2>
@@ -43,13 +39,8 @@
                                     </a>
                                 </h2>
                             </div>
-
                             <div class="item-detail">
-
                                 <div class="item-quantity--item-price">
-
-
-
                                     <div class="item-quantity">
                                         <div class="num-block">
                                             <div class="num-in">
@@ -104,7 +95,7 @@
                  }
             @endphp
             <li>
-                <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
+                <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}</span>
             </li>
 
 
@@ -134,6 +125,7 @@
                 </span>
             </div>
         </div>
+
     </div>
 </div>
 @endif
