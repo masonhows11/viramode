@@ -43,8 +43,8 @@ class ProductController extends Controller
 
         if ($request->search)
         {
-            $products = Product::where('title_english', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('title_persian', 'LIKE', "%" . $request->search . "%")
+            $products = Product::where('title_english', 'LIKE', $request->search.'%')
+                ->orWhere('title_persian', 'LIKE', $request->search.'%'  )
                 ->orderBy('created_at', 'DESC')
                 ->paginate(50);
         } else {
