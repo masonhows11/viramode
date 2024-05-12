@@ -1,197 +1,28 @@
 <div class="container main-container">
-
-
-            @if( count($cartItems) )
-            <div class="row mx-0">
-
-                <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
-
-                    <nav class="tab-cart-page">
-                        <div class="nav nav-tabs border-bottom" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link d-inline-flex w-auto active" id="nav-home-tab"
-                                data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                                aria-selected="true">سبد خرید</a>
-                        </div>
-                    </nav>
-
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content" id="nav-tabContent">
-
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <div class="row">
-                                <div class="col-xl-9 col-lg-8 col-12 px-0">
-
-                                    <div class="table-responsive checkout-content dt-sl">
-
-                                        <div class="checkout-header checkout-header--express"></div>
-                                        <div class="checkout-section-content-dd-k">
-
-                                            <div class="cart-items-dd-k">
-
-                                                @php
-                                                $totalProductPrice = 0;
-                                                $totalDiscount = 0;
-                                                @endphp
-                                                @foreach ($cartItems as $product)
-
-                                                        @php
-                                                        $totalProductPrice += $product->cartItemProductPrice();
-                                                        $totalDiscount += $product->cartItemProductDiscount();
-                                                        @endphp
-
-                                                <div class="cart-item py-4 px-3">
-                                                    <div class="item-thumbnail">
-
-                                                        <a  href="{{ route('product',$product->product->slug) }}">
-                                                            @if( $product->product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image ) )
-                                                                <img src="{{ asset('storage/'.$product->product->thumbnail_image) }}"
-                                                                     alt="Product Thumbnail">
-                                                            @else
-                                                                <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                                                     alt="Product Thumbnail">
-                                                            @endif
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="item-info flex-grow-1">
-                                                        <div class="item-title">
-                                                            <h2>
-                                                                <a href="{{ route('product',$product->product->slug) }}">
-                                                                {{ $product->product->title_persian}}
-                                                                </a>
-                                                            </h2>
-                                                        </div>
-
-                                                        <div class="item-detail">
-
-                                                            <div class="item-quantity--item-price">
-
-
-
-                                                                <div class="item-quantity">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-                                                                            <button  class="plus border-0 bg-transparent" wire:click="increaseItem({{ $product->id  }})"></button>
-                                                                            <input type="text" min="1" class="in-num" value="{{ $product->number }}" readonly>
-                                                                            <button  class="minus border-0 bg-transparent @if( $product->number  == 1 ) dis @endif"   @if( $this->disabled == true ) disabled @endif wire:click="decreaseItem({{ $product->id }})"></button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button  wire:click.prevent="deleteConfirmation({{ $product->id }})" class="item-remove-btn mr-3">
-                                                                        <i class="far fa-trash-alt"></i>
-                                                                        {{ __('messages.delete_model')}}
-                                                                    </button>
-                                                                </div>
-
-                                                                <div class="item-price">
-                                                                    {{ $product->number }}
-                                                                    <span class="text-sm mr-1">{{ __('messages.number')}}</span>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    {{ priceFormat( $product->cartItemProductPrice() ) }}
-                                                                    <span class="text-sm mr-1">{{ __('messages.toman')}}</span>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                @if( count($cartItems) > 0)
-                                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar">
-
-                                    <div class="dt-sn dt-sn--box border mb-2">
-                                        <ul class="checkout-summary-summary">
-
-                                            @php
-                                                $cartItemsCount = null;
-                                                foreach( $cartItems as $item )
-                                                 {
-                                                    $cartItemsCount += $item->number;
-                                                 }
-                                            @endphp
-                                            <li>
-                                                <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
-                                            </li>
-
-
-                                            <li>
-                                                <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip"
-                                                        data-html="true" data-placement="bottom"
-                                                        title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
-                                                        <span class="mdi mdi-information-outline"></span>
-                                                    </span></span><span>وابسته به نوع ارسال</span>
-                                            </li>
-                                        </ul>
-                                        <div class="checkout-summary-devider">
-                                            <div></div>
-                                        </div>
-                                        <div class="checkout-summary-content">
-                                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
-                                            <div class="checkout-summary-price-value">
-                                                <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
-                                                {{ __('messages.toman') }}
-                                            </div>
-                                            <a href="{{ route('check.address') }}" class="mb-2 d-block">
-                                                <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
-                                                    <i class="mdi mdi-arrow-left"></i>
-                                                     {{  __('messages.continue_register_order') }}
-                                                </button>
-                                            </a>
-                                            <div>
-                                                <span>
-                                                   {{ __('messages.shopping_cart_message') }}
-                                                </span><span class="help-sn" data-toggle="tooltip" data-html="true"
-                                                    data-placement="bottom"
-                                                    title="<div class='help-container is-right'>
-                                                        <div class='help-arrow'>
-                                                        </div>
-                                                        <p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرامد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
-                                                    <span class="mdi mdi-information-outline"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-
-                            </div>
-                        </div>
-
+    @if (count($cartItems))
+        <div class="row mx-0">
+            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
+                <nav class="tab-cart-page">
+                    <div class="nav nav-tabs border-bottom" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link d-inline-flex w-auto active" id="nav-home-tab" data-toggle="tab"
+                            href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">سبد خرید</a>
                     </div>
-                </div>
-
+                </nav>
             </div>
-
-            @else
-            <div class="row mx-0">
-                <div class="col-12">
-                    <div class="dt sl dt-sn dt-sn--box border pt-3 pb-5">
-                        <div class="cart-page cart-empty">
-                            <div class="circle-box-icon">
-                                <i class="mdi mdi-cart-remove"></i>
-                            </div>
-                            <p class="cart-empty-title">سبد خرید شما خالیست!</p>
-                            <p>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید:</p>
-                            <div class="cart-empty-links mb-5">
-                                <a href="#" class="border-bottom-dt">لیست مورد علاقه من</a>
-                                <a href="#" class="border-bottom-dt">محصولات شگفت‌انگیز</a>
-                                <a href="#" class="border-bottom-dt">محصولات پرفروش روز</a>
-                            </div>
-                            <a href="{{  route('home') }}" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
+            <div class="col-12">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"   aria-labelledby="nav-home-tab">
+                        <div class="row">
+                            @include('livewire.front.cart.partials.cart_products_parice', ['cartItems' => $cartItems, ])
                         </div>
                     </div>
+
                 </div>
             </div>
-            @endif
+        </div>
+    @else
+        @include('livewire.front.cart.partials.cart_empty')
+    @endif
 </div>
 @push('front_custom_scripts')
     <script type="text/javascript">
@@ -224,22 +55,27 @@
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         });
-        window.addEventListener('show-result', ({detail: { type, message }}) => {
+        window.addEventListener('show-result', ({
+            detail: {
+                type,
+                message
+            }
+        }) => {
             Swal.fire({
                 icon: type,
                 text: message,
             });
         })
-        @if( session()->has('warning') )
-        Toast.fire({
-            icon: 'warning',
-            title: '{{ session()->get('warning') }}'
-        })
-        @elseif( session()->has('success'))
-        Toast.fire({
-            icon: 'success',
-            title: '{{ session()->get('success') }}'
-        })
+        @if (session()->has('warning'))
+            Toast.fire({
+                icon: 'warning',
+                title: '{{ session()->get('warning') }}'
+            })
+        @elseif (session()->has('success'))
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session()->get('success') }}'
+            })
         @endif
     </script>
 @endpush
