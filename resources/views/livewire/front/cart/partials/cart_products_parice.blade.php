@@ -89,16 +89,14 @@
 
             @php
                 $cartItemsCount = null;
-                foreach( $cartItems as $item )
-                 {
+                foreach( $cartItems as $item ) {
                     $cartItemsCount += $item->number;
                  }
             @endphp
             <li>
-                <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span> {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}</span>
+                <span>{{ __('messages.final_amount')  . ' ' . $cartItemsCount . ' ' . __('messages.good') }}  </span>
+                <span> {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}</span>
             </li>
-
-
             <li>
                 <span>هزینه ارسال </span>
                 <span>وابسته به نوع ارسال</span>

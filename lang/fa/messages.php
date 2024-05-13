@@ -18,6 +18,7 @@ return [
     'last_name' => 'نام خانوادگی',
 
 
+    'good' => 'کالا',
     'admins_management' => 'مدیریت مدیران',
     'users_management' => 'مدیریت کاربران',
     'manage_roles' => 'مدیریت نقش ها',
@@ -181,7 +182,7 @@ return [
     'online_payments' => 'پرداخت های آنلاین',
     'offline_payments' => 'پرداخت های آفلاین',
     'payment_on_the_spot' => 'پرداخت در محل',
-    'amount' => 'مبلغ تراکنش',
+    'transaction_amount' => 'مبلغ تراکنش',
     'payment_status' => 'وضعیت پرداخت',
     'payment_type' => 'نوع پرداخت',
     'payment_gateway' => 'درگاه پرداخت',
@@ -272,8 +273,8 @@ return [
     'order_canceled' => 'باطل شده',
     'order_factor' => 'فاکتور سفارش',
     'order_specification' => 'مشخصات فاکتور',
-    'order_date' => 'تاریخ',
-    'order_price' => 'مبلغ',
+    'order_date' => 'تاریخ سفارش',
+    'order_price' => 'مبلغ سفارش',
     'no_order_registered' => 'سفارشی وجود ندارد',
 
     'print' => 'چاپ',
