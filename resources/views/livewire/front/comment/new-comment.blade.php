@@ -9,7 +9,7 @@
                     <div class="form-question-answer dt-sl mb-3">
                         <form action="">
                             <textarea class="form-control mb-3" rows="5"></textarea>
-                            <button class="btn btn-dark float-right ml-3" disabled="">ثبت نظر</button>
+                            <button type="submit" class="btn btn-secondary text-white float-right ml-3" >ثبت نظر</button>
                         </form>
                     </div>
                 </div>
