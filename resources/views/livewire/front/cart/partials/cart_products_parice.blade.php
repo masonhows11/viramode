@@ -107,16 +107,24 @@
         </div>
 
         <div class="checkout-summary-content">
-            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
-            <div class="checkout-summary-price-value">
-                <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}</span>
+
+            <div class="checkout-summary-price-title">
+                {{ __('messages.the_amount_payable')}}
             </div>
+
+            <div class="checkout-summary-price-value">
+                <span class="checkout-summary-price-value-amount">
+                    {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}
+                </span>
+            </div>
+
             <a href="{{ route('check.address') }}" class="mb-2 d-block">
                 <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
                     <i class="mdi mdi-arrow-left"></i>
                      {{  __('messages.continue_register_order') }}
                 </button>
             </a>
+            
             <div>
                 <span>
                    {{ __('messages.shopping_cart_message') }}

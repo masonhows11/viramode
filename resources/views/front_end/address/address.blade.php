@@ -127,11 +127,15 @@
 
                         <div class="checkout-summary-content">
 
-                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
+                            
+                            <div class="checkout-summary-price-title">
+                                {{ __('messages.the_amount_payable') }}
+                            </div>
+
                             <div class="checkout-summary-price-value">
-                                <span
-                                    class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
-                                {{ __('messages.toman') }}
+                                <span class="checkout-summary-price-value-amount">
+                                    {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman') }}
+                                </span>
                             </div>
 
                             <button type="submit" onclick="document.getElementById('my-form').submit();"

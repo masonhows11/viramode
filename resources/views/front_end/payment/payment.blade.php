@@ -110,13 +110,17 @@
                         </div>
 
                         <div class="checkout-summary-content">
-                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
-                            <div class="checkout-summary-price-value">
-                                <span
-                                    class="checkout-summary-price-value-amount">{{ priceFormat($order->order_final_amount) }}
-                                    {{ __('messages.toman') }}</span>
-                                {{ __('messages.toman') }}
+
+                            <div class="checkout-summary-price-title">
+                                {{ __('messages.the_amount_payable') }}
                             </div>
+
+                            <div class="checkout-summary-price-value">
+                                <span class="checkout-summary-price-value-amount">
+                                    {{ priceFormat($order->order_final_amount) . ' ' .  __('messages.toman') }}
+                                </span>
+                            </div>
+
                             <button type="button" onclick="document.getElementById('payment_submit').submit();"
                                 class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
                                 <i class="mdi mdi-arrow-left"></i>
