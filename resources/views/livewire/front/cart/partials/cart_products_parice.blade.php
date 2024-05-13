@@ -1,19 +1,12 @@
 <div class="col-xl-9 col-lg-8 col-12 px-0">
-
     <div class="table-responsive checkout-content dt-sl">
-
         <div class="checkout-header checkout-header--express"></div>
-
         <div class="checkout-section-content-dd-k">
-
             <div class="cart-items-dd-k">
 
-
-
+                
                 @foreach ($cartItems as $product)
-
                     <div class="cart-item py-4 px-3">
-
                         <div class="item-thumbnail">
                             <a href="{{ route('product', $product->product->slug) }}">
                                 @if ($product->product->thumbnail_image &&   \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
@@ -23,7 +16,6 @@
                                 @endif
                             </a>
                         </div>
-
                         <div class="item-info flex-grow-1">
                             <div class="item-title">
                                 <h2>
@@ -53,7 +45,6 @@
                                             {{ __('messages.delete_model') }}
                                         </button>
                                     </div>
-
                                     <div class="item-price">
                                         {{ $product->number }}
                                         <span class="text-sm mr-1">{{ __('messages.number') }}</span>
@@ -68,6 +59,9 @@
                         </div>
                     </div>
                 @endforeach
+
+
+
             </div>
         </div>
     </div>
