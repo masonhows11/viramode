@@ -101,11 +101,13 @@
 
                             <ul class="checkout-summary-summary">
                                 <li>
-                                    <span>مبلغ کل ({{ $cartItemsCount }} کالا)</span><span>{{ priceFormat($totalProductPrice) }} {{ __('messages.toman') }}</span>
+                                    <span>{{ __('messages.final_amount')  . ' ' . $cartItemsCount . ' ' . __('messages.good') }}</span>
+                                    <span>{{ priceFormat($totalProductPrice) . ' ' . __('messages.toman') }}</span>
                                 </li>
 
                                 <li>
-                                    <span>هزینه ارسال</span><span>وابسته به نوع ارسال</span>
+                                    <span>هزینه ارسال</span>
+                                    <span>وابسته به نوع ارسال</span>
                                 </li>
                             </ul>
 
