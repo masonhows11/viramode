@@ -1,10 +1,10 @@
 @if ( $images->isNotEmpty()   )
-    <div class="product-gallery">
+    <div class="product-gallery ">
 
-        <div class="product-carousel owl-carousel" data-slider-id="1">
+        <div class="product-carousel   owl-carousel" data-slider-id="1">
             @foreach ( $images as  $key => $slide)
                 @if( $slide->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/product/gallery/'. $slide->image_path) )
-                    <div class="item"> 
+                    <div class="item ">
                         <a class="gallery-item" loading="lazy" href="{{ asset('storage/images/product/gallery/'. $slide->image_path) }}" data-fancybox="gallery-{{ $key }}">
                             <img
                                 src="{{ asset('storage/images/product/gallery/'. $slide->image_path) }}"

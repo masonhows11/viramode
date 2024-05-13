@@ -15,9 +15,9 @@
             <!-- Start Product -->
             <div class="dt-sn mb-5 dt-sl">
 
-                <div class="row">
+                <div class="row mb-5">
 
-                    <div class="col-lg-4 col-md-6 ps-relative">
+                    <div class="col-lg-4 col-md-6 ps-relative ">
 
                         <ul class="gallery-options">
                             {{-- @include('front_end.product.partials.add_to_favorites',['product' => $product]) --}}
@@ -60,6 +60,14 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="row">
+                    <div class="dt-sn mb-5  dt-sl pt-0">
+                        <livewire:front.comment.new-comment :productId="$product->id"/>
+                    </div>
+
+                </div>
             </div>
 
             <!-- start sellers -->
@@ -68,7 +76,6 @@
 
             <!-- start tabs -->
             {{-- <div class="dt-sn mb-5 px-0 dt-sl pt-0">
-
                 <section class="tabs-product-info mb-3 dt-sl">
                     @include('front_end.product.partials.product_tab_section_links')
                     <div class="ah-tab-content-wrapper product-info px-4 dt-sl">
@@ -78,7 +85,6 @@
                         @include('front_end.product.partials.product_answer_question')
                     </div>
                 </section>
-
             </div> --}}
 
              <!-- End tabs -->
