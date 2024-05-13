@@ -64,7 +64,7 @@
 
                 <div class="row">
                     <div class="dt-sn mb-5  dt-sl pt-0">
-                        <livewire:front.comment.new-comment :productId="$product->id"/>
+                        <livewire:front.comment.new-comment :product="$product->id"/>
                     </div>
 
                 </div>

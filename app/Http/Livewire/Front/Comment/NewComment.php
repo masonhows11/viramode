@@ -13,12 +13,17 @@ class NewComment extends Component
 {
     use WithPagination;
 
+    public $product;
+    public $product_id;
+    public $body;
+    public $comment_count;
+
     protected $paginationTheme = 'bootstrap';
 
     public function mount($product)
     {
 
-        $this->product = Product::findOrfail($product);
+        $this->product = Product::findOrFail($product);
         //        if(Auth::check()){
         //           $this->rated_value = intval(Auth::user()->getRatingValue($this->product));
         //        }
