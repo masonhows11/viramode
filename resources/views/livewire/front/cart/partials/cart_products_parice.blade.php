@@ -74,18 +74,11 @@
 </div>
 
 
-@if( count($cartItems) > 0)
+
 <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar">
-
     <div class="dt-sn dt-sn--box border mb-2">
-        <ul class="checkout-summary-summary">
 
-            @php
-                $cartItemsCount = null;
-                foreach( $cartItems as $item ) {
-                    $cartItemsCount += $item->number;
-                 }
-            @endphp
+        <ul class="checkout-summary-summary">
             <li>
                 <span>{{ __('messages.final_amount')  . ' ' . $cartItemsCount . ' ' . __('messages.good') }}  </span>
                 <span> {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}</span>
@@ -100,24 +93,20 @@
         </div>
 
         <div class="checkout-summary-content">
-
             <div class="checkout-summary-price-title">
                 {{ __('messages.the_amount_payable')}}
             </div>
-
             <div class="checkout-summary-price-value">
                 <span class="checkout-summary-price-value-amount">
                     {{ priceFormat($totalProductPrice) . ' ' . __('messages.toman')  }}
                 </span>
             </div>
-
             <a href="{{ route('check.address') }}" class="mb-2 d-block">
                 <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
                     <i class="mdi mdi-arrow-left"></i>
                      {{  __('messages.continue_register_order') }}
                 </button>
             </a>
-
             <div>
                 <span>
                    {{ __('messages.shopping_cart_message') }}
@@ -127,4 +116,3 @@
 
     </div>
 </div>
-@endif

@@ -15,19 +15,22 @@ class ShoppingCart extends Component
     public $cartNumber = 1;
     public $changeNumber = false;
     public $disabled = false;
+    public $totalProductPrice = 0;
+    public $cartItemsCount = 0;
+   // public $totalDiscount = null;
 
-    public $totalProductPrice = null;
-    public $totalDiscount = null;
-    public $cartItemsCount = null;
-
-
-    // $totalProductPrice += $product->cartItemProductPrice();
-    // $totalDiscount += $product->cartItemProductDiscount();
 
 
     public function mount()
     {
         $this->user_id = Auth::id();
+        $items =  CartItems::where('user_id',$this->user_id)->select('id','number','product_id')->get();
+
+        foreach($items as $item){
+            $this->totalProductPrice += $item->cartItemProductPrice();
+            $this->cartItemsCount += $item->number;
+        }
+
     }
 
     public function increaseItem($itemId)
@@ -100,6 +103,9 @@ class ShoppingCart extends Component
     public function render()
     {
         return view('livewire.front.cart.shopping-cart')
-            ->with('cartItems', CartItems::where('user_id', $this->user_id)->get());
+            ->with(
+                ['cartItems' => CartItems::where('user_id', $this->user_id)->get(),
+                 'cartItemsCount' => $this->cartItemsCount ,
+                 'totalProductPrice' => $this->totalProductPrice]);
     }
 }
