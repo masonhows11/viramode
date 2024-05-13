@@ -13,8 +13,7 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel"   aria-labelledby="nav-home-tab">
                         <div class="row">
-                            @include('livewire.front.cart.partials.cart_products_parice',
-                                     ['cartItems' => $cartItems,'cartItemsCount'=> $cartItemsCount,'totalProductPrice' => $totalProductPrice ])
+                            @include('livewire.front.cart.partials.cart_products_parice', ['cartItems' => $cartItems ])
                         </div>
                     </div>
 
