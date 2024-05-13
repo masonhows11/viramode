@@ -24,11 +24,6 @@ class NewComment extends Component
     {
 
         $this->product = Product::findOrFail($product);
-        //        if(Auth::check()){
-        //           $this->rated_value = intval(Auth::user()->getRatingValue($this->product));
-        //        }
-
-
         $this->product_id = $this->product->id;
         $this->comment_count = Comment::where(['product_id' => $this->product_id, 'approved' => 1])->count();
 

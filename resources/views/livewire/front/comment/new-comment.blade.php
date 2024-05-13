@@ -9,7 +9,9 @@
                         <div class="form-question-answer dt-sl mb-3">
                             <form wire:submit.prevent="addComment">
 
-                                <textarea class="form-control mb-3" wire:model="body" rows="5"></textarea>
+                                <label for="comment_body" class="form-label">{{ __('messages.comment_text') }}</label>
+                                <textarea class="form-control mb-3" id="comment_body" wire:model="body" rows="5"></textarea>
+
                                 @error('body')
                                     <div class="alert alert-danger mt-4 font-12">
                                         {{ $message }}
