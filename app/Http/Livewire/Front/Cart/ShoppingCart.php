@@ -16,6 +16,15 @@ class ShoppingCart extends Component
     public $changeNumber = false;
     public $disabled = false;
 
+    public $totalProductPrice = null;
+    public $totalDiscount = null;
+    public $cartItemsCount = null;
+
+
+    // $totalProductPrice += $product->cartItemProductPrice();
+    // $totalDiscount += $product->cartItemProductDiscount();
+
+
     public function mount()
     {
         $this->user_id = Auth::id();

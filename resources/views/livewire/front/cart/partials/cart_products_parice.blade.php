@@ -8,16 +8,9 @@
 
             <div class="cart-items-dd-k">
 
-                @php
-                    $totalProductPrice = 0;
-                    $totalDiscount = 0;
-                @endphp
+
 
                 @foreach ($cartItems as $product)
-                    @php
-                        $totalProductPrice += $product->cartItemProductPrice();
-                        $totalDiscount += $product->cartItemProductDiscount();
-                    @endphp
 
                     <div class="cart-item py-4 px-3">
 
@@ -124,7 +117,7 @@
                      {{  __('messages.continue_register_order') }}
                 </button>
             </a>
-            
+
             <div>
                 <span>
                    {{ __('messages.shopping_cart_message') }}
