@@ -7,16 +7,16 @@
         <div class="container">
             <div class="row">
                 @php
-                $currentRoute = 'check.address';
+                    $currentRoute = 'check.address';
                 @endphp
 
                 <div class="col-12 text-center">
                     <ul class="checkout-steps">
                         <li>
                             @if ($currentRoute == request()->route()->getName())
-                            <a href="javascript:void(0)" class="active">
-                                <span>اطلاعات ارسال</span>
-                            </a>
+                                <a href="javascript:void(0)" class="active">
+                                    <span>اطلاعات ارسال</span>
+                                </a>
                             @endif
                         </li>
                         <li>
@@ -48,16 +48,20 @@
                     <section class="page-content dt-sl">
 
                         <div class="address-section">
-                                @include('front_end.address.partials.address_info',['addresses' => $addresses])
+                            @include('front_end.address.partials.address_info', [
+                                'addresses' => $addresses,
+                            ])
 
-                                @error('address_id')
+                            @error('address_id')
                                 <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            @enderror
                         </div>
 
                         <form method="post" id="shipping-data-form" class="dt-sn dt-sn--box pt-3 pb-3">
 
-                            @include('front_end.address.partials.delivery_type',['deliveries' => $deliveries])
+                            @include('front_end.address.partials.delivery_type', [
+                                'deliveries' => $deliveries,
+                            ])
 
                             <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
                                 <h2>مرسوله</h2>
@@ -66,7 +70,9 @@
                             <div class="checkout-pack">
                                 <section class="products-compact">
                                     <!-- Start Product-Slider -->
-                                    @include('front_end.address.partials.cart_items',['cartItems' => $cartItems])
+                                    @include('front_end.address.partials.cart_items', [
+                                        'cartItems' => $cartItems,
+                                    ])
                                     <!-- End Product-Slider -->
                                 </section>
                                 <hr>
@@ -88,7 +94,7 @@
                         </form>
 
                         <div class="mt-5">
-                             @include('front_end.address.partials.navigate_link')
+                            @include('front_end.address.partials.navigate_link')
                         </div>
 
                     </section>
@@ -97,67 +103,55 @@
 
                 <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
 
-                        <div class="dt-sn dt-sn--box border mb-2">
+                    <div class="dt-sn dt-sn--box border mb-2">
 
-                            <ul class="checkout-summary-summary">
-                                <li>
-                                    <span>{{ __('messages.final_amount')  . ' ' . $cartItemsCount . ' ' . __('messages.good') }}</span>
-                                    <span>{{ priceFormat($totalProductPrice) . ' ' . __('messages.toman') }}</span>
-                                </li>
+                        <ul class="checkout-summary-summary">
+                            <li>
+                                <span>{{ __('messages.final_amount') . ' ' . $cartItemsCount . ' ' . __('messages.good') }}</span>
+                                <span>{{ priceFormat($totalProductPrice) . ' ' . __('messages.toman') }}</span>
+                            </li>
 
-                                <li>
-                                    <span>هزینه ارسال</span>
-                                    <span>وابسته به نوع ارسال</span>
-                                </li>
-                            </ul>
+                            <li>
+                                <span>هزینه ارسال</span>
+                                <span>وابسته به نوع ارسال</span>
+                            </li>
+                        </ul>
 
-                            <div class="checkout-summary-devider">
-                                <div></div>
-                            </div>
-
-                            <form action="{{ route('choose.address.delivery') }}" method="post" id="my-form">
-                                @csrf
-                            </form>
-
-                            <div class="checkout-summary-content">
-
-                                <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable')}}</div>
-                                <div class="checkout-summary-price-value">
-                                    <span class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
-                                    {{ __('messages.toman') }}
-                                </div>
-
-                                    <button type="submit" onclick="document.getElementById('my-form').submit();" class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
-                                        <i class="mdi mdi-arrow-left"></i>
-                                        {{ __('messages.confirm_continue_order')}}
-                                     </button>
-
-                                <div>
-                                    <span>
-                                        {{ __('messages.shopping_cart_message') }}
-                                    </span><span class="help-sn" data-toggle="tooltip" data-html="true"
-                                        data-placement="bottom"
-                                        title="<div class='help-container is-right'>
-                                            <div class='help-arrow'>
-                                            </div>
-                                            <p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، ویرا مد هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
-                                        <span class="mdi mdi-information-outline"></span>
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="checkout-summary-devider">
+                            <div></div>
                         </div>
 
+                        <form action="{{ route('choose.address.delivery') }}" method="post" id="my-form">
+                            @csrf
+                        </form>
 
+                        <div class="checkout-summary-content">
+
+                            <div class="checkout-summary-price-title">{{ __('messages.the_amount_payable') }}</div>
+                            <div class="checkout-summary-price-value">
+                                <span
+                                    class="checkout-summary-price-value-amount">{{ priceFormat($totalProductPrice) }}</span>
+                                {{ __('messages.toman') }}
+                            </div>
+
+                            <button type="submit" onclick="document.getElementById('my-form').submit();"
+                                class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
+                                <i class="mdi mdi-arrow-left"></i>
+                                {{ __('messages.confirm_continue_order') }}
+                            </button>
+
+                            <div>
+                                <span>
+                                    {{ __('messages.shopping_cart_message') }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
-
     </main>
-
-
 @endsection
 @push('payment_custom_scripts')
-    <script>
-    </script>
+    <script></script>
 @endpush
