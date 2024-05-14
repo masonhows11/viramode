@@ -14,7 +14,7 @@ class FrontBestSellers extends Component
             ->with(['products' => DB::table('products')->where('deleted_at',null)
                 ->orderByDesc('number_sold')
                 ->select('id','title_persian','origin_price','slug','thumbnail_image')
-                ->take(4)
+                ->take(6)
                 ->get() ] );
     }
 }
