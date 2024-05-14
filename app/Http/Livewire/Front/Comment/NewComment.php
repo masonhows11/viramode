@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Front\Comment;
 use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -30,12 +29,13 @@ class NewComment extends Component
     }
 
     protected $rules = [
-        'body' => ['required', 'min:5', 'max:2000', 'string'],
+        'body' => ['required', 'min:5', 'max:1000', 'string'],
     ];
 
     public function addComment()
     {
         $this->validate();
+
         try {
             Comment::create([
                 'user_id' => Auth::id(),

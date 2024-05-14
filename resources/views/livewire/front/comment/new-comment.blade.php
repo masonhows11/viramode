@@ -13,8 +13,12 @@
                                 <textarea class="form-control mb-3" id="comment_body" wire:model="body" rows="5"></textarea>
 
                                 @error('body')
-                                    <div class="alert alert-danger mt-4 font-12">
-                                        {{ $message }}
+                                    <div class="alert alert-danger mt-4 font-12 d-flex justify-content-between" role="alert">
+                                        <span> {{ $message }}</span>
+
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                 @enderror
 
@@ -27,7 +31,8 @@
                                         {{ session()->get('success') }}
                                     </div>
                                 @endif
-                                <button type="submit" class="btn btn-secondary text-white float-right ml-3">ثبت  نظر</button>
+                                <button type="submit" class="btn btn-secondary text-white float-right ml-3">ثبت
+                                    نظر</button>
                             </form>
                         </div>
                     </div>
