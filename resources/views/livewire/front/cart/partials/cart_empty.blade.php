@@ -6,13 +6,7 @@
                     <i class="mdi mdi-cart-remove"></i>
                 </div>
                 <p class="cart-empty-title">سبد خرید شما خالیست!</p>
-                <p>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید:</p>
-                <div class="cart-empty-links mb-5">
-                    <a href="#" class="border-bottom-dt">لیست مورد علاقه من</a>
-                    <a href="#" class="border-bottom-dt">محصولات شگفت‌انگیز</a>
-                    <a href="#" class="border-bottom-dt">محصولات پرفروش روز</a>
-                </div>
-                <a href="{{ route('home') }}" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
+                <a href="{{ route('home') }}" class="btn-primary-cm">ادامه خرید در ویرامد</a>
             </div>
         </div>
     </div>
