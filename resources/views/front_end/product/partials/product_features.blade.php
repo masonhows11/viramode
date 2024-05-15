@@ -1,21 +1,15 @@
 <div class="product-params dt-sl">
 
+
+     <div>
+         <h6 class="h6">ویژگی های محصول</h6>
+         {!! $product->short_description !!}
+     </div>
+
     {{-- <ul data-title="ویژگی‌های محصول">
         <li>
             <span>حافظه داخلی: </span>
             <span> 256 گیگابایت </span>
-        </li>
-        <li>
-            <span>شبکه های ارتباطی: </span>
-            <span> 2G,3G,4G </span>
-        </li>
-        <li>
-            <span>رزولوشن عکس: </span>
-            <span> 12.0 مگاپیکسل</span>
-        </li>
-        <li>
-            <span>تعداد سیم کارت: </span>
-            <span> تک </span>
         </li>
         <li>
             <span>ویژگی‌های خاص: </span>
