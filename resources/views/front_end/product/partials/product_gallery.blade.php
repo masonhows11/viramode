@@ -25,7 +25,7 @@
                 @foreach ( $images as $key =>  $slide)
                     <li class="owl-thumb-item  @if( $loop->first ) active @endif">
                         @if( $slide->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/product/gallery/'. $slide->image_path) )
-                            <a href="javascript:void(0)">
+                            <a href="javascript:void(0)" class="border-0">
                                 <img loading="lazy"  width="48" height="34" src="{{ asset('storage/images/product/gallery/'. $slide->image_path) }}" alt="{{  $slide->image_path . '-' . ($key + 1) }}">
                             </a>
                         @else
