@@ -14,8 +14,8 @@
                     </p>
                 </div>
                 <div class="symbol col-12 col-lg-5">
-                    <a href="#" target="_blank"><img src="{{ asset('front_assets/img/symbol-01.png') }}" alt=""></a>
-                    <a href="#" target="_blank"><img src="{{ asset('front_assets/img/symbol-02.png') }}" alt=""></a>
+                    <a href="#" target="_blank"><img src="{{ asset('default_image/no-image-icon-23494.png') }}" alt=""></a>
+                    <a href="#" target="_blank"><img src="{{ asset('default_image/no-image-icon-23494.png') }}" alt=""></a>
                 </div>
             </div>
         </div>
