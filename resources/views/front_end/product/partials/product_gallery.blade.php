@@ -6,7 +6,7 @@
                 @if( $slide->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/product/gallery/'. $slide->image_path) )
                     <div class="item">
                         <a class="gallery-item" loading="lazy" href="{{ asset('storage/images/product/gallery/'. $slide->image_path) }}" data-fancybox="gallery-{{ $key }}">
-                            <img
+                            <img width="300" height="300"
                                 src="{{ asset('storage/images/product/gallery/'. $slide->image_path) }}"
                                 alt="{{ $slide->image_path. '-' .( $key + 1) }}">
                         </a>
@@ -38,6 +38,7 @@
                 @endforeach
             </ul>
         </div>
+
     </div>
 @else
     <div class=product-gallery">
