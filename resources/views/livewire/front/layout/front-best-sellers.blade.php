@@ -33,10 +33,10 @@
 
                                 <a class="product-thumb" href="{{ route('product',$product->slug) }}">
                                     @if( $product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image ) )
-                                        <img src="{{ asset('storage/'.$product->thumbnail_image) }}"
+                                        <img class="rounded" src="{{ asset('storage/'.$product->thumbnail_image) }}"
                                              alt="Product Thumbnail">
                                     @else
-                                        <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
+                                        <img class="rounded" src="{{ asset('default_image/no-image-icon-23494.png') }}"
                                              alt="Product Thumbnail">
                                     @endif
                                 </a>
