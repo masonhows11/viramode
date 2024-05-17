@@ -3,7 +3,7 @@
     <div class="col-md-3 col-sm-6 col-6 mb-2">
         <div class="widget-banner">
             <a href="#">
-                <img src="{{ asset('front_assets/img/banner/small-banner-5.jpg') }}" alt="">
+                <img class="rounded" src="{{ asset('front_assets/img/banner/small-banner-5.jpg') }}" alt="">
             </a>
         </div>
     </div>
@@ -11,7 +11,7 @@
     <div class="col-md-3 col-sm-6 col-6 mb-2">
         <div class="widget-banner">
             <a href="#">
-                <img src="{{ asset('front_assets/img/banner/small-banner-6.jpg') }}" alt="">
+                <img class="rounded" src="{{ asset('front_assets/img/banner/small-banner-6.jpg') }}" alt="">
             </a>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="col-md-3 col-sm-6 col-6 mb-2">
         <div class="widget-banner">
             <a href="#">
-                <img src="{{ asset('front_assets/img/banner/small-banner-7.jpg') }}" alt="">
+                <img class="rounded" src="{{ asset('front_assets/img/banner/small-banner-7.jpg') }}" alt="">
             </a>
         </div>
     </div>
@@ -27,11 +27,11 @@
     <div class="col-md-3 col-sm-6 col-6 mb-2">
         <div class="widget-banner">
             <a href="#">
-                <img src="{{ asset('front_assets/img/banner/small-banner-8.jpg') }}" alt="">
+                <img class="rounded" src="{{ asset('front_assets/img/banner/small-banner-8.jpg') }}" alt="">
             </a>
         </div>
     </div>
-    
+
 </div>
 {{--
 <div>
