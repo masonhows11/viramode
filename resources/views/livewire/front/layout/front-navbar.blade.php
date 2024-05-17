@@ -11,11 +11,11 @@
                                 <li>
                                     <a href="{{ route('category',['slug' => $child->slug]) }}">{{ $child->title_persian }}</a>
                                     <ul class="row">
-                                        <li class="mr-1">
+
                                             @if( $child->children != null  )
                                                 @include('front_end.category.child_categories',['category' => $child->children])
                                             @endif
-                                        </li>
+                                       
                                     </ul>
                                 </li>
                             @endforeach
