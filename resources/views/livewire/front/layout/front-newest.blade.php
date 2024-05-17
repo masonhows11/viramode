@@ -14,7 +14,7 @@
                         <div class="widget-banner">
                             <a href="{{ route('product',$banner->slug) }}">
                                 @if( $banner->image_path && file_exists(public_path() .$banner->image_path) )
-                                <img class="rounded" src="{{ asset($banner->image_path) }}" alt="">
+                                <img class="rounded img-thumbnail" src="{{ asset($banner->image_path) }}" alt="">
                                 @else
                                  <img src="{{ asset('default_image/no-image-icon-23494.png') }}" alt="no-image-found">
                                 @endif

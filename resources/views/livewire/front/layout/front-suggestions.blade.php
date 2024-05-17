@@ -17,7 +17,7 @@
                                 <div class="card-horizontal-product-thumb">
                                     <a href="{{ route('product',$product->slug) }}">
                                         @if( $product->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->image_path))
-                                            <img class="rounded" src="{{  asset('storage/'.$product->image_path)  }}" alt="product-image">
+                                            <img class="rounded img-thumbnail" src="{{  asset('storage/'.$product->image_path)  }}" alt="product-image">
                                         @else
                                             <img class="rounded" src="{{ asset('default_image/no-image-icon-23494.png') }}" alt="product-no-image">
                                         @endif
