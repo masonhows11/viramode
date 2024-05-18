@@ -37,6 +37,11 @@ class Category extends Model
     {
         return 'parent_id';
     }
+    public function isParent()
+    {
+        return  $this->parent_id != null ? true : false;
+    }
+
 
     public function parent()
     {
