@@ -7,7 +7,7 @@
     @endsection
     <div class="container-fluid">
         <div class="row  py-2 bg-white rounded">
-            <form wire:submit.prevent="updateCategory">
+            <form wire:submit.prevent="update">
                 <div class="col">
                     <div class="row">
                         <div class="col-sm-4">
@@ -16,7 +16,9 @@
                                     <label for="title" class="form-label">عنوان دسته بندی به فارسی </label>
                                     <input type="text" wire:model.lazy="title_persian" class="form-control" id="title">
                                     @error('title_persian')
-                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
                                     @enderror
                                 </div>
 
@@ -26,7 +28,9 @@
                                     <input type="text" wire:model.lazy="title_english" dir="ltr" class="form-control text-left"
                                            id="name">
                                     @error('title_english')
-                                    <div class="alert alert-danger mt-3">{{ $message}}</div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">{{ $message}}</span>
+                                    </div>
                                     @enderror
                                 </div>
 
@@ -39,7 +43,9 @@
                                         <option value="1">{{ __('messages.show') }}</option>
                                     </select>
                                     @error('show_in_menu')
-                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
                                     @enderror
                                 </div>
 
@@ -50,22 +56,30 @@
                                         <option value="0">{{ __('messages.No_technical_specifications') }}</option>
                                     </select>
                                     @error('has_specifications')
-                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
+
                                     @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="row">
+
                                 <div class="mb-3 mt-3">
                                     <label for="seo_desc" class="form-label">توضیحات سئو</label>
                                     <input wire:model.defer="seo_desc" type="text" dir="ltr" class="form-control"
                                            id="seo_desc">
                                 </div>
                                 @error('seo_desc')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $message}}</span>
+                                </div>
                                 @enderror
-                                <div class=" mb-3 mt-3">
+
+
+                                <div class="mb-3 mt-3">
                                     <label for="status" class="form-label">وضعیت دسته بندی</label>
                                     <select class="form-control" wire:model.lazy="status" id="status">
                                         <option>انتخاب کنید</option>
@@ -74,7 +88,9 @@
                                     </select>
 
                                     @error('status')
-                                    <div class="alert alert-danger mt-3">{{ $message}}</div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">{{ $message}}</span>
+                                    </div>
                                     @enderror
                                 </div>
 
@@ -119,7 +135,9 @@
                             </div>
                             <div wire:loading wire:target="image_path">در حال بارگزاری...</div>
                             @error('image_path')
-                            <div class="alert alert-danger">{{ $message}}</div>
+                            <div class="mt-3">
+                                <span class="text-danger">{{ $message}}</span>
+                            </div>
                             @enderror
                         </div>
                     </div>

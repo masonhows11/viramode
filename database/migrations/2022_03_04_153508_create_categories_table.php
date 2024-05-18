@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('title_english');
             $table->string('title_persian');
             $table->string('slug')->unique()->nullable();
+            $table->string('seo_desc',500)->nullable();
             $table->string('icon')->nullable();
             $table->text('image_path')->nullable();
             $table->tinyInteger('show_in_menu')->nullable();

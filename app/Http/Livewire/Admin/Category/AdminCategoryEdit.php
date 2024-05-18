@@ -26,6 +26,7 @@ class AdminCategoryEdit extends Component
     public $category_title;
     public $category_image;
     public $edit_id;
+    public $seo_desc;
 
 
     public function mount($id)
@@ -37,6 +38,7 @@ class AdminCategoryEdit extends Component
         $this->title_persian = $this->category->title_persian;
         $this->title_english = $this->category->title_english;
         $this->status = $this->category->status;
+        $this->seo_desc = $this->category->seo_desc;
         $this->show_in_menu = $this->category->show_in_menu;
         $this->has_specifications = $this->category->has_specifications;
         if ($this->category->parent_id == null) {
@@ -53,6 +55,7 @@ class AdminCategoryEdit extends Component
             'title_english' => ['required', Rule::unique('categories')->ignore($this->edit_id), 'min:2', 'max:30', 'alpha_dash'],
             'show_in_menu' => ['required'],
             'has_specifications' => ['required'],
+            'seo_desc' => ['nullable','min:2', 'max:50'],
             'status' => ['required'],
             'image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2000'],
         ];
@@ -76,7 +79,7 @@ class AdminCategoryEdit extends Component
     ];
 
 
-    public function updateCategory()
+    public function update()
     {
         $this->validate();
 
@@ -105,12 +108,14 @@ class AdminCategoryEdit extends Component
                 $this->category->title_persian = $this->title_persian;
                 $this->category->title_english = $this->title_english;
                 $this->category->status = $this->status;
+                $this->category->seo_desc = $this->seo_desc;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->parent_id = $this->parent;
                 $this->category->has_specifications = $this->has_specifications;
             } else {
                 $this->category->title_persian = $this->title_persian;
                 $this->category->title_english = $this->title_english;
+                $this->category->seo_desc = $this->seo_desc;
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->has_specifications = $this->has_specifications;

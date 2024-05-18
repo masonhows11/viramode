@@ -23,14 +23,16 @@ class AdminCategoryCreate extends Component
     public $image_extension;
     public $path;
     public $category;
+    public $seo_desc;
 
     protected function rules()
     {
         return [
-            'title_persian' => ['required', Rule::unique('categories')->ignore($this->category_id), 'min:2', 'max:30'],
-            'title_english' => ['required', Rule::unique('categories')->ignore($this->category_id), 'min:2', 'max:30', 'alpha_dash'],
+            'title_persian' => ['required','min:2', 'max:30'],
+            'title_english' => ['required','min:2', 'max:50', 'alpha_dash'],
             'has_specifications' => ['required'],
             'show_in_menu' => ['required'],
+            'seo_desc' => ['nullable','min:2', 'max:50'],
             'status' => ['required'],
             'image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2000'],
         ];
@@ -59,7 +61,7 @@ class AdminCategoryCreate extends Component
 
     ];
 
-    public function storeCategory()
+    public function store()
     {
         $this->validate();
         try {
@@ -85,6 +87,7 @@ class AdminCategoryCreate extends Component
                 $this->category->title_persian = $this->title_persian;
                 $this->category->title_english = $this->title_english;
                 $this->category->status = $this->status;
+                $this->category->seo_desc = $this->seo_desc;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->parent_id = $this->parent;
                 $this->category->has_specifications = $this->has_specifications;
@@ -93,6 +96,7 @@ class AdminCategoryCreate extends Component
 
                 $this->category->title_persian = $this->title_persian;
                 $this->category->title_english = $this->title_english;
+                $this->category->seo_desc = $this->seo_desc;
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->has_specifications = $this->has_specifications;
