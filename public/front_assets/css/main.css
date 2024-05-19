@@ -8246,11 +8246,8 @@ footer.mini-footer .copy-right-mini-footer {
 }
 
 /* custom style */
-.address-radio-check  + .address-radio-label:before {
-    content: '';
-    background: #fff;
-    border: 2px solid #f44336;
-}
+
+
 
 /* footer */
 
