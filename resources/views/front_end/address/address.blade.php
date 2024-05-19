@@ -3,9 +3,9 @@
     {{ __('messages.shipping_info') }}
 @endsection
 @section('checkout-step')
-    <header class="header-shopping  dt-sl">
-        <div class="container">
-            <div class="row">
+    <header class="header-shopping">
+        <div class="container dt-sl">
+            <div class="">
                 @php
                     $currentRoute = 'check.address';
                 @endphp
@@ -93,9 +93,7 @@
 
                         </form>
 
-                        <div class="mt-5">
-                            @include('front_end.address.partials.navigate_link')
-                        </div>
+
 
                     </section>
                 </div>
@@ -127,7 +125,7 @@
 
                         <div class="checkout-summary-content">
 
-                            
+
                             <div class="checkout-summary-price-title">
                                 {{ __('messages.the_amount_payable') }}
                             </div>
@@ -151,6 +149,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="col-12 mt-5 mb-5">
+                    @include('front_end.address.partials.navigate_link')
                 </div>
             </div>
         </div>

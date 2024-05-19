@@ -13,16 +13,16 @@
 <body>
 
 <!-- start header -->
-<header class="w-100 bg-white shopping-page"><!-- start header -->
+<header class="bg-white shopping-page"><!-- start header -->
     <div class="container">
-        <div class="row d-flex justify-content-center">
+        <div class=" d-flex justify-content-center">
             <div class="col-lg-4 header-logo">
                 <a href="http://viramode.test">
                     <h5 class="h5 text-center my-2  text-danger">{{ __('messages.site_name')}}</h5>
                 </a>
             </div>
         </div>
-        <div class="row"><!-- start checkout steps -->
+        <div class=""><!-- start checkout steps -->
             @yield('checkout-step')
         </div><!-- end checkout steps -->
     </div>

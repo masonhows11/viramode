@@ -5,7 +5,7 @@
 @section('checkout-step')
     <header class="header-shopping  dt-sl">
         <div class="container">
-            <div class="row">
+            <div class="">
                 @php
                     $currentRoute = 'payment.checkout';
                 @endphp
@@ -36,8 +36,11 @@
 @endsection
 @section('main_content')
     <main class="main-content dt-sl mt-4 mb-3 shopping-page">
+
         <div class="container main-container">
+
             <div class="row">
+
                 <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
                     <section class="page-content dt-sl">
 
@@ -84,15 +87,14 @@
                             {{-- end code discount --}}
                         </div>
 
-                        <div class="mt-5">
-                            @include('front_end.payment.partials.navigate_link')
-                        </div>
+
 
                     </section>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
-                    <div class="dt-sn dt-sn--box border mb-2">
+                <div class="col-xl-3 col-lg-4 col-12  w-res-sidebar sticky-sidebar">
+
+                    <div class="dt-sn dt-sn--box border mb-2 ">
 
                         <ul class="checkout-summary-summary">
                             <li>
@@ -135,6 +137,11 @@
                         </div>
 
                     </div>
+                </div>
+
+
+                <div class="col-lg-12 mt-5 mb-5">
+                    @include('front_end.payment.partials.navigate_link')
                 </div>
             </div>
         </div>
