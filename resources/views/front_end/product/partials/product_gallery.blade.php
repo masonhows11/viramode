@@ -20,6 +20,7 @@
         </div>
 
 
+        @if($images->count() > 3)
         <div class="d-flex justify-content-center flex-wrap">
             <ul class="product-thumbnails owl-thumbs ml-2" data-slider-id="1">
                 @foreach ( $images as $key =>  $slide)
@@ -38,6 +39,8 @@
                 @endforeach
             </ul>
         </div>
+        @endif
+
 
     </div>
 @else
