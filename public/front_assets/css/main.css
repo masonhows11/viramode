@@ -2241,8 +2241,8 @@ section.slider-section .product-card {
 }
 
 .product-card .product-title {
-    margin: .75rem 0 .125rem;
-    font-size: 1rem;
+    /* margin: .75rem 0 .125rem; */
+    font-size: 0.8rem;
     font-weight: bold;
     position: relative;
     min-height: 60px;
@@ -6834,7 +6834,7 @@ input[type=number]::-webkit-outer-spin-button {
     max-height: 100%;
 }
 
-.shopping-page .product-box-title {
+/* .shopping-page .product-box-title {
     display: block;
     overflow: hidden;
     font-size: 12px;
@@ -6843,13 +6843,16 @@ input[type=number]::-webkit-outer-spin-button {
     line-height: 22px;
     margin-top: 13px;
     height: 43px;
-}
+} */
 
 .shopping-page .product-box-compact .product-box-title {
     margin-top: 0;
+    padding:10px 0 0 0;
     font-size: 11px;
     font-size: .786rem;
     line-height: 22px;
+    color: #f7858d;
+    font-weight:bold;
     letter-spacing: -.3px;
     position: relative;
     text-align: center;
