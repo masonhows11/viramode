@@ -11,8 +11,6 @@
 
 </head>
 <body>
-
-
     <div class="wrapper shopping-page">
 
         <!-- Start header-shopping -->
@@ -21,13 +19,14 @@
                 <div class="row">
                     <div class="col-12 text-center pt-2">
                         <div class="header-shopping-logo dt-sl">
-                            <a href="#">
-                                <img src="./assets/img/logo.png" alt="">
+                            <a href="http://viramode.test">
+                                <h5 class="h5 text-center my-2  text-danger">{{ __('messages.site_name')}}</h5>
                             </a>
                         </div>
                     </div>
                     <div class="col-12 text-center">
-                        <ul class="checkout-steps">
+                        @yield('checkout-step')
+                        {{-- <ul class="checkout-steps">
                             <li>
                                 <a href="#" class="active">
                                     <span>اطلاعات ارسال</span>
@@ -43,7 +42,8 @@
                                     <span>اتمام خرید و ارسال</span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
+
                     </div>
                 </div>
             </div>
@@ -52,8 +52,8 @@
 
         <!-- Start main-content -->
         <main class="main-content dt-sl mt-4 mb-3">
-
-            <div class="container main-container">
+            @yield('checkout-step')
+            {{-- <div class="container main-container">
 
                 <div class="row">
                     <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
@@ -309,38 +309,12 @@
                      <!-- End left price box -->
 
                 </div>
-            </div>
+            </div> --}}
         </main>
         <!-- End main-content -->
 
         <!-- Start mini-footer -->
-        <footer class="mini-footer dt-sl">
-            <div class="container main-container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12 text-left">
-                        <i class="mdi mdi-phone-outline"></i>
-                        شماره تماس : <a href="#">
-                            ۶۱۹۳۰۰۰۰
-                            - ۰۲۱
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <i class="mdi mdi-email-outline"></i>
-                        آدرس ایمیل : <a href="#">info@gmail.com</a>
-                    </div>
-                    <div class="col-12 text-center mt-2">
-                        <p class="text-secondary text-footer">
-                            استفاده از کارت هدیه یا کد تخفیف، درصفحه ی پرداخت امکان پذیر است.
-                        </p>
-                    </div>
-                    <div class="col-12 text-center">
-                        <div class="copy-right-mini-footer">
-                            Copyright © 2019 Didikala
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('front_end.layouts.footer_payment')
         <!-- End mini-footer -->
 
     </div>
