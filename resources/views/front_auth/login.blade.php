@@ -55,8 +55,16 @@
                         <div class="form-row mt-3">
                             <button type="submit" id="login-btn" class="btn-primary-cm btn-with-icon mx-auto w-100">
                                 <i class="mdi mdi-login-variant"></i>
-                                {{  __('messages.login') }}
+
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="" id="login-text-element">
+                                    {{  __('messages.login') }}
+                                </div>
+
                             </button>
+
                         </div>
                     </form>
                     <div class="form-footer mt-3">
@@ -74,14 +82,10 @@
     <script>
 
         $(document).ready(function(){
-           // console.log("Hello world!");
-
-           document.getElementById('#login-btn',function(){
-            
-           })
-
-
-
+           $("#login-btn").click(function(){
+                $("#login-text-element").addClass('d-none');
+                $("#spinnder-element").removeClass('d-none');
+            });
         });
 
     </script>
