@@ -57,7 +57,6 @@
                             <div class="checkout-order-summary">
                                 <div class="accordion checkout-order-summary-item" id="accordionExample">
                                     <div class="card border-bottom pt-sl-res">
-
                                         @include('front_end.payment.partials.delivery_info', [
                                             'order' => $order,
                                         ])
