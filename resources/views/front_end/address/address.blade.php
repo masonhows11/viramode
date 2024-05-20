@@ -3,37 +3,28 @@
     {{ __('messages.shipping_info') }}
 @endsection
 @section('checkout-step')
-    <header class="header-shopping">
-        <div class="container dt-sl">
-            <div class="">
-                @php
-                    $currentRoute = 'check.address';
-                @endphp
-
-                <div class="col-12 text-center">
-                    <ul class="checkout-steps">
-                        <li>
-                            @if ($currentRoute == request()->route()->getName())
-                                <a href="javascript:void(0)" class="active">
-                                    <span>اطلاعات ارسال</span>
-                                </a>
-                            @endif
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span>پرداخت</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span>اتمام خرید و ارسال</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    @php
+        $currentRoute = 'check.address';
+    @endphp
+    <ul class="checkout-steps">
+        <li>
+            @if ($currentRoute == request()->route()->getName())
+                <a href="javascript:void(0)" class="active">
+                    <span>اطلاعات ارسال</span>
+                </a>
+            @endif
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <span>پرداخت</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <span>اتمام خرید و ارسال</span>
+            </a>
+        </li>
+    </ul>
 @endsection
 @section('main_content')
     <main class="main-content dt-sl mt-4 mb-3 shopping-page">

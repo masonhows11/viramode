@@ -51,10 +51,11 @@
         <!-- End header-shopping -->
 
         <!-- Start main-content -->
-        <main class="main-content dt-sl mt-4 mb-3">
-            @yield('checkout-step')
-            {{-- <div class="container main-container">
+        @yield('main_content')
 
+        {{-- <main class="main-content dt-sl mt-4 mb-3">
+
+           <div class="container main-container">
                 <div class="row">
                     <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 px-res-1">
@@ -309,42 +310,17 @@
                      <!-- End left price box -->
 
                 </div>
-            </div> --}}
-        </main>
+            </div>
+
+        </main> --}}
         <!-- End main-content -->
 
         <!-- Start mini-footer -->
-        @include('front_end.layouts.footer_payment')
+        <livewire:front.layout.front-footer/>
+        {{-- @include('front_end.layouts.footer_payment') --}}
         <!-- End mini-footer -->
 
     </div>
-
-<!-- start header -->
-<header class="bg-white shopping-page"><!-- start header -->
-    <div class="container">
-        <div class=" d-flex justify-content-center">
-            <div class="col-lg-4 header-logo">
-                <a href="http://viramode.test">
-                    <h5 class="h5 text-center my-2  text-danger">{{ __('messages.site_name')}}</h5>
-                </a>
-            </div>
-        </div>
-        <div class=""><!-- start checkout steps -->
-            @yield('checkout-step')
-        </div><!-- end checkout steps -->
-    </div>
-</header><!-- end header -->
-<!-- end header -->
-
-
-
-<!-- start main -->
-    @yield('main_content')
-<!-- end main -->
-
-<!-- start footer -->
-<livewire:front.layout.front-footer/>
-<!-- end footer -->
 
 
 @include('front_end.layouts.footer_scripts')
