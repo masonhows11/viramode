@@ -50,7 +50,7 @@ class LoginUserController extends Controller
         $user->activate = 0;
         // $user->password = null;
         // $user->auth_type = 0;
-        //  $user->mobile_verified_at = null;
+        // $user->mobile_verified_at = null;
         // $user->email_verified_at = null;
         $user->save();
         $request->session()->invalidate();

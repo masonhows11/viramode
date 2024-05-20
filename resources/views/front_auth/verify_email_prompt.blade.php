@@ -49,4 +49,15 @@
         </div>
     </div>
 @endsection
+@push('front_custom_scripts')
+    <script>
+
+        $(document).ready(function(){
+
+           // console.log("Hello world!");
+
+        });
+
+    </script>
+@endpush
 
