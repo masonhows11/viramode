@@ -3,39 +3,32 @@
     {{ __('messages.payment') }}
 @endsection
 @section('checkout-step')
-    <header class="header-shopping  dt-sl">
-        <div class="container">
-            <div class="">
-                @php
-                    $currentRoute = 'payment.checkout';
-                @endphp
-                <div class="col-12 text-center">
-                    <ul class="checkout-steps">
-                        <li>
-                            <a href="javascript:void(0)" class="active">
-                                <span>اطلاعات ارسال</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            @if ($currentRoute == request()->route()->getName())
-                                <a href="javascript:void(0)" class="active">
-                                    <span>پرداخت</span>
-                                </a>
-                            @endif
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span>اتمام خرید و ارسال</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    @php
+        $currentRoute = 'payment.checkout';
+    @endphp
+    <ul class="checkout-steps">
+        <li>
+            <a href="javascript:void(0)" class="active">
+                <span>اطلاعات ارسال</span>
+            </a>
+        </li>
+        <li class="">
+            @if ($currentRoute == request()->route()->getName())
+                <a href="javascript:void(0)" class="active">
+                    <span>پرداخت</span>
+                </a>
+            @endif
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <span>اتمام خرید و ارسال</span>
+            </a>
+        </li>
+    </ul>
 @endsection
 @section('main_content')
-    <main class="main-content dt-sl mt-4 mb-3 shopping-page">
+
+    <main class="main-content dt-sl mt-4 mb-3">
 
         <div class="container main-container">
 
@@ -48,10 +41,11 @@
                             <h2>انتخاب درگاه پرداخت</h2>
                         </div>
 
-                        <form action="{{ route('payment') }}" method="post" id="payment_submit" class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
+                        <form action="{{ route('payment') }}" method="post" id="payment_submit"
+                            class="dt-sn dt-sn--box pt-3 pb-3 mb-4">
                             @csrf
 
-                            <input type="hidden" name="order" value="{{ $order->id}}">
+                            <input type="hidden" name="order" value="{{ $order->id }}">
 
                             <div class="checkout-pack">
                                 @include('front_end.payment.partials.payment_type')
@@ -65,11 +59,11 @@
                             <div class="checkout-order-summary">
                                 <div class="accordion checkout-order-summary-item" id="accordionExample">
                                     <div class="card border-bottom pt-sl-res">
-                                        {{-- delivery information --}}
+
                                         @include('front_end.payment.partials.delivery_info', [
                                             'order' => $order,
                                         ])
-                                        {{-- cart items --}}
+
                                         @include('front_end.payment.partials.cart_items', [
                                             'cartItems' => $cartItems,
                                         ])
@@ -78,13 +72,10 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            {{-- start gift cart discount --}}
-                            {{-- @include('front_end.payment.partials.gitf_cart_discount') --}}
-                            {{-- end gift cart discount --}}
 
-                            {{-- start code discount --}}
+                            {{-- @include('front_end.payment.partials.gitf_cart_discount') --}}
                             {{-- @include('front_end.payment.partials.code_discount') --}}
-                            {{-- end code discount --}}
+
                         </div>
 
 
@@ -98,7 +89,8 @@
 
                         <ul class="checkout-summary-summary">
                             <li>
-                                <span>{{ __('messages.final_amount')  . ' ' . $cartItemsCount . ' ' . __('messages.good') }} </span>
+                                <span>{{ __('messages.final_amount') . ' ' . $cartItemsCount . ' ' . __('messages.good') }}
+                                </span>
                                 <span>{{ priceFormat($totalProductPrice) . ' ' . __('messages.toman') }}</span>
                             </li>
                             <li>
@@ -119,7 +111,7 @@
 
                             <div class="checkout-summary-price-value">
                                 <span class="checkout-summary-price-value-amount">
-                                    {{ priceFormat($order->order_final_amount) . ' ' .  __('messages.toman') }}
+                                    {{ priceFormat($order->order_final_amount) . ' ' . __('messages.toman') }}
                                 </span>
                             </div>
 

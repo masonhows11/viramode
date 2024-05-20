@@ -2,11 +2,6 @@
     <div class="row">
         <div class="col-md-6">
             <span class="text-muted">
-                مرسوله ۱ از ۱ <span class="fs-sm">(۲ کالا)</span>
-            </span>
-        </div>
-        <div class="col-md-6">
-            <span class="text-muted">
                 <span class="dl-none-sm">نحوه ارسال:</span>
                 <span class="dl-none-sm">
                     {{ $order->delivery->title}}
