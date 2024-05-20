@@ -53,9 +53,16 @@
                             </div>
                         </div>
                         <div class="form-row mt-3">
-                            <button class="btn-primary-cm btn-with-icon mx-auto w-100">
+                            <button type="submit" id="register-btn" class="btn-primary-cm btn-with-icon mx-auto w-100">
                                 <i class="mdi mdi-account-circle-outline"></i>
-                                ثبت نام در ویرا مد
+
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+
+                                <div class="" id="login-text-element">
+                                    {{ __('messages.register') }}
+                                </div>
                             </button>
                         </div>
                     </form>
@@ -74,13 +81,12 @@
 @endsection
 @push('front_custom_scripts')
     <script>
-
         $(document).ready(function(){
-
-           // console.log("Hello world!");
-
+           $("#register-btn").click(function(){
+                $("#login-text-element").addClass('d-none');
+                $("#spinnder-element").removeClass('d-none');
+            });
         });
-
     </script>
 @endpush
 
