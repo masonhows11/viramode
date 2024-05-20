@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-row mt-3">
-                            <button class="btn-primary-cm btn-with-icon mx-auto w-100">
+                            <button type="submit" id="login-btn" class="btn-primary-cm btn-with-icon mx-auto w-100">
                                 <i class="mdi mdi-login-variant"></i>
                                 {{  __('messages.login') }}
                             </button>
@@ -76,7 +76,11 @@
         $(document).ready(function(){
            // console.log("Hello world!");
 
-           
+           document.getElementById('#login-btn',function(){
+            
+           })
+
+
 
         });
 
