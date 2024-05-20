@@ -50,9 +50,14 @@
 
                         </div>
                         <div class="form-row mt-3">
-                            <button class="btn-primary-cm btn-with-icon mx-auto w-100">
+                            <button type="sumbit" id="validate-btn" class="btn-primary-cm btn-with-icon mx-auto w-100">
                                 <i class="fad fa-arrow-right"></i>
-                                تایید و ادامه
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div id="login-text-element">
+                                    تایید و ادامه
+                                </div>
                             </button>
                         </div>
                     </form>
@@ -68,6 +73,15 @@
     </div>
 @endsection
 @push('front_custom_scripts')
+
+    <script>
+        $(document).ready(function(){
+        $("#validate-btn").click(function(){
+                $("#login-text-element").addClass('d-none');
+                $("#spinnder-element").removeClass('d-none');
+            });
+        });
+    </script>
     @if ( session()->has('token_time'))
         @php
             $token = session()->get('token_time');
@@ -97,8 +111,8 @@
                 }
             }, 1000)
         </script>
-
     @endif
+
     {{-- <script>
          $(document).on('click', '#resend-token', function (event) {
              event.preventDefault();

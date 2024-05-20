@@ -37,9 +37,18 @@
                         </div>
 
                         <div class="form-row mt-3">
-                            <button class="btn-primary-cm btn-with-icon mx-auto w-100">
+                            <button type="submit" id="verify-email-btn" class="btn-primary-cm btn-with-icon mx-auto w-100">
                                 <i class="mdi mdi-login-variant"></i>
-                                {{  __('messages.send_activate_email') }}
+
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+
+                                <div id="login-text-element">
+                                    {{  __('messages.send_activate_email') }}
+                                </div>
+
+
                             </button>
                         </div>
                     </form>
@@ -51,13 +60,12 @@
 @endsection
 @push('front_custom_scripts')
     <script>
-
         $(document).ready(function(){
-
-           // console.log("Hello world!");
-
+            $("#verify-email-btn").click(function(){
+                $("#login-text-element").addClass('d-none');
+                $("#spinnder-element").removeClass('d-none');
+            });
         });
-
     </script>
 @endpush
 
