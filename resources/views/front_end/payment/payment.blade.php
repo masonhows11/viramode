@@ -29,9 +29,7 @@
 @section('main_content')
 
     <main class="main-content dt-sl mt-4 mb-3">
-
         <div class="container main-container">
-
             <div class="row">
 
                 <div class="cart-page-content col-xl-9 col-lg-8 col-12 px-0">
@@ -72,21 +70,17 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-
                             {{-- @include('front_end.payment.partials.gitf_cart_discount') --}}
                             {{-- @include('front_end.payment.partials.code_discount') --}}
-
                         </div>
-
-
-
+                        <div class="mt-5">
+                            @include('front_end.payment.partials.navigate_link')
+                        </div>
                     </section>
                 </div>
 
                 <div class="col-xl-3 col-lg-4 col-12  w-res-sidebar sticky-sidebar">
-
                     <div class="dt-sn dt-sn--box border mb-2 ">
-
                         <ul class="checkout-summary-summary">
                             <li>
                                 <span>{{ __('messages.final_amount') . ' ' . $cartItemsCount . ' ' . __('messages.good') }}
@@ -98,43 +92,34 @@
                                 <span>{{ priceFormat($order->delivery->amount) . ' ' . __('messages.toman') }}</span>
                             </li>
                         </ul>
-
                         <div class="checkout-summary-devider">
                             <div></div>
                         </div>
-
                         <div class="checkout-summary-content">
-
                             <div class="checkout-summary-price-title">
                                 {{ __('messages.the_amount_payable') }}
                             </div>
-
                             <div class="checkout-summary-price-value">
                                 <span class="checkout-summary-price-value-amount">
                                     {{ priceFormat($order->order_final_amount) . ' ' . __('messages.toman') }}
                                 </span>
                             </div>
-
                             <button type="button" onclick="document.getElementById('payment_submit').submit();"
                                 class="btn-primary-cm btn-with-icon w-100 text-center pr-0 pl-0">
                                 <i class="mdi mdi-arrow-left"></i>
                                 پرداخت و ثبت نهایی سفارش
                             </button>
-
                             <div>
                                 <span>
                                     {{ __('messages.shopping_cart_message') }}
                                 </span>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
 
-                <div class="col-lg-12 mt-5 mb-5">
-                    @include('front_end.payment.partials.navigate_link')
-                </div>
+
             </div>
         </div>
     </main>
