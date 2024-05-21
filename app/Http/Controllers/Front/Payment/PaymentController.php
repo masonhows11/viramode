@@ -35,7 +35,10 @@ class PaymentController extends Controller
 
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
-        $order =  Order::with('delivery', 'address')
+
+        try {
+
+            $order =  Order::with('delivery', 'address')
             ->where('user_id', '=', $user)
             ->where('order_status', '=', 0)->first();
 
@@ -59,6 +62,13 @@ class PaymentController extends Controller
                 'cartItems' => $cartItems,
             ]
         );
+        } catch (\Throwable $e) {
+
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
+        }
+
+
     }
 
 
@@ -66,7 +76,9 @@ class PaymentController extends Controller
     {
 
         $gateWayList = ['Zarinpal', 'IDPay', 'Mellat'];
-        if (!in_array($request->gateway, $gateWayList)) {
+
+        if (!in_array($request->gateway, $gateWayList))
+        {
             session()->flash('error', __('messages.there_is_no_payment_gateway'));
             return  redirect()->back();
         }
@@ -95,7 +107,7 @@ class PaymentController extends Controller
              return $paymentService->pay();
 
         } catch (\Exception $ex) {
-            return $ex->getMessage();
+
             session()->flash('error', __('messages.there_is_an_error_in_payment_process'));
             return  redirect()->back();
         }
@@ -143,30 +155,50 @@ class PaymentController extends Controller
     public function paymentSuccess($track_id,$order_id)
     {
 
-        $order = Order::where('order_number',$order_id)->first();
-        $address = $order->address;
-        $this->completeOrder($order);
-        $this->completePayment($order,$track_id);
-        $this->normalizeQuantity($order);
-        return view('front_end.payment.payment_success',
-        ['address' => $address ,'order' => $order]);
+        try {
+
+            $order = Order::where('order_number',$order_id)->first();
+            $address = $order->address;
+            $this->completeOrder($order);
+            $this->completePayment($order,$track_id);
+            $this->normalizeQuantity($order);
+            return view('front_end.payment.payment_success',
+            ['address' => $address ,'order' => $order]);
+
+        } catch (\Throwable $e) {
+
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
+        }
+
 
     }
 
     public function paymentFailed($order_id)
     {
-        $order = Order::where('order_number',$order_id)->first();
 
-        // complete failed order
-        $order->order_status = 2;
-        $order->payment_status = 2;
-        $order->save();
-        // complete failed payment
-        $order->payment->confirmFailed();
-        // get address
-        $address = $order->address;
-        return view('front_end.payment.payment_failed',
-        ['address' => $address ,'order' => $order]);
+        try {
+
+            $order = Order::where('order_number',$order_id)->first();
+
+            // complete failed order
+            $order->order_status = 2;
+            $order->payment_status = 2;
+            $order->save();
+            // complete failed payment
+            $order->payment->confirmFailed();
+            // get address
+            $address = $order->address;
+            return view('front_end.payment.payment_failed',
+            ['address' => $address ,'order' => $order]);
+
+        } catch (\Throwable $e) {
+
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
+
+        }
+
     }
 
     private function completeOrder(Order $order)

@@ -61,90 +61,125 @@ class AddressController extends Controller
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
-        $total_product_price = null;
-        $total_final_price = null;
-        $total_final_discount_price_with_number = null;
-        foreach ($cartItems as $item) {
-            $total_product_price += $item->cartItemProductPriceWithOutNumber();
-            $total_final_price += $item->cartItemFinalPrice();
-            $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
+        try {
+
+            $total_product_price = null;
+            $total_final_price = null;
+            $total_final_discount_price_with_number = null;
+            foreach ($cartItems as $item) {
+                $total_product_price += $item->cartItemProductPriceWithOutNumber();
+                $total_final_price += $item->cartItemFinalPrice();
+                $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
+            }
+
+            $orderNumber = $numberServices->generateNumber();
+            $delivery = Delivery::findOrFail($request->delivery_id);
+            $order_final_amount =  $total_final_price + $delivery->amount;
+
+            $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
+                     $this->makeOrderItems($order);
+                     $this->makePayment($order,$cartItems);
+            return redirect()->route('payment.checkout')->with(['order' => $order]);
+
+        } catch (\Throwable $e) {
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
         }
 
-        $orderNumber = $numberServices->generateNumber();
-        $delivery = Delivery::findOrFail($request->delivery_id);
-        $order_final_amount =  $total_final_price + $delivery->amount;
-
-        $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
-                 $this->makeOrderItems($order);
-                 $this->makePayment($order,$cartItems);
-        return redirect()->route('payment.checkout')->with(['order' => $order]);
     }
 
 
     private function makeOrder($orderNumber, $delivery_id, $address_id, $order_final_amount)
     {
-        $order = Order::updateOrCreate(
-            ['user_id' => Auth::id(), 'order_status' => 0],
-            [
-                'order_number' => $orderNumber,
-                'address_id' => $address_id,
-                'delivery_id' => $delivery_id,
-                'order_final_amount' =>  $order_final_amount,
-            ]
-        );
-        return $order;
+
+        try {
+
+            $order = Order::updateOrCreate(
+                ['user_id' => Auth::id(), 'order_status' => 0],
+                [
+                    'order_number' => $orderNumber,
+                    'address_id' => $address_id,
+                    'delivery_id' => $delivery_id,
+                    'order_final_amount' =>  $order_final_amount,
+                ]
+            );
+            return $order;
+
+        } catch (\Throwable $e) {
+
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
+        }
+
     }
 
 
     private function makeOrderItems($order)
     {
+
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
-        $currentOrderItems = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->exists();
-        if ($currentOrderItems)
-        {
+        try {
 
-            OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->delete();
-            foreach ($cartItems as $item) {
-                OrderItem::Create([
-                    'user_id' => $user,
-                    'order_id' => $order->id,
-                    'product_id' => $item->product_id,
-                    'number' => $item->number,
-                    'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
-                    'final_total_price' => $item->cartItemFinalPrice(),
-                ]);
-            }
-
-        } else {
-
-            foreach ($cartItems as $item)
+            $currentOrderItems = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->exists();
+            if ($currentOrderItems)
             {
-                OrderItem::Create([
-                    'user_id' => $user,
-                    'order_id' => $order->id,
-                    'product_id' => $item->product_id,
-                    'number' => $item->number,
-                    'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
-                    'final_total_price' => $item->cartItemFinalPrice(),
-                ]);
-            }
 
+                OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->delete();
+                foreach ($cartItems as $item) {
+                    OrderItem::Create([
+                        'user_id' => $user,
+                        'order_id' => $order->id,
+                        'product_id' => $item->product_id,
+                        'number' => $item->number,
+                        'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
+                        'final_total_price' => $item->cartItemFinalPrice(),
+                    ]);
+                }
+
+            } else {
+
+                foreach ($cartItems as $item)
+                {
+                    OrderItem::Create([
+                        'user_id' => $user,
+                        'order_id' => $order->id,
+                        'product_id' => $item->product_id,
+                        'number' => $item->number,
+                        'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
+                        'final_total_price' => $item->cartItemFinalPrice(),
+                    ]);
+                }
+
+            }
+        } catch (\Throwable $e) {
+
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
         }
+
     }
 
 
     private function makePayment($order)
     {
-        return Payment::updateOrCreate(
-            ['order_id' => $order->id, 'status' => 0],
-            [
-                'amount' => $order->order_final_amount,
-                'user_id' => $order->user_id,
-                'order_id' => $order->id,
-            ]
-        );
+
+        try {
+            return Payment::updateOrCreate(
+                ['order_id' => $order->id, 'status' => 0],
+                [
+                    'amount' => $order->order_final_amount,
+                    'user_id' => $order->user_id,
+                    'order_id' => $order->id,
+                ]
+            );
+        } catch (\Throwable $e)
+         {
+            session()->flash('error',__('messages.An_error_occurred'));
+            return redirect()->back();
+        }
+
     }
 
 
