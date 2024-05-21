@@ -5,7 +5,7 @@
             <!-- Start mega menu column -->
             <ul class="list hidden-sm">
                 <li class="list-item category-list">
-                    <a href="#"><i class="fal fa-bars ml-1"></i>{{ __('messages.category_goods') }}</a>
+                    <a href="{{  route('home') }}"><i class="fal fa-bars ml-1"></i>{{ __('messages.category_goods') }}</a>
                         <ul>
                             @foreach( $categories as $child )
                                 <li>
