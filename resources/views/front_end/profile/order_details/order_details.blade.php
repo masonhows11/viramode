@@ -93,7 +93,7 @@
 
                                                 <a class="product-thumb" href="{{ route('product', $item->product->slug) }}">
                                                     @if ($item->product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($item->product->thumbnail_image))
-                                                        <img src="{{ asset('storage/' . $item->product->thumbnail_image) }}"
+                                                        <img class="img-fluid img-thumbnail" src="{{ asset('storage/' . $item->product->thumbnail_image) }}"
                                                             alt="thumbnail-product">
                                                     @else
                                                         <img src="{{ asset('default_image/no-image-icon-23494.png') }}"
@@ -103,7 +103,7 @@
 
                                                 <h5 class="details-product">
                                                     <span>{{ $item->product->title_persian}}</span>
-                            
+
                                                 </h5>
 
                                             </div>

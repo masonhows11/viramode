@@ -101,21 +101,11 @@ class AddressController extends Controller
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
-        $exists = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->exists();
-        if ($exists) {
-            foreach ($cartItems as $item)
-            {
-                OrderItem::where([['order_id' , $order->id],['user_id' , $order->user_id],['product_id',$item->product_id]])->update(
-                    [
-                        'user_id' => $user,
-                        'order_id' => $order->id,
-                        'number' => $item->number,
-                        'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
-                        'final_total_price' => $item->cartItemFinalPrice(),
-                    ]
-                );
-            }
-        } else {
+        $currentOrderItems = OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->exists();
+        if ($currentOrderItems)
+        {
+
+            OrderItem::where('order_id', $order->id)->where('user_id', $order->user_id)->delete();
             foreach ($cartItems as $item) {
                 OrderItem::Create([
                     'user_id' => $user,
@@ -126,6 +116,21 @@ class AddressController extends Controller
                     'final_total_price' => $item->cartItemFinalPrice(),
                 ]);
             }
+
+        } else {
+
+            foreach ($cartItems as $item)
+            {
+                OrderItem::Create([
+                    'user_id' => $user,
+                    'order_id' => $order->id,
+                    'product_id' => $item->product_id,
+                    'number' => $item->number,
+                    'final_product_price' => $item->cartItemProductPriceWithOutNumber(),
+                    'final_total_price' => $item->cartItemFinalPrice(),
+                ]);
+            }
+
         }
     }
 
