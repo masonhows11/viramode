@@ -218,6 +218,7 @@ class PaymentController extends Controller
         foreach($order->orderItems as $product)
         {
             DB::table('products')->where('id', $product->product_id)->decrement('available_in_stock', $product->number);
+            DB::table('products')->where('id', $product->product_id)->increment('number_sold', $product->number);
         };
         $this->basket->clearBasket(Auth::id());
     }
