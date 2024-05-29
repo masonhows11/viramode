@@ -37,7 +37,7 @@ class DBStorage implements BasketInterface
     //// for get all items
     public function getAllItems(int $user = null)
     {
-        return CartItems::where('user_id', $user)->all();
+        return CartItems::where('user_id', $user)->get();
       // $items = CartItems::where('user_id', $user)->get();
       // return $items;
     }

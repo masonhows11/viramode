@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Front\Cart;
 use App\Models\CartItems;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Services\Basket\Basket;
+// use App\Services\Basket\Basket;
 
 class ShoppingCart extends Component
 {
@@ -16,18 +16,22 @@ class ShoppingCart extends Component
     public $cartNumber = 1;
     public $changeNumber = false;
     public $disabled = false;
-    private $basket;
+    // private $basket;
 
 
 
-    public function boot()
-    {
-        $this->basket = resolve(Basket::class);
-    }
+    // public function boot()
+    // {
+    //     $this->basket = resolve(Basket::class);
+
+    // }
 
     public function mount()
     {
         $this->user_id = Auth::id();
+
+       // $this->basket->getAll($this->user_id);
+
     }
 
     public function increaseItem($itemId)
