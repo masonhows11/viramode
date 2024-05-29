@@ -8,7 +8,6 @@ use App\Models\Payment;
 use App\Models\Delivery;
 use App\Models\CartItems;
 use App\Models\OrderItem;
-use App\Services\Basket\Basket;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\OrderNumber\OrderNumberServices;
@@ -36,15 +35,14 @@ class AddressController extends Controller
         $cartItems = CartItems::where('user_id', $user->id)->get();
 
 
-        $cartItemsCount = $this->basket->itemsCount($user->id);
-        $totalProductPrice = $this->basket->totalPrice($user->id);
+        $cartItemsCount = null;
+        $totalProductPrice = null;
         $totalDiscount = null;
-
-        // foreach ($cartItems as $item) {
-        //     $totalProductPrice += $item->cartItemProductPrice();
-        //     $totalDiscount += $item->cartItemProductDiscount();
-        //     $cartItemsCount += $item->number;
-        // }
+        foreach ($cartItems as $item) {
+            $totalProductPrice += $item->cartItemProductPrice();
+            $totalDiscount += $item->cartItemProductDiscount();
+            $cartItemsCount += $item->number;
+        }
 
         if (
             empty($user->mobile) || empty($user->first_name) ||
@@ -57,11 +55,9 @@ class AddressController extends Controller
 
         return view('front_end.address.address')
             ->with([
-                'totalProductPrice' => $totalProductPrice,
-                'totalDiscount' => $totalDiscount,
+                'totalProductPrice' => $totalProductPrice, 'totalDiscount' => $totalDiscount,
                 'cartItemsCount' => $cartItemsCount,
-                'cartItems' => $cartItems,
-                'addresses' => $addresses,
+                'cartItems' => $cartItems, 'addresses' => $addresses,
                 'deliveries' => $deliveries
             ]);
     }
@@ -91,13 +87,9 @@ class AddressController extends Controller
             $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
                      $this->makeOrderItems($order);
                      $this->makePayment($order,$cartItems);
-
             return redirect()->route('payment.checkout')->with(['order' => $order]);
 
-        } catch (\Exception $ex) {
-
-            return $ex->getMessage();
-
+        } catch (\Throwable $e) {
             session()->flash('error',__('messages.An_error_occurred'));
             return redirect()->back();
         }
