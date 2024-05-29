@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front\Cart;
 use App\Models\CartItems;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Services\Basket\Basket;
 
 class ShoppingCart extends Component
 {
@@ -15,9 +16,14 @@ class ShoppingCart extends Component
     public $cartNumber = 1;
     public $changeNumber = false;
     public $disabled = false;
+    private $basket;
 
 
 
+    public function boot()
+    {
+        $this->basket = resolve(Basket::class);
+    }
 
     public function mount()
     {
@@ -94,7 +100,6 @@ class ShoppingCart extends Component
     public function render()
     {
         return view('livewire.front.cart.shopping-cart')
-            ->with(
-                ['cartItems' => CartItems::where('user_id', $this->user_id)->get()]);
+              ->with(['cartItems' => CartItems::where('user_id', $this->user_id)->get()]);
     }
 }
