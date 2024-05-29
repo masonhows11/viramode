@@ -66,6 +66,12 @@ class Basket
     }
 
 
+    public function basketCount(int $user = null)
+    {
+        return $this->storage->count($user);
+    }
+
+
 
     // public function update(Product $product,int $quantity)
     // {
