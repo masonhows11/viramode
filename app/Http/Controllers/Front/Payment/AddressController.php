@@ -18,6 +18,14 @@ class AddressController extends Controller
 {
     //
 
+    private Basket $basket;
+
+
+    public function __construct(Basket $basket)
+    {
+        $this->basket = $basket;
+    }
+
 
     public function checkAddress()
     {
