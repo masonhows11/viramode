@@ -21,24 +21,24 @@ class Basket
 
 
 
-    public function add(Product $product, int $quantity,int $user = null)
+    public function add(Product $product, int $quantity, int $user = null)
     {
 
-        if ($this->exists($product,$user)) {
-            $quantity = $this->get($product,$user)['number'] + $quantity;
+        if ($this->exists($product, $user)) {
+            $quantity = $this->get($product, $user)['number'] + $quantity;
         }
 
 
-        $this->storage->addItem($product, $quantity,$user);
+        $this->storage->addItem($product, $quantity, $user);
 
         // $this->update($product,$quantity);
 
 
     }
 
-    public function get(Product $product,int $user = null)
+    public function get(Product $product, int $user = null)
     {
-        return $this->storage->getItem($product,$user);
+        return $this->storage->getItem($product, $user);
     }
 
 
@@ -48,16 +48,16 @@ class Basket
     }
 
 
-    public function exists(Product $product,int $user = null)
+    public function exists(Product $product, int $user = null)
     {
 
-        return $this->storage->existsItem($product->id,$user);
+        return $this->storage->existsItem($product->id, $user);
     }
 
 
-    public function delete(Product $product,int $user = null)
+    public function delete(Product $product, int $user = null)
     {
-        $this->storage->deleteItem($product->id,$user);
+        $this->storage->deleteItem($product->id, $user);
     }
 
     public function clearBasket(int $user = null)
@@ -71,6 +71,27 @@ class Basket
         return $this->storage->count($user);
     }
 
+    public function itemsCount(int $user = null)
+    {
+        $cartItemsCount = null;
+
+        foreach ($this->getAll($user) as $item)
+        {
+            $cartItemsCount += $item->number;
+        }
+        return $cartItemsCount;
+    }
+
+
+    public function totalPrice(int $user = null)
+    {
+
+        $totalProductPrice = null;
+        foreach ($this->getAll($user) as $item) {
+            $totalProductPrice += $item->cartItemProductPrice();
+        }
+        return $totalProductPrice;
+    }
 
 
     // public function update(Product $product,int $quantity)

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Front\Payment;
 use App\Models\Order;
 
 // use App\Models\Payment;
-use App\Models\Product;
+// use App\Models\Product;
 use App\Models\CartItems;
 use Illuminate\Http\Request;
 use App\Services\Basket\Basket;
@@ -43,14 +43,18 @@ class PaymentController extends Controller
             ->where('order_status', '=', 0)->first();
 
 
-        $cartItemsCount = null;
-        $totalProductPrice = null;
-        $totalDiscount = null;
-        foreach ($cartItems as $item) {
-            $totalProductPrice += $item->cartItemProductPrice();
-            $totalDiscount += $item->cartItemProductDiscount();
-            $cartItemsCount += $item->number;
-        }
+            $cartItemsCount = $this->basket->itemsCount($user->id);
+            $totalProductPrice = $this->basket->totalPrice($user->id);
+            $totalDiscount = null;
+
+        // $cartItemsCount = null;
+        // $totalProductPrice = null;
+        // $totalDiscount = null;
+        // foreach ($cartItems as $item) {
+        //     $totalProductPrice += $item->cartItemProductPrice();
+        //     $totalDiscount += $item->cartItemProductDiscount();
+        //     $cartItemsCount += $item->number;
+        // }
 
         return view('front_end.payment.payment',
             [
