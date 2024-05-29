@@ -36,6 +36,36 @@ class Basket
 
     }
 
+    public function get(Product $product,int $user = null)
+    {
+        return $this->storage->getItem($product,$user);
+    }
+
+
+    public function getAll(int $user = null)
+    {
+        return $this->storage->getAllItems($user);
+    }
+
+
+    public function exists(Product $product,int $user = null)
+    {
+
+        return $this->storage->existsItem($product->id,$user);
+    }
+
+
+    public function delete(Product $product,int $user = null)
+    {
+        $this->storage->deleteItem($product->id,$user);
+    }
+
+    public function clearBasket(int $user = null)
+    {
+        return $this->storage->deleteAllItems($user);
+    }
+
+
 
     // public function update(Product $product,int $quantity)
     // {
@@ -49,35 +79,4 @@ class Basket
     //     $this->storage->addItem($product, $quantity);
     // }
 
-    public function get(Product $product,int $user = null)
-    {
-        return $this->storage->getItem($product,$user);
-    }
-
-
-    public function getAll(int $user = null)
-    {
-        return $this->storage->getAllItems($user);
-    }
-
-
-
-
-
-    public function exists(Product $product,int $user = null)
-    {
-
-        return $this->storage->existsItem($product->id,$user);
-    }
-
-
-    public function delete(Product $product,int $user = null)
-    {
-
-    }
-
-    public function clearBasket(int $user = null)
-    {
-        return $this->storage->deleteAllItems($user);
-    }
 }
