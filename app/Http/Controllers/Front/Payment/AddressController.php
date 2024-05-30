@@ -43,7 +43,11 @@ class AddressController extends Controller
 
 
 
-        $this->checkProfileInfo($user);
+        if ($this->checkProfile($user))
+        {
+            session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
+            return redirect()->route('user.profile');
+        }
 
 
 
@@ -57,17 +61,20 @@ class AddressController extends Controller
     }
 
 
-    public function checkProfileInfo($user)
+    public function checkProfile($user)
     {
+
         if (
             empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
             empty($user->national_code) || $user->addresses->isEmpty()
-        ) {
-            session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
-            return redirect()->route('user.profile');
-        }
+         ) {
+            return true;
+         }else{
+            return false;
+         }
     }
+
 
 
     public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
@@ -78,16 +85,12 @@ class AddressController extends Controller
         $cartItems = CartItems::where('user_id', $user)->get();
 
         try {
-
-
-
             // $totalDiscount = null;
 
             $totalProductPrice = $this->basket->totalPrice($user);
             $orderNumber = $numberServices->generateNumber();
             $delivery = Delivery::findOrFail($request->delivery_id);
             $order_final_amount =  $totalProductPrice + $delivery->amount;
-
             $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
                      $this->makeOrderItems($order);
                      $this->makePayment($order,$cartItems);
