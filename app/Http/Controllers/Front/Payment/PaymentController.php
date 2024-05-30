@@ -43,8 +43,8 @@ class PaymentController extends Controller
             ->where('order_status', '=', 0)->first();
 
 
-            $cartItemsCount = $this->basket->itemsCount($user->id);
-            $totalProductPrice = $this->basket->totalPrice($user->id);
+            $cartItemsCount = $this->basket->itemsCount($user);
+            $totalProductPrice = $this->basket->totalPrice($user);
             $totalDiscount = null;
 
             // $cartItemsCount = null;

@@ -36,14 +36,18 @@ class AddressController extends Controller
         $cartItems = CartItems::where('user_id', $user->id)->get();
 
 
-        $cartItemsCount = null;
-        $totalProductPrice = null;
+        $cartItemsCount = $this->basket->itemsCount($user->id);
+        $totalProductPrice = $this->basket->totalPrice($user->id);
         $totalDiscount = null;
-        foreach ($cartItems as $item) {
-            $totalProductPrice += $item->cartItemProductPrice();
-            $totalDiscount += $item->cartItemProductDiscount();
-            $cartItemsCount += $item->number;
-        }
+
+        // $cartItemsCount = null;
+        // $totalProductPrice = null;
+        // $totalDiscount = null;
+        // foreach ($cartItems as $item) {
+        //     $totalProductPrice += $item->cartItemProductPrice();
+        //     $totalDiscount += $item->cartItemProductDiscount();
+        //     $cartItemsCount += $item->number;
+        // }
 
         if (
             empty($user->mobile) || empty($user->first_name) ||
