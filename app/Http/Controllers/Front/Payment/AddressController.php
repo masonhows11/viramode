@@ -40,14 +40,12 @@ class AddressController extends Controller
         $totalProductPrice = $this->basket->totalPrice($user->id);
         $totalDiscount = null;
 
-        if (
-            empty($user->mobile) || empty($user->first_name) ||
-            empty($user->last_name) || empty($user->email) ||
-            empty($user->national_code) || $user->addresses->isEmpty()
-        ) {
-            session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
-            return redirect()->route('user.profile');
-        }
+
+
+
+        $this->checkProfileInfo($user);
+
+
 
         return view('front_end.address.address')
             ->with([
@@ -56,6 +54,19 @@ class AddressController extends Controller
                 'cartItems' => $cartItems, 'addresses' => $addresses,
                 'deliveries' => $deliveries
             ]);
+    }
+
+
+    public function checkProfileInfo($user)
+    {
+        if (
+            empty($user->mobile) || empty($user->first_name) ||
+            empty($user->last_name) || empty($user->email) ||
+            empty($user->national_code) || $user->addresses->isEmpty()
+        ) {
+            session()->flash('error', __('messages.complete_your_user_information_before_proceeding_with_payment'));
+            return redirect()->route('user.profile');
+        }
     }
 
 
