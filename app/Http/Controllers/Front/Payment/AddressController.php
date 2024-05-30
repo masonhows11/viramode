@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\Delivery;
 use App\Models\CartItems;
 use App\Models\OrderItem;
+use App\Services\Basket\Basket;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\OrderNumber\OrderNumberServices;
@@ -66,6 +67,7 @@ class AddressController extends Controller
     public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
     {
 
+       // dd('hello choose address');
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
@@ -87,9 +89,12 @@ class AddressController extends Controller
             $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
                      $this->makeOrderItems($order);
                      $this->makePayment($order,$cartItems);
+
             return redirect()->route('payment.checkout')->with(['order' => $order]);
 
-        } catch (\Throwable $e) {
+        } catch (\Exception $e) {
+
+            //session()->flash('error',$e->getMessage());
             session()->flash('error',__('messages.An_error_occurred'));
             return redirect()->back();
         }
