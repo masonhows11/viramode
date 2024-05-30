@@ -40,15 +40,6 @@ class AddressController extends Controller
         $totalProductPrice = $this->basket->totalPrice($user->id);
         $totalDiscount = null;
 
-        // $cartItemsCount = null;
-        // $totalProductPrice = null;
-        // $totalDiscount = null;
-        // foreach ($cartItems as $item) {
-        //     $totalProductPrice += $item->cartItemProductPrice();
-        //     $totalDiscount += $item->cartItemProductDiscount();
-        //     $cartItemsCount += $item->number;
-        // }
-
         if (
             empty($user->mobile) || empty($user->first_name) ||
             empty($user->last_name) || empty($user->email) ||
@@ -71,24 +62,20 @@ class AddressController extends Controller
     public function chooseAddressDelivery(AddressDeliveryRequest $request, OrderNumberServices $numberServices)
     {
 
-       // dd('hello choose address');
+
         $user = Auth::id();
         $cartItems = CartItems::where('user_id', $user)->get();
 
         try {
 
-            $total_product_price = null;
-            $total_final_price = null;
-            $total_final_discount_price_with_number = null;
-            foreach ($cartItems as $item) {
-                $total_product_price += $item->cartItemProductPriceWithOutNumber();
-                $total_final_price += $item->cartItemFinalPrice();
-                $total_final_discount_price_with_number += $item->cartItemFinalDiscount();
-            }
 
+
+            // $totalDiscount = null;
+
+            $totalProductPrice = $this->basket->totalPrice($user);
             $orderNumber = $numberServices->generateNumber();
             $delivery = Delivery::findOrFail($request->delivery_id);
-            $order_final_amount =  $total_final_price + $delivery->amount;
+            $order_final_amount =  $totalProductPrice + $delivery->amount;
 
             $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
                      $this->makeOrderItems($order);
@@ -98,7 +85,7 @@ class AddressController extends Controller
 
         } catch (\Exception $e) {
 
-            //session()->flash('error',$e->getMessage());
+            session()->flash('error',$e->getMessage());
             session()->flash('error',__('messages.An_error_occurred'));
             return redirect()->back();
         }

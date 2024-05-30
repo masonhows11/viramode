@@ -94,6 +94,12 @@ class Basket
     }
 
 
+    // public function payablePrice(int $user = null)
+    // {
+
+    // }
+
+
     // public function update(Product $product,int $quantity)
     // {
 

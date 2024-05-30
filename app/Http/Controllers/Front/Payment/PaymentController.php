@@ -47,14 +47,7 @@ class PaymentController extends Controller
             $totalProductPrice = $this->basket->totalPrice($user);
             $totalDiscount = null;
 
-            // $cartItemsCount = null;
-            // $totalProductPrice = null;
-            // $totalDiscount = null;
-            // foreach ($cartItems as $item) {
-            //     $totalProductPrice += $item->cartItemProductPrice();
-            //     $totalDiscount += $item->cartItemProductDiscount();
-            //     $cartItemsCount += $item->number;
-            // }
+        
 
         return view('front_end.payment.payment',
             [
@@ -68,8 +61,8 @@ class PaymentController extends Controller
         );
         } catch (\Exception $ex) {
 
-            // session()->flash('error',$ex->getMessage());
-            session()->flash('error',__('messages.An_error_occurred'));
+             session()->flash('error',$ex->getMessage());
+           // session()->flash('error',__('messages.An_error_occurred'));
             return redirect()->back();
         }
 
