@@ -57,7 +57,8 @@
                                 @else {{ __('messages.payment_on_the_spot') }} @endif </td>--}}
                             <td>{{ $order->payment_type_value }}</td>
 
-                            <td>{{ $order->payment->paymentable->gateway ?? '-' }}</td>
+                            {{-- <td>{{ $order->payment->paymentable->gateway ?? '-' }}</td> --}}
+                            <td>{{ $order->gateway ? __('messages.'.$order->gateway.'') : '-' }}</td>
 
                             {{--<td> @if ( $order->delivery_status == 0) {{ __('messages.order_not_sent') }}
                                 @elseif( $order->delivery_status == 1 ) {{ __('messages.order_sending') }}

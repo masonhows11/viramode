@@ -331,7 +331,7 @@
 
 
                 {{-- start  payments  --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -384,7 +384,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
                 {{-- end payments     --}}
                 {{-- start  orders   --}}
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
