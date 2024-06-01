@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 
 class AdminOrderController extends Controller
 {
@@ -17,8 +18,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_new');
         $breadcrumbs = 'admin.orders.new';
 
-        DB::table('notifications')->where('notifiable_type','=','App\Models\Order')->update(['read_at' => now()]);
-
+        Notification::where('notifiable_type','=','App\Models\Order')->update(['read_at' => now()]);
         $orders = Order::where('order_status',1)->where('delivery_status',0)->paginate(20);
 
         return view('admin_end.orders.index')

@@ -10,23 +10,22 @@
     })
 </script>
 <script>
-    $(document).ready(function () {
-        let notificationDropDown = document.getElementById('notification-section');
-          notificationDropDown.addEventListener('click', function () {
-              $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
-              $.ajax({
-                  url: '{{ route('admin.notification.read.all') }}',
-                  method: 'GET',
-                  data: {}
-              }).done(function(data) {
-                  console.log(data['data']);
-              })
-        })
-    })
-
+    // $(document).ready(function () {
+    //     let notificationDropDown = document.getElementById('notification-section');
+    //       notificationDropDown.addEventListener('click', function () {
+    //           $.ajaxSetup({
+    //               headers: {
+    //                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //               }
+    //           });
+    //           $.ajax({
+    //               url: '{{ route('admin.notification.read.all') }}',
+    //               method: 'GET',
+    //               data: {}
+    //           }).done(function(data) {
+    //               console.log(data['data']);
+    //           })
+    //     })
+    // })
 </script>
 
