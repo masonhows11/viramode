@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use App\Services\PaymentService\PaymentService;
 use App\Http\Requests\PaymentRequest\GateWayTypeRequest;
+use App\Notifications\Admin\NewOrderNotification;
 
 class PaymentController extends Controller
 {
@@ -47,7 +48,7 @@ class PaymentController extends Controller
             $totalProductPrice = $this->basket->totalPrice($user);
             $totalDiscount = null;
 
-        
+
 
         return view('front_end.payment.payment',
             [
@@ -160,6 +161,9 @@ class PaymentController extends Controller
             $this->completeOrder($order);
             $this->completePayment($order,$track_id);
             $this->normalizeQuantity($order);
+
+            $order->notify(new NewOrderNotification($order));
+
             return view('front_end.payment.payment_success',
             ['address' => $address ,'order' => $order]);
 

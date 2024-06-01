@@ -2,21 +2,27 @@
 
 namespace App\Notifications\Admin;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Models\Order;
+//use Illuminate\Bus\Queueable;
+//use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class NewOrderNotification extends Notification
 {
-    use Queueable;
+    // use Queueable;
+
+    public $order_number;
+    public $user_id;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(Order $order)
     {
         //
+        $this->order_number = $order->order_number;
+        $this->user_id = $order->user_id;
     }
 
     /**
@@ -48,7 +54,8 @@ class NewOrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'user_id' => $this->user_id ,
+            'order_id' => $this->order_number,
         ];
     }
 }
