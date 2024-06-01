@@ -37,8 +37,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
         Paginator::defaultView('vendor.pagination.my-custom-paginate');
 
-        Facades\View::composer('admin_end.include.header', function (View $view) {
-            $view->with(['unseenComments' => Comment::where('seen', 0)->get(), 'notifications' => Notification::where('read_at', 0)->get()]);
-        });
+        // Facades\View::composer('admin_end.include.header', function (View $view) {
+        //     $view->with(['unseenComments' => Comment::where('seen', 0)->get(), 'notifications' => Notification::where('read_at', 0)->get()]);
+        // });
     }
 }
