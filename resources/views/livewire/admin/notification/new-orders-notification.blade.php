@@ -9,10 +9,10 @@
                 <path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z" fill="currentColor"/>
                 <path opacity="0.3" d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z" fill="currentColor"/>
             </svg>
-            
+
         </span>
         <span class="menu-title ms-4">
-            {{-- {{ $notifications->count() !== 0 ? $notifications->count() : '0' }} --}}
+           {{ $notifications->count() !== 0 ? $notifications->count() : '0' }}
         </span>
 
         <span class="menu-arrow d-lg-none"></span>
@@ -23,11 +23,11 @@
             <div class="col border-left-lg-1">
                 <div class="menu-inline menu-column menu-active-bg">
 
-                    {{-- @if ($notifications->count() !== 0)
-                        @foreach ($notifications as $notification)
+                     @if ( $notifications->count() !== 0)
+                        @foreach ( $notifications as $notification)
                             <div class="menu-item bg-light-info my-2">
                                 <p class="mx-2">
-                                    {{ $notification['data']['message'] }}
+                                    {{ $notification['data']['order_id'] }}
                                 </p>
                             </div>
                         @endforeach
@@ -35,7 +35,7 @@
                         <div class="menu-item">
                             {{ __('messages.no_new_messages') }}
                         </div>
-                    @endif --}}
+                    @endif
                 </div>
             </div>
 
