@@ -103,9 +103,11 @@
                                 </div>
                             </div>
                         </div>
+
                         {{-- start comments menu --}}
 
                         {{-- start notification menu--}}
+
                         <div data-kt-menu-trigger="click" id="notification-section" data-kt-menu-placement="bottom-end"
                              class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3">
@@ -152,6 +154,7 @@
 
 
                         {{-- start mega menu sample--}}
+                        
                         {{--<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                              class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3">
