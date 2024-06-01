@@ -60,6 +60,12 @@
                         <livewire:admin.notification.messages-notification >
                         {{--end notification menu --}}
 
+                        {{-- start newOrders notification menu--}}
+                        <livewire:admin.notification.new-orders-notification>
+                        {{-- start newOrders notification menu--}}
+
+
+
 
                         {{-- start mega menu sample--}}
 
