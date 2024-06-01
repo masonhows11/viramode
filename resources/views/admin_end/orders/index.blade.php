@@ -65,7 +65,7 @@
                                 @elseif( $order->delivery_status == 3) {{ __('messages.order_delivered') }} @endif </td>--}}
                             <td>{{ $order->delivery_status_value }}</td>
 
-                            <td>{{ $order->delivery->name }}</td>
+                            <td>{{ $order->delivery->title }}</td>
 
                           {{--  <td> @if ( $order->order_status == 0)  {{ __('messages.order_not_checked') }}
                                 @elseif( $order->order_status == 1 ) {{ __('messages.order_wait_for_confirmed') }}

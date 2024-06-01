@@ -11,6 +11,6 @@ class NewOrdersNotification extends Component
     public function render()
     {
         return view('livewire.admin.notification.new-orders-notification')
-            ->with(['notifications' => Notification::where('notifiable_type','=','App\Models\Order')->where('read_at', null)->get()]);
+            ->with(['notifications' => Notification::where('notifiable_type','=','App\Models\Order')->where('read_at', null)->take(5)->get()]);
     }
 }
