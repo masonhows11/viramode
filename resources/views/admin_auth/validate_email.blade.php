@@ -65,8 +65,17 @@
                             </label>
                         </div>
                         <div class="d-flex flex-center">
-                            <button type="submit" class="btn btn-lg btn-primary fw-bolder">
-                                <span class="indicator-label">ورود</span>
+                            <button type="submit" id="login-btn" class="btn btn-lg btn-primary fw-bolder">
+
+                               
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+
+                                <div class="" id="login-text-element">
+                                    {{  __('messages.login') }}
+                                </div>
+
                             </button>
                         </div>
                         <div class="d-flex flex-center mt-5">
@@ -82,4 +91,15 @@
 
     </div>
 @endsection
+@push('admin_custom_scripts')
+<script>
 
+    $(document).ready(function(){
+       $("#login-btn").click(function(){
+            $("#login-text-element").addClass('d-none');
+            $("#spinnder-element").removeClass('d-none');
+        });
+    });
+
+</script>
+@endpush

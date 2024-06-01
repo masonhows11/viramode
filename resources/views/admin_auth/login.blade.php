@@ -37,8 +37,14 @@
                             @enderror
                         </div>
                         <div class="text-center">
-                            <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-                                <span class="indicator-label">ادامه</span>
+                            <button type="submit" id="login-btn" class="btn btn-lg btn-primary w-100 mb-5">
+
+                                <span class="indicator-label" id="login-text-element">ادامه</span>
+
+                                <div class="spinner-border d-none" id="spinnder-element" style="border-colore:rgba(255, 255, 255, 0.2)" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+
                             </button>
                         </div>
                     </form>
@@ -48,3 +54,15 @@
 
     </div>
 @endsection
+@push('admin_custom_scripts')
+<script>
+
+    $(document).ready(function(){
+       $("#login-btn").click(function(){
+            $("#login-text-element").addClass('d-none');
+            $("#spinnder-element").removeClass('d-none');
+        });
+    });
+
+</script>
+@endpush
