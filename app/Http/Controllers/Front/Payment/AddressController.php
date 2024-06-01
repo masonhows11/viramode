@@ -118,6 +118,7 @@ class AddressController extends Controller
                     'order_number' => $orderNumber,
                     'address_id' => $address_id,
                     'delivery_id' => $delivery_id,
+                    'delivery_status' => 0,
                     'order_final_amount' =>  $order_final_amount,
                 ]
             );

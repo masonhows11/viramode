@@ -40,10 +40,10 @@
                     @foreach($orders as $order)
                         <tr class="text-center">
                             <td>{{ $order->id }}</td>
-                            <td>{{ $order->order_final_amount }}</td>
-                            <td>{{ $order->order_discount_amount }}</td>
-                            <td>{{ $order->order_total_products_discount_amount   }}</td>
-                            <td>{{ $order->order_final_amount - $order->order_discount_amount }}</td>
+                            <td>{{ priceFormat($order->order_final_amount) . ' ' . __('messages.toman') }}</td>
+                            <td>{{ priceFormat( $order->order_discount_amount) . ' ' . __('messages.toman') }}</td>
+                            <td>{{ priceFormat($order->order_total_products_discount_amount ) . ' ' . __('messages.toman')  }}</td>
+                            <td>{{  priceFormat( $order->order_final_amount - $order->order_discount_amount) . ' ' . __('messages.toman')}}</td>
 
 
                           {{--  <td> @if ( $order->payment_status == 0) {{ __('messages.unpaid') }}

@@ -449,7 +449,7 @@
                         </div>
 
                         {{--   canceled orders   --}}
-                        <div class="menu-item ">
+                        {{-- <div class="menu-item ">
                             <a class="menu-link {{ $route === 'admin.orders.canceled' ? 'active' : '' }}"
                                href="{{ route('admin.orders.canceled') }}">
                                 <span class="menu-bullet">
@@ -457,9 +457,9 @@
                                 </span>
                                 <span class="menu-title">{{ __('messages.orders_canceled') }}</span>
                             </a>
-                        </div>
+                        </div> --}}
                         {{--   retuended orders   --}}
-                        <div class="menu-item ">
+                        {{-- <div class="menu-item ">
                             <a class="menu-link {{ $route === 'admin.orders.returned' ? 'active' : '' }}"
                                href="{{ route('admin.orders.returned') }}">
                                 <span class="menu-bullet">
@@ -467,7 +467,7 @@
                                 </span>
                                 <span class="menu-title">{{ __('messages.orders_returned') }}</span>
                             </a>
-                        </div>
+                        </div> --}}
 
 
                     </div>

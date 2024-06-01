@@ -169,6 +169,7 @@ class Order extends Model
     {
         $this->payment_status = 1;
         $this->order_status = 1;
+        $this->delivery_status = 0;
         $this->save();
     }
 

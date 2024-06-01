@@ -1,9 +1,8 @@
-<div data-kt-menu-trigger="click" id="notification-section" data-kt-menu-placement="bottom-end"
+<div data-kt-menu-trigger="click" id="order-notification-section" data-kt-menu-placement="bottom-end"
     class="menu-item menu-lg-down-accordion me-lg-1">
     <span class="menu-link py-3">
         <span class="menu-title">
             {{ __('messages.orders_new') }}
-
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z" fill="currentColor"/>
                 <path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z" fill="currentColor"/>
@@ -26,8 +25,9 @@
                      @if ( $notifications->count() !== 0)
                         @foreach ( $notifications as $notification)
                             <div class="menu-item bg-light-info my-2">
-                                <p class="mx-2">
-                                    {{ $notification['data']['order_id'] }}
+                                <p class="mx-2 my-2">
+                                  کاربر   {{ App\Models\User::find($notification['data']['user_id'])->name  }}
+                                  شماره سفارش  {{ $notification['data']['order_id']  }}
                                 </p>
                             </div>
                         @endforeach
