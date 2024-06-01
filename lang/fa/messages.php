@@ -578,6 +578,7 @@ return [
     'your_login_was_successful' => 'ورود شما با موفقیت انجام شد',
     'save_address_and_delivert_to' => 'ثبت آدرس',
     'cancel_return' => 'انصراف و بازگشت',
+    'product_out_of_stock_as_u_requested' => 'محصول مورد نظر به تعداد درخواست شما موجود نمی باشد',
     'there_is_no_payment_gateway' => 'درگاه پرداخت انتخاب شده وجود ندارد',
     'there_is_an_error_in_payment_process' => 'خطایی در عملیات پرداخت رخ داده است',
     'your_search_returned_no_results' => 'جستجوی شما نتیجه ای نداشت.',

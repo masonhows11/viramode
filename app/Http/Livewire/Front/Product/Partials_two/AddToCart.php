@@ -44,7 +44,8 @@ class AddToCart extends Component
 
     public function addToCart()
     {
-        if (Auth::check()) {
+        if (Auth::check())
+         {
 
                 $this->basket->add($this->product,$this->number,$this->user_id);
                 $this->emitTo(CartHeader::class, 'addToCart', $this->number);

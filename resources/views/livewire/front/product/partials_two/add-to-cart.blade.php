@@ -21,12 +21,12 @@
 
             <div class="product-seller-row product-seller-row--add-to-cart">
 
-                <button {{ $product->available_in_stock == 0 ? 'disabled' : '' }}
+                <button {{ $product->available_in_stock == 1 ? 'disabled' : '' }}
                         type="button"
                         wire:click="addToCart({{ $product->id }})"
                         class="rounded rounded-lg border border-danger custom-btn-add-to"
                         style="width:100% ;min-height:55px; background-color: #ef394e ; font-size: 16px;  color: #fff ; padding: 16px 18px">
-                       {{  $product->available_in_stock != 0 ? __('messages.add_to_cart') : __('messages.out_of_stock') }}
+                       {{  $product->available_in_stock != 1 ? __('messages.add_to_cart') : __('messages.out_of_stock') }}
                 </button>
 
             </div>

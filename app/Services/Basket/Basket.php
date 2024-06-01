@@ -31,10 +31,20 @@ class Basket
 
         $this->storage->addItem($product, $quantity, $user);
 
-        // $this->update($product,$quantity);
-
+        // $this->update($product,$quantity,$user);
 
     }
+
+    // public function update(Product $product,int $quantity,$user)
+    // {
+
+    //     if(!$product->hasStock($quantity))
+    //     {
+    //          throw new QuantityExceededException();
+    //     }
+
+    //     $this->storage->addItem($product, $quantity,$user);
+    // }
 
     public function get(Product $product, int $user = null)
     {
@@ -100,16 +110,6 @@ class Basket
     // }
 
 
-    // public function update(Product $product,int $quantity)
-    // {
 
-    //     if(!$product->hasStock($quantity))
-    //     {
-
-    //          throw new QuantityExceededException();
-    //     }
-
-    //     $this->storage->addItem($product, $quantity);
-    // }
 
 }
