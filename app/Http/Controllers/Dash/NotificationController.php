@@ -12,11 +12,11 @@ class NotificationController extends Controller
     public function readNotifications(Request $request)
     {
 
-        try {
-            DB::table('notifications')->update(['read_at' => now()]);
-            return response()->json(['data' => 'ok']);
-        } catch (\Exception $ex) {
-            return response()->json(['data' => $ex->getMessage()]);
-        }
+        // try {
+        //     DB::table('notifications')->update(['read_at' => now()]);
+        //     return response()->json(['data' => 'ok']);
+        // } catch (\Exception $ex) {
+        //     return response()->json(['data' => $ex->getMessage()]);
+        // }
     }
 }
