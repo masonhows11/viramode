@@ -16,6 +16,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_new');
         $breadcrumbs = 'admin.orders.new';
         $orders = Order::where('order_status',1)->where('delivery_status',0)->paginate(20);
+       
         return view('admin_end.orders.index')
             ->with(['orders' => $orders ,
                    'page_title' => $page_title ,
