@@ -13,7 +13,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'https://viramode.test/payment/verify',
-        'http://viramode.test/payment/verify',
+        // 'https://viramode.test/payment/verify',
+        // 'http://viramode.test/payment/verify',
+        'https://viramode.ir/payment/verify',
+        'http://viramode.ir/payment/verify',
     ];
 }
