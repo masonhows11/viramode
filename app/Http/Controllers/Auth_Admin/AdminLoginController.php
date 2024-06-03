@@ -39,7 +39,7 @@ class AdminLoginController extends Controller
                 'body' => $admin->code,
             ];
             $emailService->setDetails($details);
-            $emailService->setFrom('viramode@gmail.com','viramodeSupport');
+            $emailService->setFrom(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_ADDRESS'));
             $emailService->setSubject('کد ورود به پنل میدیریت');
             $emailService->setTo($admin->email);
             // l.v 2
