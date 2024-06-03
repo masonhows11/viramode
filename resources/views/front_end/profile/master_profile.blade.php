@@ -99,13 +99,6 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('returned.orders.request') }}"
-                                                    class="{{ $route === 'returned.orders.request' ? 'active' : '' }}">
-                                                        <i class="mdi mdi-backburger"></i>
-                                                        {{ __('messages.orders_returned') }}
-                                                    </a>
-                                                </li>
-                                                <li>
                                                     <a href="{{ route('favorites') }}"
                                                     class="{{ $route === 'favorites' ? 'active' : '' }}">
                                                         <i class="mdi mdi-heart-outline"></i>
