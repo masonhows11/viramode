@@ -21,6 +21,7 @@ use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
 use App\Http\Livewire\Admin\Stock\StockProduct;
 use App\Http\Livewire\Admin\AdminTag;
 //
+use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
 use App\Http\Livewire\Admin\Banner2\AdminNewestBanner;
 use App\Http\Livewire\Admin\Banner2\AdminBestSellerSlider;
 use App\Http\Livewire\Admin\Banner2\AdminSuggestionBanner;
@@ -93,7 +94,6 @@ use App\Http\Controllers\Dash\Delivery\AdminDeliveryController;
 use App\Http\Controllers\Dash\Address\AdminProvinceController;
 use App\Http\Controllers\Dash\Comments\AdminCommentController;
 //
-use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
 use App\Http\Controllers\Dash\Banner2\AdminNewestController;
 use App\Http\Controllers\Dash\Banner2\AdminBestSellerController;
 use App\Http\Controllers\Dash\Banner2\AdminMostVisitedController;
@@ -139,7 +139,7 @@ use App\Http\Controllers\Front\Payment\PaymentController as FrontPaymentControll
 use App\Http\Controllers\Front\Cart\CartController;
 use App\Http\Controllers\Front\Payment\AddressController;
 //
-
+use App\Http\Controllers\Api\ProductController as ApiProductController;
 
 
 /*
@@ -319,6 +319,8 @@ Route::controller(ProductController::class)->group(function () {
     Route::post('/product/add-to-compare', 'addToCompareProducts')->middleware('auth', 'web')->name('product.add.to.compares');
 
 });
+
+Route::get('/best-seller/products',[ApiProductController::class,'products'])->name('best.seller.products');
 
 
 /* ------------------- Basket & address & payment Front Routes -----------------**/

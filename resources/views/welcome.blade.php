@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,68 +14,109 @@
     @include('front_end.layouts.header_styles')
 
 </head>
+
 <body>
 
 
-<div class="wrapper">
-    <!-- Start header -->
-    <header class="main-header">
+    <div class="wrapper">
+        <!-- Start header -->
+        <header class="main-header">
 
-        <!-- Start topbar -->
-        <livewire:front.layout.front-header/>
-        <!-- End topbar -->
+            <!-- Start topbar -->
+            <livewire:front.layout.front-header />
+            <!-- End topbar -->
 
-        <!-- Start bottom-header -->
-        <livewire:front.layout.front-navbar/>
-        <!-- End bottom-header -->
+            <!-- Start bottom-header -->
+            <livewire:front.layout.front-navbar />
+            <!-- End bottom-header -->
 
-    </header>
-    <!-- End header -->
+        </header>
+        <!-- End header -->
 
-    <!-- Start main-content -->
-    <main class="main-content dt-sl mb-3">
+        <!-- Start main-content -->
+        <main class="main-content dt-sl mb-3">
 
-        <div class="container main-container">
+            <div class="container main-container">
 
 
-            <!-- Start newest products Banner -->
-            <livewire:front.layout.front-newest/>
-            <!-- End Newest products Banner -->
+                <!-- Start newest products Banner -->
+                <livewire:front.layout.front-newest />
+                <!-- End Newest products Banner -->
 
-            <!-- Start best seller Product-Slider -->
-            <livewire:front.layout.front-best-sellers/>
-            <!-- End Product-Slider -->
+                <!-- Start best seller Product-Slider -->
+                <livewire:front.layout.front-best-sellers />
+                <!-- End Product-Slider -->
 
-            <!-- Start most visited Product-Slider -->
-            <livewire:front.layout.front-most-visited/>
-            <!-- End Product-Slider -->
+                <!-- Start most visited Product-Slider -->
+                <livewire:front.layout.front-most-visited />
+                <!-- End Product-Slider -->
 
-            <!-- Start Category-Section -->
-            <livewire:front.layout.front-category/>
-            <!-- End Category-Section -->
+                <!-- Start Category-Section -->
+                <livewire:front.layout.front-category />
+                <!-- End Category-Section -->
 
-            <!-- Start Feature-Product -->
-            <livewire:front.layout.front-suggestions/>
-            <!-- End Feature-Product -->
+                <!-- Start Feature-Product -->
+                <livewire:front.layout.front-suggestions />
+                <!-- End Feature-Product -->
 
-        </div>
+            </div>
 
-        <div>
-            <div x-data="{ posts:[] }"
-                 x-init="console.log('I\'m being initialized!')"></div>
-        </div>
-    </main>
-    <!-- End main-content -->
 
-    <!-- Start footer -->
-    <livewire:front.layout.front-footer/>
-    <!-- End footer -->
-</div>
 
-@include('front_end.layouts.footer_scripts' )
-@include('front_end.layouts.alert.delete_confirm',['className'=> 'delete-item'])
-@include('front_end.layouts.alert.alert')
-@stack('front_custom_scripts')
+
+            <div x-data="loadPosts">
+
+            </div>
+
+          
+
+
+
+        </main>
+        <!-- End main-content -->
+
+        <!-- Start footer -->
+        <livewire:front.layout.front-footer />
+        <!-- End footer -->
+    </div>
+
+    @include('front_end.layouts.footer_scripts')
+    @include('front_end.layouts.alert.delete_confirm', ['className' => 'delete-item'])
+    @include('front_end.layouts.alert.alert')
+    @stack('front_custom_scripts')
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('loadPosts', function() {
+
+                posts : []
+
+                fetch('{{ route('best.seller.products') }}', {
+                        headers: {
+                            accept: 'application/json',
+                            'User-agent': 'learning app',
+                        }
+                    })
+                    .then((response) => response.json())
+                    .then((res) => console.log(res.products))
+                    .catch(error => console.log(error))
+
+            })
+        })
+    </script>
+
+    {{-- <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dropdown', () => ({
+                open: false,
+
+                toggle() {
+                    this.open = !this.open
+                },
+            }))
+        })
+    </script> --}}
+
 </body>
 
 </html>
