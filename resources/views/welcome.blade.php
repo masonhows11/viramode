@@ -58,6 +58,11 @@
             <!-- End Feature-Product -->
 
         </div>
+
+        <div>
+            <div x-data="{ posts:[] }"
+                 x-init="console.log('I\'m being initialized!')"></div>
+        </div>
     </main>
     <!-- End main-content -->
 

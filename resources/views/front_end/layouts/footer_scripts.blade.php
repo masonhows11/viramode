@@ -24,5 +24,6 @@
 <script src="{{ asset('front_assets/js/theia-sticky-sidebar.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ asset('front_assets/js/main.js') }}"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <livewire:scripts/>
 
