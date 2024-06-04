@@ -65,7 +65,12 @@
 
 
             <div x-data="loadPosts">
-
+                
+                <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }">
+                    <template x-for="color in colors">
+                        <li x-text="color"></li>
+                    </template>
+                </ul>
             </div>
 
           
