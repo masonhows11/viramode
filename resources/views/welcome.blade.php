@@ -64,19 +64,13 @@
 
 
 
-            <div x-data="loadPosts">
-                
+            {{-- <div x-data="loadPosts">
                 <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }">
                     <template x-for="color in colors">
                         <li x-text="color"></li>
                     </template>
                 </ul>
-            </div>
-
-          
-
-
-
+            </div> --}}
         </main>
         <!-- End main-content -->
 
@@ -90,7 +84,7 @@
     @include('front_end.layouts.alert.alert')
     @stack('front_custom_scripts')
 
-    <script>
+    {{-- <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('loadPosts', function() {
 
@@ -108,19 +102,9 @@
 
             })
         })
-    </script>
-
-    {{-- <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('dropdown', () => ({
-                open: false,
-
-                toggle() {
-                    this.open = !this.open
-                },
-            }))
-        })
     </script> --}}
+
+
 
 </body>
 

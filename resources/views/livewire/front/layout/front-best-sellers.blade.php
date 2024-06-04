@@ -11,7 +11,7 @@
 
             <!-- Start Product-Slider -->
             <div  class="col-12">
-                <div  class="product-carousel carousel-lg owl-carousel owl-theme">
+                <div  wire:init="loadPosts" class="product-carousel carousel-lg owl-carousel owl-theme">
 
                     @foreach($products as $product)
                         <div class="item">
@@ -57,4 +57,31 @@
         </div>
     </section>
 </div>
+
+@push('front_custom_scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        Livewire.hook('message.processed', (message, component) => {
+
+
+            $(".product-carousel").owlCarousel({
+                rtl: true,
+                items: 1,
+                loop: false,
+                dots: false,
+                nav: true,
+                navText: [
+                '<i class="mdi mdi mdi-chevron-right"></i>',
+                '<i class="mdi mdi mdi-chevron-left"></i>',
+                ],
+                thumbs: true,
+                thumbsPrerendered: true,
+            });
+
+
+
+        })
+    });
+</script>
+@endpush
 {{-- @endif --}}
