@@ -35,25 +35,17 @@
     <main class="main-content dt-sl mb-3">
 
         <div class="container main-container">
-            <!-- Start Main-Slider -->
-            <!-- End Main-Slider -->
-
-            <!-- Start top 4 Banner -->
-            {{-- <livewire:front.layout.front-banner/> --}}
-            <!-- End top 4 Banner -->
 
 
             <!-- Start newest products Banner -->
             <livewire:front.layout.front-newest/>
             <!-- End Newest products Banner -->
 
-
-
-            <!-- Start Product-Slider -->
+            <!-- Start best seller Product-Slider -->
             <livewire:front.layout.front-best-sellers/>
             <!-- End Product-Slider -->
 
-            <!-- Start Product-Slider -->
+            <!-- Start most visited Product-Slider -->
             <livewire:front.layout.front-most-visited/>
             <!-- End Product-Slider -->
 

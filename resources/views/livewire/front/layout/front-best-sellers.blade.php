@@ -1,4 +1,4 @@
-@if($products->isNotEmpty())
+{{-- @if($products->isNotEmpty()) --}}
 <div>
     <section class="slider-section dt-sl mb-5">
 
@@ -11,9 +11,9 @@
             </div>
 
             <!-- Start Product-Slider -->
-            <div class="col-12">
+            <div  class="col-12">
 
-                <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                <div wire:init="loadPosts" class="product-carousel carousel-lg owl-carousel owl-theme">
 
                     @foreach($products as $product)
                         <div class="item">
@@ -59,4 +59,4 @@
         </div>
     </section>
 </div>
-@endif
+{{-- @endif --}}
