@@ -1,7 +1,6 @@
 {{-- @if($products->isNotEmpty()) --}}
 <div>
     <section class="slider-section dt-sl mb-5">
-
         <div class="row mb-3">
 
             <div class="col-12">
@@ -12,7 +11,6 @@
 
             <!-- Start Product-Slider -->
             <div  class="col-12">
-
                 <div wire:init="loadPosts" class="product-carousel carousel-lg owl-carousel owl-theme">
 
                     @foreach($products as $product)
