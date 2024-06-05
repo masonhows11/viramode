@@ -19,11 +19,11 @@ class FrontBestSellers extends Component
     public function render()
     {
         return view('livewire.front.layout.front-best-sellers')
-            ->with(['products' =>
+            ->with(['products' => $this->readyToLoad ?
                  Product::select('id','title_persian','origin_price','slug','thumbnail_image')
                 ->orderByDesc('number_sold')
                 ->take(6)
-                ->get()  ] );
+                ->get() : [],  ] );
 
 
     }

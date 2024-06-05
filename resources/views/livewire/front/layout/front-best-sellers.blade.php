@@ -1,4 +1,4 @@
-{{-- @if($products->isNotEmpty()) --}}
+{{-- @if ($products->isNotEmpty()) --}}
 <div>
     <section class="slider-section dt-sl mb-5">
         <div class="row mb-3">
@@ -10,10 +10,10 @@
             </div>
 
             <!-- Start Product-Slider -->
-            <div  class="col-12">
-                <div  wire:init="loadPosts" class="product-carousel carousel-lg owl-carousel owl-theme">
+            <div wire:init="loadPosts" class="col-12">
+                <div class="product-carousel  carousel-lg owl-carousel  owl-theme">
 
-                    @foreach($products as $product)
+                    @foreach ($products as $product)
                         <div class="item">
                             <div class="product-card mb-3">
                                 <div class="product-head">
@@ -24,27 +24,30 @@
                                         <i class="mdi mdi-star active"></i>
                                         <i class="mdi mdi-star active"></i>
                                     </div>
-                                    {{--<div class="discount">
+                                    {{-- <div class="discount">
                                         <span>20%</span>
-                                    </div>--}}
+                                    </div> --}}
                                 </div>
 
-                                <a class="product-thumb" href="{{ route('product',$product->slug) }}">
-                                    @if( $product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image ) )
-                                        <img class="rounded img-thumbnail" src="{{ asset('storage/'.$product->thumbnail_image) }}"
-                                             alt="Product Thumbnail">
+                                <a class="product-thumb" href="{{ route('product', $product->slug) }}">
+                                    @if ($product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image))
+                                        <img class="rounded img-thumbnail"
+                                            src="{{ asset('storage/' . $product->thumbnail_image) }}"
+                                            alt="Product Thumbnail">
                                     @else
                                         <img class="rounded" src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                                             alt="Product Thumbnail">
+                                            alt="Product Thumbnail">
                                     @endif
                                 </a>
 
                                 <div class="product-card-body">
                                     <h6 class="product-title">
-                                        <a href="{{ route('product',$product->slug) }}">{{ Str::Words($product->title_persian,4) }}</a>
+                                        <a
+                                            href="{{ route('product', $product->slug) }}">{{ Str::Words($product->title_persian, 4) }}</a>
                                     </h6>
                                     <a class="product-meta" href="#">لباس زنانه</a>
-                                    <span class="product-price">{{ number_format($product->origin_price) }} {{ __('messages.toman') }}</span>
+                                    <span class="product-price">{{ number_format($product->origin_price) }}
+                                        {{ __('messages.toman') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,29 +62,66 @@
 </div>
 
 @push('front_custom_scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        Livewire.hook('message.processed', (message, component) => {
+    <script>
+        document.addEventListener("livewire:load", () => {
+
+                    Livewire.hook('message.processed', (message, component) => {
+
+                        $(document).ready(function() {
+
+                            // console.log('hi');
+
+                            // console.log( $(".product-carousel").children() )
+
+                            $(".product-carousel").owlCarousel({
+                                rtl: true,
+                                items: 3,
+                                // autoplay: true,
+                                loop: false,
+                                dots: false,
+                                nav: true,
+                                responsive: {
+                                    0: {
+                                        items: 1
+                                    },
+                                    600: {
+                                        items: 3
+                                    },
+                                    1000: {
+                                        items: 4
+                                    }
+                                },
+                                navText: [
+                                    '<i class="mdi mdi mdi-chevron-right"></i>',
+                                    '<i class="mdi mdi mdi-chevron-left"></i>',
+                                ],
+                                thumbs: true,
+                                thumbsPrerendered: true,
+                            });
 
 
-            $(".product-carousel").owlCarousel({
-                rtl: true,
-                items: 1,
-                loop: false,
-                dots: false,
-                nav: true,
-                navText: [
-                '<i class="mdi mdi mdi-chevron-right"></i>',
-                '<i class="mdi mdi mdi-chevron-left"></i>',
-                ],
-                thumbs: true,
-                thumbsPrerendered: true,
-            });
 
+                            // (function($) {
+                            //     $(document).ready(function() {
+                            //         console.log('hi');
+                            //         $(".product-carousel").owlCarousel({
+                            //             rtl: true,
+                            //             items: 1,
+                            //             loop: true,
+                            //             dots: false,
+                            //             nav: true,
+                            //             navText: [
+                            //                 '<i class="mdi mdi mdi-chevron-right"></i>',
+                            //                 '<i class="mdi mdi mdi-chevron-left"></i>',
+                            //             ],
+                            //             thumbs: true,
+                            //             thumbsPrerendered: true,
+                            //         });
 
+                        });
+                    });
 
-        })
-    });
-</script>
+                });
+    </script>
 @endpush
 {{-- @endif --}}
