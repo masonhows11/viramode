@@ -375,6 +375,7 @@ return [
     'email_address_not_registered' => 'آدرس ایمیل  ثبت نشده',
     'national_code_not_registered' => 'شماره ملی ثبت نشده',
     'address_not_registered' => 'آدرس تحویل ثبت نشده',
+    
 
 
     'list_banners' => 'لیست بنرها',

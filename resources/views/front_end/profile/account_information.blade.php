@@ -78,26 +78,29 @@
                                 </div>
                                 @enderror
                             </div>
-                            {{-- <div class="col-md-6 mb-3">
+
+                             <div class="col-md-6 mb-3">
                                 <div class="form-row-title">
                                     <h3>شماره موبایل</h3>
                                 </div>
                                 <div class="form-row">
-                                    <input type="text" class="input-ui pl-2 text-left dir-ltr"
+                                    <input type="text"  name="mobile"  class="input-ui pl-2 text-left dir-ltr"
                                         placeholder="شماره موبایل خود را وارد نمایید"
-                                        value="09xxxxxxxxx">
+                                        value="{{ $user->mobile }}">
                                 </div>
                             </div>
+
                             <div class="col-md-6 mb-3">
                                 <div class="form-row-title">
                                     <h3>آدرس ایمیل</h3>
                                 </div>
                                 <div class="form-row">
-                                    <input type="email" class="input-ui pl-2 text-left dir-ltr"
+                                    <input type="email" name="email" class="input-ui pl-2 text-left dir-ltr"
                                         placeholder="آدرس ایمیل خود را وارد نمایید"
                                         value="info@gmail.com">
                                 </div>
-                            </div> --}}
+                            </div>
+
                             {{-- <div class="col-md-6 mb-3">
                                 <div class="form-row-title">
                                     <h3>عکس پروفایل</h3>

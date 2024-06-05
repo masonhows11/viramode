@@ -28,15 +28,20 @@
                                 </div>
                                 <div class="value-info">
                                     @if ($user->email == null)
-                                        <span>
+                                        <div>
                                             <a href="{{ route('email.update.form') }}" class="text-danger">
                                                 {{ __('messages.email_address_not_registered') }}
                                             </a>
-                                        </span>
+                                        </div>
                                     @else
-                                        <span>
+                                        <div>
                                             {{ $user->email }}
-                                        </span>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('email.update.form') }}" class="text-info">
+                                                {{ __('messages.edit_model') }}
+                                            </a>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -47,15 +52,20 @@
                                 </div>
                                 <div class="value-info">
                                     @if ($user->mobile == null)
-                                        <span>
+                                        <div>
                                             <a href="{{ route('mobile.update.form') }}" class="text-danger">
                                                 {{ __('messages.mobile_number_not_registered') }}
                                             </a>
-                                        </span>
+                                        </div>
                                     @else
-                                        <span>
+                                        <div>
                                             {{ $user->mobile }}
-                                        </span>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('mobile.update.form') }}" class="text-info">
+                                                {{ __('messages.edit_model') }}
+                                            </a>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
