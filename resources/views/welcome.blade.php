@@ -19,19 +19,19 @@
 
 
     <div class="wrapper">
-        <!-- Start header -->
+
         <header class="main-header">
 
-            <!-- Start topbar -->
-            <livewire:front.layout.front-header />
-            <!-- End topbar -->
 
-            <!-- Start bottom-header -->
+            <livewire:front.layout.front-header />
+
+
+
             <livewire:front.layout.front-navbar />
-            <!-- End bottom-header -->
+
 
         </header>
-        <!-- End header -->
+
 
         <!-- Start main-content -->
         <main class="main-content dt-sl mb-3">
@@ -63,17 +63,12 @@
 
 
 
-
-
-
-            {{-- <div x-data="loadPosts">
-                 </div> --}}
         </main>
         <!-- End main-content -->
 
-        <!-- Start footer -->
+
         <livewire:front.layout.front-footer />
-        <!-- End footer -->
+
     </div>
 
 
@@ -82,28 +77,6 @@
     @include('front_end.layouts.alert.alert')
     @stack('front_custom_scripts')
     <livewire:scripts/>
-
-
-    {{-- <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('loadPosts', function() {
-
-                posts : []
-
-                fetch('{{ route('best.seller.products') }}', {
-                        headers: {
-                            accept: 'application/json',
-                            'User-agent': 'learning app',
-                        }
-                    })
-                    .then((response) => response.json())
-                    .then((res) => console.log(res.products))
-                    .catch(error => console.log(error))
-
-            })
-        })
-    </script> --}}
-
 
 
 </body>

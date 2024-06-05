@@ -1,4 +1,4 @@
-{{-- @if ($products->isNotEmpty()) --}}
+ @if ($products->isNotEmpty())
 <div>
     <section class="slider-section dt-sl mb-5">
         <div class="row mb-3">
@@ -9,8 +9,8 @@
                 </div>
             </div>
 
-            <!-- Start Product-Slider -->
-            <div wire:init="loadPosts" class="col-12">
+          
+            <div class="col-12">
                 <div class="product-carousel  carousel-lg owl-carousel  owl-theme">
 
                     @foreach ($products as $product)
@@ -24,9 +24,6 @@
                                         <i class="mdi mdi-star active"></i>
                                         <i class="mdi mdi-star active"></i>
                                     </div>
-                                    {{-- <div class="discount">
-                                        <span>20%</span>
-                                    </div> --}}
                                 </div>
 
                                 <a class="product-thumb" href="{{ route('product', $product->slug) }}">
@@ -55,73 +52,9 @@
 
                 </div>
             </div>
-            <!-- End Product-Slider -->
+
 
         </div>
     </section>
 </div>
-
-@push('front_custom_scripts')
-    <script>
-        document.addEventListener("livewire:load", () => {
-
-                    Livewire.hook('message.processed', (message, component) => {
-
-                        $(document).ready(function() {
-
-                            // console.log('hi');
-
-                            // console.log( $(".product-carousel").children() )
-
-                            $(".product-carousel").owlCarousel({
-                                rtl: true,
-                                items: 3,
-                                // autoplay: true,
-                                loop: false,
-                                dots: false,
-                                nav: true,
-                                responsive: {
-                                    0: {
-                                        items: 1
-                                    },
-                                    600: {
-                                        items: 3
-                                    },
-                                    1000: {
-                                        items: 4
-                                    }
-                                },
-                                navText: [
-                                    '<i class="mdi mdi mdi-chevron-right"></i>',
-                                    '<i class="mdi mdi mdi-chevron-left"></i>',
-                                ],
-                                thumbs: true,
-                                thumbsPrerendered: true,
-                            });
-
-
-
-                            // (function($) {
-                            //     $(document).ready(function() {
-                            //         console.log('hi');
-                            //         $(".product-carousel").owlCarousel({
-                            //             rtl: true,
-                            //             items: 1,
-                            //             loop: true,
-                            //             dots: false,
-                            //             nav: true,
-                            //             navText: [
-                            //                 '<i class="mdi mdi mdi-chevron-right"></i>',
-                            //                 '<i class="mdi mdi mdi-chevron-left"></i>',
-                            //             ],
-                            //             thumbs: true,
-                            //             thumbsPrerendered: true,
-                            //         });
-
-                        });
-                    });
-
-                });
-    </script>
-@endpush
-{{-- @endif --}}
+@endif
