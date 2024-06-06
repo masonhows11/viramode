@@ -306,7 +306,17 @@
                 <div class="row my-4 mx-2">
                     <div class="col d-flex justify-content-start">
                         <div>
-                            <button type="submit" class="btn btn-success">ذخیره</button>
+                            <button class="btn btn-success" type="submit" id="login-btn" >
+
+                                <span class="indicator-label" id="login-text-element">
+                                    {{ __('messages.save') }}
+                                </span>
+
+                                <span class="spinner-border spinner-border-sm d-none" id="spinnder-element"   role="status" aria-hidden="true"></span>
+                                <span class="d-none" id="spinnder-text">{{ __('messages.saving') }}</span>
+
+
+                              </button>
                         </div>
                         <div class="ms-2">
                             <a href="{{ route('admin.product.index') }}" class="btn btn-secondary">لیست محصولات</a>
@@ -429,6 +439,15 @@
                 $(this).before(element);
             })
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#login-btn").click(function() {
+                $("#login-text-element").addClass('d-none');
+                $("#spinnder-element").removeClass('d-none');
+                $("#spinnder-text").removeClass('d-none');
+            });
+        });
     </script>
     {{--  const Toast = Swal.mixin({
           toast: true,

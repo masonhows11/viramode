@@ -116,6 +116,8 @@ return [
     'Detach' => 'حذف از والد',
     'search' => 'جستجو....',
     'save' => 'ذخیره',
+    'saving' => ' در حال ذخیره سازی ',
+    'updating' => ' در حال اعمال تغییرات ',
     'product_list' => 'لیست محصولات',
     'properties' => 'ویژگی ها',
     'product_property' => ' مدیریت ویژگی ها',
@@ -375,7 +377,7 @@ return [
     'email_address_not_registered' => 'آدرس ایمیل  ثبت نشده',
     'national_code_not_registered' => 'شماره ملی ثبت نشده',
     'address_not_registered' => 'آدرس تحویل ثبت نشده',
-    
+
 
 
     'list_banners' => 'لیست بنرها',
