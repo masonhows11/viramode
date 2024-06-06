@@ -26,7 +26,6 @@
             <livewire:front.layout.front-header />
 
 
-
             <livewire:front.layout.front-navbar />
 
 
@@ -52,7 +51,7 @@
                 <!-- End Product-Slider -->
 
                 <!-- Start Category-Section -->
-                <livewire:front.layout.front-category />
+                {{-- <livewire:front.layout.front-category /> --}}
                 <!-- End Category-Section -->
 
                 <!-- Start Feature-Product -->

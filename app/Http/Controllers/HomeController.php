@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 
-
-
 // use App\Services\ServiceTest\ServiceTest;
 // use App\Services\ServiceTest\FuelConsumption;
 
@@ -14,6 +12,8 @@ class HomeController extends Controller
     //
     public function home()
     {
+
+
         return view('welcome');
     }
 
