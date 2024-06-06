@@ -10,7 +10,6 @@ use Facades\App\Repositories\CategoryCache;
 class FrontNavbar extends Component
 {
 
-
     public function render()
     {
         return view('livewire.front.layout.front-navbar')
