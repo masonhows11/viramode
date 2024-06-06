@@ -19,8 +19,6 @@ class CategoryCache{
 
         $cacheKey = $this->getCacheKey($key);
 
-        // Cache::store('database')->get($cacheKey);
-
         return Cache::remember($cacheKey, now()->addMonth(), function () {
            return  Category::tree()->get()->toTree();
         });
