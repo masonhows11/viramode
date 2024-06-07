@@ -75,7 +75,7 @@
     @include('front_end.layouts.alert.delete_confirm', ['className' => 'delete-item'])
     @include('front_end.layouts.alert.alert')
     @stack('front_custom_scripts')
-    <livewire:scripts/>
+   
 
 
 </body>
