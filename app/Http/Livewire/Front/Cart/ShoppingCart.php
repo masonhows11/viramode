@@ -74,7 +74,7 @@ class ShoppingCart extends Component
 
             $model = CartItems::findOrFail($this->item_id);
 
-            if ($model->user_id === Auth::id())
+            if ($model->user_id == Auth::id())
             {
                 $this->cartNumber = $model->number;
                 $model->delete();
