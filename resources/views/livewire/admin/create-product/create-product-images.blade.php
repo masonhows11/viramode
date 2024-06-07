@@ -44,7 +44,7 @@
                 </form>
             </div>
 
-            <div class="col-sm-8 list-product-image mt-4">
+            <div class="col-sm-8 list-product-image mt-1">
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     @if($images)
                         @foreach( $images as $image)
