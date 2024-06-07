@@ -59,9 +59,9 @@
                                         <div class="d-flex justify-content-between">
                                             <a href="javascript:void(0)" class="btn btn-danger btn-sm"
                                                wire:click.prevent="deleteConfirmation({{$image->id}})">حذف</a>
-                                            <a class="btn {{ $image->is_active === 1 ?  'btn-success' : 'btn-danger' }}  btn-sm"
+                                            <a class="btn {{ $image->is_active == 1 ?  'btn-success' : 'btn-danger' }}  btn-sm"
                                                wire:click.prevent="active({{$image->id}})" href="#">
-                                                {{ $image->is_active === 1  ? __('messages.active') : __('messages.deactivate')}}
+                                                {{ $image->is_active == 1  ? __('messages.active') : __('messages.deactivate')}}
                                             </a>
                                         </div>
                                     </div>
