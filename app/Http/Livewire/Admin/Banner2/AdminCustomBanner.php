@@ -25,8 +25,24 @@ class AdminCustomBanner extends Component
     public $banner_id;
 
 
+    protected $rules = [
+        'title' => ['required', 'min:2', 'max:30'],
+        'path' =>  ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2000'],
+        'link' =>  ['required'],
+        'status' => ['required']
+    ];
+
+    protected $messages = [
+        'path.mimes' => 'فایل انتخاب شده معتبر نمی باشد',
+        'path.max' => 'حداکثر حجم فایل ۲ مگابایت',
+
+    ];
+
+
     public function save()
     {
+
+        $this->validate();
 
         $count = CustomBanner::count();
         if($count == 4){

@@ -43,9 +43,8 @@
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="title" wire:model.defer="link" class="form-label">{{ __('messages.link') }}</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>{{ __('messages.choose') }}</option>
+                                <label for="title" wire:model.defer="link" class="form-label">{{ __('messages.category') }}</label>
+                                <select class="form-select" size="4" aria-label="Default select example">
                                     @foreach ($categories as $category )
                                     <option value="{{ $category->id}}">{{  $category->title_persian }}</option>
                                     @endforeach

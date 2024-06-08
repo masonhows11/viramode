@@ -35,8 +35,9 @@ class CreateProductImages extends Component
 
     }
 
-    protected $rules = [
-        'photo' => ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2000'],//, 'dimensions:min_width=300,min_height=300'],
+    protected $rules =
+    [
+        'photo' => ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2000']
     ];
 
 
