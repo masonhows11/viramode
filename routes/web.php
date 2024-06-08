@@ -21,6 +21,7 @@ use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
 use App\Http\Livewire\Admin\Stock\StockProduct;
 use App\Http\Livewire\Admin\AdminTag;
 //
+use App\Http\Livewire\Admin\Banner2\AdminCustomBanner;
 use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
 use App\Http\Livewire\Admin\Banner2\AdminNewestBanner;
 use App\Http\Livewire\Admin\Banner2\AdminBestSellerSlider;
@@ -693,7 +694,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 // custom  banner
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|super_admin'])->group(function () {
     ////
-    Route::get('/custom-banners/index',AdminNewestBanner::class)->name('custom.banners.index');
+    Route::get('/custom-banners/index',AdminCustomBanner::class)->name('custom.banners.index');
 
     // ////
     // Route::get('/newest-product/create', [AdminNewestController::class, 'create'])->name('newest.product.create');

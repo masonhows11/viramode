@@ -11,6 +11,7 @@ class CustomBanner extends Model
 
     protected $fillable = [
         'title',
+        'status',
         'path',
         'link'
     ];
