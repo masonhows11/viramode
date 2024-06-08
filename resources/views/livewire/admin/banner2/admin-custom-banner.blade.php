@@ -31,8 +31,8 @@
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="title" wire:model.defer="title" class="form-label">{{ __('messages.title') }}</label>
-                                <input type="text" class="form-control" id="title" name="title" >
+                                <label for="title"  class="form-label">{{ __('messages.title') }}</label>
+                                <input type="text" wire:model.defer="title" class="form-control" id="title" name="title" >
                             </div>
                             @error('title')
                             <div class="alert alert-danger mt-3">
@@ -43,14 +43,14 @@
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="title" wire:model.defer="link" class="form-label">{{ __('messages.category') }}</label>
-                                <select class="form-select" size="4" aria-label="Default select example">
+                                <label for="link"class="form-label">{{ __('messages.category') }}</label>
+                                <select  wire:model.defer="link"  class="form-select" size="4" aria-label="Default select example">
                                     @foreach ($categories as $category )
-                                    <option value="{{ $category->id}}">{{  $category->title_persian }}</option>
+                                    <option value="{{ $category->slug}}">{{  $category->title_persian }}</option>
                                     @endforeach
                                   </select>
                             </div>
-                            @error('title')
+                            @error('link')
                             <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
@@ -60,8 +60,9 @@
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="status" wire:model.defer="status" class="form-label">{{ __('messages.status') }}</label>
-                                <select class="form-control" id="status" name="status">
+                                <label for="status"  class="form-label">{{ __('messages.status') }}</label>
+                                <select wire:model.defer="status" class="form-control" id="status" name="status">
+                                    <option value="" >{{ __('messages.choose') }}</option>
                                     <option value="1" >{{ __('messages.active') }}</option>
                                     <option value="0" >{{ __('messages.deactivate') }}</option>
                                 </select>
@@ -103,8 +104,9 @@
 
                                 <input type="file" accept="image/*" class="form-control" wire:model.defer="path" id="path">
                                 <div wire:loading wire:target="path">در حال بارگزاری...</div>
+
                                 @error('path')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="alert alert-danger mt-2">{{ $message}}</div>
                                 @enderror
                             </div>
 

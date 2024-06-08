@@ -44,8 +44,8 @@ class CreateProductImages extends Component
     protected $messages = [
         'photo.mimes' => 'فایل انتخاب شده معتبر نمی باشد',
         'photo.max' => 'حداکثر حجم فایل ۲ مگابایت',
-        'photo.dimensions.min_width' => 'حداقل عرض تصویر ۳۰۰ پیکسل',
-        'photo.dimensions.max_height' => 'حداقل ارتفاع تصویر ۳۰۰ پیکسل',
+        // 'photo.dimensions.min_width' => 'حداقل عرض تصویر ۳۰۰ پیکسل',
+        // 'photo.dimensions.max_height' => 'حداقل ارتفاع تصویر ۳۰۰ پیکسل',
 
     ];
 

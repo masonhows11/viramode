@@ -35,6 +35,8 @@ class AdminCustomBanner extends Component
     protected $messages = [
         'path.mimes' => 'فایل انتخاب شده معتبر نمی باشد',
         'path.max' => 'حداکثر حجم فایل ۲ مگابایت',
+        'link.required' => 'فیلد دسته بندی الزامی است',
+
 
     ];
 
@@ -51,6 +53,9 @@ class AdminCustomBanner extends Component
             ['type' => 'success',
              'message' => __('messages.you_can_upload_only_image',['count' => 4 ])]);
         }
+
+        $url = url("/category/{$this->link}");
+        dd($url);
 
         $banner = new CustomBanner();
         if($this->path != null ){
@@ -82,8 +87,7 @@ class AdminCustomBanner extends Component
 
         }
         $banner->save();
-
-        //session()->flash('success', __('messages.The_changes_were_made_successfully'));
+        
         //return redirect()->to('admin/banner/index');
 
         $this->dispatchBrowserEvent('show-result',
@@ -122,6 +126,7 @@ class AdminCustomBanner extends Component
         return view('livewire.admin.banner2.admin-custom-banner')
         ->extends('admin_end.include.master_dash')
         ->section('dash_main_content')
-        ->with(['banners' => CustomBanner::paginate(10) ,'categories' => Category::select('id','title_english','title_persian')->get()]);
+        ->with(['banners' => CustomBanner::paginate(10) ,
+        'categories' => Category::select('id','slug','title_english','title_persian')->get()]);
     }
 }
