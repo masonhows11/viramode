@@ -150,7 +150,7 @@ $(document).ready(function (l) {
         slideBy: 3,
       },
       1400: {
-        items: 6,
+        items: 5,
         slideBy: 4,
       },
     },
@@ -184,7 +184,7 @@ $(document).ready(function (l) {
         slideBy: 2,
       },
       992: {
-        items: 4,
+        items: 3,
         slideBy: 2,
       },
       1200: {

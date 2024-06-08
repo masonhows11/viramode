@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-          
+
             <div class="col-12">
                 <div class="product-carousel  carousel-lg owl-carousel  owl-theme">
 
@@ -40,7 +40,7 @@
                                 <div class="product-card-body">
                                     <h6 class="product-title">
                                         <a
-                                            href="{{ route('product', $product->slug) }}">{{ Str::Words($product->title_persian, 4) }}</a>
+                                            href="{{ route('product', $product->slug) }}">{{ $product->title_persian }}</a>
                                     </h6>
                                     <a class="product-meta" href="#">لباس زنانه</a>
                                     <span class="product-price">{{ number_format($product->origin_price) }}
