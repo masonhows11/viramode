@@ -6,6 +6,7 @@
         {{-- {{ Breadcrumbs::render('admin.delivery.index') }} --}}
     @endsection
     <div class="container-fluid">
+
         <div class="row d-flex justify-content-start my-4 bg-white">
             <div class="col-lg-4 col-md-4 col  my-5  border-bottom title-add-to-stock">
                 <div class="alert my-4">
@@ -13,12 +14,96 @@
                 </div>
             </div>
         </div>
-        <div class="row my-4 bg-white">
-            <div class="col-lg-4 col-md-4 col my-2">
-                <a href="{{ route('admin.newest.product.create') }}"
-                    class="btn btn-primary">{{ __('messages.new_banner') }}</a>
+
+       <div class="row bg-white">
+            <div class="col-lg-4 col-md-4 col">
+                <div class="alert alert-light mt-2 h4">{{ __('messages.new_banner') }}</div>
             </div>
         </div>
+
+        <form  wire:submit.prevent="save">
+
+
+            <div class="row   row-cols-md-2 row-cols-sm-1 row-cols-1  product-stock-list mt-5 py-5 bg-white">
+
+                <div class="col">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="mt-3">
+                                <label for=title" class="form-label">{{ __('messages.title') }}</label>
+                                <input type="text" class="form-control" id="title" name="title" >
+                            </div>
+                            @error('title')
+                            <div class="alert alert-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mt-3">
+                                <label for="url" class="form-label">{{ __('messages.url_banner') }}</label>
+                                <input type="url" class="form-control" id="url" name="url" value="{{ old('url') }}">
+                            </div>
+                            @error('url')
+                            <div class="alert alert-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mt-3">
+                                <label for="status" class="form-label">{{ __('messages.status') }}</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="1" @if( old('status') == 1) selected @endif >{{ __('messages.active') }}</option>
+                                    <option value="0" @if( old('status') == 0) selected @endif >{{ __('messages.deactivate') }}</option>
+                                </select>
+                            </div>
+                            @error('status')
+                            <div class="alert alert-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                        {{--  logo section  --}}
+                        <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
+                            <div class="col-lg-5 d-flex justify-content-center align-content-center top-banner-section">
+                                <img src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}"
+                                     id="image_view"
+                                     class="img-thumbnail" height="300" width="300" alt="image">
+                            </div>
+                            <div class="col-lg-5">
+                                <label for="image_select" class="mt-5 form-label">{{ __('messages.image') }}</label>
+                                <input type="file" class="form-control" accept="image/png, image/jpeg , image/jpg ,image/gif" id="image_select" name="image_path">
+                                @error('image_path')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-12 discount-common-save">
+                    <div class="mt-3">
+                        <input type="submit" class="btn btn-success" value="{{ __('messages.save') }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+
+
+
         <div class="row  banner-list bg-white">
             <div class="my-5">
                 <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -57,50 +142,15 @@
                         </div>
                     @endforeach
                 </div>
-                {{-- <table class="table table-striped">
-                 <thead class="border-bottom-3 border-top-3">
-                 <tr class="text-center">
-                     <th>{{ __('messages.id') }}</th>
-                     <th>{{ __('messages.title') }}</th>
-                     <th>{{ __('messages.url_image') }}</th>
-                     <th>{{ __('messages.image') }}</th>
-                     <th>{{ __('messages.status') }}</th>
-                     <th>{{ __('messages.operation') }}</th>
-                 </tr>
-                 </thead>
-                 <tbody>
-                 @foreach ($banners as $banner)
-                     <tr class="text-center">
-                         <td>{{ $banner->id }}</td>
-                         <td>{{ $banner->title }}</td>
-                         <td>{{ $banner->url ? $banner->url : ' - ' }}</td>
-                         <td>
-                             <img class="img-thumbnail" width="100" height="100"
-                                  src="{{ $banner->image_path ? asset($banner->image_path) : asset('dash/images/no-image-icon-23494.png') }}"
-                                  alt="">
-                         </td>
-
-                         <td>
-                             <a href="javascript:void(0)" wire:click.prevent="status({{ $banner->id }})"
-                                class="btn {{ $banner->status == 0 ? 'btn-danger' : 'btn-success' }}  btn-sm">
-                                 {{ $banner->status == 0 ? __('messages.deactivate') : __('messages.active') }}
-                             </a>
-                         </td>
-                         <td>
-                             <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $banner->id }})" class="" ><i class="fa fa-trash"></i></a>
-                             <a href="{{ route('admin.bottom.banner.edit',$banner->id) }}" class="ms-2"><i class="fa fa-edit"></i></a>
-                         </td>
-                     </tr>
-                 @endforeach
-                 </tbody>
-             </table> --}}
             </div>
         </div>
+
         <div class="row d-flex justify-content-center list-stock-paginate">
             <div class="col-lg-2 col-md-2 ">
                 {{ $banners->links() }}
             </div>
         </div>
+
     </div>
 </div>
 @push('dash_custom_script')
