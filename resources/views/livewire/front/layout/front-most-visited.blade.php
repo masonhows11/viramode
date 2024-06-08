@@ -44,7 +44,7 @@
                                     <h6 class="product-title">
                                         <a href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
                                     </h6>
-                                    <a class="product-meta" href="#">لباس زنانه</a>
+                                    {{-- <a class="product-meta" href="#">لباس زنانه</a> --}}
                                     <span class="product-price">{{ number_format($product->origin_price) }} {{ __('messages.toman') }}</span>
                                 </div>
                             </div>

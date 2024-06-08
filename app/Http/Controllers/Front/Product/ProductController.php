@@ -17,16 +17,25 @@ class ProductController extends Controller
     {
 
         $product_id = $product->id;
-        $productCategories = $product->categories()->get(['title_persian','slug']);
+
+        // get related product on tag
         $relatedProducts = Product::with('tags')->whereHas('tags', function ($q) use ($product) {
             $q->whereIn('tag_id', $product->tags()->select('tag_id'));
         })->where('status', 1)
             ->where('available_in_stock', '>', 0)
             ->select(['id', 'title_persian', 'origin_price', 'thumbnail_image', 'slug'])
             ->take(4)->get()->except($product->id);
+        // get images
         $images = ProductImage::where('product_id', $product_id)->where('is_active', 1)->get();
 
+        // implement category
+        $productCategories = $product->categories()->get(['title_persian','slug']);
         $categories = $productCategories->implode('title_persian', ' - ');
+
+        // increase view product
+        $product->increment('views',1);
+
+
         return view('front_end.product.product')
             ->with([
                 'product' => $product,
