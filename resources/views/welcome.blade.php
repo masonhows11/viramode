@@ -51,7 +51,7 @@
                 <!-- End Product-Slider -->
 
                 <!-- Start Category-Section -->
-                {{-- <livewire:front.layout.front-category /> --}}
+                <livewire:front.layout.front-category />
                 <!-- End Category-Section -->
 
                 <!-- Start Feature-Product -->
@@ -75,7 +75,7 @@
     @include('front_end.layouts.alert.delete_confirm', ['className' => 'delete-item'])
     @include('front_end.layouts.alert.alert')
     @stack('front_custom_scripts')
-   
+
 
 
 </body>
