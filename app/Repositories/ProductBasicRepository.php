@@ -25,7 +25,7 @@ class ProductBasicRepository
 
 
         $realTimestamp = substr($request->published_at, 0, 10);
-        $published_at = date("Y-m-d H:i:s", (int)$realTimestamp);
+        $published_at = date("Y-m-d H:i:s", (int) $realTimestamp);
 
         // dd($request->all());
         // for save product public info
@@ -64,67 +64,90 @@ class ProductBasicRepository
                     session()->flash('warning', __('messages.An_error_occurred_while_updated'));
                     return redirect()->back();
                 }
-
             }
             return $createdProduct;
         });
-
     }
 
     public function update($request)
     {
 
-
         $author = Auth::guard('admin')->id();
         $current_product = Product::findOrFail($request->product);
         $realTimestamp = substr($request->published_at, 0, 10);
-        $published_at = date("Y-m-d H:i:s", (int)$realTimestamp);
+        $published_at = date("Y-m-d H:i:s", (int) $realTimestamp);
 
-        DB::transaction(function () use ($author, $current_product, $published_at, $request) {
+        // only update image
+        if ($request->only_image_update == true) {
 
-        //            $current_product->category_attribute_id = $request->category_attribute_id;
-        //            $current_product->brand_id = $request->brand_id;
+            if ($request->hasFile('thumbnail_image')) {
 
-            $current_product->sku = $request->sku;
-            $current_product->status = $request->status;
-            $current_product->admin_id = $author;
-            $current_product->title_english = $request->title_english;
-            $current_product->title_persian = $request->title_persian;
-            $current_product->short_description = $request->short_description;
-            $current_product->full_description = $request->full_description;
-            $current_product->tags = $request->product_tags;
-            $current_product->seo_desc = $request->seo_desc;
-            $current_product->origin_price = $request->origin_price;
-            $current_product->published_at = $published_at;
-            $current_product->weight = $request->weight;
-            $current_product->length = $request->length;
-            $current_product->width = $request->width;
-            $current_product->height = $request->height;
-            $current_product->available_in_stock = convertPerToEnglish($request->available_in_stock);
-            $current_product->marketable = $request->marketable;
-            $current_product->save();
-            $current_product->categories()->sync($request->categories);
-        });
-
-        if ($request->hasFile('thumbnail_image')) {
-
-            // dd('has image');
-            if ($current_product->thumbnail_image != null && Storage::disk('public')->exists($current_product->thumbnail_image)) {
-               // dd('has old image');
-                Storage::disk('public')->delete($current_product->thumbnail_image);
-                $result = $this->uploadImages($current_product, $request);
-                if ($result = false) {
-                    session()->flash('warning', __('messages.An_error_occurred_while_updated'));
-                    return redirect()->back();
+                // dd('has image');
+                if ($current_product->thumbnail_image != null && Storage::disk('public')->exists($current_product->thumbnail_image)) {
+                    // dd('has old image');
+                    Storage::disk('public')->delete($current_product->thumbnail_image);
+                    $result = $this->uploadImages($current_product, $request);
+                    if ($result = false) {
+                        session()->flash('warning', __('messages.An_error_occurred_while_updated'));
+                        return redirect()->back();
+                    }
+                } else {
+                    $result = $this->uploadImages($current_product, $request);
+                    if ($result = false) {
+                        session()->flash('warning', __('messages.An_error_occurred_while_updated'));
+                        return redirect()->back();
+                    }
                 }
-            } else {
-                $result = $this->uploadImages($current_product, $request);
-                if ($result = false) {
-                    session()->flash('warning', __('messages.An_error_occurred_while_updated'));
-                    return redirect()->back();
+            }
+        } else {
+            // update other properties
+            DB::transaction(function () use ($author, $current_product, $published_at, $request) {
+
+                //  $current_product->category_attribute_id = $request->category_attribute_id;
+                //  $current_product->brand_id = $request->brand_id;
+                $current_product->sku = $request->sku;
+                $current_product->status = $request->status;
+                $current_product->admin_id = $author;
+                $current_product->title_english = $request->title_english;
+                $current_product->title_persian = $request->title_persian;
+                $current_product->short_description = $request->short_description;
+                $current_product->full_description = $request->full_description;
+                $current_product->tags = $request->product_tags;
+                $current_product->seo_desc = $request->seo_desc;
+                $current_product->origin_price = $request->origin_price;
+                $current_product->published_at = $published_at;
+                $current_product->weight = $request->weight;
+                $current_product->length = $request->length;
+                $current_product->width = $request->width;
+                $current_product->height = $request->height;
+                $current_product->available_in_stock = convertPerToEnglish($request->available_in_stock);
+                $current_product->marketable = $request->marketable;
+                $current_product->save();
+                $current_product->categories()->sync($request->categories);
+            });
+            // if image in request update image
+            if ($request->hasFile('thumbnail_image')) {
+
+                // dd('has image');
+                if ($current_product->thumbnail_image != null && Storage::disk('public')->exists($current_product->thumbnail_image)) {
+                    // dd('has old image');
+                    Storage::disk('public')->delete($current_product->thumbnail_image);
+                    $result = $this->uploadImages($current_product, $request);
+                    if ($result = false) {
+                        session()->flash('warning', __('messages.An_error_occurred_while_updated'));
+                        return redirect()->back();
+                    }
+                } else {
+                    $result = $this->uploadImages($current_product, $request);
+                    if ($result = false) {
+                        session()->flash('warning', __('messages.An_error_occurred_while_updated'));
+                        return redirect()->back();
+                    }
                 }
             }
         }
+
+
         return $current_product;
     }
 
@@ -133,7 +156,7 @@ class ProductBasicRepository
         $sourceImagePath = null;
         $data = [];
         $basPath = 'products/' . $createdProduct->id . '/';
-       // dd($basPath);
+        // dd($basPath);
         try {
             if (isset($request->thumbnail_image)) {
                 $full_path = $basPath . 'thumbnail_image' . '_' . $request->thumbnail_image->getClientOriginalName();
@@ -150,7 +173,6 @@ class ProductBasicRepository
         } catch (\Exception $ex) {
             return false;
         }
-
     }
 
 
@@ -184,6 +206,4 @@ class ProductBasicRepository
         //            }
         //        }
     }
-
-
 }

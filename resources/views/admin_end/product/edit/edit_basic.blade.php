@@ -235,6 +235,7 @@
                     <div class="col-sm-4 mt-5 mb-5">
 
                         <div class="row d-flex flex-column   product-image">
+
                             <div class="col-lg-10 d-flex justify-content-center ">
                                 @if ($product->thumbnail_image != null && Storage::disk('public')->exists($product->thumbnail_image))
                                     <img src="{{ asset('storage/' . $product->thumbnail_image) }}" id="image_view"
@@ -245,16 +246,27 @@
                                 @endif
                             </div>
                             <div class="col-lg-10">
-                                <label for="image_label"
-                                    class="mt-5 form-label">{{ __('messages.thumbnail_image') }}</label>
-                                <input type="file" class="form-control" accept="image/png, image/jpeg"
-                                    id="image_select" name="thumbnail_image"
-                                    value="{{ asset('storage/' . $product->thumbnail_image) }}" readonly>
+                                <label for="image_label"  class="mt-5 form-label">{{ __('messages.thumbnail_image') }}</label>
+
+                                <input type="file"
+                                 class="form-control"
+                                 accept="image/png, image/jpeg"
+                                 id="image_select" name="thumbnail_image"
+                                 value="{{ asset('storage/' . $product->thumbnail_image) }}" readonly>
                                 @error('thumbnail_image')
                                     <div class="alert alert-danger mt-3">
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+
+                            <div class="col-lg-10 mt-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="only_image_update" type="checkbox" id="only-image-update">
+                                    <label class="form-check-label" for="only-image-update">
+                                     {{ __('messages.only-update-image') }}
+                                    </label>
+                                  </div>
                             </div>
                         </div>
                     </div>

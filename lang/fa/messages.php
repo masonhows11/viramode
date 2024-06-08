@@ -590,5 +590,6 @@ return [
     'IDPay' => 'آی دی پی',
     'Zarinapl' => 'زرین پال',
     'Mellat' => 'ملت',
+    'only-update-image' =>'فقط بروز رسانی تصویر شاخص',
 
 ];
