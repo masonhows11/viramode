@@ -27,12 +27,11 @@
             <div class="row   row-cols-md-2 row-cols-sm-1 row-cols-1  product-stock-list mt-5 py-5 bg-white">
 
                 <div class="col">
-
                     <div class="row">
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for=title" class="form-label">{{ __('messages.title') }}</label>
+                                <label for="title" wire:model.defer="title" class="form-label">{{ __('messages.title') }}</label>
                                 <input type="text" class="form-control" id="title" name="title" >
                             </div>
                             @error('title')
@@ -44,22 +43,28 @@
 
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="url" class="form-label">{{ __('messages.url_banner') }}</label>
-                                <input type="url" class="form-control" id="url" name="url" value="{{ old('url') }}">
+                                <label for="title" wire:model.defer="link" class="form-label">{{ __('messages.link') }}</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>{{ __('messages.choose') }}</option>
+                                    @foreach ($categories as $category )
+                                    <option value="{{ $category->id}}">{{  $category->title_persian }}</option>
+                                    @endforeach
+                                  </select>
                             </div>
-                            @error('url')
+                            @error('title')
                             <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
 
+
                         <div class="col-12">
                             <div class="mt-3">
-                                <label for="status" class="form-label">{{ __('messages.status') }}</label>
+                                <label for="status" wire:model.defer="status" class="form-label">{{ __('messages.status') }}</label>
                                 <select class="form-control" id="status" name="status">
-                                    <option value="1" @if( old('status') == 1) selected @endif >{{ __('messages.active') }}</option>
-                                    <option value="0" @if( old('status') == 0) selected @endif >{{ __('messages.deactivate') }}</option>
+                                    <option value="1" >{{ __('messages.active') }}</option>
+                                    <option value="0" >{{ __('messages.deactivate') }}</option>
                                 </select>
                             </div>
                             @error('status')
@@ -75,20 +80,35 @@
                 <div class="col">
                         {{--  logo section  --}}
                         <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
-                            <div class="col-lg-5 d-flex justify-content-center align-content-center top-banner-section">
-                                <img src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}"
-                                     id="image_view"
-                                     class="img-thumbnail" height="300" width="300" alt="image">
+
+
+                            <div class="col-sm-6 d-flex justify-content-center">
+
+                                @if($path)
+                                <img src="{{ $path->temporaryUrl() }}"
+                                     width="250" height="250"
+                                     alt="logo_image_path"
+                                     class="rounded border border-2 image-product-gallery-preview">
+                                 @else
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
+                                     width="250" height="250"
+                                     alt="logo_image_path"
+                                     class="rounded border border-2 image-product-gallery-preview">
+                                 @endif
+
+
                             </div>
-                            <div class="col-lg-5">
-                                <label for="image_select" class="mt-5 form-label">{{ __('messages.image') }}</label>
-                                <input type="file" class="form-control" accept="image/png, image/jpeg , image/jpg ,image/gif" id="image_select" name="image_path">
-                                @error('image_path')
-                                <div class="alert alert-danger mt-3">
-                                    {{ $message }}
-                                </div>
+                            <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
+
+                                <label for="photo" class="form-label">انتخاب تصویر</label>
+
+                                <input type="file" accept="image/*" class="form-control" wire:model.defer="path" id="path">
+                                <div wire:loading wire:target="path">در حال بارگزاری...</div>
+                                @error('path')
+                                <div class="alert alert-danger">{{ $message}}</div>
                                 @enderror
                             </div>
+
                         </div>
                 </div>
 

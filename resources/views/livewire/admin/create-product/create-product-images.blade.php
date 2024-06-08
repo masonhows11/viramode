@@ -10,6 +10,7 @@
             <div class="col-sm-4 create-product-gallery-form">
 
                 <form wire:submit.prevent="save">
+
                     <div class="mb-3 d-flex justify-content-center">
                         @if($photo)
                             <img src="{{ $photo->temporaryUrl() }}"
@@ -31,6 +32,7 @@
                     @error('photo')
                     <div class="alert alert-danger">{{ $message}}</div>
                     @enderror
+                    
                     <div class="col mt-3 d-flex justify-content-between">
                         <div>
                             <button type="submit" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
@@ -41,6 +43,7 @@
                             <a href="{{ route('admin.product.index') }}" class="btn btn-secondary btn-sm">{{ __('messages.product_list') }}</a>
                         </div>
                     </div>
+
                 </form>
             </div>
 

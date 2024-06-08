@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Admin\Banner2;
 
 
 use Livewire\Component;
+use App\Models\Category;
 use App\Models\CustomBanner;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Services\ImageService\ImageServiceSave;
 
 class AdminCustomBanner extends Component
 {
+    use WithFileUploads;
     use WithPagination;
 
 
@@ -103,6 +106,6 @@ class AdminCustomBanner extends Component
         return view('livewire.admin.banner2.admin-custom-banner')
         ->extends('admin_end.include.master_dash')
         ->section('dash_main_content')
-        ->with(['banners' => CustomBanner::paginate(10) ]);
+        ->with(['banners' => CustomBanner::paginate(10) ,'categories' => Category::select('id','title_english','title_persian')->get()]);
     }
 }

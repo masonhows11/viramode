@@ -592,5 +592,6 @@ return [
     'Zarinapl' => 'زرین پال',
     'Mellat' => 'ملت',
     'only-update-image' =>'فقط بروز رسانی تصویر شاخص',
+    'link' => 'لینک بنر',
 
 ];
