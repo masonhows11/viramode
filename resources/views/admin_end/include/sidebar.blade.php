@@ -731,6 +731,18 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
+
+                        {{--   custom products banner    --}}
+                        <div class="menu-item">
+                            <a class="menu-link {{ $route === 'admin.custom.banners.index' ? 'active' : '' }}"
+                               href="{{ route('admin.custom.banners.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ __('messages.custom_banners') }}</span>
+                            </a>
+                        </div>
+
                         {{--   newest products banner    --}}
                         <div class="menu-item">
                             <a class="menu-link {{ $route === 'admin.newest.product.index' ? 'active' : '' }}"

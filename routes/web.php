@@ -689,6 +689,21 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
 //// banners routes
 
+
+// custom  banner
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|super_admin'])->group(function () {
+    ////
+    Route::get('/custom-banners/index',AdminNewestBanner::class)->name('custom.banners.index');
+
+    // ////
+    // Route::get('/newest-product/create', [AdminNewestController::class, 'create'])->name('newest.product.create');
+    // Route::post('/newest-product/store', [AdminNewestController::class, 'store'])->name('newest.product.store');
+    // ////
+    // Route::get('/newest-product/edit/{banner}', [AdminNewestController::class, 'edit'])->name('newest.product.edit');
+    // Route::post('/newest-product/update', [AdminNewestController::class, 'update'])->name('newest.product.update');
+});
+
+
 // newest products banner
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|super_admin'])->group(function () {
      ////

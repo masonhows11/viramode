@@ -381,6 +381,7 @@ return [
 
 
     'list_banners' => 'لیست بنرها',
+    'custom_banners' => 'کاستوم بنرها',
     'banners' => 'بنرها',
     'most_visited_products_slider' => 'پر بازدید ترین ها',
     'best_seller_products_slider' => 'پرفروش ترین ها',
