@@ -1,4 +1,4 @@
-{{-- @if($products->isNotEmpty()) --}}
+ @if($products->isNotEmpty())
 <div>
     <section class="slider-section dt-sl mb-5">
         <div class="row mb-3">
@@ -59,4 +59,4 @@
         </div>
     </section>
 </div>
-{{-- @endif --}}
+ @endif

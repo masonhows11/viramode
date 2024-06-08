@@ -19,6 +19,7 @@ class FrontMostVisited extends Component
         return view('livewire.front.layout.front-most-visited')
             ->with(['products' =>
                 Product::select('id','title_persian','origin_price','slug','thumbnail_image')
+                ->where('views', '<>', null)
                 ->orderByDesc('views')
                 ->take(6)->get()  ]);
     }
