@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Admin\Banner2;
 
 use Livewire\Component;
 use App\Models\Category;
-use Livewire\WithFileUploads;
 use App\Models\CustomBanner;
+use Livewire\WithFileUploads;
+use App\Services\ImageService\ImageServiceSave;
 
 class CustomBannerImageUpload extends Component
 {
@@ -57,14 +58,12 @@ class CustomBannerImageUpload extends Component
              'message' => __('messages.you_can_upload_only_image',['count' => 4 ])]);
         }
 
-        $url = url("/category/{$this->link}");
-
+        $this->link = url("/category/{$this->selectedId}");
 
         $banner = new CustomBanner();
-
         $banner->title = $this->title;
-        $banner->link = $this->path;
-        $banner->status = $this->link;
+        $banner->link = $this->link;
+        $banner->status = $this->status;
         $banner->save();
 
 

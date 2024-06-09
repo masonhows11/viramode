@@ -37,11 +37,12 @@ class ImageServiceSave
     //        }
 
 
-    protected function getImageName($imageFile)
+    protected function getImageName($file)
     {
-        $fileNameWithExt = $imageFile->getClientOriginalName();
+       
+        $fileNameWithExt = $file->getClientOriginalName();
         $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        $extension = $imageFile->getClientOriginalExtension();
+        $extension = $file->getClientOriginalExtension();
         return $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
     }
 
@@ -80,6 +81,7 @@ class ImageServiceSave
         Storage::disk('public')->putFileAs($path, $file, $fileNameToStore);
         return $saveStorePath;
     }
+
     //// save to private folder in storage
     /// folder and add custom folder
     public function savePrivateStorage($file, $path = 'images', $name = null)

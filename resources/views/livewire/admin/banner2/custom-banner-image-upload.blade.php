@@ -95,7 +95,7 @@
 
             <div class="col-12 discount-common-save">
                 <div class="mt-3">
-                    <input type="submit" class="btn btn-success" value="{{ __('messages.save') }}">
+                    <input type="submit" wire:loading.attr="disabled" class="btn btn-success" value="{{ __('messages.save') }}">
                 </div>
             </div>
 
