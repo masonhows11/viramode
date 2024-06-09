@@ -33,6 +33,11 @@ class CustomBannerImageUpload extends Component
         'link.required' => 'فیلد دسته بندی الزامی است',
     ];
 
+    protected $listener =
+    [
+        
+    ];
+
 
     public function upload()
     {

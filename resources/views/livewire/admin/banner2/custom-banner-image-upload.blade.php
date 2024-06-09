@@ -107,7 +107,7 @@
 
                 var value = $('#category-selected').select2("val");
                 @this.set('selectedId',value);
-                Livewire.emit('selectedCategory')
+                Livewire.emit('selectedIdListener')
 
             });
 
