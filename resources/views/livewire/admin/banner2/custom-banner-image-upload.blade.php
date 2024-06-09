@@ -1,17 +1,16 @@
 <div>
 
-    <form>
+    <form wire:submit.prevent="upload">
 
         <div class="row   row-cols-md-2 row-cols-sm-1 row-cols-1  product-stock-list mt-5 py-5 bg-white">
 
             <div class="col">
 
                 <div class="row">
-
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="link" class="form-label">{{ __('messages.link')}}</label>
-                            <select class="category-select"  id="link" name="link">
+                            <select class="category-select" wire:model.defer="link"  id="link" name="link">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
                                 @endforeach
@@ -24,11 +23,10 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="title" class="form-label">{{ __('messages.title') }}</label>
-                            <input type="text"  class="form-control" id="title"  name="title">
+                            <input type="text" wire:model.defer="title"  class="form-control" id="title"  name="title">
                         </div>
                         @error('title')
                             <div class="alert alert-danger mt-3">
@@ -36,14 +34,10 @@
                             </div>
                         @enderror
                     </div>
-
-
-
-
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="status" class="form-label">{{ __('messages.status') }}</label>
-                            <select  class="form-control " id="status" name="status">
+                            <select  wire:model.defer="status" class="form-control " id="status" name="status">
                                 <option value="">{{ __('messages.choose') }}</option>
                                 <option value="1">{{ __('messages.active') }}</option>
                                 <option value="0">{{ __('messages.deactivate') }}</option>
@@ -56,15 +50,12 @@
                         @enderror
                     </div>
                 </div>
-
             </div>
 
             <div class="col">
-                {{--  logo section  --}}
                 <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
 
                         <div class="col-sm-6 d-flex justify-content-center">
-
                             @if ($path)
                                 <img src="{{ $path->temporaryUrl() }}" width="250" height="250" alt="logo_image_path"
                                     class="rounded border border-2 image-product-gallery-preview">
@@ -72,8 +63,6 @@
                                 <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}" width="250" height="250"
                                     alt="logo_image_path" class="rounded border border-2 image-product-gallery-preview">
                             @endif
-
-
                         </div>
                         <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
 
@@ -86,12 +75,7 @@
                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
-
-
-
-
                 </div>
-
             </div>
 
             <div class="col-12 discount-common-save">
@@ -118,6 +102,20 @@
             });
         });
     </script>
+
+<script>
+    // document.addEventListener("livewire:load", () => {
+    //     Livewire.hook('message.processed', (message, component) => {
+    //         $(document).ready(function () {
+    //         $('.category-select').select2({
+    //             dir: 'rtl',
+    //             tags: 'true',
+    //             theme: "classic"
+    //         });
+    //     });
+    //     })
+    // });
+</script>
 
     {{-- <script>
         $(document).ready(function() {

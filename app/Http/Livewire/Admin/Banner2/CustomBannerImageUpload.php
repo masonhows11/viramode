@@ -5,12 +5,12 @@ namespace App\Http\Livewire\Admin\Banner2;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithFileUploads;
+use App\Models\CustomBanner;
 
 class CustomBannerImageUpload extends Component
 {
 
     use WithFileUploads;
-
 
     public $path;
     public $title;
@@ -18,7 +18,6 @@ class CustomBannerImageUpload extends Component
     public $link;
 
     protected $paginationTheme = 'bootstrap';
-    public $banner_id;
 
 
     protected $rules = [
@@ -38,6 +37,7 @@ class CustomBannerImageUpload extends Component
     public function upload()
     {
 
+        dd($this->link,$this->title,$this->status);
         $count = CustomBanner::count();
         if($count == 4){
 
@@ -64,7 +64,7 @@ class CustomBannerImageUpload extends Component
         }
 
          $this->dispatchBrowserEvent('show-result',
-        ['type' => 'success',
+          ['type' => 'success',
             'message' => __('messages.The_changes_were_made_successfully')]);
     }
 

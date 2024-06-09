@@ -13,10 +13,7 @@ class AdminCustomBanner extends Component
 {
 
     use WithPagination;
-
-
-
-
+    public $banner_id;
 
 
 
