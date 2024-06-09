@@ -72,16 +72,6 @@
 </div>
 @push('dash_custom_script')
     <script type="text/javascript">
-
-     $(document).ready(function () {
-            $('.category-select').select2({
-                dir: 'rtl',
-                theme: "classic"
-            });
-        });
-
-    </script>
-    <script type="text/javascript">
         window.addEventListener('show-delete-confirmation', event => {
             Swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
