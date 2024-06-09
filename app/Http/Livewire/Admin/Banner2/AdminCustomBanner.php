@@ -6,8 +6,8 @@ namespace App\Http\Livewire\Admin\Banner2;
 use Livewire\Component;
 use App\Models\CustomBanner;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
 
-use App\Services\ImageService\ImageServiceSave;
 
 class AdminCustomBanner extends Component
 {
@@ -25,15 +25,16 @@ class AdminCustomBanner extends Component
             $banner->status = 1;
         } else {
             $banner->status = 0;
-
         }
         $banner->save();
 
-        //return redirect()->to('admin/banner/index');
-
-        $this->dispatchBrowserEvent('show-result',
-            ['type' => 'success',
-                'message' => __('messages.The_changes_were_made_successfully')]);
+        $this->dispatchBrowserEvent(
+            'show-result',
+            [
+                'type' => 'success',
+                'message' => __('messages.The_changes_were_made_successfully')
+            ]
+        );
     }
 
     public function deleteConfirmation($id)
@@ -52,11 +53,17 @@ class AdminCustomBanner extends Component
         try {
 
             $model = CustomBanner::findOrFail($this->banner_id);
-            ImageServiceSave::deleteOldPublicImage($model->image_path);
+            Storage::disk('public')->delete($model->path);
             $model->delete();
-            $this->dispatchBrowserEvent('show-result',
-                ['type' => 'success',
-                    'message' => __('messages.The_deletion_was_successful')]);
+
+            $this->dispatchBrowserEvent(
+                'show-result',
+                [
+                    'type' => 'success',
+                    'message' => __('messages.The_deletion_was_successful')
+                ]
+            );
+
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }
@@ -65,8 +72,8 @@ class AdminCustomBanner extends Component
     public function render()
     {
         return view('livewire.admin.banner2.admin-custom-banner')
-        ->extends('admin_end.include.master_dash')
-        ->section('dash_main_content')
-        ->with(['banners' => CustomBanner::paginate(10)]);
+            ->extends('admin_end.include.master_dash')
+            ->section('dash_main_content')
+            ->with(['banners' => CustomBanner::paginate(10)]);
     }
 }

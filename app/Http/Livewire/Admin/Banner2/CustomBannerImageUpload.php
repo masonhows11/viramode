@@ -6,7 +6,8 @@ use Livewire\Component;
 use App\Models\Category;
 use App\Models\CustomBanner;
 use Livewire\WithFileUploads;
-use App\Services\ImageService\ImageServiceSave;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Date;
 
 class CustomBannerImageUpload extends Component
 {
@@ -48,8 +49,6 @@ class CustomBannerImageUpload extends Component
     public function upload()
     {
 
-
-
         $count = CustomBanner::count();
         if($count == 4){
 
@@ -59,27 +58,24 @@ class CustomBannerImageUpload extends Component
         }
 
         $this->link = url("/category/{$this->selectedId}");
-
         $banner = new CustomBanner();
         $banner->title = $this->title;
         $banner->link = $this->link;
         $banner->status = $this->status;
-        $banner->save();
-
 
         if($this->path != null )
         {
-            $imageSave = new ImageServiceSave();
-            $image_path =  $imageSave->SavePublicCustomPath($this->path,'banners');
-            $banner->path = $image_path;
+
+            $image_path = 'images/banners/';
+            $image_name =  Date::now()->format('d-m-Y') .'-'. Str::random(20) . '.' . $this->path->getClientOriginalExtension();
+            $this->path->storePubliclyAs('images/banners', $image_name ,'public');
+            $banner->path = $image_path . $image_name;
+
         }
+        $banner->save();
 
         session()->flash('messages',__('messages.New_record_saved_successfully'));
         return redirect()->to('/admin/custom-banners/index');
-
-        //  $this->dispatchBrowserEvent('show-result',
-        //   ['type' => 'success',
-        //     'message' => __('messages.The_changes_were_made_successfully')]);
     }
 
 

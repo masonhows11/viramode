@@ -28,8 +28,8 @@
                         <div class="col">
                             <div class="card border border-2 border-secondary">
 
-                                @if ($banner->image_path && file_exists(public_path() . $banner->image_path))
-                                    <img src="{{ asset($banner->image_path) }}" class="card-img-top" alt="...">
+                                @if ($banner->path && \Illuminate\Support\Facades\Storage::disk('public')->exists($banner->path))
+                                    <img src="{{ asset('storage/'.$banner->path) }}" class="card-img-top" alt="...">
                                 @else
                                     <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
                                         class="card-img-top" alt="...">
