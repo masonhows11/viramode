@@ -72,11 +72,19 @@
                     </div>
                     <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
 
-                        <label for="photo" class="form-label">انتخاب تصویر</label>
+                        <label for="photo" wire:loading.class="d-none" class="form-label mt-2">انتخاب تصویر</label>
 
-                        <input type="file" accept="image/*" class="form-control" wire:model.defer="path"
-                            id="path">
-                        <div wire:loading wire:target="path">در حال بارگزاری...</div>
+                        <div wire:loading wire:target="path">
+
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">در حال آپلود تصویر</span>
+                            </div>
+
+                        </div>
+
+                        <input type="file" accept="image/*" wire:loading.attr="disabled" class="form-control mt-2" wire:model.defer="path" id="path">
+
+
 
                         @error('path')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>

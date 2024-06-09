@@ -47,7 +47,8 @@ class CustomBannerImageUpload extends Component
     public function upload()
     {
 
-        dd($this->selectedId,$this->title,$this->status);
+
+
         $count = CustomBanner::count();
         if($count == 4){
 
@@ -57,7 +58,7 @@ class CustomBannerImageUpload extends Component
         }
 
         $url = url("/category/{$this->link}");
-        dd($url);
+
 
         $banner = new CustomBanner();
 
@@ -67,15 +68,19 @@ class CustomBannerImageUpload extends Component
         $banner->save();
 
 
-        if($this->path != null ){
+        if($this->path != null )
+        {
             $imageSave = new ImageServiceSave();
             $image_path =  $imageSave->SavePublicCustomPath($this->path,'banners');
             $banner->path = $image_path;
         }
 
-         $this->dispatchBrowserEvent('show-result',
-          ['type' => 'success',
-            'message' => __('messages.The_changes_were_made_successfully')]);
+        session()->flash('messages',__('messages.New_record_saved_successfully'));
+        return redirect()->to('/admin/custom-banners/index');
+
+        //  $this->dispatchBrowserEvent('show-result',
+        //   ['type' => 'success',
+        //     'message' => __('messages.The_changes_were_made_successfully')]);
     }
 
 
