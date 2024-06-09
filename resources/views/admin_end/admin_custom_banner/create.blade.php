@@ -35,6 +35,23 @@
 
                         <div class="col-12">
                             <div class="mt-3">
+                                <label for="link" class="form-label">{{ __('messages.link')}}</label>
+                                <select class="category-select"  id="link" name="link">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            @error('link')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mt-3">
                                 <label for="title" class="form-label">{{ __('messages.title') }}</label>
                                 <input type="text"  class="form-control" id="title"  name="title">
                             </div>
@@ -45,42 +62,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-12">
 
-                            {{-- <div class="col mt-5 mb-5">
-                                <label for="category-select" class="form-label">انتخاب دسته بندی</label>
-                                <select class="category-select form-select" multiple id="category-select" name="categories[]">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ (collect(old("categories"))->contains($category->id)  ? "selected":"") }} >{{ $category->title_persian }}</option>
-                                    @endforeach
-                                </select>
-
-                                @error('categories')
-                                <div class="my-5 alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div> --}}
-
-                            <div class="mt-3">
-
-                                <label for="link" class="form-label">انتخاب دسته بندی</label>
-
-                                <select class="category-select form-select" id="link" name="link">
-
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-
-                            @error('link')
-                                <div class="alert alert-danger mt-3">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
 
 
                         <div class="col-12">
@@ -153,7 +135,7 @@
 <script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+       $(document).ready(function () {
             $('.category-select').select2({
                 dir: 'rtl',
                 tags: 'true',
