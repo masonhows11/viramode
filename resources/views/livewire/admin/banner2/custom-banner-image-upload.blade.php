@@ -106,7 +106,8 @@
             $('.category-select').on('change',function(){
 
                 var value = $('#category-selected').select2("val");
-                @this.set('selectedCategory',value);
+                @this.set('selectedId',value);
+                Livewire.emit('selectedCategory')
 
             });
 

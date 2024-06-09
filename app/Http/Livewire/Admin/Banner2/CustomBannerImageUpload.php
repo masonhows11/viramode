@@ -16,7 +16,7 @@ class CustomBannerImageUpload extends Component
     public $title;
     public $status;
     public $link;
-    public $selectedCategory;
+    public $selectedId;
     protected $paginationTheme = 'bootstrap';
 
 
