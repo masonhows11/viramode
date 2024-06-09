@@ -95,6 +95,7 @@ use App\Http\Controllers\Dash\Delivery\AdminDeliveryController;
 use App\Http\Controllers\Dash\Address\AdminProvinceController;
 use App\Http\Controllers\Dash\Comments\AdminCommentController;
 //
+use App\Http\Controllers\Dash\Banner2\AdminCustomBannerController;
 use App\Http\Controllers\Dash\Banner2\AdminNewestController;
 use App\Http\Controllers\Dash\Banner2\AdminBestSellerController;
 use App\Http\Controllers\Dash\Banner2\AdminMostVisitedController;
@@ -696,9 +697,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
     ////
     Route::get('/custom-banners/index',AdminCustomBanner::class)->name('custom.banners.index');
 
-    // ////
-    // Route::get('/newest-product/create', [AdminNewestController::class, 'create'])->name('newest.product.create');
-    // Route::post('/newest-product/store', [AdminNewestController::class, 'store'])->name('newest.product.store');
+    ////
+    Route::get('/custom-banner/create', [AdminCustomBannerController::class, 'create'])->name('custom.banner.create');
+    Route::post('/custom-banner/store', [AdminCustomBannerController::class, 'store'])->name('custom.banner.store');
     // ////
     // Route::get('/newest-product/edit/{banner}', [AdminNewestController::class, 'edit'])->name('newest.product.edit');
     // Route::post('/newest-product/update', [AdminNewestController::class, 'update'])->name('newest.product.update');

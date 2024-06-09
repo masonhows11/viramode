@@ -41,40 +41,7 @@ class AdminCustomBanner extends Component
     ];
 
 
-    public function save()
-    {
-
-        $this->validate();
-
-        $count = CustomBanner::count();
-        if($count == 4){
-
-            $this->dispatchBrowserEvent('show-result',
-            ['type' => 'success',
-             'message' => __('messages.you_can_upload_only_image',['count' => 4 ])]);
-        }
-
-        $url = url("/category/{$this->link}");
-        dd($url);
-
-        $banner = new CustomBanner();
-        if($this->path != null ){
-            $imageSave = new ImageServiceSave();
-            $image_path =  $imageSave->SavePublicCustomPath($this->path,'banners');
-            $banner->path = $image_path;
-        }
-        $banner->title = $this->title;
-        $banner->link = $this->path;
-        $banner->status = $this->link;
-        $banner->save();
-
-        $this->dispatchBrowserEvent('show-result',
-        ['type' => 'success',
-            'message' => __('messages.The_changes_were_made_successfully')]);
-
-
-        return redirect()->route('admin.newest.product.index');
-    }
+    
 
     public function status($id)
     {
@@ -87,7 +54,7 @@ class AdminCustomBanner extends Component
 
         }
         $banner->save();
-        
+
         //return redirect()->to('admin/banner/index');
 
         $this->dispatchBrowserEvent('show-result',
@@ -126,7 +93,6 @@ class AdminCustomBanner extends Component
         return view('livewire.admin.banner2.admin-custom-banner')
         ->extends('admin_end.include.master_dash')
         ->section('dash_main_content')
-        ->with(['banners' => CustomBanner::paginate(10) ,
-        'categories' => Category::select('id','slug','title_english','title_persian')->get()]);
+        ->with(['banners' => CustomBanner::paginate(10)]);
     }
 }

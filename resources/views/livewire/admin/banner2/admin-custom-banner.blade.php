@@ -15,115 +15,11 @@
             </div>
         </div>
 
-       <div class="row bg-white">
-            <div class="col-lg-4 col-md-4 col">
-                <div class="alert alert-light mt-2 h4">{{ __('messages.new_banner') }}</div>
+        <div class="row my-4 bg-white">
+            <div class="col-lg-4 col-md-4 col my-2">
+                <a href="{{ route('admin.custom.banner.create') }}" class="btn btn-primary">{{ __('messages.new_banner') }}</a>
             </div>
         </div>
-
-        <form  wire:submit.prevent="save">
-
-
-            <div class="row   row-cols-md-2 row-cols-sm-1 row-cols-1  product-stock-list mt-5 py-5 bg-white">
-
-                <div class="col">
-                    <div class="row">
-
-                        <div class="col-12">
-                            <div class="mt-3">
-                                <label for="title"  class="form-label">{{ __('messages.title') }}</label>
-                                <input type="text" wire:model.defer="title" class="form-control" id="title" name="title" >
-                            </div>
-                            @error('title')
-                            <div class="alert alert-danger mt-3">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                        <div class="col-12">
-                            <div class="mt-3">
-                                <label for="link"class="form-label">{{ __('messages.category') }}</label>
-                                <select  wire:model.defer="link"  class="form-select" size="4" aria-label="Default select example">
-                                    @foreach ($categories as $category )
-                                    <option value="{{ $category->slug}}">{{  $category->title_persian }}</option>
-                                    @endforeach
-                                  </select>
-                            </div>
-                            @error('link')
-                            <div class="alert alert-danger mt-3">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-
-                        <div class="col-12">
-                            <div class="mt-3">
-                                <label for="status"  class="form-label">{{ __('messages.status') }}</label>
-                                <select wire:model.defer="status" class="form-control" id="status" name="status">
-                                    <option value="" >{{ __('messages.choose') }}</option>
-                                    <option value="1" >{{ __('messages.active') }}</option>
-                                    <option value="0" >{{ __('messages.deactivate') }}</option>
-                                </select>
-                            </div>
-                            @error('status')
-                            <div class="alert alert-danger mt-3">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col">
-                        {{--  logo section  --}}
-                        <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
-
-
-                            <div class="col-sm-6 d-flex justify-content-center">
-
-                                @if($path)
-                                <img src="{{ $path->temporaryUrl() }}"
-                                     width="250" height="250"
-                                     alt="logo_image_path"
-                                     class="rounded border border-2 image-product-gallery-preview">
-                                 @else
-                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
-                                     width="250" height="250"
-                                     alt="logo_image_path"
-                                     class="rounded border border-2 image-product-gallery-preview">
-                                 @endif
-
-
-                            </div>
-                            <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
-
-                                <label for="photo" class="form-label">انتخاب تصویر</label>
-
-                                <input type="file" accept="image/*" class="form-control" wire:model.defer="path" id="path">
-                                <div wire:loading wire:target="path">در حال بارگزاری...</div>
-
-                                @error('path')
-                                <div class="alert alert-danger mt-2">{{ $message}}</div>
-                                @enderror
-                            </div>
-
-                        </div>
-                </div>
-
-                <div class="col-12 discount-common-save">
-                    <div class="mt-3">
-                        <input type="submit" class="btn btn-success" value="{{ __('messages.save') }}">
-                    </div>
-                </div>
-
-            </div>
-
-        </form>
-
-
 
         <div class="row  banner-list bg-white">
             <div class="my-5">
@@ -155,8 +51,8 @@
                                         <a href="javascript:void(0)"
                                             wire:click.prevent="deleteConfirmation({{ $banner->id }})"
                                             class="btn btn-sm btn-danger">{{ __('messages.delete_model') }}</a>
-                                        <a href="{{ route('admin.newest.product.edit', $banner->id) }}"
-                                            class="ms-2 btn btn-sm btn-primary">{{ __('messages.edit_model') }}</a>
+                                        {{-- <a href="{{ route('admin.newest.product.edit', $banner->id) }}"
+                                            class="ms-2 btn btn-sm btn-primary">{{ __('messages.edit_model') }}</a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -175,6 +71,16 @@
     </div>
 </div>
 @push('dash_custom_script')
+    <script type="text/javascript">
+
+     $(document).ready(function () {
+            $('.category-select').select2({
+                dir: 'rtl',
+                theme: "classic"
+            });
+        });
+
+    </script>
     <script type="text/javascript">
         window.addEventListener('show-delete-confirmation', event => {
             Swal.fire({
