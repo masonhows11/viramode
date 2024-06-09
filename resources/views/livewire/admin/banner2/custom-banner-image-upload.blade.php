@@ -7,10 +7,12 @@
             <div class="col">
 
                 <div class="row">
-                    <div class="col-12">
+
+                    <div class="col-12" wire:ignore>
                         <div class="mt-3">
-                            <label for="link" class="form-label">{{ __('messages.link')}}</label>
-                            <select class="category-select" id="category-selected" wire:model.defer="link"  id="link" name="link">
+                            <label for="link" class="form-label">{{ __('messages.link') }}</label>
+                            <select class="category-select" id="category-selected" wire:model.defer="link" id="link"
+                                name="link">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
                                 @endforeach
@@ -23,10 +25,12 @@
                             </div>
                         @enderror
                     </div>
+
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="title" class="form-label">{{ __('messages.title') }}</label>
-                            <input type="text" wire:model.defer="title"  class="form-control" id="title"  name="title">
+                            <input type="text" wire:model.defer="title" class="form-control" id="title"
+                                name="title">
                         </div>
                         @error('title')
                             <div class="alert alert-danger mt-3">
@@ -34,10 +38,11 @@
                             </div>
                         @enderror
                     </div>
+
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="status" class="form-label">{{ __('messages.status') }}</label>
-                            <select  wire:model.defer="status" class="form-control " id="status" name="status">
+                            <select wire:model.defer="status" class="form-control " id="status" name="status">
                                 <option value="">{{ __('messages.choose') }}</option>
                                 <option value="1">{{ __('messages.active') }}</option>
                                 <option value="0">{{ __('messages.deactivate') }}</option>
@@ -55,26 +60,28 @@
             <div class="col">
                 <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
 
-                        <div class="col-sm-6 d-flex justify-content-center">
-                            @if ($path)
-                                <img src="{{ $path->temporaryUrl() }}" width="250" height="250" alt="logo_image_path"
-                                    class="rounded border border-2 image-product-gallery-preview">
-                            @else
-                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}" width="250" height="250"
-                                    alt="logo_image_path" class="rounded border border-2 image-product-gallery-preview">
-                            @endif
-                        </div>
-                        <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
+                    <div class="col-sm-6 d-flex justify-content-center">
+                        @if ($path)
+                            <img src="{{ $path->temporaryUrl() }}" width="250" height="250" alt="logo_image_path"
+                                class="rounded border border-2 image-product-gallery-preview">
+                        @else
+                            <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}" width="250"
+                                height="250" alt="logo_image_path"
+                                class="rounded border border-2 image-product-gallery-preview">
+                        @endif
+                    </div>
+                    <div class="col-sm-6  d-flex flex-column justify-content-center my-4">
 
-                            <label for="photo" class="form-label">انتخاب تصویر</label>
+                        <label for="photo" class="form-label">انتخاب تصویر</label>
 
-                            <input type="file" accept="image/*" class="form-control" wire:model.defer="path" id="path">
-                            <div wire:loading wire:target="path">در حال بارگزاری...</div>
+                        <input type="file" accept="image/*" class="form-control" wire:model.defer="path"
+                            id="path">
+                        <div wire:loading wire:target="path">در حال بارگزاری...</div>
 
-                            @error('path')
-                                <div class="alert alert-danger mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @error('path')
+                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
@@ -90,44 +97,52 @@
 
 </div>
 @push('dash_custom_script')
-
-<script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
+    <script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
 
     <script type="text/javascript">
+        // $(document).ready(function() {
 
-       $(document).ready(function () {
-
-             $('.category-select').select2({
-                dir: 'rtl',
-                tags: 'true',
-                theme: "classic"
-            });
-
-            $('.category-select').on('change',function(){
-
-                var value = $('#category-selected').select2("val");
-                @this.set('selectedId',value);
-                Livewire.emit('selectedIdListener')
-
-            });
-
+        // });
+        $('.category-select').select2({
+            dir: 'rtl',
+            dropdownAutoWidth: true,
+            tags: 'true',
+            theme: "classic"
 
         });
+
+        $('.category-select').on('change', function(e) {
+
+            var value = $('#category-selected').select2("val");
+            @this.set('selectedId', value);
+           //  Livewire.emit('selectedIdListener')
+
+        });
+
+
+        // Livewire.on('initializeStyleSelect', () => {
+        //     $('.category-select').select2({
+        //         dir: "rtl",
+        //         dropdownAutoWidth: true,
+        //         tags: 'true',
+        //         theme: "classic"
+        //     });
+        // })
     </script>
 
-<script>
-    // document.addEventListener("livewire:load", () => {
-    //     Livewire.hook('message.processed', (message, component) => {
-    //         $(document).ready(function () {
-    //         $('.category-select').select2({
-    //             dir: 'rtl',
-    //             tags: 'true',
-    //             theme: "classic"
-    //         });
-    //     });
-    //     })
-    // });
-</script>
+    <script>
+        // document.addEventListener("livewire:load", () => {
+        //     Livewire.hook('message.processed', (message, component) => {
+        //         $(document).ready(function () {
+        //         $('.category-select').select2({
+        //             dir: 'rtl',
+        //             tags: 'true',
+        //             theme: "classic"
+        //         });
+        //     });
+        //     })
+        // });
+    </script>
 
     {{-- <script>
         $(document).ready(function() {
@@ -146,10 +161,3 @@
         })
     </script> --}}
 @endpush
-
-
-
-
-
-
-

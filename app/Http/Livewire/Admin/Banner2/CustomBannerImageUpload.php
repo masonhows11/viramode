@@ -33,16 +33,21 @@ class CustomBannerImageUpload extends Component
         'link.required' => 'فیلد دسته بندی الزامی است',
     ];
 
-    protected $listener =
-    [
-        
-    ];
+    // protected $listeners =
+    // [
+    //     'selectedIdListener' => 'initialize'
+    // ];
+
+    // public function initialize(){
+    //    // $this->selectedId = $value;
+    //     $this->emit('initializeStyleSelect');
+    // }
 
 
     public function upload()
     {
 
-        dd($this->selectedCategory,$this->title,$this->status);
+        dd($this->selectedId,$this->title,$this->status);
         $count = CustomBanner::count();
         if($count == 4){
 
