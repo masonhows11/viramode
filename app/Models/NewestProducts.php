@@ -12,7 +12,7 @@ class NewestProducts extends Model
     protected $table = 'newest_products';
     protected $fillable = [
         'title',
-        'slug',
+        'status',
         'image_path',
         'url',
     ];

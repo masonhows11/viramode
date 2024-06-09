@@ -36,7 +36,6 @@ class AdminNewestController extends Controller
                 $banner->image_path = $image_path;
             }
             $banner->title = $product->title_persian;
-            $banner->slug = $product->slug;
             $banner->url = $request->url;
             $banner->status = $request->status;
             $banner->save();
@@ -70,7 +69,6 @@ class AdminNewestController extends Controller
                 $banner->image_path = $image_path;
             }
             $banner->title = $product->title_persian;
-            $banner->slug = $product->slug;
             $banner->url = $request->url;
             $banner->status = $request->status;
             $banner->save();

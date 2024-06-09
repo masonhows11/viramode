@@ -39,7 +39,7 @@ class ImageServiceSave
 
     protected function getImageName($file)
     {
-       
+        
         $fileNameWithExt = $file->getClientOriginalName();
         $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
         $extension = $file->getClientOriginalExtension();
