@@ -26,7 +26,7 @@
         </div>
 
 
-        <form wire:submit.prevent="save">
+        <form ">
 
             <div class="row   row-cols-md-2 row-cols-sm-1 row-cols-1  product-stock-list mt-5 py-5 bg-white">
 
@@ -46,15 +46,35 @@
                         </div>
 
                         <div class="col-12">
+
+                            {{-- <div class="col mt-5 mb-5">
+                                <label for="category-select" class="form-label">انتخاب دسته بندی</label>
+                                <select class="category-select form-select" multiple id="category-select" name="categories[]">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" {{ (collect(old("categories"))->contains($category->id)  ? "selected":"") }} >{{ $category->title_persian }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('categories')
+                                <div class="my-5 alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div> --}}
+
                             <div class="mt-3">
-                                <label for="link"class="form-label">{{ __('messages.category') }}</label>
-                                <select class="form-select category-select" aria-label="select example">
-                                    <option value="0">{{ __('messages.choose') }}</option>
+
+                                <label for="link" class="form-label">انتخاب دسته بندی</label>
+
+                                <select class="category-select form-select" id="link" name="link">
+
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
                                     @endforeach
+
                                 </select>
                             </div>
+
                             @error('link')
                                 <div class="alert alert-danger mt-3">
                                     {{ $message }}
@@ -66,7 +86,7 @@
                         <div class="col-12">
                             <div class="mt-3">
                                 <label for="status" class="form-label">{{ __('messages.status') }}</label>
-                                <select wire:model.defer="status" class="form-control " id="status" name="status">
+                                <select  class="form-control " id="status" name="status">
                                     <option value="">{{ __('messages.choose') }}</option>
                                     <option value="1">{{ __('messages.active') }}</option>
                                     <option value="0">{{ __('messages.deactivate') }}</option>
@@ -84,7 +104,7 @@
 
                 <div class="col">
                     {{--  logo section  --}}
-                    <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
+                    {{-- <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
 
 
                         <div class="col-sm-6 d-flex justify-content-center">
@@ -113,7 +133,7 @@
                             @enderror
                         </div>
 
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-12 discount-common-save">
@@ -130,16 +150,19 @@
 @endsection
 @push('dash_custom_script')
 
+<script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
+
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.category-select').select2({
                 dir: 'rtl',
+                tags: 'true',
                 theme: "classic"
             });
         });
     </script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             const input = document.getElementById("image_select");
             const previewImage = document.getElementById("image_view");
@@ -154,5 +177,5 @@
                 }
             });
         })
-    </script>
+    </script> --}}
 @endpush
