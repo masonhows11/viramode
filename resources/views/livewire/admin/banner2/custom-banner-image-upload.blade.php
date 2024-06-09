@@ -10,7 +10,7 @@
                     <div class="col-12">
                         <div class="mt-3">
                             <label for="link" class="form-label">{{ __('messages.link')}}</label>
-                            <select class="category-select" wire:model.defer="link"  id="link" name="link">
+                            <select class="category-select" id="category-selected" wire:model.defer="link"  id="link" name="link">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
                                 @endforeach
@@ -94,12 +94,23 @@
 <script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
 
     <script type="text/javascript">
+
        $(document).ready(function () {
-            $('.category-select').select2({
+
+             $('.category-select').select2({
                 dir: 'rtl',
                 tags: 'true',
                 theme: "classic"
             });
+
+            $('.category-select').on('change',function(){
+
+                var value = $('#category-selected').select2("val");
+                @this.set('selectedCategory',value);
+
+            });
+
+
         });
     </script>
 

@@ -16,7 +16,7 @@ class CustomBannerImageUpload extends Component
     public $title;
     public $status;
     public $link;
-
+    public $selectedCategory;
     protected $paginationTheme = 'bootstrap';
 
 
@@ -37,7 +37,7 @@ class CustomBannerImageUpload extends Component
     public function upload()
     {
 
-        dd($this->link,$this->title,$this->status);
+        dd($this->selectedCategory,$this->title,$this->status);
         $count = CustomBanner::count();
         if($count == 4){
 
