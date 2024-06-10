@@ -23,7 +23,50 @@
 
         <div class="row  banner-list bg-white">
             <div class="my-5">
-                <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                 <table class="table table-striped">
+                     <thead class="border-bottom-3 border-top-3">
+                     <tr class="text-center">
+                         <th>{{ __('messages.id') }}</th>
+                         <th>{{ __('messages.title') }}</th>
+                         <th>{{ __('messages.url_image') }}</th>
+                         <th>{{ __('messages.image') }}</th>
+                         <th>{{ __('messages.status') }}</th>
+                         <th>{{ __('messages.operation') }}</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     @foreach( $banners as $banner)
+                         <tr class="text-center">
+                             <td>{{ $banner->id }}</td>
+                             <td>{{ $banner->title }}</td>
+                             <td>{{ $banner->link ? $banner->link : ' - ' }}</td>
+                             <td>
+
+                                @if ($banner->path && \Illuminate\Support\Facades\Storage::disk('public')->exists($banner->path))
+                                <img src="{{ asset('storage/'.$banner->path) }}"  width="100" height="100" class="img-thumbnail" alt="banner-image-{{ $banner->title }}">
+                                @else
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"  width="100" height="100"  class="img-thumbnail" alt="banner-image-{{ $banner->title }}">
+                                 @endif
+
+                             </td>
+
+                             <td>
+                                 <a href="javascript:void(0)" wire:click.prevent="status({{ $banner->id }})"
+                                    class="btn {{ $banner->status == 0 ? 'btn-danger' : 'btn-success' }}  btn-sm">
+                                     {{ $banner->status == 0 ? __('messages.deactivate') : __('messages.active') }}
+                                 </a>
+                             </td>
+                              <td>
+                                 <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $banner->id }})" class="" ><i class="fa fa-trash"></i></a>
+                                 {{-- <a href="{{ route('admin.bottom.banner.edit',$banner->id) }}" class="ms-2"><i class="fa fa-edit"></i></a> --}}
+                             </td>
+                         </tr>
+                     @endforeach
+                     </tbody>
+                 </table>
+
+                {{-- <div class="row row-cols-1 row-cols-md-4 g-4">
                     @foreach ($banners as $banner)
                         <div class="col">
                             <div class="card border border-2 border-secondary">
@@ -51,14 +94,14 @@
                                         <a href="javascript:void(0)"
                                             wire:click.prevent="deleteConfirmation({{ $banner->id }})"
                                             class="btn btn-sm btn-danger">{{ __('messages.delete_model') }}</a>
-                                        {{-- <a href="{{ route('admin.newest.product.edit', $banner->id) }}"
-                                            class="ms-2 btn btn-sm btn-primary">{{ __('messages.edit_model') }}</a> --}}
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                </div>
+                </div> --}}
+
             </div>
         </div>
 

@@ -17,7 +17,8 @@
 .category-attribute table tbody .fa-trash,
 .email-notice-list table tbody .fa-trash,
 .sms-notice-list table tbody .fa-trash ,
-.price-variable-values-list table tbody .fa-trash{
+.price-variable-values-list table tbody .fa-trash,
+.banner-list table tbody .fa-trash{
     font-size: 1.3rem;
     color: tomato;
 }

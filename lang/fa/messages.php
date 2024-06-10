@@ -111,6 +111,7 @@ return [
     'new_category' => 'دسته بندی جدید',
     'status' => 'وضعیت',
     'image' => 'تصویر',
+    'url_image' => 'لینک بنر',
     'images' => 'تصاویر',
     'colors' => 'رنگ ها',
     'Detach' => 'حذف از والد',
