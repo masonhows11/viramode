@@ -9299,7 +9299,7 @@ footer.mini-footer .copy-right-mini-footer {
     object-fit: cover;
   }
 
-  .swiper-pagination-bullet {
+  /* .swiper-pagination-bullet {
     width: 20px;
     height: 20px;
     text-align: center;
@@ -9313,4 +9313,4 @@ footer.mini-footer .copy-right-mini-footer {
   .swiper-pagination-bullet-active {
     color: #fff;
     background: #007aff;
-  }
+  } */
