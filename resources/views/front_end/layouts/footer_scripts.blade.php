@@ -17,6 +17,7 @@
 <script src="{{ asset('front_assets/js/wNumb.js') }}"></script>
 <script src="{{ asset('front_assets/js/ResizeSensor.min.js') }}"></script>
 <script src="{{ asset('front_assets/js/theia-sticky-sidebar.min.js') }}"></script>
+<script src="{{ asset('front_assets/js/swiper-bundle.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ asset('front_assets/js/main.js') }}"></script>
 <livewire:scripts/>

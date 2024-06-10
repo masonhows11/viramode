@@ -422,21 +422,14 @@ $(document).ready(function (l) {
 
   /* ************** main custom banner slider */
 
-  $('.custom-banner-carousel').owlCarousel({
-    loop:true,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
-})
+  var swiper = new Swiper(".mySwiper", {
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+  });
 
 
 

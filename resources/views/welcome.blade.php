@@ -38,6 +38,9 @@
             <div class="container main-container">
 
 
+                
+
+
                 <!-- Start custom Banner -->
                 <livewire:front.layout.front-custom-banner />
                 <!-- End custom Banner -->

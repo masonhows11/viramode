@@ -10,6 +10,7 @@
 <!-- Plugins -->
 <link rel="stylesheet" href="{{ asset('front_assets/css/bootstrap-slider.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('front_assets/css/swiper-bundle.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/jquery.horizontalmenu.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/jquery-stack-menu.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/fancybox.min.css') }}">
@@ -18,6 +19,7 @@
 <!-- Main CSS File -->
 <link rel="stylesheet" href="{{ asset('front_assets/css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/colors/default.css') }}" id="colorswitch">
+
 
 <livewire:styles/>
 

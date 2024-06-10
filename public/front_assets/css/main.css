@@ -9273,3 +9273,11 @@ footer.mini-footer .copy-right-mini-footer {
 }
 
 /* responsive */
+
+/* custom style */
+
+/* custom banner slider */
+.swiper-test{
+    width: 600px;
+    height: 300px;
+}
