@@ -1,30 +1,38 @@
 <div>
-    <div class="row d-flex justify-content-center border border-2 border-danger my-5">
+    <div class="row d-flex flex-column justify-content-center  my-5">
 
 
-        <div class="col-lg-12">
+         <div class="col-lg-12 col-md-10"> 
 
-            <div class="swiper mySwiper ">
+            <div dir="rtl"  class="swiper mySwiper">
                 {{-- main slider content --}}
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">Slide 1</div>
-                  <div class="swiper-slide">Slide 2</div>
-                  <div class="swiper-slide">Slide 3</div>
-                  <div class="swiper-slide">Slide 4</div>
-                  <div class="swiper-slide">Slide 5</div>
-                  <div class="swiper-slide">Slide 6</div>
-                  <div class="swiper-slide">Slide 7</div>
-                  <div class="swiper-slide">Slide 8</div>
-                  <div class="swiper-slide">Slide 9</div>
+                   @foreach ($banners as $banner)
+                     <div class="swiper-slide">
+                        <a class="" href="{{ $banner->link }}">
+                        @if ($banner->path && \Illuminate\Support\Facades\Storage::disk('public')->exists($banner->path))
+                            <img class="rounded " src="{{ asset('storage/' . $banner->path) }}" alt="banner-image">
+                         @else
+                            <img class="rounded" src="{{ asset('default_image/no-image-icon-23494.png') }}" alt="banner-image"> 
+                        @endif
+                    </a></div>
+                  @endforeach
                 </div>
+
+                
+                <div class="swiper-pagination"></div>
+
+
 
                 {{-- navigation slider --}}
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
 
-              </div>
+            </div>
 
-        </div>
+         </div>
+
+
 
     </div>
 
