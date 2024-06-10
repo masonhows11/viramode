@@ -28,7 +28,7 @@ class CreateBannerRequest extends FormRequest
             'title' => ['required'],
             'url' => ['nullable', 'min:5', 'max:200', 'url'],
             'status' => ['required', 'numeric'],
-            'image_path' => ['required', 'image', 'mimes:png,jpg,jpeg,gif', 'max:1999']
+            'image_path' => ['required', 'image', 'mimes:png,jpg,jpeg,gif,webp', 'max:1999']
         ];
     }
 

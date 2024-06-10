@@ -37,6 +37,7 @@ class AdminNewestController extends Controller
             }
             $banner->title = $product->title_persian;
             $banner->url = $request->url;
+            $banner->slug = $product->slug;
             $banner->status = $request->status;
             $banner->save();
             session()->flash('success',__('messages.New_record_saved_successfully'));
