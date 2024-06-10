@@ -9,7 +9,7 @@ class SuggestionProducts extends Model
 {
     use HasFactory;
     protected $table = 'suggestion_products';
-    protected $attributes = ['status' => 1,'url' => null];
+    protected $attributes = ['status' => 1];
     protected $fillable = [
         'title',
         'image_path',

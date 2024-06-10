@@ -41,7 +41,8 @@
 .admin-list-perms table tbody .fa-edit,
 .admin-list-roles table tbody .fa-edit,
 .product-meta-list table tbody .fa-edit,
-.list-colors table tbody .fa-edit {
+.list-colors table tbody .fa-edit,
+.banner-list table tbody .fa-edit {
     font-size: 1.3rem;
     color: deepskyblue;
 }
