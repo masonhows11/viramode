@@ -8,6 +8,7 @@ class FrontCustomBanner extends Component
 {
     public function render()
     {
-        return view('livewire.front.layout.front-custom-banner');
+        return view('livewire.front.layout.front-custom-banner')
+        ->with(['banners' => CustomBanners::where('status',1)->get()]);
     }
 }

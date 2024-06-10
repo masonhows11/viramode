@@ -419,4 +419,27 @@ $(document).ready(function (l) {
       $("#colorswitch").attr("href", colorPath);
     });
   }
+
+  /* ************** main custom banner slider */
+
+  $('.custom-banner-carousel').owlCarousel({
+    loop:true,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+
+
+
+
+
 });
