@@ -38,6 +38,10 @@
             <div class="container main-container">
 
 
+                <!-- Start custom Banner -->
+                <livewire:front.layout.front-custom-banner />
+                <!-- End custom Banner -->
+
                 <!-- Start newest products Banner -->
                 <livewire:front.layout.front-newest />
                 <!-- End Newest products Banner -->
