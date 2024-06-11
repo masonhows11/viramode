@@ -9297,6 +9297,7 @@ footer.mini-footer .copy-right-mini-footer {
 }
 
 .swiper-slide img {
+    /* display:block; */
     display: flex;
     justify-content: center;
     width: 100%;
@@ -9322,10 +9323,10 @@ footer.mini-footer .copy-right-mini-footer {
 
 
 /********** custom banner slider responsive */
-@media (max-width: 340px) {}
+/* @media (max-width: 340px) {}
 
 @media (max-width: 480px) {}
 
 @media (max-width: 576px) {}
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {} */
