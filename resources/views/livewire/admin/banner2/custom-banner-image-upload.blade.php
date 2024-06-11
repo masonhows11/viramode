@@ -9,22 +9,28 @@
                 <div class="row">
 
                     <div class="col-12" wire:ignore>
+
                         <div class="mt-3">
                             <label for="link" class="form-label">{{ __('messages.link') }}</label>
-                            <select class="category-select" id="category-selected" wire:model.defer="link" id="link"
-                                name="link">
+                            <select class="category-select" id="category-selected" wire:model.defer="link" id="link" name="link">
+                                <option value="">{{ __('messages.choose') }}</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->slug }}">{{ $category->title_persian }}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        @error('link')
-                            <div class="alert alert-danger mt-3">
-                                {{ $message }}
-                            </div>
-                        @enderror
+
                     </div>
+
+
+                    @if (session()->has('category_error'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('category_error') }}
+                        </div>
+                    @endif
+
+
 
                     <div class="col-12">
                         <div class="mt-3">
@@ -82,7 +88,8 @@
 
                         </div>
 
-                        <input type="file" accept="image/*" wire:loading.attr="disabled" class="form-control mt-2" wire:model.defer="path" id="path">
+                        <input type="file" accept="image/*" wire:loading.attr="disabled" class="form-control mt-2"
+                            wire:model.defer="path" id="path">
 
 
 
@@ -95,7 +102,8 @@
 
             <div class="col-12 discount-common-save">
                 <div class="mt-3">
-                    <input type="submit" wire:loading.attr="disabled" class="btn btn-success" value="{{ __('messages.save') }}">
+                    <input type="submit" wire:loading.attr="disabled" class="btn btn-success"
+                        value="{{ __('messages.save') }}">
                 </div>
             </div>
 
@@ -112,6 +120,7 @@
 
         // });
         $('.category-select').select2({
+            placeholder: ' انتخاب کنید ',
             dir: 'rtl',
             dropdownAutoWidth: true,
             tags: 'true',
@@ -123,7 +132,7 @@
 
             var value = $('#category-selected').select2("val");
             @this.set('selectedId', value);
-           //  Livewire.emit('selectedIdListener')
+            //  Livewire.emit('selectedIdListener')
 
         });
 

@@ -25,7 +25,7 @@ class CustomBannerImageUpload extends Component
     protected $rules = [
         'title' => ['required', 'min:2', 'max:30'],
         'path' =>  ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2000'],
-        'link' =>  ['required'],
+         // 'link' =>  ['required'],
         'status' => ['required']
     ];
 
@@ -48,38 +48,54 @@ class CustomBannerImageUpload extends Component
 
     public function upload()
     {
+       $this->validate();
 
-        $count = CustomBanner::count();
-        if ($count == 4) {
+       if($this->selectedId == null)
+        {
+            session()->flash('category_error', __('messages.select_category_required'));
+        } else
+        {
 
-            $this->dispatchBrowserEvent(
-                'show-result',
-                [
-                    'type' => 'success',
-                    'message' => __('messages.you_can_upload_only_image', ['count' => 4])
-                ]
-            );
-        } else {
+            $count = CustomBanner::count();
+            if ($count == 4) {
+
+                $this->dispatchBrowserEvent(
+                    'show-result',
+                    [
+                        'type' => 'success',
+                        'message' => __('messages.you_can_upload_only_image', ['count' => 4])
+                    ]
+                );
 
 
-            $this->link = url("/category/{$this->selectedId}");
-            $banner = new CustomBanner();
-            $banner->title = $this->title;
-            $banner->link = $this->link;
-            $banner->status = $this->status;
+            } else {
 
-            if ($this->path != null) {
 
-                $image_path = 'images/banners/';
-                $image_name =  Date::now()->format('d-m-Y') . '-' . Str::random(20) . '.' . $this->path->getClientOriginalExtension();
-                $this->path->storePubliclyAs('images/banners', $image_name, 'public');
-                $banner->path = $image_path . $image_name;
+                $this->link = url("/category/{$this->selectedId}");
+                $banner = new CustomBanner();
+                $banner->title = $this->title;
+                $banner->link = $this->link;
+                $banner->status = $this->status;
+
+                if ($this->path != null) {
+
+                    $image_path = 'images/banners/';
+                    $image_name =  Date::now()->format('d-m-Y') . '-' . Str::random(20) . '.' . $this->path->getClientOriginalExtension();
+                    $this->path->storePubliclyAs('images/banners', $image_name, 'public');
+                    $banner->path = $image_path . $image_name;
+                }
+                $banner->save();
+
+                session()->flash('messages', __('messages.New_record_saved_successfully'));
+                return redirect()->to('/admin/custom-banners/index');
             }
-            $banner->save();
-
-            session()->flash('messages', __('messages.New_record_saved_successfully'));
-            return redirect()->to('/admin/custom-banners/index');
         }
+
+
+
+
+
+
     }
 
 

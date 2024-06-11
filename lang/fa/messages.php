@@ -594,5 +594,6 @@ return [
     'Mellat' => 'ملت',
     'only-update-image' =>'فقط بروز رسانی تصویر شاخص',
     'link' => 'لینک به ( دسته بندی ) ',
+    'select_category_required' => 'فیلد دسته بندی الزامی است',
 
 ];
