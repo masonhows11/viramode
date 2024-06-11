@@ -1875,6 +1875,7 @@ main.main-content {
 .no-after-title-wide::after {
     display: none;
 }
+
 .title-wide-custom h2,
 .title-wide-custom a,
 .title-wide a,
@@ -1882,6 +1883,7 @@ main.main-content {
     color: #6f7479;
     line-height: 33px;
 }
+
 .title-wide-custom h2,
 .title-wide h2 {
     font-size: 20px;
@@ -1896,6 +1898,7 @@ main.main-content {
 .text-sm-title h2 {
     font-size: 16px;
 }
+
 .title-wide-custom h2:after,
 .title-wide-custom h2::before,
 .title-wide h2:after,
@@ -1941,7 +1944,7 @@ main.main-content {
 }
 
 
-.title-wide-custom a::before{
+.title-wide-custom a::before {
     position: absolute;
     top: 16px;
     left: -28px;
@@ -3081,6 +3084,7 @@ ul.gallery-options li:hover .tooltip-option {
     color: #e92e2e;
     border: 0;
 }
+
 /* .product-summary .stack-menu .btn-add-to-cart:hover {
     background-color: #ef394e;
     color: #fff;
@@ -4803,6 +4807,7 @@ input[type=radio]:checked+.ui-variant--check {
     font-weight: bold;
     font-size: 18px;
 }
+
 /*width: 40px;*/
 
 #countdown-verify-end {
@@ -6847,12 +6852,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .shopping-page .product-box-compact .product-box-title {
     margin-top: 0;
-    padding:10px 0 0 0;
+    padding: 10px 0 0 0;
     font-size: 11px;
     font-size: .786rem;
     line-height: 22px;
     color: #f7858d;
-    font-weight:bold;
+    font-weight: bold;
     letter-spacing: -.3px;
     position: relative;
     text-align: center;
@@ -9276,30 +9281,30 @@ footer.mini-footer .copy-right-mini-footer {
 
 /* custom style */
 
-/* custom banner slider */
- .swiper {
-        width: 100%;
-        height: 100%;
-  }
+/********** custom banner slider style */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
 
-  .swiper-slide {
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .swiper-slide img {
+.swiper-slide img {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
-  /* .swiper-pagination-bullet {
+/* .swiper-pagination-bullet {
     width: 20px;
     height: 20px;
     text-align: center;
@@ -9314,3 +9319,13 @@ footer.mini-footer .copy-right-mini-footer {
     color: #fff;
     background: #007aff;
   } */
+
+
+/********** custom banner slider responsive */
+@media (max-width: 340px) {}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 576px) {}
+
+@media (max-width: 768px) {}
