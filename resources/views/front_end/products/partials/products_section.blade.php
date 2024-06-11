@@ -23,9 +23,9 @@
             </a>
 
             <div class="product-card-body">
-                <h5 class="product-title">
-                    <a class="text-center" style="font-size: 1rem" href="{{ route('product',$product->slug) }}">{{ Str::Words($product->title_persian,4) }}</a>
-                </h5>
+                <h6 class="product-title">
+                    <a class="text-center" style="font-size: 1rem" href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
+                </h6>
 
                 @foreach ( $product->categories as $category )
                 <a class="product-meta" href="javascript:void(0)">{{ $category->title_persian }}</a>
