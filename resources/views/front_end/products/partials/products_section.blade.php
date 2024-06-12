@@ -23,6 +23,7 @@
             </a>
 
             <div class="product-card-body">
+                
                 <h6 class="product-title">
                     <a class="text-center" style="font-size: 1rem" href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
                 </h6>

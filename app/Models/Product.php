@@ -43,6 +43,12 @@ class Product extends Model
         'seo_desc',
     ];
 
+
+    public function scopeProductsExists($query)
+    {
+        return $query->where('available_in_stock','>',1);
+    }
+
     public function  hasStock(int $quantity)
     {
         return $this->available_in_stock >= $quantity;
@@ -181,6 +187,6 @@ class Product extends Model
     }
 
 
-   
+
 
 }
