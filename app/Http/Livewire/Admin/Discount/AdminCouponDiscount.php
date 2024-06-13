@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Discount;
 
-use App\Models\CommonDiscount;
+use App\Models\AmazingSales;
+use App\Models\Coupon;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminCommonDiscount extends Component
+class AdminCouponDiscount extends Component
 {
-
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $discount_id;
-    public $discount;
+    public $coupon_id;
+    public $coupon;
 
     public function updatingSearch()
     {
@@ -21,25 +21,26 @@ class AdminCommonDiscount extends Component
 
     public function changeStatus($id)
     {
-       $this->discount = CommonDiscount::findOrFail($id);
-       if($this->discount->status == 1){
-           $this->discount->status = 0;
-       }else{
-           $this->discount->status = 1;
-       }
-       $this->discount->save();
+        $this->coupon = Coupon::findOrFail($id);
 
-       // session()->flash('success', __('messages.The_changes_were_made_successfully'));
-       // return redirect()->route('admin.common.discount.index');
+        if($this->coupon->status == 1){
+            $this->coupon->status = 0;
+        }else{
+            $this->coupon->status = 1;
+        }
+        $this->coupon->save();
 
-       $this->dispatchBrowserEvent('show-result',
+        // session()->flash('success', __('messages.The_changes_were_made_successfully'));
+        // return redirect()->route('admin.common.amazingSale.index');
+
+        $this->dispatchBrowserEvent('show-result',
             ['type' => 'success',
                 'message' => __('messages.The_changes_were_made_successfully')]);
     }
 
     public function deleteConfirmation($id)
     {
-        $this->discount_id = $id;
+        $this->coupon_id = $id;
 
         $this->dispatchBrowserEvent('show-delete-confirmation');
     }
@@ -53,7 +54,7 @@ class AdminCommonDiscount extends Component
         try {
 
 
-            $model = CommonDiscount::findOrFail($this->discount_id);
+            $model = Coupon::findOrFail($this->coupon_id);
             $model->delete();
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
@@ -63,12 +64,11 @@ class AdminCommonDiscount extends Component
         }
         return null;
     }
-
     public function render()
     {
-        return view('livewire.admin.admin-common-discount')
+        return view('livewire.admin.discount.admin-coupon-discount')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['discounts' => CommonDiscount::paginate(10)]);
+            ->with(['coupons' => Coupon::paginate(10)]);
     }
 }

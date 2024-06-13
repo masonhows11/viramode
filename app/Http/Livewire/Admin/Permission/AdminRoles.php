@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Permission;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -93,7 +93,7 @@ class AdminRoles extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-roles')
+        return view('livewire.admin.permission.admin-roles')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['roles' => Role::paginate(10)]);

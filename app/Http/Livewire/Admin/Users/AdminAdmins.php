@@ -1,34 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Users;
 
-use App\Models\User;
+use App\Models\Admin;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminUsers extends Component
+class AdminAdmins extends Component
 {
-
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $delete_id;
     public $search = '';
     public $stateUser = true;
-
-    public function activeUser($id)
-    {
-        $user = User::find($id);
-        if ($user->activate == 0) {
-            $user->activate = 1;
-            $user->save();
-            $this->stateUser = true;
-        } else {
-            $user->activate = 0;
-            $user->save();
-            $this->stateUser = false;
-        }
-    }
 
     // step 1 : confirm delete alert
     public function deleteConfirmation($id)
@@ -38,28 +23,27 @@ class AdminUsers extends Component
     }
     // step 2 : add confirm listener
     protected $listeners = [
-        'deleteConfirmed' => 'deleteUser',
+        'deleteConfirmed' => 'deleteAdmin',
     ];
     // step 3 : delete model on listener
-    public function deleteUser()
+    public function deleteAdmin()
     {
-       // dd('hi');
         try {
-            User::destroy($this->delete_id);
+            Admin::destroy($this->delete_id);
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
                     'message' => 'رکورد با موفقیت حذف شد']);
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }
-        return  null;
+        return null;
     }
     public function render()
     {
-        return view('livewire.admin.admin-users')
+        return view('livewire.admin.users.admin-admins')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['users' => User::where('name','like','%'.$this->search.'%')
-                ->Orwhere('first_name','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(8)]);
+            ->with(['admins'=> Admin::where('name','like','%'.$this->search.'%')
+                ->Orwhere('first_name','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(5)]);
     }
 }

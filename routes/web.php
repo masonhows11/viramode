@@ -10,16 +10,20 @@ use App\Http\Controllers\HomeController;
 
 // admin livewire routes
 //
-use App\Http\Livewire\Admin\AdminPerms;
-use App\Http\Livewire\Admin\AdminRoles;
-use App\Http\Livewire\Admin\AdminUsers;
-use App\Http\Livewire\Admin\AdminAdmins;
-use App\Http\Livewire\Admin\AdminColors;
-use App\Http\Livewire\Admin\ListUsersForPerm;
-use App\Http\Livewire\Admin\ListUsersForRole;
-use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
+use App\Http\Livewire\Admin\Permission\AdminPerms;
+use App\Http\Livewire\Admin\Permission\AdminRoles;
+use App\Http\Livewire\Admin\Users\AdminUsers;
+use App\Http\Livewire\Admin\Users\AdminAdmins;
+//
+use App\Http\Livewire\Admin\Permission\ListUsersForPerm;
+use App\Http\Livewire\Admin\Permission\ListUsersForRole;
+//
+use App\Http\Livewire\Admin\ProductFeatures\AdminColors;
+use App\Http\Livewire\Admin\ProductFeatures\AdminCategoryAttributeValue;
+use App\Http\Livewire\Admin\ProductFeatures\AdminCategoryAttribute;
+use App\Http\Livewire\Admin\ProductFeatures\AdminTag;
+//
 use App\Http\Livewire\Admin\Stock\StockProduct;
-use App\Http\Livewire\Admin\AdminTag;
 //
 use App\Http\Livewire\Admin\Banner2\AdminCustomBanner;
 use App\Http\Livewire\Admin\Banner2\AdminMostVisitedSlider;
@@ -31,7 +35,7 @@ use App\Http\Livewire\Admin\Brand\AdminBrandList;
 use App\Http\Livewire\Admin\Brand\AdminEditBrand;
 use App\Http\Livewire\Admin\Setting\AdminSetting;
 use App\Http\Livewire\Admin\Orders\AdminAllOrders;
-use App\Http\Livewire\Admin\AdminCategoryAttribute;
+
 //
 use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Brand\AdminCreateBrand;

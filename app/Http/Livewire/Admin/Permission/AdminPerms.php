@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Permission;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -96,7 +96,7 @@ class AdminPerms extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-perms')
+        return view('livewire.admin.permission.admin-perms')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['perms' => Permission::paginate(10)]);

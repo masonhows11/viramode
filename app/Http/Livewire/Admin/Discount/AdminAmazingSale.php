@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Discount;
 
 use App\Models\AmazingSales;
-use App\Models\Coupon;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminCouponDiscount extends Component
+class AdminAmazingSale extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $coupon_id;
-    public $coupon;
+    public $amazing_id;
+    public $amazingSale;
 
     public function updatingSearch()
     {
@@ -21,14 +20,13 @@ class AdminCouponDiscount extends Component
 
     public function changeStatus($id)
     {
-        $this->coupon = Coupon::findOrFail($id);
-
-        if($this->coupon->status == 1){
-            $this->coupon->status = 0;
+        $this->amazingSale = AmazingSales::findOrFail($id);
+        if($this->amazingSale->status == 1){
+            $this->amazingSale->status = 0;
         }else{
-            $this->coupon->status = 1;
+            $this->amazingSale->status = 1;
         }
-        $this->coupon->save();
+        $this->amazingSale->save();
 
         // session()->flash('success', __('messages.The_changes_were_made_successfully'));
         // return redirect()->route('admin.common.amazingSale.index');
@@ -40,7 +38,7 @@ class AdminCouponDiscount extends Component
 
     public function deleteConfirmation($id)
     {
-        $this->coupon_id = $id;
+        $this->amazing_id = $id;
 
         $this->dispatchBrowserEvent('show-delete-confirmation');
     }
@@ -54,7 +52,7 @@ class AdminCouponDiscount extends Component
         try {
 
 
-            $model = Coupon::findOrFail($this->coupon_id);
+            $model = AmazingSales::findOrFail($this->amazing_id);
             $model->delete();
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
@@ -66,9 +64,9 @@ class AdminCouponDiscount extends Component
     }
     public function render()
     {
-        return view('livewire.admin.admin-coupon-discount')
+        return view('livewire.admin.discount.admin-amazing-sale')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['coupons' => Coupon::paginate(10)]);
+            ->with(['amazingSales' => AmazingSales::paginate(10)]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Users;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +103,7 @@ class AdminProfile extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-profile')
+        return view('livewire.admin.users.admin-profile')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['admin'=>Auth::user()]);

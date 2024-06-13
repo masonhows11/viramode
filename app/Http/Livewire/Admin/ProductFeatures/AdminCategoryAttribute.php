@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\ProductFeatures;
 
 use App\Models\Category;
 use App\Models\CategoryAttribute;
@@ -129,7 +129,7 @@ class AdminCategoryAttribute extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-category-attribute')
+        return view('livewire.admin.product-features.admin-category-attribute')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['attributes' => CategoryAttribute::paginate(10),
