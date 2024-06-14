@@ -65,9 +65,10 @@
             <div class="col-lg-12 d-flex justify-content-between border border-2 rounded p-4">
 
                 <div class="">
-                    <p class="font-14 mr-2"><i class="fa fa-location text-muted ml-2"></i><span class="font-13">دفتر مرکزی : استان کرمان -  شهرستان کرمان - خیابان بهشتی</span></p>
+                    <p class="font-14 mr-2"><i class="fa fa-location text-muted ml-2"></i><span class="font-13">آدرس : استان کرمان -  شهرستان کرمان - خیابان بهشتی</span></p>
                     <p class="font-14 mr-2"><i class="fa fa-phone text-muted ml-2"></i>0423 289 0917</p>
                     <p class="font-14 mr-2"><i class="fa fa-envelope text-muted ml-2"></i>mason.hows11@gmail.com</p>
+                   
                 </div>
 
                 <div class="">
