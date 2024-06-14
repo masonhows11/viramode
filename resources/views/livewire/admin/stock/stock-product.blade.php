@@ -67,8 +67,8 @@
                 </table>
             </div>
         </div>
-        <div class="row d-flex justify-content-center list-stock-paginate">
-            <div class="col-lg-2 col-md-2 ">
+        <div class="row bg-white overflow-auto py-2 mt-3 d-flex justify-content-center list-stock-paginate">
+            <div class="col-lg-2 col-md-2">
                 {{ $products->links() }}
             </div>
         </div>
