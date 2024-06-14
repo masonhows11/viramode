@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Dash\Order;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
 
@@ -46,7 +44,7 @@ class AdminOrderController extends Controller
         $page_title = __('messages.orders_paid');
         $body_title = __('messages.orders_paid');
         $breadcrumbs = 'admin.orders.paid';
-        $orders = Order::where([['payment_status',0],['delivery_status',2],['order_status',1]])->paginate(20);
+        $orders = Order::where([['payment_status',1],['delivery_status',2],['order_status',1]])->paginate(20);
         return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
