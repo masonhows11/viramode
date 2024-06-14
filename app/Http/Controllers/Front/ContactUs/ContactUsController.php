@@ -11,4 +11,13 @@ class ContactUsController extends Controller
     {
         return view('front_end.contact_us.contact_us');
     }
+
+
+    public function store(Request $request)
+    {
+
+        session()->flash('error',__('messages.this_part_is_being_prepared'));
+        return redirect()->back();
+
+    }
 }

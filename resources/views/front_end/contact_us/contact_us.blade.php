@@ -15,8 +15,8 @@
 
             <div class="col-lg-12 p-4 mb-2 border border-2 rounded">
 
-                <form>
-
+                <form action="{{ route('contact_us.store') }}" method="post">
+                    @csrf
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -62,16 +62,19 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 border border-2 rounded">
+            <div class="col-lg-12 d-flex justify-content-between border border-2 rounded p-4">
+
                 <div class="">
-
-                    <p class="font-14 mt-3 ms-2"><img src="{{ asset('default_image/no-image-icon-23494.png') }}"
-                            width="100" height="100" class="">دفتر مرکزی : <span class="font-13">استان کرمان -
-                            شهرستان کرمان - خیابان بهشتی</span></p>
-                    <p class="font-14 ms-2"><i class="fa fa-phone text-muted me-2"></i>0423 289 0917</p>
-                    <p class="font-14 ms-2"><i class="fa fa-envelope text-muted me-2"></i>mason.hows11@gmail.com</p>
-
+                    <p class="font-14 mr-2"><i class="fa fa-location text-muted ml-2"></i><span class="font-13">دفتر مرکزی : استان کرمان -  شهرستان کرمان - خیابان بهشتی</span></p>
+                    <p class="font-14 mr-2"><i class="fa fa-phone text-muted ml-2"></i>0423 289 0917</p>
+                    <p class="font-14 mr-2"><i class="fa fa-envelope text-muted ml-2"></i>mason.hows11@gmail.com</p>
                 </div>
+
+                <div class="">
+                    <img src="{{ asset('default_image/no-image-icon-23494.png') }}"  width="100" height="100" class="">
+                </div>
+
+
             </div>
         </div>
 
@@ -87,3 +90,6 @@
 
     </div>
 @endsection
+{{-- @stack('front_custom_scripts')
+
+@endpush --}}

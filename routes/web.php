@@ -303,7 +303,10 @@ Route::controller(FrontTicketController::class)->prefix('profile')->middleware([
 
 
 Route::get('/about_us', [\App\Http\Controllers\Front\AboutUs\AboutUsController::class, 'aboutUs'])->name('about_us');
+
 Route::get('/contact_us', [\App\Http\Controllers\Front\ContactUs\ContactUsController::class, 'contactUs'])->name('contact_us');
+Route::post('/contact_us/store',[\App\Http\Controllers\Front\ContactUs\ContactUsController::class, 'store'])->name('contact_us.store');
+
 
 
 /* ------------------- Products Front Routes -----------------**/
