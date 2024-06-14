@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dash\Setting;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingRequest;
 use App\Models\Setting;
-use App\Services\Image\ImageServiceSave;
+use App\Services\ImageService\ImageServiceSave;
 use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
@@ -22,17 +22,16 @@ class SettingController extends Controller
     {
 
         try {
+
             $setting = Setting::findOrFail($request->setting_id);
             $imgService = new  ImageServiceSave();
+
             if ($request->hasFile('logo')) {
 
                 if ($setting->logo != null) {
-                    if (Storage::disk('public')->exists($setting->logo)) {
-                        $imgService->deleteOldStorageImage($setting->logo);
-                    }
-
+                    $imgService->deleteOldStorageImage($setting->logo);
                 }
-                $result = $imgService->customSaveStoragePath($request->file('logo'), 'setting','logo', 64, 64);
+                $result = $imgService->savePublicStorage($request->file('logo'), 'setting');
                 $logo_path = $result;
                 $setting->logo = $logo_path;
             }
@@ -40,13 +39,11 @@ class SettingController extends Controller
             if ($request->hasFile('icon')) {
 
                 if ($setting->icon != null) {
-
-                    if (Storage::disk('public')->exists($setting->icon)) {
-                        $imgService->deleteOldStorageImage($setting->icon);
-                    }
+                    $imgService->deleteOldStorageImage($setting->icon);
 
                 }
-                $result = $imgService->customSaveStoragePath($request->file('icon'), 'setting','icon' ,64, 64);
+                
+                $result = $imgService->savePublicStorage($request->file('icon'), 'setting');
                 $icon_path = $result;
                 $setting->icon = $icon_path;
             }
