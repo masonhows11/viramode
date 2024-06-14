@@ -1,13 +1,13 @@
-@extends( 'front.layouts.master_front')
+@extends( 'front_end.layouts.master_front')
 @section( 'page_title')
     {{ __('messages.contact_us')  }}
 @endsection
 @section('main_content')
     <div class="container">
+
         <div class="row">
             <div class="col-lg-12">
-
-                <div class="cart-content"><!-- start contact form -->
+                <div class="">
                     <div class="title">
                         <h4> تماس با ما </h4>
                     </div>
@@ -43,13 +43,16 @@
                                 </div>
                         </form>
                     </div>
-                </div><!-- end contact form -->
+                </div>
+        </div>
 
-                <div class="cart-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
                     <div class="title">
                         <h4>آدرس ما</h4>
                     </div>
-                    <p class="font-14 mt-3 ms-2"><img src="{{ asset('front/images/footerLogo.png') }}" class="contact-logo">دفتر مرکزی : <span class="font-13">استان کرمان - شهرستان کرمان - خیابان بهشتی</span></p>
+                    <p class="font-14 mt-3 ms-2"><img src="{{ asset('default_image/no-image-icon-23494.png') }}" class="contact-logo">دفتر مرکزی : <span class="font-13">استان کرمان - شهرستان کرمان - خیابان بهشتی</span></p>
                     <p class="font-14 ms-2"><i class="fa fa-phone text-muted me-2"></i>0423 289 0917</p>
                     <p class="font-14 ms-2"><i class="fa fa-envelope text-muted me-2"></i>mason.hows11@gmail.com</p>
                     <div class="row px-2">
@@ -58,8 +61,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
     </div>
 @endsection

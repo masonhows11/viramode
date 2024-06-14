@@ -9,6 +9,6 @@ class ContactUsController extends Controller
 {
     public function contactUs()
     {
-        return view('front.contact_us.contact_us');
+        return view('front_end.contact_us.contact_us');
     }
 }

@@ -1,4 +1,4 @@
-@extends( 'front.layouts.master_front')
+@extends( 'front_end.layouts.master_front')
 @section( 'page_title')
     {{ __('messages.about_us') }}
 @endsection
@@ -23,7 +23,7 @@
                                 و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی،
                                 و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
                             </p>
-                            <img src="{{ asset('front/images/about-us.webp') }}" class="img-fluid d-block mx-auto">
+                            <img src="{{ asset('default_image/about-us.webp') }}" class="img-fluid d-block mx-auto">
                             <p>
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
                                 از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه

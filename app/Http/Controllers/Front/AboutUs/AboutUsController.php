@@ -9,6 +9,6 @@ class AboutUsController extends Controller
 {
     //
     public function aboutUs(){
-        return view('front.about_us.about_us');
+        return view('front_end.about_us.about_us');
     }
 }
