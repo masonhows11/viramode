@@ -60,6 +60,6 @@ class AdminUsers extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['users' => User::where('name','like','%'.$this->search.'%')
-                ->Orwhere('first_name','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(8)]);
+                ->orWhere('first_name','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(8)]);
     }
 }

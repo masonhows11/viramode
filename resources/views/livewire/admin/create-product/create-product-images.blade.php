@@ -28,14 +28,19 @@
                         <label for="photo" class="form-label">انتخاب تصویر</label>
                         <input type="file" accept="image/*" class="form-control" wire:model.defer="photo" id="photo">
                     </div>
-                    <div wire:loading wire:target="photo">در حال بارگزاری...</div>
+
+                    <div class="spinner-border" wire:loading wire:target="photo" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+
+
                     @error('photo')
                     <div class="alert alert-danger">{{ $message}}</div>
                     @enderror
-                    
+
                     <div class="col mt-3 d-flex justify-content-between">
                         <div>
-                            <button type="submit" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
+                            <button type="submit"  wire:loading.attr="disabled" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
                             <a href="{{ route('admin.product.create.colors',['product'=>$product]) }}"
                                class="btn btn-primary btn-sm">{{ __('messages.product_colors') }}</a>
                         </div>

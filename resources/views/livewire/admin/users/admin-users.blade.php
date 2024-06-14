@@ -25,13 +25,14 @@
 
         <div class="row users-management bg-white overflow-auto">
             <div class="my-5">
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                     <tr class="text-center">
-                        <th>شناسه</th>
-                        <th>نام کاربری</th>
-                        <th>حذف</th>
-                        <th>وضعیت</th>
+                        <th>{{ __('messages.id') }}</th>
+                        <th>{{ __('messages.user_name') }}</th>
+                        <th>{{ __('messages.email')}}</th>
+                        <th>{{ __('messages.delete_model') }}</th>
+                        <th>{{ __('messages.status') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,7 @@
                             <tr class="text-center">
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ $user->email ? $user->email : null}}</td>
                                 @if($user->hasRole('admin'))
                                 @else
                                     <td class="mb-3">

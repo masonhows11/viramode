@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin\CreateProduct;
 
 use App\Models\Product;
 use App\Models\ProductImage;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
