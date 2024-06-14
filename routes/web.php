@@ -123,7 +123,7 @@ use App\Http\Controllers\Dash\Discount\CommonDiscountController;
 
 //// sitemap routes
 
-// use App\Http\Controllers\SiteMapController;
+use App\Http\Controllers\SiteMapController;
 
 //// front routes
 
@@ -178,15 +178,15 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 
-//Route::controller(SiteMapController::class)->group(function(){
-//
-//    Route::get('/sitemap.xml','index')->name('sitemap.xml');
-//    Route::get('/sitemap.xml/products', 'products')->name('sitemap.xml.products');
-//    Route::get('/sitemap.xml/categories','categories')->name('sitemap.xml.categories');
-//    Route::get('/sitemap.xml/tags',  'tags')->name('sitemap.xml.tags');
-//    Route::get('/sitemap.xml/static', 'static')->name('sitemap.xml.static');
-//
-//});
+Route::controller(SiteMapController::class)->group(function(){
+
+   Route::get('/sitemap.xml','index')->name('sitemap.xml');
+   Route::get('/sitemap.xml/products', 'products')->name('sitemap.xml.products');
+   Route::get('/sitemap.xml/categories','categories')->name('sitemap.xml.categories');
+   Route::get('/sitemap.xml/tags',  'tags')->name('sitemap.xml.tags');
+   Route::get('/sitemap.xml/static', 'static')->name('sitemap.xml.static');
+
+});
 
 
 

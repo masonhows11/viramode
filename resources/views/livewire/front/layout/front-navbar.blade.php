@@ -19,6 +19,12 @@
                             @endforeach
                         </ul>
                 </li>
+                <li class="list-item">
+                    <a class="nav-link" href="{{ route('about_us') }}">{{ __('messages.about_us') }}</a>
+                </li>
+                <li class="list-item">
+                    <a class="nav-link" href="{{ route('contact_us') }}">{{ __('messages.contact_us')}}</a>
+                </li>
             </ul>
             <!-- End mega menu column -->
 
