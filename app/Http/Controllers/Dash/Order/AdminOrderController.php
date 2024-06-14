@@ -27,6 +27,7 @@ class AdminOrderController extends Controller
                    'body_title' => $body_title,
                    'breadcrumbs' => $breadcrumbs]);
 
+
     }
     public function sending(){
 
@@ -45,7 +46,7 @@ class AdminOrderController extends Controller
         $page_title = __('messages.orders_paid');
         $body_title = __('messages.orders_paid');
         $breadcrumbs = 'admin.orders.paid';
-        $orders = Order::where('payment_status',0)->paginate(20);
+        $orders = Order::where([['payment_status',0],['delivery_status',2],['order_status',1]])->paginate(20);
         return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
@@ -57,37 +58,37 @@ class AdminOrderController extends Controller
         $page_title = __('messages.orders_unpaid');
         $body_title = __('messages.orders_unpaid');
         $breadcrumbs = 'admin.orders.unpaid';
-        $orders = Order::where('payment_status',0)->paginate(20);
+        $orders = Order::where([['order_status',0],['payment_status',0]])->paginate(20);
         return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
             'breadcrumbs' => $breadcrumbs]);
     }
 
-    public function canceled()
-    {
-        $page_title = __('messages.orders_canceled');
-        $body_title = __('messages.orders_canceled');
-        $breadcrumbs = 'admin.orders.canceled';
-        $orders = Order::where('order_status',4)->paginate(20);
-        return view('admin_end.orders.index')->with(['orders' => $orders ,
-            'page_title' => $page_title ,
-            'body_title' => $body_title,
-            'breadcrumbs' => $breadcrumbs]);
-    }
+    // public function canceled()
+    // {
+    //     $page_title = __('messages.orders_canceled');
+    //     $body_title = __('messages.orders_canceled');
+    //     $breadcrumbs = 'admin.orders.canceled';
+    //     $orders = Order::where('order_status',4)->paginate(20);
+    //     return view('admin_end.orders.index')->with(['orders' => $orders ,
+    //         'page_title' => $page_title ,
+    //         'body_title' => $body_title,
+    //         'breadcrumbs' => $breadcrumbs]);
+    // }
 
 
-    public function returned()
-    {
-        $page_title = __('messages.orders_returned');
-        $body_title = __('messages.orders_returned');
-        $breadcrumbs = 'admin.orders.returned';
-        $orders = Order::where('order_status',5)->paginate(20);
-        return view('admin_end.orders.index')->with(['orders' => $orders ,
-            'page_title' => $page_title ,
-            'body_title' => $body_title,
-            'breadcrumbs' => $breadcrumbs]);
-    }
+    // public function returned()
+    // {
+    //     $page_title = __('messages.orders_returned');
+    //     $body_title = __('messages.orders_returned');
+    //     $breadcrumbs = 'admin.orders.returned';
+    //     $orders = Order::where('order_status',5)->paginate(20);
+    //     return view('admin_end.orders.index')->with(['orders' => $orders ,
+    //         'page_title' => $page_title ,
+    //         'body_title' => $body_title,
+    //         'breadcrumbs' => $breadcrumbs]);
+    // }
 
     public function show(Order $order)
     {

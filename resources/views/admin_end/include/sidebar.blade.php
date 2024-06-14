@@ -411,6 +411,7 @@
                                 <span class="menu-title">{{ __('messages.all_orders') }}</span>
                             </a>
                         </div>
+                        
                         {{--   new orders   --}}
                         <div class="menu-item">
                             <a class="menu-link {{ $route === 'admin.orders.new' ? 'active' : '' }}"
