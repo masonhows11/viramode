@@ -9281,7 +9281,9 @@ footer.mini-footer .copy-right-mini-footer {
 
 /* custom style */
 /********** custom contact us style */
-
+.contact-us-form {
+    margin-top: 150px;
+}
 
 /********** custom banner slider style */
 .swiper {
