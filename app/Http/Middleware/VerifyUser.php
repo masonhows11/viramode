@@ -15,7 +15,7 @@ class VerifyUser
     {
         $auth_user = DB::table('users')->where('email',Auth::user()->email)->first();
         if( $auth_user->email_verified_at == null ){
-            return redirect()->route('auth.verify.email.prompt')->with('error','کاربر گرامی حساب کاربری شما فعال نشده است.');
+            return redirect()->route('auth.verify.email.prompt')->with('error',__('messages.dear_user_your_account_has_not_been_activated'));
         }
         return $next($request);
     }

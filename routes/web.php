@@ -213,7 +213,7 @@ Route::prefix('auth')->name('auth.')->group(function () {
 Route::get('/log-out', [LoginUserController::class, 'logOut'])->middleware('auth', 'web')->name('auth.log.out');
 
 /*------------------------route user profile-----------------**/
-Route::controller(ProfileController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(ProfileController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
 
     Route::get('/index', 'Profile')->name('user.profile');
@@ -233,7 +233,7 @@ Route::controller(ProfileController::class)->prefix('profile')->middleware(['aut
 
 
 
-Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
     //// orders
   Route::get('/all-orders', 'allOrders')->name('all.orders');
@@ -250,14 +250,14 @@ Route::controller(ProfileOrderController::class)->prefix('profile')->middleware(
 
 });
 
-Route::controller(ProfileCommentController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(ProfileCommentController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
     //// comments
     Route::get('/comments','comments')->name('comments');
 
 });
 
-Route::controller(FavoritesController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(FavoritesController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
 
     Route::get('/favorites',  'favorites')->name('favorites');
@@ -271,7 +271,7 @@ Route::controller(FavoritesController::class)->prefix('profile')->middleware(['a
 // Route::get('/compare-products', [CompareController::class, 'index'])->name('compare.products');
 
 
-Route::controller(FrontAddressController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(FrontAddressController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
 
     Route::get('/address/index', 'addresses')->name('profile.address.index');
@@ -285,7 +285,7 @@ Route::controller(FrontAddressController::class)->prefix('profile')->middleware(
 
 });
 
-Route::controller(FrontTicketController::class)->prefix('profile')->middleware(['auth', 'web'])->group(function () {
+Route::controller(FrontTicketController::class)->prefix('profile')->middleware(['auth', 'web','verified_user'])->group(function () {
 
 
     Route::get('/tickets',  'index')->name('tickets');
@@ -334,13 +334,13 @@ Route::get('/best-seller/products',[ApiProductController::class,'products'])->na
 
 /* ------------------- Basket & address & payment Front Routes -----------------**/
 
-Route::prefix('shopping')->middleware(['auth','web'])->group(function(){
+Route::prefix('shopping')->middleware(['auth','web','verified_user'])->group(function(){
 
    Route::get('/cart/check', [CartController::class,'checkoutCart'])->name('cart.check');
 
 });
 
-Route::controller(AddressController::class)->middleware(['auth','web'])->group(function(){
+Route::controller(AddressController::class)->middleware(['auth','web','verified_user'])->group(function(){
 
     Route::get('/check/address','checkAddress')->name('check.address');
 
@@ -357,7 +357,7 @@ Route::controller(AddressController::class)->middleware(['auth','web'])->group(f
  });
 
 
-Route::controller(FrontPaymentController::class)->middleware(['auth','web'])->group(function(){
+Route::controller(FrontPaymentController::class)->middleware(['auth','web','verified_user'])->group(function(){
 
     Route::post('/coupon-discount')->name('coupon-discount');
 

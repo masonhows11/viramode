@@ -595,5 +595,6 @@ return [
     'only-update-image' =>'فقط بروز رسانی تصویر شاخص',
     'link' => 'لینک به ( دسته بندی ) ',
     'select_category_required' => 'فیلد دسته بندی الزامی است',
+    'dear_user_your_account_has_not_been_activated' => 'کاربر گرامی حساب کاربری شما فعال نشده است',
 
 ];
