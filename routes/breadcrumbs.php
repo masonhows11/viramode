@@ -400,6 +400,12 @@ Breadcrumbs::for('admin.orders.unpaid', function ($trail) {
     $trail->push(__('messages.orders_unpaid'),route('admin.orders.unpaid'));
 });
 
+//  paid orders
+Breadcrumbs::for('admin.orders.paid', function ($trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('messages.orders_paid'),route('admin.orders.paid'));
+});
+
 // returned orders
 Breadcrumbs::for('admin.orders.returned', function ($trail) {
     $trail->parent('admin.dashboard');

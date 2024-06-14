@@ -433,6 +433,16 @@
                                 <span class="menu-title">{{ __('messages.orders_sending') }}</span>
                             </a>
                         </div>
+                        {{--   paid orders   --}}
+                        <div class="menu-item ">
+                            <a class="menu-link {{ $route === 'admin.orders.paid' ? 'active' : '' }}"
+                               href="{{ route('admin.orders.paid') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ __('messages.orders_paid') }}</span>
+                            </a>
+                        </div>
                         {{--   unpaid orders   --}}
                         <div class="menu-item ">
                             <a class="menu-link {{ $route === 'admin.orders.unpaid' ? 'active' : '' }}"
