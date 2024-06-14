@@ -80,8 +80,8 @@
 
         <div class="row border border-2 rounded p-4">
             <div class="col-12 my-2">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.50553736921!2d51.37741631474645!3d35.68917533714458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzIxLjAiTiA1McKwMjInNDYuNiJF!5e0!3m2!1sen!2s!4v1596469430690!5m2!1sen!2s"
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.50553736921!2d51.37741631474645!3d35.68917533714458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzIxLjAiTiA1McKwMjInNDYuNiJF!5e0!3m2!1sen!2s!4v1596469430690!5m2!1sen!2s"
                     frameborder="0" class="border border-1 rounded" width="100%" height="300px"></iframe>
             </div>
         </div>
@@ -90,6 +90,4 @@
 
     </div>
 @endsection
-{{-- @stack('front_custom_scripts')
 
-@endpush --}}
