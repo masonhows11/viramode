@@ -7,5 +7,4 @@ interface PriceInterface
         public function getTotalPrice();
         public function descriptionTitle();
         public function getSummary();
-
 }

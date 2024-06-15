@@ -7,11 +7,11 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Schema;
 // use Illuminate\View\View;
 // use Illuminate\Support\Facades;
+use App\Services\Basket\Basket;
 use App\Services\Basket\DBStorage;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use App\Services\BasketPrice\BasketPrice;
-
 use App\Services\Basket\Contracts\BasketInterface;
 use App\Services\BasketPrice\Contracts\PriceInterface;
 
@@ -33,12 +33,16 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(BasketInterface::class,function($app){
+
             return new DBStorage();
+
         });
         //
         $this->app->bind(PriceInterface::class,function($app){
+
             $basketPrice =  new BasketPrice($app->make(Basket::Class));
             return $basketPrice;
+
         });
         //
         Paginator::useBootstrapFour();
