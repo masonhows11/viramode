@@ -27,6 +27,8 @@
     </ul>
 @endsection
 @section('main_content')
+{{-- @inject('basket', 'App\Services\Basket\Basket' ) --}}
+@inject('price', 'App\Services\BasketPrice\BasketPrice' )
     <main class="main-content dt-sl mt-4 mb-3">
         <div class="container main-container">
             <div class="row">
@@ -37,6 +39,8 @@
                     </div>
                     <section class="page-content dt-sl">
 
+                        <p>{{  dd($price) }}</p>
+                        {{-- <p>{{  $basket->totalPrice(Auth::id()) }}</p> --}}
                         <div class="address-section">
                             @include('front_end.address.partials.address_info', [
                                 'addresses' => $addresses,
