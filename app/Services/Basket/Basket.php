@@ -13,10 +13,12 @@ class Basket
     private $storage;
 
 
+
     public function __construct(BasketInterface $basketInterface)
     {
 
         $this->storage = $basketInterface;
+
     }
 
 
@@ -95,7 +97,6 @@ class Basket
 
     public function totalPrice(int $user = null)
     {
-
         $totalProductPrice = null;
         foreach ($this->getAll($user) as $item) {
             $totalProductPrice += $item->cartItemProductPrice();

@@ -7,6 +7,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Schema;
 // use Illuminate\View\View;
 // use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Auth;
 use App\Services\Basket\Basket;
 use App\Services\Basket\DBStorage;
 use Illuminate\Pagination\Paginator;

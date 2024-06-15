@@ -42,7 +42,7 @@
                     </div>
                     <section class="page-content dt-sl">
 
-                         <p>{{  dd($price) }}</p> 
+                         <p>{{  dd($price->getSummary(Auth::id())) }}</p>
 
                         <div class="address-section">
                             @include('front_end.address.partials.address_info', [

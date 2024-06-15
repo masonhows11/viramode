@@ -17,9 +17,9 @@ class BasketPrice implements PriceInterface
         $this->basket = $basket;
     }
 
-    public function getPrice(){
+    public function getPrice($user = null){
 
-        return $this->basket->totalPrice($user = null);
+        return $this->basket->totalPrice($user);
     }
 
     public function getTotalPrice(){
@@ -32,9 +32,10 @@ class BasketPrice implements PriceInterface
         return __('messages.total_price');
     }
 
-    public function getSummary(){
+    public function getSummary(int $user = null){
 
-        return [$this->descriptionTitle() => $this->getPrice()];
+
+        return [$this->descriptionTitle() => $this->getPrice($user)];
     }
 
 }
