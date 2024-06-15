@@ -116,7 +116,7 @@
                     </h4>
                 </div>
                 <div class="form-row">
-                    <input class="input-ui pl-2 dir-ltr text-left placeholder-right" wire:model.defer="postal_code"
+                    <input class="input-ui pl-2 placeholder-right" wire:model.defer="postal_code"
                         type="text" placeholder=" کد پستی را بدون خط تیره بنویسید">
                 </div>
                 @error('postal_code')
