@@ -6,5 +6,9 @@ interface PriceInterface
 {
 
 
+        public function getPrice();
+        public function getTotalPrice();
+        public function descriptionTitle();
+        public function getSummary();
 
 }
