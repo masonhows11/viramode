@@ -24,9 +24,9 @@
                         <div class="item-thumbnail">
                             <a href="{{ route('product', $product->product->slug) }}">
                                 @if ($product->product->thumbnail_image &&   \Illuminate\Support\Facades\Storage::disk('public')->exists($product->product->thumbnail_image))
-                                    <img src="{{ asset('storage/' . $product->product->thumbnail_image) }}"  alt="Product Thumbnail">
+                                    <img class="img-thumbnail" src="{{ asset('storage/' . $product->product->thumbnail_image) }}"  alt="Product Thumbnail">
                                 @else
-                                    <img src="{{ asset('default_image/no-image-icon-23494.png') }}"  alt="Product Thumbnail">
+                                    <img class="img-thumbnail" src="{{ asset('default_image/no-image-icon-23494.png') }}"  alt="Product Thumbnail">
                                 @endif
                             </a>
                         </div>
