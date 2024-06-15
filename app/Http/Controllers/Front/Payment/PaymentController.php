@@ -62,8 +62,8 @@ class PaymentController extends Controller
         );
         } catch (\Exception $ex) {
 
-             session()->flash('error',$ex->getMessage());
-           // session()->flash('error',__('messages.An_error_occurred'));
+            // session()->flash('error',$ex->getMessage());
+            session()->flash('error',__('messages.An_error_occurred'));
             return redirect()->back();
         }
 

@@ -91,6 +91,7 @@ class AddressController extends Controller
             $orderNumber = $numberServices->generateNumber();
             $delivery = Delivery::findOrFail($request->delivery_id);
             $order_final_amount =  $totalProductPrice + $delivery->amount;
+            
             $order = $this->makeOrder($orderNumber, $delivery->id, $request->address_id, $order_final_amount);
                      $this->makeOrderItems($order);
                      $this->makePayment($order,$cartItems);
