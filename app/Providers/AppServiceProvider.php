@@ -2,15 +2,18 @@
 
 namespace App\Providers;
 
-use App\Models\Comment;
-use App\Models\Notification;
+// use App\Models\Comment;
+// use App\Models\Notification;
+// use Illuminate\Support\Facades\Schema;
+// use Illuminate\View\View;
+// use Illuminate\Support\Facades;
 use App\Services\Basket\Contracts\BasketInterface;
 use App\Services\Basket\DBStorage;
+use App\Services\BasketPrice\BasketPrice;
 use Illuminate\Pagination\Paginator;
-// use Illuminate\Support\Facades\Schema;
+
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
-use Illuminate\Support\Facades;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
             return new DBStorage();
         });
 
+
+        $this->app->bind(PriceInterface::class,function($app){
+
+            return new BasketPrice();
+        });
         Paginator::useBootstrapFour();
         Paginator::defaultView('vendor.pagination.my-custom-paginate');
 
