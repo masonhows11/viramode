@@ -130,10 +130,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="image_path" class="form-label">تصویر دسته بندی</label>
-                                <input type="file" accept="image/*" class="form-control" wire:model.defer="image_path"
+                                <input wire:loading.class="d-none" type="file" accept="image/*" class="form-control" wire:model.defer="image_path"
                                        id="image_path">
                             </div>
-                            <div wire:loading wire:target="image_path">در حال بارگزاری...</div>
+
+                            <div wire:loading  wire:target="image_path"  wire:loading.class="d-flex" class="">
+                                <div  class="spinner-border me-2" role="status" aria-hidden="true"></div>
+                                <div>  <strong>{{ __('messages.uploading')}}</strong></div>
+                             </div>
+
                             @error('image_path')
                             <div class="mt-3">
                                 <span class="text-danger">{{ $message}}</span>
@@ -143,15 +148,8 @@
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <button class="btn btn-success" type="submit">
-
-                        <span wire:loading.class="d-none">{{ __('messages.update') }}</span>
-
-                        <div class="d-none" wire:loading.class.remove="d-none">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <span>{{ __('messages.updating') }}</span>
-                        </div>
-
+                    <button wire:loading.attr="disabled"  class="btn btn-success" type="submit">
+                        {{ __('messages.update') }}
                     </button>
                     <a href="{{ route('admin.category.index') }}" class="btn btn-primary">لیست دسته بندی ها</a>
                 </div>

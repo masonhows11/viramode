@@ -120,6 +120,7 @@ return [
     'update' => 'بروز رسانی',
     'saving' => ' در حال ذخیره سازی ',
     'updating' => ' در حال اعمال تغییرات ',
+    'uploading' => 'در حال آپلود عکس',
     'product_list' => 'لیست محصولات',
     'properties' => 'ویژگی ها',
     'product_property' => ' مدیریت ویژگی ها',

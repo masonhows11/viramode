@@ -107,7 +107,9 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="mb-2 mt-5 d-flex justify-content-center">
+
+                            <!-- image container -->
+                            <div class="d-flex justify-content-center">
                                 @if($image_path)
                                     <img src="{{ $image_path->temporaryUrl() }}"
                                          width="200" height="200"
@@ -120,12 +122,20 @@
                                          class="rounded border border-2 image-admin-preview">
                                 @endif
                             </div>
-                            <div class="mb-3">
+
+                             <!-- image input -->
+                            <div class="mb-2" >
                                 <label for="image_path" class="form-label">تصویر دسته بندی</label>
-                                <input type="file" accept="image/*" class="form-control" wire:model.defer="image_path"
-                                       id="image_path">
+                                <input wire:loading.class="d-none" type="file" accept="image/*" class="form-control" wire:model.defer="image_path" id="image_path">
                             </div>
-                            <div wire:loading wire:target="image_path">در حال بارگزاری...</div>
+
+                             <!-- image loading state -->
+                             <div wire:loading  wire:target="image_path"   wire:loading.class="d-flex" class="">
+                                <div  class="spinner-border me-2" role="status" aria-hidden="true"></div>
+                                <div>  <strong>{{ __('messages.uploading')}}</strong></div>
+                             </div>
+
+
                             @error('image_path')
                             <div class="mt-3">
                                 <span class="text-danger">{{ $message}}</span>
@@ -135,15 +145,8 @@
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <button class="btn btn-success" type="submit">
-
-                        <span wire:loading.class="d-none">{{ __('messages.save') }}</span>
-
-                        <div class="d-none" wire:loading.class.remove="d-none">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <span>{{ __('messages.saving') }}</span>
-                        </div>
-
+                    <button wire:loading.attr="disabled"   class="btn btn-success" type="submit">
+                        {{ __('messages.save') }}
                     </button>
                     <a href="{{ route('admin.category.index') }}" class="btn btn-primary">لیست دسته بندی ها</a>
                 </div>

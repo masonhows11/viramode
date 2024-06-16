@@ -8,9 +8,10 @@
     <div class="container-fluid">
 
 
-        <div class="row  py-2 bg-white rounded">
+
             <form wire:submit.prevent="update">
-                <div class="col">
+
+                <div class="row  py-2 bg-white rounded">
 
                     <div class="row">
 
@@ -82,19 +83,32 @@
 
                             <div class="mb-1 mt-5">
                                 <label for="logo" class="form-label">تصویر برند</label>
-                                <input type="file" class="form-control" wire:model.defer="logo" id="logo">
+                                <input  wire:loading.class="d-none" type="file" class="form-control" wire:model.defer="logo" id="logo">
                             </div>
+
+                            <div wire:loading   wire:loading.class="d-flex" class="">
+                                <div  class="spinner-border me-2" role="status" aria-hidden="true"></div>
+                                <div>  <strong>{{ __('messages.uploading')}}</strong></div>
+                             </div>
+
                             @error('logo')
                             <div class="alert alert-danger">{{ $message}}</div>
                             @enderror
                         </div>
+
                     </div>
+
+
+                <div class="col-sm-12 mt-4">
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                    <a href="{{ route('admin.brand.index') }}" class="btn btn-primary">لیست برندها</a>
+
                 </div>
 
-                <button type="submit" class="btn btn-success">ذخیره</button>
-                <a href="{{ route('admin.brand.index') }}" class="btn btn-primary">لیست برندها</a>
+            </div>
+
             </form>
-        </div>
+
 
 
     </div>
