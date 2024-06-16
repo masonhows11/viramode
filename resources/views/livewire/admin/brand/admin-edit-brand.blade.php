@@ -86,7 +86,7 @@
                                 <input  wire:loading.class="d-none" type="file" class="form-control" wire:model.defer="logo" id="logo">
                             </div>
 
-                            <div wire:loading   wire:loading.class="d-flex" class="">
+                            <div wire:loading  wire:target="logo"  wire:loading.class="d-flex" class="">
                                 <div  class="spinner-border me-2" role="status" aria-hidden="true"></div>
                                 <div>  <strong>{{ __('messages.uploading')}}</strong></div>
                              </div>
