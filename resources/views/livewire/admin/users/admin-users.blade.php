@@ -31,7 +31,7 @@
                         <th>{{ __('messages.id') }}</th>
                         <th>{{ __('messages.user_name') }}</th>
                         <th>{{ __('messages.email')}}</th>
-                        <th>{{ __('messages.delete_model') }}</th>
+                        {{-- <th>{{ __('messages.delete_model') }}</th> --}}
                         <th>{{ __('messages.status') }}</th>
                     </tr>
                     </thead>
@@ -45,13 +45,13 @@
                                 <td>{{ $user->email ? $user->email : null}}</td>
                                 @if($user->hasRole('admin'))
                                 @else
-                                    <td class="mb-3">
+                                    {{-- <td class="mb-3">
                                         <a href="javascript:void(0)"
                                            class="btn btn-sm btn-danger"
                                            wire:click.prevent="deleteConfirmation({{ $user->id }})">
                                             {{ __('messages.delete_model') }}
                                         </a>
-                                    </td>
+                                    </td> --}}
                                     <td class="mb-3">
                                         <a href="#" wire:click.prevent="activeUser({{ $user->id }})"
                                            class="btn

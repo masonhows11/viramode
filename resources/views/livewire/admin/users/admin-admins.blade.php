@@ -31,7 +31,7 @@
                         <th>{{ __('messages.id') }}</th>
                         <th>{{ __('messages.user_name') }}</th>
                         <th>{{ __('messages.email')}}</th>
-                        <th>{{ __('messages.delete_model') }}</th>
+                        {{-- <th>{{ __('messages.delete_model') }}</th> --}}
                         <th>{{ __('messages.status') }}</th>
                     </tr>
                     </thead>
@@ -55,13 +55,13 @@
                                             دسترسی ندارید
                                         </div>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <div class="custom-deactivate">
                                             دسترسی ندارید
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 @else
-                                    <td>
+                                    {{-- <td>
                                         <div>
                                             <a href="javascript:void(0)"
                                                class="btn btn-sm btn-danger"
@@ -69,7 +69,7 @@
                                                 {{ __('messages.delete_model') }}
                                             </a>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <div class="rounded btn btn-sm
                                         {{ $admin->email_verified_at == null ? 'btn-danger' : 'btn-success' }}">
