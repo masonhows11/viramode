@@ -76,11 +76,11 @@ class AdminCategoryList extends Component
     {
         try {
             $category = Category::findOrFail($id);
-            if ($category->is_active == 0) {
-                $category->is_active = 1;
+            if ($category->status == 0) {
+                $category->status = 1;
                 $this->is_active = 1;
             } else {
-                $category->is_active = 0;
+                $category->status = 0;
                 $this->is_active = 0;
             }
             $category->save();
@@ -91,7 +91,7 @@ class AdminCategoryList extends Component
         } catch (\Exception $ex) {
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'error',
-                    'message' => __('messages.An_error_occurred')]);
+                    'message' => $ex->getMessage()]);
         }
     }
 
@@ -101,7 +101,7 @@ class AdminCategoryList extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['categories' => Category::where('title_persian','like','%'.$this->search.'%')
-                ->Orwhere('title_english','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(10)]);
-        // ->with(['category_tree'=>Category::tree()->get()->toTree()]);
+                ->orWhere('title_english','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(10)]);
+
     }
 }

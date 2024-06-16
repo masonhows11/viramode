@@ -68,8 +68,8 @@
                             </td>
                             <td>
                                 <a href="#" wire:click.prevent="changeState({{ $category->id }})"
-                                   class="mx-4 btn btn-sm {{ $category->is_active === 0 ? 'btn-danger' : 'btn-success' }} btn-sm">
-                                    {{ $category->is_active === 0 ? __('messages.deactivate') : __('messages.active') }}
+                                   class="mx-4 btn btn-sm {{ $category->status === 0 ? 'btn-danger' : 'btn-success' }} btn-sm">
+                                    {{ $category->status === 0 ? __('messages.deactivate') : __('messages.active') }}
                                 </a>
                             </td>
                             <td><a href="#" wire:click.prevent="detachCategory({{ $category->id }})" class="mx-4">

@@ -143,7 +143,16 @@
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <button type="submit" class="btn btn-success">ذخیره</button>
+                    <button class="btn btn-success" type="submit">
+
+                        <span wire:loading.class="d-none">{{ __('messages.update') }}</span>
+
+                        <div class="d-none" wire:loading.class.remove="d-none">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span>{{ __('messages.updating') }}</span>
+                        </div>
+
+                    </button>
                     <a href="{{ route('admin.category.index') }}" class="btn btn-primary">لیست دسته بندی ها</a>
                 </div>
             </form>
