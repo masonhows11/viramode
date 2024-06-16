@@ -27,8 +27,17 @@
                         {{ $message }}
                     </div>
                     @enderror
+
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-success">ذخیره</button>
+                        <button class="btn btn-success" type="button">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                           {{ __('messages.saving') }}
+                          </button>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <button type="submit"  wire:loading.attr="disabled" class="btn btn-success">ذخیره</button>
                     </div>
                 </form>
             </div>
@@ -62,7 +71,8 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
-                              {{--  @if( $role->name == 'admin')
+                              {{--
+                               @if( $role->name == 'admin')
                                     <td>
                                         <div class="custom-deactivate">
                                             دسترسی ندارید
@@ -74,8 +84,8 @@
                                         </div>
                                     </td>
                                 @else
+                                @endif --}}
 
-                                @endif--}}
                             </tr>
                         @endforeach
                     @endisset
@@ -85,6 +95,7 @@
         </div>
     </div>
 </div>
+
 @push('dash_custom_script')
     <script type="text/javascript">
         window.addEventListener('show-delete-confirmation', event => {
@@ -124,3 +135,4 @@
         })
     </script>
 @endpush
+

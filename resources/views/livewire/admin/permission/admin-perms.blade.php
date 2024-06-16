@@ -27,8 +27,16 @@
                         {{ $message }}
                     </div>
                     @enderror
+
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-success">ذخیره</button>
+                        <button class="btn btn-success" type="button">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            {{ __('messages.saving') }}
+                          </button>
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit"  wire:loading.attr="disabled" class="btn btn-success">ذخیره</button>
                     </div>
                 </form>
             </div>
