@@ -145,9 +145,16 @@
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <button wire:loading.attr="disabled"   class="btn btn-success" type="submit">
+
+                    <button  wire:loading.class="d-none"  class="btn btn-success" type="submit">
                         {{ __('messages.save') }}
                     </button>
+
+                    <button wire:loading wire:target="store" class="btn btn-success" type="button">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="">{{ __('messages.saving') }}</span>
+                      </button>
+
                     <a href="{{ route('admin.category.index') }}" class="btn btn-primary">لیست دسته بندی ها</a>
                 </div>
             </form>
