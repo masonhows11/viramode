@@ -23,7 +23,9 @@
                                     <input wire:model.defer="title_persian" type="text" class="form-control" id="title_p">
                                 </div>
                                 @error('title_persian')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $message}}</span>
+                                </div>
                                 @enderror
 
                                 <div class="mb-3">
@@ -31,7 +33,9 @@
                                     <input wire:model.defer="title_english" type="text" dir="ltr" class="form-control" id="title_e">
                                 </div>
                                 @error('title_english')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $message}}</span>
+                                </div>
                                 @enderror
 
                                 <div class="mb-3">
@@ -39,7 +43,9 @@
                                     <input wire:model.defer="seo_desc" type="text" dir="ltr" class="form-control" id="seo_desc">
                                 </div>
                                 @error('seo_desc')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $message}}</span>
+                                </div>
                                 @enderror
 
                                 <div class="mb-3">
@@ -50,7 +56,9 @@
                                     </select>
                                 </div>
                                 @error('active')
-                                <div class="alert alert-danger">{{ $message}}</div>
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $message}}</span>
+                                </div>
                                 @enderror
 
                             </div>
@@ -92,7 +100,9 @@
                              </div>
 
                             @error('logo')
-                            <div class="alert alert-danger">{{ $message}}</div>
+                            <div class="mt-3">
+                                <span class="text-danger">{{ $message}}</span>
+                            </div>
                             @enderror
                         </div>
 

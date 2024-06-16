@@ -22,7 +22,9 @@
                             <input wire:model.defer="title_persian" type="text" class="form-control" id="title_p">
                         </div>
                         @error('title_persian')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="mt-3">
+                            <span class="text-danger">{{ $message}}</span>
+                        </div>
                         @enderror
 
 
@@ -32,7 +34,9 @@
                                 id="title_e">
                         </div>
                         @error('title_english')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="mt-3">
+                            <span class="text-danger">{{ $message}}</span>
+                        </div>
                         @enderror
 
                         <div class="mb-3 mt-3">
@@ -41,7 +45,9 @@
                                 id="seo_desc">
                         </div>
                         @error('seo_desc')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="mt-3">
+                            <span class="text-danger">{{ $message}}</span>
+                        </div>
                         @enderror
 
 
@@ -54,7 +60,9 @@
                             </select>
                         </div>
                         @error('is_active')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                           <div class="mt-3">
+                                <span class="text-danger">{{ $message}}</span>
+                            </div>
                         @enderror
                     </div>
                 </div>
@@ -84,7 +92,9 @@
                     </div>
 
                     @error('logo')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="mt-3">
+                        <span class="text-danger">{{ $message}}</span>
+                    </div>
                     @enderror
 
 
