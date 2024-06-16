@@ -28,16 +28,20 @@
                     </div>
                     @enderror
 
-                    <div class="mb-3">
-                        <button class="btn btn-success" type="button">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            {{ __('messages.saving') }}
-                          </button>
-                    </div>
 
                     <div class="mb-3">
-                        <button type="submit"  wire:loading.attr="disabled" class="btn btn-success">ذخیره</button>
+                        <button class="btn btn-success" type="submit">
+
+                            <span wire:loading.class="d-none">{{ __('messages.save') }}</span>
+
+                            <div class="d-none" wire:loading.class.remove="d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span>{{ __('messages.saving') }}</span>
+                            </div>
+
+                        </button>
                     </div>
+                    
                 </form>
             </div>
         </div>
