@@ -129,8 +129,8 @@
                     </div>
 
 
-                    <div class="col-sm-4">
-                        <div class="d-flex justify-content-center align-items-center">
+                    <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                        <div class="">
                             @if($image_path)
                                 <img src="{{ $image_path->temporaryUrl() }}"
                                     width="200" height="200"
