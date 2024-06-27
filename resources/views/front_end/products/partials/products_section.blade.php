@@ -23,15 +23,12 @@
             </a>
 
             <div class="product-card-body">
-                
                 <h6 class="product-title">
                     <a class="text-center" style="font-size: 1rem" href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
                 </h6>
-
                 @foreach ( $product->categories as $category )
                 <a class="product-meta" href="javascript:void(0)">{{ $category->title_persian }}</a>
                 @endforeach
-
                 <span class="product-price">{{ number_format($product->origin_price) . ' ' . __('messages.toman') }}</span>
             </div>
         </div>

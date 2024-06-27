@@ -2248,7 +2248,7 @@ section.slider-section .product-card {
     font-size: 0.8rem;
     font-weight: bold;
     position: relative;
-    min-height: 60px;
+    min-height: 30px;
 }
 
 .product-card .product-title>a {

@@ -8,6 +8,7 @@
         @if($products->isNotEmpty())
         <div class="row mb-3 mx-0">
             @include('front_end.products.partials.products_section',['products' => $products])
+
             {{-- @include('front_end.products.partials.filter_sidebar')
             <div class="col-lg-9 col-md-12 col-sm-12 search-card-res">
                 <div class="d-md-none">
@@ -33,6 +34,7 @@
 
                 </div>
             </div> --}}
+            
         </div>
 
         <div class="row">
