@@ -27,9 +27,9 @@
                     <a class="text-center" style="font-size: 1rem" href="{{ route('product',$product->slug) }}">{{ $product->title_persian }}</a>
                 </h6>
                 @foreach ( $product->categories as $category )
-                <a class="product-meta" href="javascript:void(0)">{{ $category->title_persian }}</a>
+                <a class="product-meta mr-3" href="javascript:void(0)">{{ $category->title_persian }}</a>
                 @endforeach
-                <span class="product-price">{{ number_format($product->origin_price) . ' ' . __('messages.toman') }}</span>
+                <span class="product-price mr-3" >{{ number_format($product->origin_price) . ' ' . __('messages.toman') }}</span>
             </div>
         </div>
     </div>
