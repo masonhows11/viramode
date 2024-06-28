@@ -739,6 +739,12 @@ header.main-header .search-box input::placeholder {
     font-size: 13px;
 }
 
+/* -- custom style -- */
+.logo-area a {
+    font-size: 1.2rem;
+    font-weight: 900
+}
+
 /* ----------------- Start Main-Menu */
 
 header.main-header .bottom-header {
@@ -9260,9 +9266,19 @@ footer.mini-footer .copy-right-mini-footer {
     .checkout-section-content-dd-k .cart-items-dd-k .cart-item .item-quantity--item-price .item-price {
         text-align: left;
     }
+
+    .logo-area a{
+        font-size:1rem;
+        margin-top:14px;
+    }
 }
 
 @media (max-width: 340px) {
+
+    .logo-area a{
+        font-size:1rem;
+        margin-top:14px;
+    }
     header.main-header .nav-item.account {
         border: 0;
         padding: 0;
