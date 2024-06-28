@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-2 col-md-3 col-6">
                 <div class="logo-area">
-                    <a href="{{ route('home') }}" class="text-danger" style="font-size: 1.2rem; font-weight:900">
+                    <a href="{{ route('home') }}" class="text-danger" style="font-size: 1rem; font-weight:900">
                         {{ __('messages.site_name') }}
                         {{--  <img src="{{ asset('front_assets/img/logo.png') }}" alt="">  --}}
                     </a>
