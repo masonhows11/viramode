@@ -9293,13 +9293,18 @@ footer.mini-footer .copy-right-mini-footer {
     }
 }
 
-/* responsive */
+/* end responsive */
 
-/* custom style */
+/* start custom style */
+
 /********** custom contact us style */
 .contact-us-form {
     margin-top: 150px;
 }
+.cart-items-dd-k .item-detail .fa-trash-alt{
+    color:tomato;
+}
+
 
 /********** custom banner slider style */
 .swiper {
