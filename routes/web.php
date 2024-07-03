@@ -456,8 +456,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/tag/index', AdminTag::class)->name('tag.index');
-    Route::get('/tag/create', AdminCreateBrand::class)->name('tag.create');
-    Route::get('/tag/edit/{id}', AdminEditBrand::class)->name('tag.edit');
 
 });
 // crud colors
